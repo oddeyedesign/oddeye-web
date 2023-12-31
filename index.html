@@ -204,19 +204,19 @@ Estructura general:
                 para ello me he ayudado con Figma y he exportado el svg directamente del prototipo que he hecho
             -->
 
-                <filter id="body__fx" width="517.804" height="445.026" x="-8" y="-8" class="body__fx"
+                <filter id="body__fx" width="517.804" height="445.026" x="-8" y="-8"
                     color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
                     <feFlood flood-opacity="0" result="BackgroundImageFix" />
                     <feGaussianBlur in="BackgroundImageFix" stdDeviation="4" />
-                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_43_108" />
-                    <feBlend in="SourceGraphic" in2="effect1_backgroundBlur_43_108" result="shape" />
+                    <feComposite in2="SourceAlpha" operator="in" result="bgBlur" />
+                    <feBlend in="SourceGraphic" in2="bgBlur" result="shape" />
                     <feColorMatrix in="SourceAlpha" result="hardAlpha"
                         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
                     <feOffset />
                     <feGaussianBlur stdDeviation="15.6" />
                     <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
                     <feColorMatrix values="0 0 0 0 0.603812 0 0 0 0 0.3625 0 0 0 0 1 0 0 0 1 0" />
-                    <feBlend in2="shape" result="effect2_innerShadow_43_108" />
+                    <feBlend in2="shape" result="innerShadow" />
                 </filter>
             </defs>
         </svg>
