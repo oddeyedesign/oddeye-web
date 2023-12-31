@@ -17,6 +17,11 @@ Estructura general:
     <title>Odd Eye Creations</title>
     <link rel="stylesheet" href="/css/index.css">
     <script src="js/index.js" defer></script>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -54,8 +59,8 @@ Estructura general:
             <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the cursor
                 through the screen with their eyes </desc>
             <g class="logo__body">
-                <g class="logo__catbody" filter="url(#body__fx)">
-                    <path fill="url(#body__gradient)"
+                <g class="logo__catbody">
+                    <path fill="url(#body__gradient)"  filter="url(#body__fx)"
                         d="M461.796 100.616C425.417 42.804 373.456 13.958 342.51.646c-5.691-2.452-11.806 2.446-10.636 8.531l16.81 87.505c.924 4.804-2.793 9.237-7.679 9.167a521.518 521.518 0 0 0-63.626 2.951 522.665 522.665 0 0 0-100.094 20.886 7.707 7.707 0 0 1-7.973-2.123 548.104 548.104 0 0 0-44.169-42.77c-9.785-8.461-21.809-18.957-48.421-37.361a587.6 587.6 0 0 0-41.018-25.936c-1.653-.641-4.546-1.494-7.933-.965 0 0-3.616 1.012-7.455 3.517-36.944 24.119-26.26 177.267 54.918 281.194C189.092 451.01 388.879 432.424 414.445 422.281a90.61 90.61 0 0 0 3.728-1.587c14.2-11.178 32.686-28.418 48.533-53.261 49.955-78.343 45.034-187.445-4.91-266.812v-.005Z" />
                 </g>
                 <g class="logo__face face">
@@ -123,10 +128,10 @@ Estructura general:
                     </g>
                 </g>
             </g>
+
+            <!-- Todos los rellenos y efectos del svg organizados por clase e id
+            He utilizado directamente los efectos de svg porque hice pruebas con CSS y no funcionaban-->
             <defs>
-
-                <!-- Todos los rellenos y efectos del svg organizados por clase e id-->
-
                 <radialGradient id="body__gradient" cx="0" cy="0" r="1" class="body__gradient"
                     gradientTransform="matrix(225.99976 150.00042 -212.5789 320.2843 297 257.001)"
                     gradientUnits="userSpaceOnUse">
@@ -199,7 +204,7 @@ Estructura general:
                 para ello me he ayudado con Figma y he exportado el svg directamente del prototipo que he hecho
             -->
 
-                <filter id="body__fx" width="517.804" height="445.026" x="-8" y="-8" class=""
+                <filter id="body__fx" width="517.804" height="445.026" x="-8" y="-8" class="body__fx"
                     color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
                     <feFlood flood-opacity="0" result="BackgroundImageFix" />
                     <feGaussianBlur in="BackgroundImageFix" stdDeviation="4" />
@@ -219,7 +224,7 @@ Estructura general:
         <div class="hero__window" id="readme">
             <!-- Barra superior -->
             <div class="window__wrapper">
-                <span class="window__span">
+                <span class="window__name">
                     readme.txt
                 </span>
                 <button type="button" class="window__min" title="Minimize">
@@ -267,6 +272,7 @@ Estructura general:
                     ..·º·*
                 </div>
             </div>
+            <!-- Nota: Sustituir por ::after -->
             <div class="window__divider"></div>
 
             <!-- Listado de servicios -->
@@ -288,7 +294,7 @@ Estructura general:
                     </h2>
                 </li>
                 <li class="window__li">
-                    <span class="__windowornament">
+                    <span class="window__ornament">
                         >
                     </span>
                     <h2 class="window__h2">
@@ -301,7 +307,7 @@ Estructura general:
         <div class="hero__window exe">
             <!-- Barra superior -->
             <div class="window__wrapper">
-                <span class="window__span">
+                <span class="window__name">
                     oddeye.exe
                 </span>
                 <button type="button" class="window__min" title="Minimize">
@@ -319,7 +325,12 @@ Estructura general:
             </div>
             <!-- Contenido -->
             <!-- Console log falso -->
+            <div class="window__log">
+                Test
+            </div>
         </div>
+        <!-- Adorno Lunas Lateral -->
+        <img src="assets/index/hero__moons.svg" class="hero__moons" fetchpriority="high" loading="lazy">
     </main>
 </body>
 </html>
