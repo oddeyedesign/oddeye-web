@@ -140,6 +140,7 @@ body {
 .logo{
   position: absolute;
   top: 25%;
+    transform: translateZ(-4rem);
 }
 
 .logo__mask{
@@ -176,14 +177,7 @@ body {
   bottom: 10%;
   left: 5%;
 
-  z-index: 3;
   opacity: 1;
-
-  transform:
-  translateZ(2rem)
-  rotateY(-20deg)
-  skewY(1deg)
-  ;
 
   box-shadow:
   inset 10rem 10rem 12rem -10rem rgba(168,254,47,.15),
@@ -192,14 +186,8 @@ body {
   transition:
   transform 1s ease,
   box-shadow 1s ease;
-
-  
 }
 .hero__window:hover{
-transform: 
-rotateY(-5deg)
-skewY(1deg)
-;
 
 box-shadow:
 inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
@@ -325,21 +313,11 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   content: '>';
 }
 .window__h2{}
-.exe{
-  background-color: #0A0A0B;
-  color: #A7FE2F;
-  border: #A7FE2F solid .0625rem;
 
+.hero__window#exe{
   position: absolute;
   bottom: 5%;
   left: 8%;
-
-  transform:
-  scaleY(4rem)
-  ;
-
-  z-index: 2;
-  opacity: 1;
 }
 .window__log{
   display: inline-block;
@@ -350,4 +328,10 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   width: 5vw;
   position: absolute;
   right: 5%;
+}
+
+/* Clases que se activan por JS */
+.hidden{
+  opacity: 0;
+  pointer-events: none;
 }

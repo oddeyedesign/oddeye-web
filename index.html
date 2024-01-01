@@ -226,7 +226,7 @@ Estructura general:
                     readme.txt
                 </span>
                 <div class="window__wrapper buttons">
-                <button type="button" class="buttons__min" title="Minimize">
+                <button type="button" class="buttons__min" title="Minimize" id="min">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="buttons__svg" viewBox="0 0 16 16">
                         <symbol id="dash" viewbox="0 0 16 16">
@@ -235,7 +235,7 @@ Estructura general:
                         <use href="#dash"></use>
                     </svg>
                 </button>
-                <button type="button" class="buttons__close" title="Close">
+                <button type="button" class="buttons__close" title="Close" id="close">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="buttons__svg" viewBox="0 0 16 16">
                         <symbol id="x" viewbox="0 0 16 16">
@@ -282,7 +282,7 @@ Estructura general:
         </div>
         </div>
         <!-- Ventanita "oddeye.exe" -->
-        <div class="hero__window exe">
+        <div class="hero__window" id="exe">
             <!-- Barra superior -->
             <div class="window__wrapper">
                 <span class="window__name">
