@@ -21,7 +21,8 @@ Estructura general:
     <!-- Tipografía -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -43,8 +44,9 @@ Estructura general:
 
     <main class="hero">
 
-        <!-- Logotipo en svg-->
-        <!-- La etiqueta SVG no me permite añadir atributo alt ni title, por lo que he utilizado
+        <div class="hero__wrapper logo">
+            <!-- Logotipo en svg-->
+            <!-- La etiqueta SVG no me permite añadir atributo alt ni title, por lo que he utilizado
             las etiquetas TITLE y DESC para hacerlo accesible, así como el atributo "aria-labelledby" para que la información
             se muestre en el lector de pantalla.
             Recursos:
@@ -53,16 +55,12 @@ Estructura general:
             
             DUDA: ¿Cómo puedo añadir fetch priority high a un svg? W3C me da error si lo añado
         -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="550" height="471" fill="none" viewBox="0 0 550 471"
-            class="hero__logo logo" role="img" aria-labelledby="logo__title logo__description">
-            <title id="logo__title"> Oddeye Logo </title>
-            <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the cursor
-                through the screen with their eyes </desc>
-            <g class="logo__body">
-                <g class="logo__catbody">
-                    <path fill="url(#body__gradient)"  filter="url(#body__fx)"
-                        d="M461.796 100.616C425.417 42.804 373.456 13.958 342.51.646c-5.691-2.452-11.806 2.446-10.636 8.531l16.81 87.505c.924 4.804-2.793 9.237-7.679 9.167a521.518 521.518 0 0 0-63.626 2.951 522.665 522.665 0 0 0-100.094 20.886 7.707 7.707 0 0 1-7.973-2.123 548.104 548.104 0 0 0-44.169-42.77c-9.785-8.461-21.809-18.957-48.421-37.361a587.6 587.6 0 0 0-41.018-25.936c-1.653-.641-4.546-1.494-7.933-.965 0 0-3.616 1.012-7.455 3.517-36.944 24.119-26.26 177.267 54.918 281.194C189.092 451.01 388.879 432.424 414.445 422.281a90.61 90.61 0 0 0 3.728-1.587c14.2-11.178 32.686-28.418 48.533-53.261 49.955-78.343 45.034-187.445-4.91-266.812v-.005Z" />
-                </g>
+            <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 550 471"
+                class="logo__svg" role="img" aria-labelledby="logo__title logo__description">
+                <title id="logo__title"> Oddeye Logo </title>
+                <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the
+                    cursor
+                    through the screen with their eyes </desc>
                 <g class="logo__face face">
                     <g class="face__eyes eye">
                         <g class="eye__first">
@@ -127,99 +125,99 @@ Estructura general:
                             class="snout__nose" />
                     </g>
                 </g>
-            </g>
+                </g>
 
-            <!-- Todos los rellenos y efectos del svg organizados por clase e id
-            He utilizado directamente los efectos de svg porque hice pruebas con CSS y no funcionaban-->
-            <defs>
-                <radialGradient id="body__gradient" cx="0" cy="0" r="1" class="body__gradient"
-                    gradientTransform="matrix(225.99976 150.00042 -212.5789 320.2843 297 257.001)"
-                    gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#7E2FFF" stop-opacity="0" />
-                    <stop offset="1" stop-color="#7542CA" />
-                </radialGradient>
-                <radialGradient id="iris__gradient-a" cx="0" cy="0" r="1" class="iris__gradient-a"
-                    gradientTransform="rotate(18.75 -653.847 635.216) scale(92.0027 80.09)"
-                    gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#CF0" />
-                    <stop offset=".766" stop-color="#83FF08" />
-                </radialGradient>
-                <radialGradient id="eyelid__gradient" cx="0" cy="0" r="1" class="eyelid__gradient"
-                    gradientTransform="matrix(39.40912 58.66908 -49.03897 32.9404 324.986 198.879)"
-                    gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#008CC8" />
-                    <stop offset=".531" stop-color="#333DC2" />
-                    <stop offset="1" stop-color="#510EBF" />
-                </radialGradient>
-                <radialGradient id="iris__gradient-b" cx="0" cy="0" r="1" class="iris__gradient-b"
-                    gradientTransform="matrix(0 61.0139 -48.736 0 337.004 199.091)" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#CF0" />
-                    <stop offset=".766" stop-color="#83FF08" />
-                </radialGradient>
-                <radialGradient id="eyelid__gradient-b" cx="0" cy="0" r="1" class="eyelid__gradient-b"
-                    gradientTransform="matrix(43.70487 5.97128 -7.81393 57.19157 447.178 194.439)"
-                    gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#008CC8" />
-                    <stop offset=".531" stop-color="#333DC2" />
-                    <stop offset="1" stop-color="#510EBF" />
-                </radialGradient>
-                <radialGradient id="iris__gradient-c" cx="0" cy="0" r="1" class="iris__gradient-c"
-                    gradientTransform="matrix(0 52.1456 -29.9079 0 463.755 196.176)" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#CF0" />
-                    <stop offset=".766" stop-color="#83FF08" />
-                </radialGradient>
-                <linearGradient id="lwhisker__big-gradient" x1="224" x2="328.491" y1="427.5" y2="358.623"
-                    class="lwhisker__gradient-big" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#3D6B00" />
-                    <stop offset=".185" stop-color="#032600" />
-                    <stop offset=".474" />
-                </linearGradient>
-                <linearGradient id="lwhisker__small-gradient" x1="269.529" x2="299.164" y1="392.1" y2="371.336"
-                    class="i" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#3D6B00" />
-                    <stop offset=".185" stop-color="#032600" />
-                    <stop offset=".474" />
-                </linearGradient>
-                <linearGradient id="rwhisker__big-gradient" x1="533" x2="409.414" y1="335.5" y2="337.17" class="j"
-                    gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#3D6B00" />
-                    <stop offset=".185" stop-color="#032600" />
-                    <stop offset=".474" />
-                </linearGradient>
-                <linearGradient id="rwhisker__small-gradient" x1="491.999" x2="437.555" y1="339.954" y2="341.559"
-                    class="k" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#3D6B00" />
-                    <stop offset=".185" stop-color="#032600" />
-                    <stop offset=".474" />
-                </linearGradient>
-                <linearGradient id="nose__gradient" x1="364" x2="377" y1="286" y2="399" class="l"
-                    gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#3D6B00" />
-                    <stop offset=".185" stop-color="#032600" />
-                    <stop offset=".474" />
-                </linearGradient>
+                <!-- Todos los rellenos organizados por clase e ID
+                no los aplico en css porque tienen degradados complejos-->
+                <defs>
+                    <radialGradient id="body__gradient" cx="0" cy="0" r="1" class="body__gradient"
+                        gradientTransform="matrix(225.99976 150.00042 -212.5789 320.2843 297 257.001)"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#7E2FFF" stop-opacity="0" />
+                        <stop offset="1" stop-color="#7542CA" />
+                    </radialGradient>
+                    <radialGradient id="iris__gradient-a" cx="0" cy="0" r="1" class="iris__gradient-a"
+                        gradientTransform="rotate(18.75 -653.847 635.216) scale(92.0027 80.09)"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#CF0" />
+                        <stop offset=".766" stop-color="#83FF08" />
+                    </radialGradient>
+                    <radialGradient id="eyelid__gradient" cx="0" cy="0" r="1" class="eyelid__gradient"
+                        gradientTransform="matrix(39.40912 58.66908 -49.03897 32.9404 324.986 198.879)"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#008CC8" />
+                        <stop offset=".531" stop-color="#333DC2" />
+                        <stop offset="1" stop-color="#510EBF" />
+                    </radialGradient>
+                    <radialGradient id="iris__gradient-b" cx="0" cy="0" r="1" class="iris__gradient-b"
+                        gradientTransform="matrix(0 61.0139 -48.736 0 337.004 199.091)" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#CF0" />
+                        <stop offset=".766" stop-color="#83FF08" />
+                    </radialGradient>
+                    <radialGradient id="eyelid__gradient-b" cx="0" cy="0" r="1" class="eyelid__gradient-b"
+                        gradientTransform="matrix(43.70487 5.97128 -7.81393 57.19157 447.178 194.439)"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#008CC8" />
+                        <stop offset=".531" stop-color="#333DC2" />
+                        <stop offset="1" stop-color="#510EBF" />
+                    </radialGradient>
+                    <radialGradient id="iris__gradient-c" cx="0" cy="0" r="1" class="iris__gradient-c"
+                        gradientTransform="matrix(0 52.1456 -29.9079 0 463.755 196.176)" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#CF0" />
+                        <stop offset=".766" stop-color="#83FF08" />
+                    </radialGradient>
+                    <linearGradient id="lwhisker__big-gradient" x1="224" x2="328.491" y1="427.5" y2="358.623"
+                        class="lwhisker__gradient-big" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3D6B00" />
+                        <stop offset=".185" stop-color="#032600" />
+                        <stop offset=".474" />
+                    </linearGradient>
+                    <linearGradient id="lwhisker__small-gradient" x1="269.529" x2="299.164" y1="392.1" y2="371.336"
+                        class="i" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3D6B00" />
+                        <stop offset=".185" stop-color="#032600" />
+                        <stop offset=".474" />
+                    </linearGradient>
+                    <linearGradient id="rwhisker__big-gradient" x1="533" x2="409.414" y1="335.5" y2="337.17" class="j"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3D6B00" />
+                        <stop offset=".185" stop-color="#032600" />
+                        <stop offset=".474" />
+                    </linearGradient>
+                    <linearGradient id="rwhisker__small-gradient" x1="491.999" x2="437.555" y1="339.954" y2="341.559"
+                        class="k" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3D6B00" />
+                        <stop offset=".185" stop-color="#032600" />
+                        <stop offset=".474" />
+                    </linearGradient>
+                    <linearGradient id="nose__gradient" x1="364" x2="377" y1="286" y2="399" class="l"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3D6B00" />
+                        <stop offset=".185" stop-color="#032600" />
+                        <stop offset=".474" />
+                    </linearGradient>
+                </defs>
+            </svg>
 
-                <!-- Este filtro aplica un efecto de background blur e inner shadow al "cuerpo" del monstruito del logotipo
-                lo hago de este modo porque he tenido problemas intentando aplicar estos efectos en CSS
-                para ello me he ayudado con Figma y he exportado el svg directamente del prototipo que he hecho
+            <!-- Parte posterior del logo ("cuerpo" del gato)
+            Tras hacer numerosas pruebas con filtros svg, me he decantado por separar el cuerpo del gato del resto del logo
+            y crear una máscara con la forma svg para poder aplicar el backdrop-blur sin complicaciones en un div, utilizaré
+            el mismo método para el resto de divs curvos de la web
             -->
+            <div class="logo__body">
+                <svg class="logo__mask" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 550 471">
+                    <defs>
+                        <clipPath id="body__mask" clipPathUnits="objectBoundingBox">
+                            <path
+                                d="M0.92,0.235 C0.848,0.1,0.744,0.033,0.683,0.002 c-0.011,-0.006,-0.024,0.006,-0.021,0.02 l0.033,0.204 c0.002,0.011,-0.006,0.022,-0.015,0.021 a1,1,0,0,0,-0.127,0.007 a1,1,0,0,0,-0.199,0.049 a0.015,0.018,0,0,1,-0.016,-0.005 a1,1,0,0,0,-0.088,-0.1 c-0.019,-0.02,-0.043,-0.044,-0.096,-0.087 a1,1,0,0,0,-0.082,-0.06 c-0.003,-0.001,-0.009,-0.003,-0.016,-0.002 c0,0,-0.007,0.002,-0.015,0.008 c-0.074,0.056,-0.052,0.413,0.109,0.655 C0.377,1,0.775,1,0.826,0.984 a0.181,0.211,0,0,0,0.007,-0.004 c0.028,-0.026,0.065,-0.066,0.097,-0.124 c0.1,-0.183,0.09,-0.437,-0.01,-0.622 v0" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
 
-                <filter id="body__fx" width="517.804" height="445.026" x="-8" y="-8"
-                    color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="4" />
-                    <feComposite in2="SourceAlpha" operator="in" result="bgBlur" />
-                    <feBlend in="SourceGraphic" in2="bgBlur" result="shape" />
-                    <feColorMatrix in="SourceAlpha" result="hardAlpha"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                    <feOffset />
-                    <feGaussianBlur stdDeviation="15.6" />
-                    <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-                    <feColorMatrix values="0 0 0 0 0.603812 0 0 0 0 0.3625 0 0 0 0 1 0 0 0 1 0" />
-                    <feBlend in2="shape" result="innerShadow" />
-                </filter>
-            </defs>
-        </svg>
+        </div>
+
         <!-- Ventanita "readme.txt" -->
         <div class="hero__window" id="readme">
             <!-- Barra superior -->
@@ -227,54 +225,42 @@ Estructura general:
                 <span class="window__name">
                     readme.txt
                 </span>
-                <button type="button" class="window__min" title="Minimize">
+                <div class="window__wrapper buttons">
+                <button type="button" class="buttons__min" title="Minimize">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="window__svg" viewBox="0 0 16 16">
+                        class="buttons__svg" viewBox="0 0 16 16">
                         <symbol id="dash" viewbox="0 0 16 16">
                             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
                         </symbol>
                         <use href="#dash"></use>
                     </svg>
                 </button>
-                <button type="button" class="window__close" title="Close">
+                <button type="button" class="buttons__close" title="Close">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="window__svg" viewBox="0 0 16 16">
+                        class="buttons__svg" viewBox="0 0 16 16">
                         <symbol id="x" viewbox="0 0 16 16">
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                         </symbol>
                         <use href="#x"></use>
                     </svg>
                 </button>
             </div>
+            </div>
             <!-- Contenido -->
             <!-- Título de la web 
-                * Utilizo aria-hidden en los ornamentos para que no sean leídos por lectores de pantalla, puesto que no es un texto legible
             -->
+            <div class="window__content">
             <div class="window__title" title="Oddeye Creations">
-                <span class="window__ornament" aria-hidden="true">
-                    º·.*·º
-                </span>
                 <h1 class="window__h1">
                     Oddeye
                 </h1>
-                <span class="window__ornament" aria-hidden="true">
-                    º·*.·º
-                </span>
-            </div>
             <div class="window__subtitle">
-                <span class="window__ornament" aria-hidden="true">
-                    *·º·..
-                </span>
                 <span class="window__creations">
                     Creations
                 </span>
-                <div class="window__ornament" aria-hidden="true">
-                    ..·º·*
-                </div>
             </div>
-            <!-- Nota: Sustituir por ::after -->
-            <div class="window__divider"></div>
-
+        </div>
             <!-- Listado de servicios -->
             <ul class="window__ul">
                 <li class="window__li">
@@ -303,6 +289,7 @@ Estructura general:
                 </li>
             </ul>
         </div>
+        </div>
         <!-- Ventanita "oddeye.exe" -->
         <div class="hero__window exe">
             <!-- Barra superior -->
@@ -310,27 +297,30 @@ Estructura general:
                 <span class="window__name">
                     oddeye.exe
                 </span>
-                <button type="button" class="window__min" title="Minimize">
+                <div class="window__wrapper buttons">
+                <button type="button" class="buttons__min" title="Minimize">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="window__svg" viewBox="0 0 16 16">
+                        class="buttons__svg" viewBox="0 0 16 16">
                         <use href="#dash"></use>
                     </svg>
                 </button>
-                <button type="button" class="window__close" title="Close">
+                <button type="button" class="buttons__close" title="Close">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="window__svg" viewBox="0 0 16 16">
-                    <use href="#x"></use>
-                </svg>
+                        class="buttons__svg" viewBox="0 0 16 16">
+                        <use href="#x"></use>
+                    </svg>
                 </button>
+            </div>
             </div>
             <!-- Contenido -->
             <!-- Console log falso -->
             <div class="window__log">
-                Test
+                logo__mask
             </div>
         </div>
         <!-- Adorno Lunas Lateral -->
         <img src="assets/index/hero__moons.svg" class="hero__moons" fetchpriority="high" loading="lazy">
     </main>
 </body>
+
 </html>
