@@ -187,13 +187,13 @@ body {
   transform 1s ease,
   box-shadow 1s ease;
 }
-.hero__window:hover{
+/* .hero__window:hover{
 
 box-shadow:
 inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
 -0.3125rem .6875rem 1.3125rem -0.0625rem rgba(0,0,0,0.9);
 
-}
+} */
 .window__wrapper{
   border:#A7FE2F solid .0625rem;
   display: flex;
