@@ -165,8 +165,9 @@ body {
 
 }
 .hero__window{
-  width: 30vw;
-  min-height: 14rem;
+  min-width: 30vw;
+  max-width: 35vw;
+  min-height: 19rem;
   background-color: #0A0A0B;
   color: #A7FE2F;
   border: #A7FE2F solid .0625rem;
@@ -176,6 +177,34 @@ body {
   left: 5%;
 
   z-index: 3;
+  opacity: 1;
+
+  transform:
+  translateZ(2rem)
+  rotateY(-20deg)
+  skewY(1deg)
+  ;
+
+  box-shadow:
+  inset 10rem 10rem 12rem -10rem rgba(168,254,47,.15),
+  .3125rem .3125rem 1.3125rem -0.0625rem rgba(0,0,0,.9) ;
+
+  transition:
+  transform 1s ease,
+  box-shadow 1s ease;
+
+  
+}
+.hero__window:hover{
+transform: 
+rotateY(-5deg)
+skewY(1deg)
+;
+
+box-shadow:
+inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
+-0.3125rem .6875rem 1.3125rem -0.0625rem rgba(0,0,0,0.9);
+
 }
 .window__wrapper{
   border:#A7FE2F solid .0625rem;
@@ -184,15 +213,18 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.window__wrapper.buttons{
+.buttons{
   border: none;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: flex-end;
   align-items: center;
 }
 .window__name{
   margin: .5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .2rem;
 }
 .buttons__svg{
   width: 2.5rem;
@@ -208,7 +240,6 @@ body {
 
 .window__content{
   margin: .5rem;
-  background-color: brown;
 
   display: flex;
   flex-flow: column nowrap;
@@ -233,15 +264,14 @@ body {
 .window__title::after{
   display: block;
   content: '';
-  width: 90%;
+  width: 80%;
   border: #A7FE2F dashed .0625rem;
+  margin: .5rem 0 .5rem 0;
 }
 .window__h1{
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: .5rem;
-  font-size: 1.1rem;
-  font-weight: 700;
 }
 .window__h1::before{
   display: inline-block;
@@ -267,31 +297,55 @@ body {
 }
 .window__subtitle::before{
   display: inline-block;
-  content: '*·.';
+  content: '*·.-';
   font-size: .8rem;
 }
 .window__subtitle::after{
   display: inline-block;
-  content: '*·.';
+  content: '*·.-';
   transform: scaleX(-1);
   font-size: .8rem;
 }
-.window__ul{}
-.window__li{}
+.window__ul{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.window__li{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: .5rem;
+}
+.window__li::before{
+  display: inline-block;
+  content: '>';
+}
 .window__h2{}
 .exe{
-  min-height: 14rem;
   background-color: #0A0A0B;
   color: #A7FE2F;
   border: #A7FE2F solid .0625rem;
 
   position: absolute;
   bottom: 5%;
-  left: 10%;
+  left: 8%;
 
-  z-index: 1;
+  transform:
+  scaleY(4rem)
+  ;
+
+  z-index: 2;
+  opacity: 1;
 }
-.window__log{}
+.window__log{
+  display: inline-block;
+  margin: .5rem;
+}
+
 .hero__moons{
   width: 5vw;
   position: absolute;
