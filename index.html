@@ -55,8 +55,8 @@ Estructura general:
             
             DUDA: ¿Cómo puedo añadir fetch priority high a un svg? W3C me da error si lo añado
         -->
-            <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 550 471"
-                class="logo__svg" role="img" aria-labelledby="logo__title logo__description">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 550 471" class="logo__svg" role="img"
+                aria-labelledby="logo__title logo__description">
                 <title id="logo__title"> Oddeye Logo </title>
                 <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the
                     cursor
@@ -125,7 +125,7 @@ Estructura general:
                             class="snout__nose" />
                     </g>
                 </g>
-                </g>
+
 
                 <!-- Todos los rellenos organizados por clase e ID
                 no los aplico en css porque tienen degradados complejos-->
@@ -205,8 +205,7 @@ Estructura general:
             el mismo método para el resto de divs curvos de la web
             -->
             <div class="logo__body">
-                <svg class="logo__mask" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 550 471">
+                <svg class="logo__mask" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 550 471">
                     <defs>
                         <clipPath id="body__mask" clipPathUnits="objectBoundingBox">
                             <path
@@ -219,98 +218,120 @@ Estructura general:
         </div>
 
         <!-- Ventanita "readme.txt" -->
-        <div class="hero__window" id="readme">
+        <div class="hero__window front" id="readme">
             <!-- Barra superior -->
             <div class="window__wrapper">
                 <span class="window__name">
                     readme.txt
                 </span>
-                <div class="window__wrapper buttons">
-                <button type="button" class="buttons__min" title="Minimize" id="min">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="buttons__svg" viewBox="0 0 16 16">
-                        <symbol id="dash" viewbox="0 0 16 16">
-                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                        </symbol>
-                        <use href="#dash"></use>
-                    </svg>
-                </button>
-                <button type="button" class="buttons__close" title="Close" id="close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="buttons__svg" viewBox="0 0 16 16">
-                        <symbol id="x" viewbox="0 0 16 16">
-                            <path
-                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                        </symbol>
-                        <use href="#x"></use>
-                    </svg>
-                </button>
-            </div>
+                <div class="window__wrapper button">
+                    <button type="button" class="button__res hidden" title="Restore">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="button__svg" viewBox="0 0 16 16">
+                            <symbol id="plus" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                            </symbol>
+                            <use href="#plus"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="button__min" title="Minimize">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="button__svg" viewBox="0 0 16 16">
+                            <symbol id="dash" viewbox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                            </symbol>
+                            <use href="#dash"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="button__close" title="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="button__svg" viewBox="0 0 16 16">
+                            <symbol id="x" viewbox="0 0 16 16">
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </symbol>
+                            <use href="#x"></use>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <!-- Contenido -->
             <!-- Título de la web 
             -->
             <div class="window__content">
-            <div class="window__title" title="Oddeye Creations">
-                <h1 class="window__h1">
-                    Oddeye
-                </h1>
-            <div class="window__subtitle">
-                <span class="window__creations">
-                    Creations
-                </span>
+                <div class="window__title" title="Oddeye Creations">
+                    <h1 class="window__h1">
+                        Oddeye
+                    </h1>
+                    <div class="window__subtitle">
+                        <span class="window__creations">
+                            Creations
+                        </span>
+                    </div>
+                </div>
+                <!-- Listado de servicios -->
+                <ul class="window__ul">
+                    <li class="window__li">
+                        <h2 class="window__h2">
+                            Graphic Design
+                        </h2>
+                    </li>
+                    <li class="window__li">
+                        <h2 class="window__h2">
+                            UX/UI Design
+                        </h2>
+                    </li>
+                    <li class="window__li">
+                        <h2 class="window__h2">
+                            Illustration
+                        </h2>
+                    </li>
+                </ul>
             </div>
         </div>
-            <!-- Listado de servicios -->
-            <ul class="window__ul">
-                <li class="window__li">
-                    <h2 class="window__h2">
-                        Graphic Design
-                    </h2>
-                </li>
-                <li class="window__li">
-                    <h2 class="window__h2">
-                        UX/UI Design
-                    </h2>
-                </li>
-                <li class="window__li">
-                    <h2 class="window__h2">
-                        Illustration
-                    </h2>
-                </li>
-            </ul>
-        </div>
-        </div>
         <!-- Ventanita "oddeye.exe" -->
-        <div class="hero__window" id="exe">
+        <div class="hero__window back" id="exe">
             <!-- Barra superior -->
             <div class="window__wrapper">
                 <span class="window__name">
                     oddeye.exe
                 </span>
-                <div class="window__wrapper buttons">
-                <button type="button" class="buttons__min" title="Minimize">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="buttons__svg" viewBox="0 0 16 16">
-                        <use href="#dash"></use>
-                    </svg>
-                </button>
-                <button type="button" class="buttons__close" title="Close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="buttons__svg" viewBox="0 0 16 16">
-                        <use href="#x"></use>
-                    </svg>
-                </button>
-            </div>
+                <div class="window__wrapper button">
+                    <button type="button" class="button__res hidden" title="Restore">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="button__svg" viewBox="0 0 16 16">
+                            <use href="#plus"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="button__min" title="Minimize">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="button__svg" viewBox="0 0 16 16">
+                            <use href="#dash"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="button__close" title="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="button__svg" viewBox="0 0 16 16">
+                            <use href="#x"></use>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <!-- Contenido -->
             <!-- Console log falso -->
-            <span class="window__log" aria-hidden="true" title="Just a bunch of binary numbers, ¿what could they mean?">
-                01110100 01101000 01100101 00100000 01101111 01100100 01100100 01100101 01111001 01100101 00100000 01101001 01110011 00100000 01100001 01101100 01110111 01100001 01111001 01110011 00100000 01101111 01100010 01110011 01100101 01110010 01110110 01101001 01101110 01100111 
-            </span>
+            <div class="window__content" aria-hidden="true"
+                title="Just a bunch of binary numbers, ¿what could they mean?">
+                <span class="window__log">
+                    01110100 01101000 01100101 00100000 01101111 01100100 01100100 01100101 01111001 01100101 00100000
+                    01101001 01110011 00100000 01100001 01101100 01110111 01100001 01111001 01110011 00100000 01101111
+                    01100010 01110011 01100101 01110010 01110110 01101001 01101110 01100111
+                </span>
+            </div>
         </div>
         <!-- Adorno Lunas Lateral -->
-        <img src="assets/index/hero__moons.svg" class="hero__moons" fetchpriority="high" loading="lazy">
+        <img src="assets/index/hero__moons.svg" class="hero__moons" fetchpriority="high" loading="lazy"
+            alt="A vertical decoration of the moon in different phases">
     </main>
 </body>
 

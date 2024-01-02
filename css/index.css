@@ -166,28 +166,18 @@ body {
 
 }
 .hero__window{
-  min-width: 30vw;
-  max-width: 35vw;
-  min-height: 19rem;
-  background-color: #0A0A0B;
-  color: #A7FE2F;
-  border: #A7FE2F solid .0625rem;
-
   position: absolute;
-  bottom: 10%;
-  left: 5%;
-
-  opacity: 1;
-
-  box-shadow:
-  inset 10rem 10rem 12rem -10rem rgba(168,254,47,.15),
-  .3125rem .3125rem 1.3125rem -0.0625rem rgba(0,0,0,.9) ;
 
   transition:
-  transform 1s ease,
-  box-shadow 1s ease;
+  transform .5s ease,
+  filter .5s ease;
+
+  cursor: pointer;
 }
 /* .hero__window:hover{
+transform:
+rotateY(5deg)
+skewY(-0deg);
 
 box-shadow:
 inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
@@ -195,13 +185,15 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
 
 } */
 .window__wrapper{
-  border:#A7FE2F solid .0625rem;
+  border:#A7FE2F solid .10rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  background-color: black;
+  color: #A7FE2F;
 }
-.buttons{
+.button{
   border: none;
   display: flex;
   flex-flow: row wrap;
@@ -214,20 +206,40 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   font-weight: 700;
   letter-spacing: .2rem;
 }
-.buttons__svg{
+.button__svg{
   width: 2.5rem;
   height: 2.5rem;
   border: #A7FE2F solid .0625rem;
 }
-.buttons__min{
+.button__min{
   margin: .5rem;
+  cursor: pointer;
+
+  transition: background-color 1s ease;
 }
-.buttons__close{
+.button__close{
   margin: .5rem;
+  cursor: pointer;
+
+  transition: background-color 1s ease;
+}
+
+.button__res{
+  margin: .5rem;
+  cursor: pointer;
+
+  transition: background-color 1s ease;
 }
 
 .window__content{
-  margin: .5rem;
+  width: 30rem;
+  height: 15rem;
+  background-color: #0A0A0B;
+  color: #A7FE2F;
+  border-top: none;
+  border-bottom: #A7FE2F solid .10em;
+  border-left: #A7FE2F solid .10em;
+  border-right: #A7FE2F solid .10em;
 
   display: flex;
   flex-flow: column nowrap;
@@ -237,10 +249,14 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   text-align: left;
   
   gap: .5rem;
+  opacity: 1;
+
+  transition: opacity 1s ease;
 }
 
 .window__title{
   width: 100%;
+  margin: .5rem;
 
   display: flex;
   flex-flow: row wrap;
@@ -300,6 +316,8 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1rem;
+  margin: .5rem;
+
 }
 .window__li{
   display: flex;
@@ -314,14 +332,15 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
 }
 .window__h2{}
 
-.hero__window#exe{
+/* .hero__window#exe{
   position: absolute;
   bottom: 5%;
   left: 8%;
-}
+} */
 .window__log{
   display: inline-block;
   margin: .5rem;
+  cursor:text;
 }
 
 .hero__moons{
@@ -330,8 +349,70 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   right: 5%;
 }
 
+/* Buttons */
+.button__close{}
+.button__min{}
+.button__res{}
+
 /* Clases que se activan por JS */
+.front{
+  transform:
+  rotateY(10deg)
+  skewY(-5deg)
+  translateZ(5rem);
+
+  bottom: 10%;
+  left: 5%;
+
+  z-index: 4;
+}
+
+.back{
+  transform:
+  rotateY(10deg)
+  skewY(-5deg)
+  translateZ(-5rem);
+
+  bottom: 13%;
+  left: 3%;
+
+  z-index: 3;
+  filter: blur(.1rem);
+}
+
+.hover{
+  transform:
+  rotateY(0deg)
+  skewY(0deg)
+  translateZ(5rem)
+  scale(1.1);
+
+  bottom: 10%;
+  left: 5%;
+
+  z-index: 4;
+}
+
 .hidden{
   opacity: 0;
-  pointer-events: none;
+  cursor: none;
+}
+
+/* Hovers */
+.hero__window:hover{
+  border: #A7FE2F .1rem solid;
+}
+.button__close:hover{
+  color: black;
+  background-color: #A7FE2F;
+}
+
+.button__min:hover{
+  color: black;
+  background-color: #A7FE2F;
+}
+
+.button__res:hover{
+  color: black;
+  background-color:#A7FE2F;
 }
