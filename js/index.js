@@ -31,7 +31,7 @@
 //     const readme = document.querySelector('#readme')
 //     const exe = document.querySelector('#exe')
 
-    
+
 //     const front = 10
 //     const back = 0
 //     const winDefRotY = 30
@@ -75,46 +75,38 @@
 // Selecciono los elementos
 const readme = document.getElementById('readme')
 const exe = document.getElementById('exe')
-const heroWin = document.querySelectorAll('.hero__window')
-const clo = document.querySelectorAll('.button__close')
-const min = document.querySelectorAll('.button__min')
-const res = document.querySelectorAll('.button__res')
-const winContent = document.querySelectorAll('.window__content')
 
 console.log(readme)
 console.log(exe)
-console.log(heroWin)
-console.log(clo)
-console.log(min)
-console.log(res)
 
 // Cuando hago CLICK en #readme
 // REMOVE la clase front a #exe
 // ADD la clase back a #exe
 // REMOVE la clase back a #readme
 // ADD la clase front a #readme
-readme.addEventListener('click' , function(){
+readme.addEventListener('click', function () {
     exe.classList.remove('front')
     exe.classList.add('back')
     readme.classList.remove('back')
-    readme. classList.add('front')
+    readme.classList.add('front')
 })
 
 // Cuando hago MOUSEOVER en #readme
 // SI #readme contiene la clase front
 // ADD la clase hover a #readme
-readme.addEventListener('pointerover' , function(){
-    if (readme.classList.contains('front')){
-    console.log('readme is front')
-    readme.classList.add('hover')
-}})
+readme.addEventListener('pointerover', function () {
+    if (readme.classList.contains('front')) {
+        console.log('readme is front')
+        readme.classList.add('hover')
+    }
+})
 
 // Cuando hago MOUSEOUT en #readme
 // SI readme coniene la clase front
 // REMOVE la clase hover a #readme
-readme.addEventListener('pointerout' , function(){
-    if(readme.classList.contains('front')){
-       readme.classList.remove('hover')
+readme.addEventListener('pointerout', function () {
+    if (readme.classList.contains('front')) {
+        readme.classList.remove('hover')
     }
 })
 
@@ -123,9 +115,9 @@ readme.addEventListener('pointerout' , function(){
 // ADD la clase back a #readme
 // REMOVE la clase back a #exe
 // ADD la clase front a #exe
-exe.addEventListener('click' , function(){
+exe.addEventListener('click', function () {
     readme.classList.remove('front')
-    readme. classList.add('back')
+    readme.classList.add('back')
     exe.classList.remove('back')
     exe.classList.add('front')
 })
@@ -134,8 +126,8 @@ exe.addEventListener('click' , function(){
 // Cuando hago MOUSEOVER en #exe
 // SI #exe contiene la clase front
 // ADD la clase hover a #exe
-exe.addEventListener('mouseover' , function(){
-    if(exe.classList.contains('front')){
+exe.addEventListener('mouseover', function () {
+    if (exe.classList.contains('front')) {
         console.log('exe is front')
         exe.classList.add('hover')
     }
@@ -144,21 +136,80 @@ exe.addEventListener('mouseover' , function(){
 // Cuando hago MOUSEOUT en #exe
 // SI exe coniene la clase front
 // REMOVE la clase hover a #exe
-exe.addEventListener('mouseout' , function(){
-    if(exe.classList.contains('front')){
+exe.addEventListener('mouseout', function () {
+    if (exe.classList.contains('front')) {
         exe.classList.remove('hover')
     }
 })
 
-//Cuando hago click en CUALQUIER .button__close
-// se le ADD la clase hidden a .hero__window
-
-// Cuando hago click en CUALQUIER .button__min
-// se le add la clase hidden a .button__min mismo index
-// se le add la clase hidden a .window__content mismo index
-// se le remove la clase hidden a .button__res mismo index
 
 //Cuando hago click en CUALQUIER .button___res
 // se le remove la clase hidden a .button__min mismo index
 //se le add la clase hidden a .button__res
+
+const heroWin = document.querySelectorAll('.hero__window')
+const closeBtn = document.querySelectorAll('.button__close')
+const minBtn = document.querySelectorAll('.button__min')
+const resBtn = document.querySelectorAll('.button__res')
+const winContent = document.querySelectorAll('.window__content')
+
+console.log(heroWin)
+console.log(closeBtn)
+console.log(minBtn)
+console.log(resBtn)
+
+// Cuando hago click a CUALQUIER .button__close
+// Selecciono el .hero__window más cercano a ese .button__close (index)
+// le ADD la class hidden a .hero__window más cercano
+closeBtn.forEach(function (eachClose, i) {
+    closeBtn[i].addEventListener('click', function () {
+        const closeButtonParent = eachClose.closest('.hero__window')
+        closeButtonParent.classList.add('hidden')
+    })
+})
+
+// Cuando hago click en CUALQUIER .button__min
+// Se le add la clase hidden a .button__min MISMO INDEX
+// Se le remove la clase hidden a .button__res MISMO INDEX
+// Se le add la clase hidden a .window__content MISMO INDEX
+minBtn.forEach(function (eachMin, i) {
+    minBtn[i].addEventListener('click', function () {
+        minBtn[i].classList.add('hidden')
+        resBtn[i].classList.remove('hidden')
+        winContent[i].classList.add('hidden')
+    })
+})
+
+//Cuando hago click en CUALQUIER .button__res
+// Se le add la clase hidden a .button__res MISMO INDEX
+// Se le remove la clase hidden a .button__min MISMO INDEX
+// Se le remove la clase hidden a .window__content MISMO INDEX
+resBtn.forEach(function (eachRes, i) {
+    resBtn[i].addEventListener('click', function(){
+    resBtn[i].classList.add('hidden')
+    minBtn[i].classList.remove('hidden')
+    winContent[i].classList.remove('hidden')
+    })
+})
+
+
+// Si exe contiene la clase back
+// Y readme contiene la clase hidden
+// Remove back de exe
+// Add front a exe
+// No funciona, revisar si da tiempo
+// if(exe.classList.contains('back') || readme.classList.contains('hidden')){
+//     exe.classList.remove('back')
+//     exe.classList.add('front')
+// }
+
+// Si readme contiene la clase back
+// Y exe contiene la clase hidden
+// Remove back de readme
+// Add front a readme
+// No funciona, revisar si da tiempo
+// if(readme.classList.contains('back') || exe.classList.contains('hidden')){
+//     readme.classList.remove('back')
+//     readme.classList.add('front')
+// }
 

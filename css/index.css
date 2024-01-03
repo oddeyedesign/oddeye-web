@@ -137,9 +137,10 @@ body {
 
   position: relative;
 }
-.logo{
+.hero__wrapper{
+  width: 35vw;
   position: absolute;
-  top: 25%;
+  top: 10%;
     transform: translateZ(-4rem);
 }
 
@@ -147,7 +148,6 @@ body {
   display: block;
 }
 .logo__body{
-  width: 33vw;
   clip-path: url(#body__mask);
 
   background: radial-gradient(circle, rgba(154,92,255,0.43) 47%, rgba(154,92,255,0.6) 100%);
@@ -158,7 +158,6 @@ body {
   margin: auto;
 }
 .logo__svg{
-  width: 35vw;
   position: absolute;
   left: 5%;
   top: 3%;
@@ -344,7 +343,8 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
 }
 
 .hero__moons{
-  width: 5vw;
+  min-width: 3vw;
+  max-width: 5vw;
   position: absolute;
   right: 5%;
 }
@@ -395,7 +395,8 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
 
 .hidden{
   opacity: 0;
-  cursor: none;
+  display: none;
+  cursor: default;
 }
 
 /* Hovers */
