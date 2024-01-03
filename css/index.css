@@ -152,7 +152,7 @@ body {
 
   background: radial-gradient(circle, rgba(154,92,255,0.43) 47%, rgba(154,92,255,0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(.2rem);
 
   z-index: 0;
   margin: auto;
@@ -162,7 +162,7 @@ body {
   left: 5%;
   top: 3%;
   z-index: 2;
-
+  transform: scale(1.1);
 }
 .hero__window{
   position: absolute;
