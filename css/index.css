@@ -147,11 +147,12 @@ body {
       -window-li
       -window__log
     -hero__moons
+    -hero__smiley
 */
 
 .hero{
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  min-height: 100vh;
 
   background-image: url('/assets/index/hero__background.svg');
   background-repeat: no-repeat;
@@ -441,3 +442,13 @@ body {
   background-color: #A7FE2F;
 }
 /* Fin de hero content */
+
+/* Adaptaciones responsive */
+/* Medidas comunes */
+/* 360×640 (móvil pequeño)
+1366×768 (ordenador portátil medio)
+1920×1080 (escritorio grande)
+375×667 (móvil medio)
+1440×900 (escritorio medio)
+720×1280 (móvil grande) */
+
