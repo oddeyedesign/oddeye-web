@@ -53,14 +53,12 @@ Estructura general:
             https://www.w3.org/TR/SVG11/struct.html#DescriptionAndTitleElements
             https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby 
             
-            DUDA: ¿Cómo puedo añadir fetch priority high a un svg? W3C me da error si lo añado
+            DUDA: ¿Cómo puedo añadir fetch priority high a un svg? W3C me da error si lo añado, ¿no es necesario?
         -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 550 471" class="logo__svg" role="img"
                 aria-labelledby="logo__title logo__description">
                 <title id="logo__title"> Oddeye Logo </title>
-                <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the
-                    cursor
-                    through the screen with their eyes </desc>
+                <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the cursor through the screen with their eyes </desc>
                 <g class="logo__face face" id="face">
                     <g class="face__eyes eye">
                         <g class="eye__first">
@@ -218,7 +216,7 @@ Estructura general:
         </div>
 
         <!-- Ventanita "readme.txt" -->
-        <div class="hero__window front" id="readme">
+        <div class="hero__window window front" id="readme">
             <!-- Barra superior -->
             <div class="window__wrapper">
                 <span class="window__name">
@@ -291,7 +289,7 @@ Estructura general:
             </div>
         </div>
         <!-- Ventanita "oddeye.exe" -->
-        <div class="hero__window back" id="exe">
+        <div class="hero__window window back" id="exe">
             <!-- Barra superior -->
             <div class="window__wrapper">
                 <span class="window__name">
@@ -332,6 +330,8 @@ Estructura general:
         <!-- Adorno Lunas Lateral -->
         <img src="assets/index/hero__moons.svg" class="hero__moons" fetchpriority="high" loading="lazy"
             alt="A vertical decoration of the moon in different phases">
+        <!-- Adorno smiley -->
+        <img src="assets/index/hero__smiley.svg" alt="A smiley with three eyes" class="hero__smiley" fetchpriority="high" loading="lazy">
     </main>
 </body>
 

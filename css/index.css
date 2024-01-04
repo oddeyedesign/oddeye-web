@@ -1,4 +1,7 @@
-/*  */
+/* ---------------------------------------------------------- *\
+index.css
+- Reset / Normalizar
+- Hero
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 @charset "UTF-8";
@@ -120,6 +123,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hero Content */
+/* Descripción: Estilo para el main/hero
+  Estructura:
+    -hero
+    -hero__wrapper logo
+      -logo__mask
+      -logo__body
+      -logo__svg
+    -hero__window window
+      -window__wrapper
+      -window__wrapper button
+      -window__name
+      -button__svg
+      -button__min
+      -button__close
+      -button__res
+      -window__content
+      -window__title
+      -window__h1
+      -window__subtitle
+      -window__ul
+      -window-li
+      -window__log
+    -hero__moons
+*/
+
 .hero{
   width: 100%;
   height: 100vh;
@@ -174,16 +203,7 @@ body {
 
   cursor: pointer;
 }
-/* .hero__window:hover{
-transform:
-rotateY(5deg)
-skewY(-0deg);
 
-box-shadow:
-inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
--0.3125rem .6875rem 1.3125rem -0.0625rem rgba(0,0,0,0.9);
-
-} */
 .window__wrapper{
   border:#A7FE2F solid .10rem;
   display: flex;
@@ -330,13 +350,7 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   display: inline-block;
   content: '>';
 }
-.window__h2{}
 
-/* .hero__window#exe{
-  position: absolute;
-  bottom: 5%;
-  left: 8%;
-} */
 .window__log{
   display: inline-block;
   margin: .5rem;
@@ -349,11 +363,13 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   position: absolute;
   right: 5%;
 }
+.hero__smiley{
+  width: 10vw;
+ position: absolute;
+ left: 5%;
+ bottom: 7%;
+}
 
-/* Buttons */
-.button__close{}
-.button__min{}
-.button__res{}
 
 /* Clases que se activan por JS */
 .front{
@@ -418,3 +434,10 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
   color: black;
   background-color:#A7FE2F;
 }
+
+/* Selección de texto */
+.window__log::selection{
+  color: black;
+  background-color: #A7FE2F;
+}
+/* Fin de hero content */
