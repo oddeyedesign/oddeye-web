@@ -127,7 +127,8 @@ resBtn.forEach(function (eachRes, i) {
     })
 })
 
-
+// ---------------------------------------------------------------
+// UNFINISHED:
 // Si exe contiene la clase back
 // Y readme contiene la clase hidden
 // Remove back de exe
@@ -149,6 +150,7 @@ resBtn.forEach(function (eachRes, i) {
 //     readme.classList.remove('back')
 //     readme.classList.add('front')
 // }
+// --------------------------------------------------------------
 
 // Interacción del Logo: ojos que siguen al cursor
 // Sigo este tutorial: https://www.youtube.com/watch?v=cwT0oLU8iF4
@@ -166,9 +168,10 @@ resBtn.forEach(function (eachRes, i) {
 
 const face = document.getElementById('face')
 const snout = document.getElementById('snout')
+// const firstPupil = document.getElementById('firstPupil')
+// const secondPupil = document.getElementById('secondPupil')
+// const thirdPupil = document.getElementById('thirdPupil')
 const pupil = document.querySelectorAll('.eye__pupil')
-
-console.log(pupil)
 
 // Definimos la posición del cursor en 0 en los ejes xy
 // Definimos el width del viewport en px con innerWidth
@@ -203,7 +206,7 @@ function pointerMove(e){
 // xRatio = distancia entre element y el cursor en eje X
 // yRatio = distancia entre el element y el cursor en eje Y
 
-// La posición de element la define get.boundingClientRect
+// La posición de element la define get.boundingClientRect 
 // Que devuelve el tamaño y la posición del elemento en relación al viewport
 //https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
 
@@ -219,21 +222,30 @@ function pointerMove(e){
 // la distancia entre el cursor y distanceLeft/xRatio 
 // la distancia entre el cursor y distanceTop/yRatio
 
-const lookAtCursor = (element , xRatio, yRatio) =>{
+const lookAtCursor = (element , xRatio, yRatio) => {
     const elementOffset = element.getBoundingClientRect()
     const centerX = elementOffset.x + elementOffset.width / 2
     const centerY = elementOffset.y + elementOffset.height / 2
     const distanceLeft = Math.round(((cursorPosition.x - centerX)*100)/window.innerWidth)
     const distanceTop = Math.round(((cursorPosition.y - centerY)*100)/window.innerHeight)
     element.style.transform = `translate(${distanceLeft/xRatio}rem, ${distanceTop/yRatio}rem)`
+    element.style.transition = "transform .3s ease"
 }
 
 // Definimos la posición actual del elemento con la follow (que está en la función mousemove)
 // SI el elemento es X lookAtCursor (elemento, valor de xRatio, valor de yRatio)
+// En el caso de pupil, como he utilizado querySelectorAll para optimizar:
+// forEach pupil INDEX asignamos un valor distinto (1 y 2 se salen del ojo si no)
 const follow = function(){
-    if(pupil) lookAtCursor(pupil, 2.8, 2.8)
-    if(snout) lookAtCursor(snout, 3.2, 3.2)
-    if(face) lookAtCursor(face, 2.8, 2.8)
+    if(pupil) 
+    pupil.forEach(function (eachPupil, i){
+        lookAtCursor(pupil[0], 50, 50)
+        lookAtCursor(pupil[1], 70, 70)
+        lookAtCursor(pupil[2], 90, 90)
+    })
+
+    if(snout) lookAtCursor(snout, 100, 100)
+    if(face) lookAtCursor(face, 80, 80)
 }
 
 // Cuando hago resize en la ventana, activo la función defineScreenSize

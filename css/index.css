@@ -94,6 +94,7 @@ svg {
   width: 100%;
   display: block;
   fill: currentColor;
+  overflow: visible;
 }
 
 /* (Probándolo, no usar en producción) En el caso de añadir una  */
@@ -233,7 +234,7 @@ inset -10rem -10rem 12rem -10rem rgba(168,254,47,.15),
 .window__content{
   width: 30rem;
   height: 15rem;
-  background-color: #0A0A0B;
+  background-color: black;
   color: #A7FE2F;
   border-top: none;
   border-bottom: #A7FE2F solid .10em;
