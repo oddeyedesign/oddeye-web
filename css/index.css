@@ -234,6 +234,11 @@ body {
 .info__window{
   position: absolute;
 
+  transform:
+  rotateY(10deg)
+  skewY(-5deg)
+  translateZ(-5rem);
+
   transition:
   transform .5s ease,
   filter .5s ease,
@@ -242,6 +247,8 @@ body {
   ;
 
   cursor: pointer;
+  animation: slideInLeft 1s ease 1 backwards;
+  animation-delay: 1.3s;
 }
 
 .window__wrapper{
@@ -405,26 +412,27 @@ body {
   height: 80vh;
   position: absolute;
   right: 5%;
+
   transition:
   height 1s ease-in-out,
   position 1s ease;
+
+  animation: popIn 1s ease 1 backwards;
+  animation-delay: 1.4s;
 }
 .hero__smiley{
   width: 10vw;
  position: absolute;
  left: 5%;
  bottom: 7%;
+
  transition: width 1s ease;
+ animation: popIn 1s ease 1 backwards;
 }
 
 
 /* Clases que se activan por JS */
 .front{
-  transform:
-  rotateY(10deg)
-  skewY(-5deg)
-  translateZ(5rem);
-
   bottom: 10%;
   left: 5%;
 
@@ -432,11 +440,6 @@ body {
 }
 
 .back{
-  transform:
-  rotateY(10deg)
-  skewY(-5deg)
-  translateZ(-5rem);
-
   bottom: 13%;
   left: 3%;
 
@@ -468,9 +471,6 @@ body {
 }
 
 /* Hovers */
-/* .info__window:hover{
-  border: #A7FE2F .1rem solid;
-} */
 .button__close:hover{
   color: black;
   background-color: #A7FE2F;
@@ -609,4 +609,19 @@ body {
     rotate(-10deg);
   }
   
+}
+
+@keyframes slideInLeft{
+  from{
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to{
+    opacity: 1;
+    transform:
+    translateX(0)
+    rotateY(10deg)
+    skewY(-5deg)
+    translateZ(-5rem);
+  }
 }
