@@ -1,9 +1,11 @@
 'use strict'
 
+// Main/Hero Scripts
+
 // #readme: cuando hago click se le add clase front, se le remove back y le add back/remove front a exe
 // #exe: cuando hago click se le add la clase front, se le remove back y e add back/remove front a readme
 // If front: aplicamos la clase hover en mouseover y se la remove en mouseout
-// .hero__window: cuando hago click en el bottón close le aplico clase hidden a hero__window
+// .info__window: cuando hago click en el bottón close le aplico clase hidden a info__window
 // .window__content: Cuando hago click en min aplico clase hidden a window__content y a min y se la quito a res
 // res: cuando hago click se le add la classe hidden de nuevo y se la remove a min
 
@@ -32,7 +34,7 @@ readme.addEventListener('click', function () {
 readme.addEventListener('pointerover', function () {
     if (readme.classList.contains('front')) {
         console.log('readme is front')
-        readme.classList.add('hover')
+        readme.classList.add('winHover')
     }
 })
 
@@ -41,7 +43,7 @@ readme.addEventListener('pointerover', function () {
 // REMOVE la clase hover a #readme
 readme.addEventListener('pointerout', function () {
     if (readme.classList.contains('front')) {
-        readme.classList.remove('hover')
+        readme.classList.remove('winHover')
     }
 })
 
@@ -82,48 +84,61 @@ exe.addEventListener('mouseout', function () {
 // se le remove la clase hidden a .button__min mismo index
 //se le add la clase hidden a .button__res
 
-const heroWin = document.querySelectorAll('.hero__window')
+const heroWin = document.querySelectorAll('.info__window')
 const closeBtn = document.querySelectorAll('.button__close')
 const minBtn = document.querySelectorAll('.button__min')
 const resBtn = document.querySelectorAll('.button__res')
 const winContent = document.querySelectorAll('.window__content')
 
-console.log(heroWin)
-console.log(closeBtn)
-console.log(minBtn)
-console.log(resBtn)
 
-// Cuando hago click a CUALQUIER .button__close
-// Selecciono el .hero__window más cercano a ese .button__close (index)
-// le ADD la class hidden a .hero__window más cercano
-closeBtn.forEach(function (eachClose, i) {
-    closeBtn[i].addEventListener('click', function () {
-        const closeButtonParent = eachClose.closest('.hero__window')
-        closeButtonParent.classList.add('hidden')
+// Cuando hago click en CUALQUIER .button__close
+// Selecciono el .info__window más cercano a ese .button__close INDEX
+// Add la clase invisible a .info__window más cercano
+// Espera .5s 
+// Add la clase hidden a .info__window más cercano
+
+closeBtn.forEach(function(eachClose, i){
+    closeBtn[i].addEventListener('click' , function(){
+        const closeButtonParent = eachClose.closest('.info__window')
+        closeButtonParent.classList.add('closed')
+        setTimeout(function (){
+            eachClose.closeButtonParent.classList.add('hidden')
+        }, '100')
     })
 })
+
 
 // Cuando hago click en CUALQUIER .button__min
 // Se le add la clase hidden a .button__min MISMO INDEX
 // Se le remove la clase hidden a .button__res MISMO INDEX
-// Se le add la clase hidden a .window__content MISMO INDEX
+// Se le add la clase invisible a .window__content MISMO INDEX
+// Espera .5s
+// Add la clase hidden a .window__conent MISMO INDEX
 minBtn.forEach(function (eachMin, i) {
     minBtn[i].addEventListener('click', function () {
         minBtn[i].classList.add('hidden')
         resBtn[i].classList.remove('hidden')
-        winContent[i].classList.add('hidden')
+        winContent[i].classList.add('minimized')
+        setTimeout(function(){
+            winContent[i].classList.add('hidden')
+        }, '200')
     })
 })
 
 //Cuando hago click en CUALQUIER .button__res
 // Se le add la clase hidden a .button__res MISMO INDEX
 // Se le remove la clase hidden a .button__min MISMO INDEX
-// Se le remove la clase hidden a .window__content MISMO INDEX
+// Se le remove la clase invisible a .window__content MISMO INDEX
+//Espera.5s
+// Remove la clase hidden a a.window__content
 resBtn.forEach(function (eachRes, i) {
     resBtn[i].addEventListener('click', function(){
     resBtn[i].classList.add('hidden')
     minBtn[i].classList.remove('hidden')
     winContent[i].classList.remove('hidden')
+    setTimeout(function(){
+        winContent[i].classList.remove('minimized')
+    },'100')
     })
 })
 
@@ -162,25 +177,18 @@ resBtn.forEach(function (eachRes, i) {
 // aplicar la interacción:
 // #face
 // #snout
-// #firstPupil
-// #seconPupil
-// #thirdPupil
-
+// .eye__pupil
 const face = document.getElementById('face')
 const snout = document.getElementById('snout')
-// const firstPupil = document.getElementById('firstPupil')
-// const secondPupil = document.getElementById('secondPupil')
-// const thirdPupil = document.getElementById('thirdPupil')
 const pupil = document.querySelectorAll('.eye__pupil')
 
 // Definimos la posición del cursor en 0 en los ejes xy
+let cursorPosition = {x:0 , y:0}
 // Definimos el width del viewport en px con innerWidth
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
+let viewportWidth = window.innerWidth
 // Definimos el height del viewport en pixeles con innerHeight
 // https://developer.mozilla.org/es/docs/Web/API/Window/innerHeight
-// Uso let porque los valores van a cambiar
-let cursorPosition = {x:0 , y:0}
-let viewportWidth = window.innerWidth
 let windowHeight = window.innerHeight
 
 // Definimos el tamaño de la ventana con una función
@@ -200,44 +208,41 @@ function pointerMove(e){
     cursorPosition = {x:e.clientX, y:e.clientY}
     follow()
 }
+
 // Definimos lookAtCursor con una función
 // Sus parámetros son element, xRatio e yRatio
-// Element = elementos a trasnformar
+// Element = elementos a transformar
 // xRatio = distancia entre element y el cursor en eje X
 // yRatio = distancia entre el element y el cursor en eje Y
-
-// La posición de element la define get.boundingClientRect 
-// Que devuelve el tamaño y la posición del elemento en relación al viewport
-//https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
-
-// Calculamos el centro del elemento en el eje X: Ancho del elemento en x + ancho del elemento/2
-// Calculamos el centro del elemento en el eje Y: Alto del elemento en y + alto del elemento/2
-
-// Calculamos la distancia entre el cursor y el centro del elemento en ambos ejes
-// Redondondeamos: cursorPosition.x - menos centerX * 100 / window.innerWidth
-// Redondeamos: cursorPosition.y - menos centerY * 100 / window.innerHeight
-// Esto nos da el vamor redondeado del porcentaje del alto y ancho de la ventana
-
-// Aplicamos la transformación al estilo del elemento con translate calculando dos valores:
-// la distancia entre el cursor y distanceLeft/xRatio 
-// la distancia entre el cursor y distanceTop/yRatio
-
 const lookAtCursor = (element , xRatio, yRatio) => {
+    // La posición de element la define get.boundingClientRect 
+    // Que devuelve el tamaño y la posición del elemento en relación al viewport
+    //https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
     const elementOffset = element.getBoundingClientRect()
+    // Calculamos el centro del elemento en el eje X: Ancho del elemento en x + ancho del elemento/2
     const centerX = elementOffset.x + elementOffset.width / 2
+    // Calculamos el centro del elemento en el eje Y: Alto del elemento en y + alto del elemento/2  
     const centerY = elementOffset.y + elementOffset.height / 2
+    // Calculamos la distancia entre el cursor y el centro del elemento en ambos ejes
+    // Redondondeamos: cursorPosition.x - menos centerX * 100 / window.innerWidth
     const distanceLeft = Math.round(((cursorPosition.x - centerX)*100)/window.innerWidth)
+    // Redondeamos: cursorPosition.y - menos centerY * 100 / window.innerHeight
+    // Esto nos da el vamor redondeado del porcentaje del alto y ancho de la ventana
     const distanceTop = Math.round(((cursorPosition.y - centerY)*100)/window.innerHeight)
+    // Aplicamos la transformación al estilo del elemento con translate calculando dos valores:
+    // la distancia entre el cursor y distanceLeft/xRatio 
+    // la distancia entre el cursor y distanceTop/yRatio
     element.style.transform = `translate(${distanceLeft/xRatio}rem, ${distanceTop/yRatio}rem)`
+    // Añadimos una transition transform para suavizar el efecto
     element.style.transition = "transform .3s ease"
 }
 
 // Definimos la posición actual del elemento con la follow (que está en la función mousemove)
-// SI el elemento es X lookAtCursor (elemento, valor de xRatio, valor de yRatio)
-// En el caso de pupil, como he utilizado querySelectorAll para optimizar:
-// forEach pupil INDEX asignamos un valor distinto (1 y 2 se salen del ojo si no)
 const follow = function(){
+    // SI el elemento es X lookAtCursor (elemento, valor de xRatio, valor de yRatio)
     if(pupil) 
+    // En el caso de pupil, como he utilizado querySelectorAll para optimizar:
+    // forEach pupil INDEX asignamos un valor distinto (1 y 2 se salen del ojo si no)
     pupil.forEach(function (eachPupil, i){
         lookAtCursor(pupil[0], 50, 50)
         lookAtCursor(pupil[1], 70, 70)
@@ -253,3 +258,4 @@ const follow = function(){
 window.addEventListener('resize' , defineScreenSize)
 window.addEventListener('pointermove', pointerMove)
 
+// Fin de Main/Hero Scripts -------------------------------------------

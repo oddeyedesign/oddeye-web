@@ -1,10 +1,12 @@
+@charset "UTF-8";
+
 /* ---------------------------------------------------------- *\
 index.css
 - Reset / Normalizar
 - Hero
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
-@charset "UTF-8";
+
 
 * {
   margin: 0;
@@ -116,7 +118,7 @@ body {
       -ms-hyphens: auto;
           hyphens: auto;
   /* opcional */
-  font-smooth: always;
+  /* font-smooth: always; */
   /* opcional */
   -webkit-font-smoothing: antialiased;
   /* opcional */
@@ -131,7 +133,7 @@ body {
       -logo__mask
       -logo__body
       -logo__svg
-    -hero__window window
+    -info__window window
       -window__wrapper
       -window__wrapper button
       -window__name
@@ -148,6 +150,11 @@ body {
       -window__log
     -hero__moons
     -hero__smiley
+
+    -Clases activadas por JS
+    -Hover
+    -Media Queries
+    -Animaciones
 */
 
 .hero{
@@ -168,11 +175,17 @@ body {
 
   position: relative;
 }
-.hero__wrapper{
+.logo{
   width: 35vw;
   position: absolute;
-  top: 10%;
-    transform: translateZ(-4rem);
+  margin: 0 4rem 0 0;
+  z-index: 1;
+
+  transition:
+  width 1s ease,
+  margin 1s ease;
+
+  animation: logo 20s ease infinite forwards ;
 }
 
 .logo__mask{
@@ -187,6 +200,8 @@ body {
 
   z-index: 0;
   margin: auto;
+
+  animation: popIn 2s ease 1 forwards;
 }
 .logo__svg{
   position: absolute;
@@ -195,12 +210,36 @@ body {
   z-index: 2;
   transform: scale(1.1);
 }
-.hero__window{
+.eye__first{
+  animation: popIn 1s  ease 1 backwards;
+  animation-delay: .4s;
+  transform-origin: center;
+}
+.eye__second{
+  animation: popIn 1s  ease 1 backwards;
+  animation-delay: .6s;
+  transform-origin: center;
+}
+.eye__third{
+  animation: popIn 1s ease 1 backwards;
+  animation-delay: .8s;
+  transform-origin: center;
+}
+.snout{
+  animation: popIn 1s ease 1 backwards;
+  animation-delay: 1s;
+  transform-origin: bottom;
+}
+
+.info__window{
   position: absolute;
 
   transition:
   transform .5s ease,
-  filter .5s ease;
+  filter .5s ease,
+  opacity .5s ease,
+  width .5s ease
+  ;
 
   cursor: pointer;
 }
@@ -272,11 +311,14 @@ body {
   gap: .5rem;
   opacity: 1;
 
-  transition: opacity 1s ease;
+  transform: scale(1);
+
+  transition:
+  opacity .3s ease;
 }
 
 .window__title{
-  width: 100%;
+  width: 95%;
   margin: .5rem;
 
   display: flex;
@@ -359,16 +401,20 @@ body {
 }
 
 .hero__moons{
-  min-width: 3vw;
-  max-width: 5vw;
+  width: 10vw;
+  height: 80vh;
   position: absolute;
   right: 5%;
+  transition:
+  height 1s ease-in-out,
+  position 1s ease;
 }
 .hero__smiley{
   width: 10vw;
  position: absolute;
  left: 5%;
  bottom: 7%;
+ transition: width 1s ease;
 }
 
 
@@ -398,29 +444,33 @@ body {
   filter: blur(.1rem);
 }
 
-.hover{
+.winHover{
   transform:
   rotateY(0deg)
   skewY(0deg)
   translateZ(5rem)
   scale(1.1);
 
-  bottom: 10%;
-  left: 5%;
-
   z-index: 4;
 }
 
 .hidden{
-  opacity: 0;
   display: none;
   cursor: default;
 }
+.minimized{
+  opacity: 0;
+}
+
+.closed{
+  opacity: 0;
+  transform: scale(0.1);
+}
 
 /* Hovers */
-.hero__window:hover{
+/* .info__window:hover{
   border: #A7FE2F .1rem solid;
-}
+} */
 .button__close:hover{
   color: black;
   background-color: #A7FE2F;
@@ -444,11 +494,119 @@ body {
 /* Fin de hero content */
 
 /* Adaptaciones responsive */
-/* Medidas comunes */
-/* 360×640 (móvil pequeño)
-1366×768 (ordenador portátil medio)
+/* Medidas comunes:
 1920×1080 (escritorio grande)
-375×667 (móvil medio)
 1440×900 (escritorio medio)
-720×1280 (móvil grande) */
+*1366×768 (ordenador portátil medio)
+*720×1280 (móvil grande) 
+375×667 (móvil medio)
+360×640 (móvil pequeño)*/
 
+
+@media (max-width: 1336px){
+.hero{
+  gap: 5rem;
+  padding: 5%;
+}
+.logo{
+  width: 50vw;
+ position: relative;
+ top: 0;
+}
+.info{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.info__window{
+  position:static;
+}
+.window__content{
+  width: 45vw;
+}
+.hero__moons{
+  height: 50vh;
+  top: 7%;
+}
+}
+
+@media (max-width: 720px){
+.hero{
+  min-height: 100vh;
+  padding: 1%;
+  justify-content:center;
+  gap: 1.5rem;
+}
+.logo{
+ width: 60vw;
+ margin: 0 3rem 2rem 0;
+}
+.info{
+  width: 80vw;
+  position: static;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr .5fr;
+  margin: 1.5rem;
+}
+.info__window{
+  position:static;
+}
+.window__content{
+  width: 80vw;
+}
+.front{
+  grid-column: 1/2;
+  grid-row: 1/3;
+}
+.back{
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.hero__smiley{
+  width: 20vw;
+}
+.hero__moons{
+  height: 40vh;
+  top: 5%;
+  right: 4%;
+}
+
+}
+
+/* Animaciones */
+
+@keyframes popIn {
+  0%{
+    opacity: 0;
+    transform:
+    scale(0);
+  }
+  50%{
+    opacity: 1;
+    transform:
+    scale(1.2);
+  }
+  100%{
+    transform:
+    scale(1);
+  }
+}
+
+@keyframes logo {
+  0%{
+    transform:
+    rotate(-10deg);
+  }
+  50% {
+    transform:
+    rotate(10deg);
+  }
+  100%{
+    transform:
+    rotate(-10deg);
+  }
+  
+}
