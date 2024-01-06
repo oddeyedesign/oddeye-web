@@ -274,6 +274,7 @@ window.addEventListener('pointermove', pointerMove)
 // Cuando mediaQueryA o  mediaQueryB está activo
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
 // https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
+// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/change_event
 // ADD la clase invisible a .info
 // REMOVE la clase hidden a .services
 // Espera .5 segundos
