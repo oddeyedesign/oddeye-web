@@ -184,18 +184,31 @@ const pupil = document.querySelectorAll('.eye__pupil')
 
 // Definimos la posición del cursor en 0 en los ejes xy
 let cursorPosition = {x:0 , y:0}
-// Definimos el width del viewport en px con innerWidth
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
-let viewportWidth = window.innerWidth
-// Definimos el height del viewport en pixeles con innerHeight
-// https://developer.mozilla.org/es/docs/Web/API/Window/innerHeight
-let windowHeight = window.innerHeight
+
+// ERROR: **********************************
+// En el tutorial lo hace así, pero si lo hago así en lugar de
+// definirlo dentro de la función, me da error la consola cuando
+// Hago resize.
+
+// // Definimos el width del viewport en px con innerWidth
+// // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
+// let viewportWidth = window.innerWidth
+// // Definimos el height del viewport en pixeles con innerHeight
+// // https://developer.mozilla.org/es/docs/Web/API/Window/innerHeight
+// let windowHeight = window.innerHeight
+// Definimos el tamaño de la ventana con una función
+// La función contiene viewportHeight y viewportWidth
+// function defineScreenSize(){
+//      viewportHeight = window.innerHeight
+//      viewportWidth = window.innerWidth
+// }
+// ****************************************
 
 // Definimos el tamaño de la ventana con una función
 // La función contiene viewportHeight y viewportWidth
 function defineScreenSize(){
-    viewportHeight = window.innerHeight
-    viewportWidth = window.innerWidth
+    let viewportHeight = window.innerHeight
+    let viewportWidth = window.innerWidth
 }
 
 // Definimos la posicion actual del cursor en la variable cursorPosition
@@ -258,4 +271,43 @@ const follow = function(){
 window.addEventListener('resize' , defineScreenSize)
 window.addEventListener('pointermove', pointerMove)
 
+// Cuando mediaQueryA o  mediaQueryB está activo
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
+// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
+// ADD la clase invisible a .info
+// REMOVE la clase hidden a .services
+// Espera .5 segundos
+// ADD la clase hidden a .info
+// REMOVE la clase invisible a .services
+// ELSE .info remove hidden e invisible
+// .services add hidden e invisible
+
+const mediaQueryA = window.matchMedia('(max-width: 720px)')
+const mediaQueryB = window.matchMedia('(max-width: 480px)')
+const infoWin = document.querySelector('.info')
+const services = document.querySelector('.services')
+
+console.log(mediaQueryA)
+console.log(mediaQueryB)
+
+mediaQueryA.addEventListener('change' , function(){
+    if (mediaQueryA.matches || mediaQueryB.matches) {
+        infoWin.classList.add('invisible')
+        services.classList.remove('hidden')
+        setTimeout(function(){
+            infoWin.classList.add('hidden')
+            services.classList.remove('invisible')
+        },500)
+    }
+    else{
+        infoWin.classList.remove('hidden')
+        services.classList.add('invisible')
+        setTimeout(function(){
+            infoWin.classList.remove('invisible')
+            services.classList.add('hidden')
+        },500)
+    }
+})
+
+console.log(services.classList)
 // Fin de Main/Hero Scripts -------------------------------------------
