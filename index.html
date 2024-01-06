@@ -27,6 +27,91 @@ Estructura general:
 
 <body>
 
+    <!-- Header / Nav -->
+    <!-- - Logotipo pequeño
+    - Listado de enlaces de navegación:
+        -Home
+        -Porfolio
+        -About
+        -Contact
+    - Selección de idioma ES/EN
+    - Listado de enlaces a redes sociales: 
+        -Linkedin
+        -Github
+        -Instagram
+    -Toggle modo incógnito
+    -Botón de menú invisible (mobile) -->
+    <header class="header">
+        <div class="header__wrapper">
+            <!-- Logotipo -->
+            <h1 class="header__h1">
+                <a href="" class="header__a" title="Oddeye">
+                    <img src="assets/index/oddeye__logo__header.svg" alt="Oddeye Logo" fetchpriority="high">
+                </a>
+            </h1>
+            <!-- Navegación -->
+            <nav class="header__nav nav">
+                <ul class="nav__ul">
+                    <li class="nav__li"><a href="" class="nav__a" title="Home">
+                            Home
+                        </a></li>
+                    <li class="nav__li"><a href="" class="nav__a" title="Porfolio">
+                            Porfolio
+                        </a></li>
+                    <li class="nav__li"><a href="" class="nav__a" title="About">
+                            About
+                        </a></li>
+                    <li class="nav__li"><a href="" class="nav__a" title="Contact">
+                            Contact
+                        </a></li>
+                </ul>
+            </nav>
+            <!-- Selección de idioma -->
+            <ul class="header__lang lang">
+                <li class="lang__li">
+                    <a href="" class="lang__a" title="English">EN</a>
+                </li>
+                <li class="lang__li">
+                    <a href="" class="lang__a" title="Spanish">ES</a>
+                </li>
+            </ul>
+
+            <!-- Redes Sociales -->
+            <ul class="header__social social">
+                <li class="social__li">
+                    <a href="" class="social__a" title="Linkedin" target="_blank">
+                        <svg class="social__svg"></svg>
+                    </a>
+                </li>
+                <li class="social__li">
+                    <a href="" class="social__a" title="GitHub" target="_blank">
+                        <svg class="social__svg"></svg>
+                    </a>
+                </li>
+                <li class="social__li">
+                    <a href="" class="social__a" title="Instagram" target="_blank">
+                        <svg class="social__svg"></svg>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Toggle Incognito -->
+            <!-- https://www.w3schools.com/howto/howto_css_switch.asp -->
+            <button type="button" class="header__toggle toggle" title="Toggle incognito">
+                <input type="checkbox" class="toggle__checkbox">
+                <span class="toggle__handle" title="toggle"></span>
+            </button>
+        </div>
+        <!-- Máscara de header -->
+        <!-- <svg class="header__mask" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 400 133">
+            <defs>
+                <mask id="headerMask" clipPathUnits="objectBoundingBox">
+                    <path d="m0,0v161.42c195.06,0,195.06,78,390.13,78s195.06-78,390.13-78V0H0Z" />
+                </mask>
+            </defs>
+        </svg> -->
+    </header>
+
     <!--
     Sección Hero (Main)
     *En esta sección tenemos:
@@ -58,7 +143,8 @@ Estructura general:
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 550 471" class="logo__svg" role="img"
                 aria-labelledby="logo__title logo__description">
                 <title id="logo__title"> Oddeye Logo </title>
-                <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the cursor through the screen with their eyes </desc>
+                <desc id="logo__description"> Oddeye Logo is shaped as a three eyed alien cat head that follows the
+                    cursor through the screen with their eyes </desc>
                 <g class="logo__face face" id="face">
                     <g class="face__eyes eye">
                         <g class="eye__first">
@@ -70,7 +156,7 @@ Estructura general:
                                 class="eye__iris" />
                             <path fill="#000"
                                 d="M148.286 181.67c-6.556.894-11.925 33.645-.106 63.867 11.436 29.241 37.278 51.808 43.017 49.133 3.552-1.653-3.193-19.698-16.834-55.712-14.606-38.572-21.991-57.847-26.077-57.288Z"
-                                class="eye__pupil" id="firstPupil"/>
+                                class="eye__pupil" id="firstPupil" />
                         </g>
                         <g class="eye__second">
                             <path fill="url(#eyelid__gradient)"
@@ -84,7 +170,7 @@ Estructura general:
                                 class="eye__iris" />
                             <path fill="#000"
                                 d="M324.9 159.073c2.817-2.957 29.217 8.979 38.825 32.663 9.514 23.467-.841 50.126-4.974 49.997-3.44-.106-.947-18.681-12.066-45.022-10.443-24.755-24.013-35.297-21.785-37.638Z"
-                                class="eye__pupil" id="secondPupil"/>
+                                class="eye__pupil" id="secondPupil" />
                         </g>
                         <g class="eye__third">
                             <path fill="url(#eyelid__gradient-b)"
@@ -98,7 +184,7 @@ Estructura general:
                                 class="eye__iris" />
                             <path fill="#000"
                                 d="M467.105 163.342c3.24-.641 15.147 19.351 10.466 39.29-4.639 19.756-23.907 32.445-26.583 30.458-2.222-1.653 8.074-12.672 12.995-35.05 4.622-21.027.559-34.192 3.122-34.698Z"
-                                class="eye__pupil" id="thirdPupil"/>
+                                class="eye__pupil" id="thirdPupil" />
                         </g>
                     </g>
                     <g class="face__snout snout" id="snout">
@@ -216,125 +302,142 @@ Estructura general:
         </div>
         <!-- Wrapper Ventanas -->
         <div class="hero__wrapper info">
-        <!-- Ventanita "readme.txt" -->
-        <div class="info__window window front" id="readme">
-            <!-- Barra superior -->
-            <div class="window__wrapper">
-                <span class="window__name">
-                    readme.txt
-                </span>
-                <div class="window__wrapper button">
-                    <button type="button" class="button__res hidden" title="Restore">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="button__svg" viewBox="0 0 16 16">
-                            <symbol id="plus" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                            </symbol>
-                            <use href="#plus"></use>
-                        </svg>
-                    </button>
-                    <button type="button" class="button__min" title="Minimize">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="button__svg" viewBox="0 0 16 16">
-                            <symbol id="dash" viewbox="0 0 16 16">
-                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                            </symbol>
-                            <use href="#dash"></use>
-                        </svg>
-                    </button>
-                    <button type="button" class="button__close" title="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="button__svg" viewBox="0 0 16 16">
-                            <symbol id="x" viewbox="0 0 16 16">
-                                <path
-                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                            </symbol>
-                            <use href="#x"></use>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <!-- Contenido -->
-            <!-- Título de la web 
-            -->
-            <div class="window__content">
-                <div class="window__title" title="Oddeye Creations">
-                    <h1 class="window__h1">
-                        Oddeye
-                    </h1>
-                    <div class="window__subtitle">
-                        <span class="window__creations">
-                            Creations
-                        </span>
+            <!-- Ventanita "readme.txt" -->
+            <div class="info__window window front" id="readme">
+                <!-- Barra superior -->
+                <div class="window__wrapper">
+                    <span class="window__name">
+                        readme.txt
+                    </span>
+                    <div class="window__wrapper button">
+                        <button type="button" class="button__res hidden" title="Restore">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="button__svg" viewBox="0 0 16 16">
+                                <symbol id="plus" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                </symbol>
+                                <use href="#plus"></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="button__min" title="Minimize">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="button__svg" viewBox="0 0 16 16">
+                                <symbol id="dash" viewbox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                                </symbol>
+                                <use href="#dash"></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="button__close" title="Close">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="button__svg" viewBox="0 0 16 16">
+                                <symbol id="x" viewbox="0 0 16 16">
+                                    <path
+                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                </symbol>
+                                <use href="#x"></use>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <!-- Listado de servicios -->
-                <ul class="window__ul">
-                    <li class="window__li">
-                        <h2 class="window__h2">
-                            Graphic Design
-                        </h2>
-                    </li>
-                    <li class="window__li">
-                        <h2 class="window__h2">
-                            UX/UI Design
-                        </h2>
-                    </li>
-                    <li class="window__li">
-                        <h2 class="window__h2">
-                            Illustration
-                        </h2>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- Ventanita "oddeye.exe" -->
-        <div class="info__window window back" id="exe">
-            <!-- Barra superior -->
-            <div class="window__wrapper">
-                <span class="window__name">
-                    oddeye.exe
-                </span>
-                <div class="window__wrapper button">
-                    <button type="button" class="button__res hidden" title="Restore">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="button__svg" viewBox="0 0 16 16">
-                            <use href="#plus"></use>
-                        </svg>
-                    </button>
-                    <button type="button" class="button__min" title="Minimize">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="button__svg" viewBox="0 0 16 16">
-                            <use href="#dash"></use>
-                        </svg>
-                    </button>
-                    <button type="button" class="button__close" title="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="button__svg" viewBox="0 0 16 16">
-                            <use href="#x"></use>
-                        </svg>
-                    </button>
+                <!-- Contenido -->
+                <!-- Título de la web 
+            -->
+                <div class="window__content">
+                    <div class="window__title" title="Oddeye Creations">
+                        <h1 class="window__h1">
+                            Oddeye
+                        </h1>
+                        <div class="window__subtitle">
+                            <span class="window__creations">
+                                Creations
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Listado de servicios -->
+                    <ul class="window__ul">
+                        <li class="window__li">
+                            <h2 class="window__h2">
+                                Graphic Design
+                            </h2>
+                        </li>
+                        <li class="window__li">
+                            <h2 class="window__h2">
+                                UX/UI Design
+                            </h2>
+                        </li>
+                        <li class="window__li">
+                            <h2 class="window__h2">
+                                Illustration
+                            </h2>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!-- Contenido -->
-            <!-- Console log falso -->
-            <div class="window__content" aria-hidden="true"
-                title="Just a bunch of binary numbers, ¿what could they mean?">
-                <span class="window__log">
-                    01110100 01101000 01100101 00100000 01101111 01100100 01100100 01100101 01111001 01100101 00100000
-                    01101001 01110011 00100000 01100001 01101100 01110111 01100001 01111001 01110011 00100000 01101111
-                    01100010 01110011 01100101 01110010 01110110 01101001 01101110 01100111
-                </span>
+            <!-- Ventanita "oddeye.exe" -->
+            <div class="info__window window back" id="exe">
+                <!-- Barra superior -->
+                <div class="window__wrapper">
+                    <span class="window__name">
+                        oddeye.exe
+                    </span>
+                    <div class="window__wrapper button">
+                        <button type="button" class="button__res hidden" title="Restore">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="button__svg" viewBox="0 0 16 16">
+                                <use href="#plus"></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="button__min" title="Minimize">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="button__svg" viewBox="0 0 16 16">
+                                <use href="#dash"></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="button__close" title="Close">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="button__svg" viewBox="0 0 16 16">
+                                <use href="#x"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Contenido -->
+                <!-- Console log falso -->
+                <div class="window__content" aria-hidden="true"
+                    title="Just a bunch of binary numbers, ¿what could they mean?">
+                    <span class="window__log">
+                        01110100 01101000 01100101 00100000 01101111 01100100 01100100 01100101 01111001 01100101
+                        00100000
+                        01101001 01110011 00100000 01100001 01101100 01110111 01100001 01111001 01110011 00100000
+                        01101111
+                        01100010 01110011 01100101 01110010 01110110 01101001 01101110 01100111
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
         <!-- Adorno Lunas Lateral -->
-        <img src="assets/index/hero__moons.svg" class="hero__moons" fetchpriority="high" loading="lazy"
+        <img src="assets/index/hero__moons.svg" class="hero__moons" fetchpriority="low" loading="lazy"
             alt="A vertical decoration of the moon in different phases">
         <!-- Adorno smiley -->
-        <img src="assets/index/hero__smiley.svg" alt="A smiley with three eyes" class="hero__smiley" fetchpriority="high" loading="lazy">
+        <img src="assets/index/hero__smiley.svg" alt="A smiley with three eyes" class="hero__smiley" fetchpriority="low"
+            loading="lazy">
     </main>
+    <!-- Services section mobile -->
+    <section class="section services invisible hidden">
+        <ul class="services__ul">
+            <li class="services__li">
+                Graphic Design
+            </li>
+            <li class="services__li">
+                UX/UI Design
+            </li>
+            <li class="services__li">
+                Illustration
+            </li>
+        </ul>
+    </section>
 </body>
 
 </html>
