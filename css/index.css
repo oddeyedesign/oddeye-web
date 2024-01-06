@@ -208,11 +208,12 @@ body {
   justify-content: center;
   align-items: center;
 
+
   transition: background-color 1s ease,
   transform .6s ease;
 }
 .nav__li::before{
-  display: block;
+  display: inline-block;
   content: '>';
   opacity: 0;
   transform: translateX(-50%);
@@ -893,13 +894,20 @@ input:checked + .toggle__handle:after{
     min-height: 100vh;
     position: fixed;
     z-index: 5;
+    padding: 5%;
 
     top: -2%;
     left: 0;
-    background-color:#131313;
 
-    display: flex;
+    background: radial-gradient(circle, rgba(35, 19, 60, 0.9) 47%, rgba(18, 11, 30, 0.9) 100%);
+    box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
+    backdrop-filter: blur(.7rem);
+
+    display: none;
     flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4rem;
   }
   .mobile{
     display: block;
@@ -909,7 +917,11 @@ input:checked + .toggle__handle:after{
     left: 4%;
     margin-top: 4%;
     z-index: 4;
-    background-color: transparent;
+
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    background-color: none;
   }
   .mobile__svg{
     width: 3rem;
@@ -925,29 +937,72 @@ input:checked + .toggle__handle:after{
     transform: scale(1.2);
   }
   .mobile__background{
-    width: 100%;
+    width: 6rem;
     min-height: 6rem;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
     mask-image: url(/assets/index/header__mobile__mask.svg);
     mask-repeat: no-repeat;
+
     background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
     box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
     backdrop-filter: blur(.2rem);
+
     animation: rotate 30s infinite ease both;
   }
-  .header__h1{}
-  .nav{}
   .nav__ul{
-    fle
+    width: 100%;
+    display: flex;
+ 
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+  .nav__li{
+    font-size: 3rem;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
-  .nav__li{}
-  .nav__a{}
-  .lang{}
-  .lang__li{}
-  .social{}
-  .social__li{}
-  .social__a{}
-  .social__svg{}
-  .toggle{}
+  .nav__a{
+    margin: 0 -2rem 0 ;
+    transition: margin .5s ease;
+  }
+  .nav__a:hover{
+    margin: 0;
+  }
+  .lang{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .lang__li{
+    font-size: 1.5rem;
+  }
+  .social{
+    width: 100%;
+    gap: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  .social__svg{
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .social__button{
+    cursor: pointer;
+  }
+  .toggle{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
 
   /* Main */
   .hero {
