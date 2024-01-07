@@ -141,6 +141,7 @@ body {
   font-size: 100%;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--negro);
+  background-color: #131313;
   /* opcional */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -169,6 +170,8 @@ body {
   background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
   backdrop-filter: blur(.2rem);
+
+  animation: fadeInTop 1s ease 1 forwards;
 }
 
 .header__wrapper {
@@ -183,14 +186,15 @@ body {
   gap: 1rem;
 
   overflow: visible;
+  transition: all 1s ease;
+
+  animation: fadeInTop 1s ease forwards;
 }
 
 .header__mask {
   display: block;
   mask-repeat: repeat-x;
 }
-
-.nav {}
 
 .nav__ul {
   display: grid;
@@ -243,7 +247,9 @@ body {
   fill: #A7FE2F;
   transform: scale(1);
   transition: fill .6s ease,
+  opacity 1s ease,
   transform .6s ease;
+  cursor: pointer;
 }
 .social__svg:hover{
   fill: black;
@@ -271,9 +277,8 @@ body {
 
 /* Header Mobile */
 .mobile{
-  display: none;
+  opacity: 0;
 }
-
 /* Toggle */
 /* Switch */
 .toggle {
@@ -409,7 +414,7 @@ input:checked + .toggle__handle:after{
   z-index: 1;
 
   transition:
-    width 1s ease,
+    width .5s ease,
     margin 1s ease;
 
   animation: logo 20s ease infinite forwards;
@@ -478,8 +483,8 @@ input:checked + .toggle__handle:after{
 }
 
 .info__window {
-  width: 35%;
-  min-width: 18rem;
+  min-width: 20rem;
+  max-width: 35rem;
   position: absolute;
 
   transform:
@@ -489,8 +494,32 @@ input:checked + .toggle__handle:after{
     all .5s ease;
 
   cursor: pointer;
-  animation: slideInLeft 1s ease 1 backwards;
+  animation: slideInLeftWindow .5s ease 1 backwards;
   animation-delay: 1s;
+}
+.info__window.winHover{
+  transform:
+    rotateY(0deg) skewY(0deg) translateZ(5rem) scale(1.1);
+
+  z-index: 4;
+}
+
+.info__window.front{
+  bottom: 10%;
+  left: 8%;
+
+  z-index: 4;
+}
+.info__window.back{
+  bottom: 13%;
+  left: 5%;
+
+  z-index: 3;
+  filter: blur(.1rem);
+}
+.info__window.closed{
+  opacity: 0;
+  transform: scale(0.1);
 }
 
 .window__wrapper {
@@ -572,6 +601,9 @@ input:checked + .toggle__handle:after{
 
   transition:
     opacity .3s ease;
+}
+.window__content.minimized{
+  opacity: 0;
 }
 
 .window__title {
@@ -688,7 +720,11 @@ input:checked + .toggle__handle:after{
   bottom: 7%;
 
   transition: width 1s ease;
-  animation: popIn 1s ease 1 backwards;
+  animation: popIn 1.5s ease;
+}
+
+.hero__smiley:hover{
+  animation: rotate 1s ease 1 both;
 }
 
 /* Hovers */
@@ -757,44 +793,13 @@ input:checked + .toggle__handle:after{
 
 
 /* Clases que se activan por JS */
-.front {
-  bottom: 10%;
-  left: 8%;
-
-  z-index: 4;
-}
-
-.back {
-  bottom: 13%;
-  left: 5%;
-
-  z-index: 3;
-  filter: blur(.1rem);
-}
-
-.winHover {
-  transform:
-    rotateY(0deg) skewY(0deg) translateZ(5rem) scale(1.1);
-
-  z-index: 4;
-}
-
 .hidden {
   display: none;
-  cursor: default;
-}
-
-.minimized {
-  opacity: 0;
-}
-
-.closed {
-  opacity: 0;
-  transform: scale(0.1);
 }
 
 .invisible {
   opacity: 0;
+  transition: opacity 1s ease;
 }
 
 /* Adaptaciones responsive */
@@ -834,19 +839,11 @@ input:checked + .toggle__handle:after{
   }
 
   .info__window {
-    width: 55%;
+    min-width: 20rem;
+    max-width: 30rem;
     position: absolute;
   }
 
-  .front {
-    bottom: 2%;
-    left: 28%;
-  }
-
-  .back {
-    bottom: 15%;
-    left: 20%;
-  }
 
   .window__wrapper {
     background-color: black;
@@ -856,7 +853,6 @@ input:checked + .toggle__handle:after{
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-
   }
 
   .window__content {
@@ -871,7 +867,7 @@ input:checked + .toggle__handle:after{
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1000px) {
   /* Header */
   .header{
     width: 100%;
@@ -888,7 +884,7 @@ input:checked + .toggle__handle:after{
 
     display: block;
   }
-
+  
   .header__wrapper{
     width: 100%;
     min-height: 100vh;
@@ -903,12 +899,18 @@ input:checked + .toggle__handle:after{
     box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
     backdrop-filter: blur(.7rem);
 
-    display: none;
+    display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: flex-start;
     gap: 4rem;
+    transition: all 1s ease;
   }
+
+  .header__wrapper.hidden{
+    display: none;
+  }
+
   .mobile{
     display: block;
     width: 6rem;
@@ -922,6 +924,9 @@ input:checked + .toggle__handle:after{
     box-shadow: none;
     backdrop-filter: none;
     background-color: none;
+
+    opacity: 1;
+    transition: all 1s ease;
   }
   .mobile__svg{
     width: 3rem;
@@ -931,7 +936,10 @@ input:checked + .toggle__handle:after{
     top: calc(50% - (3rem / 2));
     left: calc(50% - (3rem / 2));
     z-index: 4;
-    transition: transform .6s ease;
+    transition:
+    opacity 1s ease,
+    transform .6s ease;
+    cursor: pointer;
   }
   .mobile__svg:hover{
     transform: scale(1.2);
@@ -973,6 +981,11 @@ input:checked + .toggle__handle:after{
   .nav__a:hover{
     margin: 0;
   }
+  .header__h1{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+  }
   .lang{
     display: flex;
     flex-flow: row nowrap;
@@ -997,6 +1010,7 @@ input:checked + .toggle__handle:after{
 
   .social__button{
     cursor: pointer;
+    transition: opacity 1s ease;
   }
   .toggle{
     position: absolute;
@@ -1014,11 +1028,11 @@ input:checked + .toggle__handle:after{
   }
 
   .logo {
-    width: 55%;
-    height: 15rem;
-    margin: 0 3rem 2rem 0;
-    left: calc((100% - 55%)/2.2);
-    top: calc(50% - (15rem/2));
+    width: 30rem;
+    height: 30rem;
+    margin: 0;
+    left: calc(50% - (30rem/1.8));
+    top: calc(50% - (30rem/2));
   }
 
   .info {
@@ -1059,22 +1073,35 @@ input:checked + .toggle__handle:after{
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .hero {
     min-height: 50vh;
     height: 50vh;
   }
 
   .logo {
-    width: 55%;
+    width: 15rem;
     height: 15rem;
     height: fit-content;
+    left: calc(50% - (15rem/1.8));
     top: calc(50% - (15rem/2));
   }
 }
 
 
 /* Animaciones */
+
+@keyframes fadeInTop {
+  from{
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  to{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 @keyframes popIn {
   0% {
@@ -1122,7 +1149,7 @@ input:checked + .toggle__handle:after{
   }
 }
 
-@keyframes slideInLeft {
+@keyframes slideInLeftWindow {
   from {
     opacity: 0;
     transform: translateX(-50%);
