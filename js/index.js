@@ -30,8 +30,8 @@
 // Definimos que la pantalla del modo móvil <= que 1000
 // Definimos que la pantalla del modo desktop es > que 1000
 let screenWidth = window.innerWidth
-let mobileActive = screenWidth <= '1000'
-let desktopActive = screenWidth > '1000'
+let mobileActive = screenWidth <= 1000
+let desktopActive = screenWidth > 1000
 
 // Seleccionamos todos los elementos a editar
 const mobileWrapper = document.querySelector('.mobile')
@@ -58,6 +58,7 @@ const desktopMode = (function (){
         menu.classList.remove('hidden')
         // Voy a añadir el temporizador de nuevo, a ver si ahora funciona todo
         setTimeout(function(){
+            console.log('Holi')
         mobileWrapper.classList.add('hidden')
         closeMobMenu.classList.add('hidden')
         services.classList.add('hidden')
@@ -84,6 +85,7 @@ const mobileMode = (function(){
         menu.classList.add('invisible')
         // Temporizador
         setTimeout(function(){
+            console.log('Chao')
         mobileWrapper.classList.remove('invisible')
         closeMobMenu.classList.remove('invisible')
         services.classList.remove('invisible')
@@ -101,18 +103,25 @@ const mobileMode = (function(){
 // llamamos a la función desktopmode
 // ELSE llamamos a la función mobilemode
 const modeSwitch = (function(){
-    if (mobileActive == false){
-        screenWidth = window.innerWidth
-        mobileActive = screenWidth <= '1000'
-        desktopActive = screenWidth > '1000'
+    screenWidth = window.innerWidth
+    mobileActive = screenWidth >= 1000
+    if (mobileActive){
         desktopMode()
     }
     else{
-        screenWidth = window.innerWidth
-        mobileActive = screenWidth <= '1000'
-        desktopActive = screenWidth > '1000'
         mobileMode()
     }
+    // if (mobileActive == false){
+    //     mobileActive = screenWidth <= '1000'
+    //     desktopActive = screenWidth > '1000'
+    //     desktopMode()
+    // }
+    // else{
+    //     screenWidth = window.innerWidth
+    //     mobileActive = screenWidth <= '1000'
+    //     desktopActive = screenWidth > '1000'
+    //     mobileMode()
+    // }
 })
 
 //Cuando la ventana carga
@@ -144,14 +153,14 @@ mobileMenu.addEventListener('click', function(){
     menu.classList.remove('hidden')
     setTimeout(function(){
        menu.classList.remove('invisible')
-    },500)
+    },1000)
 })
 
 closeMobMenu.addEventListener('click', function(){
     menu.classList.add('invisible')
     setTimeout(function(){
         menu.classList.add('hidden')
-    },500)
+    },1000)
 })
 
 
