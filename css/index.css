@@ -719,12 +719,12 @@ input:checked + .toggle__handle:after{
   left: 5%;
   bottom: 7%;
 
-  transition: width 1s ease;
+  transition: all 1s ease;
   animation: popIn 1.5s ease;
 }
 
 .hero__smiley:hover{
-  animation: rotate 1s ease 1 both;
+  transform: rotate(360deg);
 }
 
 /* Hovers */
@@ -755,42 +755,32 @@ input:checked + .toggle__handle:after{
 .services{
   width: 100vw;
   background-color: #A7FE2F;
-  
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
 
   overflow: hidden;
   opacity: 1;
   transition: opacity 1s ease;
 }
 .services__ul{
-  width: fit-content;
+  width: 600%;
   height: 4rem;
   top: calc(50% - (4rem/2));
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 5rem;
-
-  white-space: nowrap;
 
   animation: scroll 10s infinite linear ; 
 }
 .services__li{
-  margin:0;
-  display: inline-block;
+  width: calc(100%/6);
   font-size: 3rem;
   font-weight: 600;
-  text-transform:uppercase;
+  text-transform: uppercase;
   letter-spacing: .5rem;
+  white-space: nowrap;
 }
 
 /* Fin de Services */
-
-
 
 /* Clases que se activan por JS */
 .hidden {
@@ -901,14 +891,20 @@ input:checked + .toggle__handle:after{
 
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 4rem;
     transition: all 1s ease;
+    opacity: 1;
   }
 
   .header__wrapper.hidden{
     display: none;
+  }
+
+  .header__wrapper.invisible{
+    opacity: 0;
+    transition: all 1s ease;
   }
 
   .mobile{
@@ -982,9 +978,9 @@ input:checked + .toggle__handle:after{
     margin: 0;
   }
   .header__h1{
-    position: absolute;
+    /* position: absolute;
     top: 5%;
-    left: 5%;
+    left: 5%; */
   }
   .lang{
     display: flex;
@@ -1013,7 +1009,7 @@ input:checked + .toggle__handle:after{
     transition: opacity 1s ease;
   }
   .toggle{
-    position: absolute;
+    position: fixed;
     top: 5%;
     right: 5%;
   }
@@ -1142,10 +1138,10 @@ input:checked + .toggle__handle:after{
 
 @keyframes scroll {
   from {
-    transform: translateX(2 0vw);
+    transform: translateX(0%);
   }
   to{
-    transform: translateX(-220vw);
+    transform: translateX(-50%);
   }
 }
 
