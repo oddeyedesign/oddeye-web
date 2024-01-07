@@ -1,5 +1,162 @@
 'use strict'
 
+// Scripts responsive ***************************************
+// Si el ancho de la pantalla es superior a 1000
+// ADD la clase invisible a .mobile
+// ADD la clase invisible a .social__button
+// ADD la clase invisible a .services
+// REMOVE la clase hidden a .info
+// Esperar .5s
+// Add la clase hidden a .mobile
+// ADD la clase hidden a .social__button
+// ADD la clse hidden a .services
+// REMOVE la clase invisible a .info
+
+// Si es inferior o igual a mil
+// REMOVE la clase hidden a .mobile
+// REMOVE la clase hidden a .social__button
+// REMOVE la clase hidden a .services
+// ADD la clase invisible a .info
+// ADD la clase invisible a .header__wrapper
+// Esperar .5s
+// REMOVE la clase invisible a .mobile
+// REMOVE la clase invisible a .social__button
+// REMOVE la clase invisible a .services
+// ADD la clase hidden a .info
+// ADD la calse hidden a .header__wrapper
+// No consigo que funcione, haciendo pruebas...
+
+// Definimos el valor inicial de ancho de la pantalla
+// Definimos que la pantalla del modo móvil <= que 1000
+// Definimos que la pantalla del modo desktop es > que 1000
+let screenWidth = window.innerWidth
+let mobileActive = screenWidth <= '1000'
+let desktopActive = screenWidth > '1000'
+
+// Seleccionamos todos los elementos a editar
+const mobileWrapper = document.querySelector('.mobile')
+const closeMobMenu = document.querySelector('.social__button')
+const services = document.querySelector('.services')
+const infoWrapper = document.querySelector('.info')
+const menu = document.querySelector('.header__wrapper')
+
+// Definimos la función Desktop mode para agrupar todos los cambios:
+// .mobile add hidden
+// .social__button add hidden
+// .services add hidden
+//.info add hidden
+// .header__wrapper add hidden
+const desktopMode = (function (){
+        console.log(screenWidth)
+        console.log('Mobile Active?' + mobileActive)
+        console.log('Desktop Active?' + desktopActive)
+
+        mobileWrapper.classList.add('invisible')
+        closeMobMenu.classList.add('invisible')
+        services.classList.add('invisible')
+        infoWrapper.classList.remove('hidden')
+        menu.classList.remove('hidden')
+        // Voy a añadir el temporizador de nuevo, a ver si ahora funciona todo
+        setTimeout(function(){
+        mobileWrapper.classList.add('hidden')
+        closeMobMenu.classList.add('hidden')
+        services.classList.add('hidden')
+        infoWrapper.classList.remove('invisible')
+         menu.classList.remove('invisible')
+        },50)
+})
+
+// Definimos la función mobile mode para agrupar todos los cambios:
+// .mobile remove hidden
+// .social__button remove hidden
+// .services remove hidden
+//.info remove hidden
+// .header__wrapper remove hidden
+const mobileMode = (function(){
+        console.log(screenWidth)
+        console.log('Mobile Active?' + mobileActive)
+        console.log('Desktop Active?' + desktopActive)
+
+        mobileWrapper.classList.remove('hidden')
+        closeMobMenu.classList.remove('hidden')
+        services.classList.remove('hidden')
+        infoWrapper.classList.add('invisible')
+        menu.classList.add('invisible')
+        // Temporizador
+        setTimeout(function(){
+        mobileWrapper.classList.remove('invisible')
+        closeMobMenu.classList.remove('invisible')
+        services.classList.remove('invisible')
+        infoWrapper.classList.add('hidden')
+        menu.classList.add('hidden')
+        },50)
+
+})
+
+// Definimos la función modeSwitch para no tener que repetir todo lo anterior
+// Cuando quedamos aplicar los modos móvil/desktop
+// Si mobileActive es igual a false
+// Comprobamos el valor del ancho de la pantalla de nuevo (sin hacer esto no funciona)
+// Comprobamos si se cumplen los requisitos de mobileActive y desktopActive
+// llamamos a la función desktopmode
+// ELSE llamamos a la función mobilemode
+const modeSwitch = (function(){
+    if (mobileActive == false){
+        screenWidth = window.innerWidth
+        mobileActive = screenWidth <= '1000'
+        desktopActive = screenWidth > '1000'
+        desktopMode()
+    }
+    else{
+        screenWidth = window.innerWidth
+        mobileActive = screenWidth <= '1000'
+        desktopActive = screenWidth > '1000'
+        mobileMode()
+    }
+})
+
+//Cuando la ventana carga
+// Llamamos a la función modeSwitch
+window.addEventListener ( 'load', function (){
+    modeSwitch()
+})
+
+//Cuando la ventana cambia de tamaño
+// Llamamos a la función modeswitch
+window.addEventListener('resize', function(){
+    modeSwitch()
+})
+
+
+//Fin de  Scripts responsive **********************************
+
+
+// Inicio Header scripts ***********************************
+// Cuando hago click en .mobile__svg:
+// REMOVE la clase hidden a .header__wrapper
+// REMOVE la clase hiden a .social__button
+// Espera .5s
+// REMOVE la clase invisible a .header__wrapper
+
+const mobileMenu = document.querySelector('.mobile__svg')
+
+mobileMenu.addEventListener('click', function(){
+    menu.classList.remove('hidden')
+    setTimeout(function(){
+       menu.classList.remove('invisible')
+    },500)
+})
+
+closeMobMenu.addEventListener('click', function(){
+    menu.classList.add('invisible')
+    setTimeout(function(){
+        menu.classList.add('hidden')
+    },500)
+})
+
+
+// Fin de Header Scripts ************************************
+
 // Main/Hero Scripts
 
 // #readme: cuando hago click se le add clase front, se le remove back y le add back/remove front a exe
@@ -271,44 +428,4 @@ const follow = function(){
 window.addEventListener('resize' , defineScreenSize)
 window.addEventListener('pointermove', pointerMove)
 
-// Cuando mediaQueryA o  mediaQueryB está activo
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
-// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/change_event
-// ADD la clase invisible a .info
-// REMOVE la clase hidden a .services
-// Espera .5 segundos
-// ADD la clase hidden a .info
-// REMOVE la clase invisible a .services
-// ELSE .info remove hidden e invisible
-// .services add hidden e invisible
-
-const mediaQueryA = window.matchMedia('(max-width: 720px)')
-const mediaQueryB = window.matchMedia('(max-width: 480px)')
-const infoWin = document.querySelector('.info')
-const services = document.querySelector('.services')
-
-console.log(mediaQueryA)
-console.log(mediaQueryB)
-
-mediaQueryA.addEventListener('change' , function(){
-    if (mediaQueryA.matches || mediaQueryB.matches) {
-        infoWin.classList.add('invisible')
-        services.classList.remove('hidden')
-        setTimeout(function(){
-            infoWin.classList.add('hidden')
-            services.classList.remove('invisible')
-        },500)
-    }
-    else{
-        infoWin.classList.remove('hidden')
-        services.classList.add('invisible')
-        setTimeout(function(){
-            infoWin.classList.remove('invisible')
-            services.classList.add('hidden')
-        },500)
-    }
-})
-
-console.log(services.classList)
-// Fin de Main/Hero Scripts -------------------------------------------
+// // Fin de Main/Hero Scripts -------------------------------------------
