@@ -50,15 +50,13 @@ const desktopMode = (function (){
         console.log(screenWidth)
         console.log('Mobile Active?' + mobileActive)
         console.log('Desktop Active?' + desktopActive)
-
         mobileWrapper.classList.add('invisible')
         closeMobMenu.classList.add('invisible')
         services.classList.add('invisible')
         infoWrapper.classList.remove('hidden')
         menu.classList.remove('hidden')
-        // Voy a añadir el temporizador de nuevo, a ver si ahora funciona todo
+
         setTimeout(function(){
-            console.log('Holi')
         mobileWrapper.classList.add('hidden')
         closeMobMenu.classList.add('hidden')
         services.classList.add('hidden')
@@ -83,7 +81,7 @@ const mobileMode = (function(){
         services.classList.remove('hidden')
         infoWrapper.classList.add('invisible')
         menu.classList.add('invisible')
-        // Temporizador
+
         setTimeout(function(){
             console.log('Chao')
         mobileWrapper.classList.remove('invisible')
@@ -111,17 +109,6 @@ const modeSwitch = (function(){
     else{
         mobileMode()
     }
-    // if (mobileActive == false){
-    //     mobileActive = screenWidth <= '1000'
-    //     desktopActive = screenWidth > '1000'
-    //     desktopMode()
-    // }
-    // else{
-    //     screenWidth = window.innerWidth
-    //     mobileActive = screenWidth <= '1000'
-    //     desktopActive = screenWidth > '1000'
-    //     mobileMode()
-    // }
 })
 
 //Cuando la ventana carga
