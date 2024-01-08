@@ -1,6 +1,6 @@
 'use strict'
 
-// Scripts responsive ***************************************
+// ---------------Inicio de Responsive Scripts ----------------------------
 // Si el ancho de la pantalla es superior a 1000
 // ADD la clase invisible a .mobile
 // ADD la clase invisible a .social__button
@@ -124,10 +124,10 @@ window.addEventListener('resize', function(){
 })
 
 
-//Fin de  Scripts responsive **********************************
+// ---------------Fin de Responsive Scripts ----------------------------
 
 
-// Inicio Header scripts ***********************************
+// ---------------Inicio Header Scripts ----------------------------
 // Cuando hago click en .mobile__svg:
 // REMOVE la clase hidden a .header__wrapper
 // REMOVE la clase hiden a .social__button
@@ -151,7 +151,7 @@ closeMobMenu.addEventListener('click', function(){
 })
 
 
-// Fin de Header Scripts ************************************
+// ---------------Fin de Header Scripts ----------------------------
 
 // Main/Hero Scripts
 
@@ -295,31 +295,6 @@ resBtn.forEach(function (eachRes, i) {
     })
 })
 
-// ---------------------------------------------------------------
-// UNFINISHED:
-// Si exe contiene la clase back
-// Y readme contiene la clase hidden
-// Remove back de exe
-// Add front a exe
-
-// No funciona, revisar si da tiempo
-
-// if(exe.classList.contains('back') || readme.classList.contains('hidden')){
-//     exe.classList.remove('back')
-//     exe.classList.add('front')
-// }
-
-// Si readme contiene la clase back
-// Y exe contiene la clase hidden
-// Remove back de readme
-// Add front a readme
-// No funciona, revisar si da tiempo
-// if(readme.classList.contains('back') || exe.classList.contains('hidden')){
-//     readme.classList.remove('back')
-//     readme.classList.add('front')
-// }
-// --------------------------------------------------------------
-
 // Interacción del Logo: ojos que siguen al cursor
 // Sigo este tutorial: https://www.youtube.com/watch?v=cwT0oLU8iF4
 // El tutorial no está comentando y no entiendo bien que hace
@@ -424,4 +399,32 @@ const follow = function(){
 window.addEventListener('resize' , defineScreenSize)
 window.addEventListener('pointermove', pointerMove)
 
-// // Fin de Main/Hero Scripts -------------------------------------------
+// ---------------Fin de Main/Hero Scripts ----------------------------
+
+// -------------Inicio de First section Scripts -----------------------
+
+// Cuando hago mouseover en .first
+// ADD la clase play en .first__animation
+// ADD la clase play en .first__a
+// Cuando hago mouseout en .first
+// REMOVE la clase plau en .first__animation
+// REMOVE la clase play en .first__a
+
+const first = document.querySelector('.first')
+const firstAnimation = document.querySelector('.first__animation')
+const firstA = document.querySelector('.first__a')
+
+first.addEventListener('mouseover' , function(){
+    firstAnimation.classList.add('play')
+    firstA.classList.add('play')
+    first.addEventListener('mouseout', function(){
+        firstAnimation.classList.remove('play')
+        firstA.classList.remove('play')
+    })
+})
+
+// ------------- Fin de First Section Scripts -------------------------
+
+// ------------- Inicio de Second Section Scripts ---------------------
+
+// ---------------- Fin de Second Section Scripts ---------------------
