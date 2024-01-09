@@ -397,7 +397,9 @@ const follow = function(){
 // Cuando hago resize en la ventana, activo la función defineScreenSize
 // Cuando hago mousemove en la ventana, activo la función mouseMove
 window.addEventListener('resize' , defineScreenSize)
-window.addEventListener('pointermove', pointerMove)
+
+const hero = document.querySelector('.hero')
+hero.addEventListener('pointermove', pointerMove)
 
 // ---------------Fin de Main/Hero Scripts ----------------------------
 
@@ -414,10 +416,10 @@ const first = document.querySelector('.first')
 const firstAnimation = document.querySelector('.first__animation')
 const firstA = document.querySelector('.first__a')
 
-first.addEventListener('mouseover' , function(){
+first.addEventListener('pointerover' , function(){
     firstAnimation.classList.add('play')
     firstA.classList.add('play')
-    first.addEventListener('mouseout', function(){
+    first.addEventListener('pointerout', function(){
         firstAnimation.classList.remove('play')
         firstA.classList.remove('play')
     })
@@ -425,6 +427,69 @@ first.addEventListener('mouseover' , function(){
 
 // ------------- Fin de First Section Scripts -------------------------
 
-// ------------- Inicio de Second Section Scripts ---------------------
+// ------------- Inicio de Third Section Scripts ---------------------
 
-// ---------------- Fin de Second Section Scripts ---------------------
+// Creo un fragmento
+// Por cada .carrousel__wrapper:
+// Creo un LI
+// Les ADD la clase carrousel__li
+// Dentro de cada LI creo un botón
+// los botónes ADD la clase carrousel__dotbtn
+// Metemos los botones dentro de los li
+// Metemos los li dentro del fragmento
+// Metemos el fragmento dentro de carrousel_ul
+const carItems = document.querySelectorAll('.carrousel__wrapper')
+const carList = document.querySelector('.carrousel__ul')
+
+const dotList = document.createDocumentFragment()
+
+carItems.forEach(function (eachDot , index) {
+    const li = document.createElement('li')
+    li.classList.add('carrousel__li')
+
+    const dotBtn = document.createElement('button')
+    dotBtn.classList.add('carrousel__dotbtn')
+
+    li.appendChild(dotBtn)
+    dotList.appendChild(li)
+})
+
+carList.appendChild(dotList)
+
+//Cuando hago click en carrousel__dotBtn[0]
+//.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
+
+//Cuando hago click en carrousel__dotBtn[1]
+//.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
+
+//Cuando hago click en carrousel__dotBtn[2]
+//.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
+
+//Cuando hago click en carrousel__dotBtn[3]
+//.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
+
+//Cuando hago clic en .carrousel__dotbtn REMOVE active
+// .carrousel_dotbtn mismo index ADD active
+
+const dotBtn = document.querySelectorAll('.carrousel__dotbtn')
+const carBig = document.querySelector('.carrousel__big')
+
+dotBtn.forEach(function(eachDot , i){
+    dotBtn[i].addEventListener('click' , function(){
+
+        let translateXCalc = i*( 100 / carItems.length)
+        carBig.style.transform = `translateX(${-translateXCalc}%)`
+        
+        dotBtn.forEach(function(eachDot , i){
+            dotBtn[i].classList.remove('active')
+        })
+        dotBtn[i].classList.add('active')
+    })
+})
+
+// Dejamos el primer botón [0] activo por defecto
+dotBtn[0].classList.add('active')
+
+
+
+// ---------------- Fin de Third Section Scripts ---------------------
