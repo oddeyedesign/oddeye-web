@@ -253,7 +253,7 @@ Estructura:
 
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start ;
 
   transition: background-color 1s ease,
