@@ -40,6 +40,7 @@ const services = document.querySelector('.services')
 const infoWrapper = document.querySelector('.info')
 const menu = document.querySelector('.header__wrapper')
 
+
 // Definimos la función Desktop mode para agrupar todos los cambios:
 // .mobile add hidden
 // .social__button add hidden
@@ -150,6 +151,24 @@ closeMobMenu.addEventListener('click', function(){
     },1000)
 })
 
+// SI el enlace de la web contiene /ES
+// ADD la clase hidden a #EN
+// SI NO add la clase hidden a ES
+// https://www.w3schools.com/howto/howto_js_get_url.asp
+
+const spanishURL = "/es"
+const spanishSite = window.location.href.includes(spanishURL)
+const spanishLink = document.getElementById('es')
+const englishLink = document.getElementById('en')
+
+if(spanishSite){
+    console.log('Web en Castellano')
+    englishLink.classList.add('hidden')
+}
+else{
+    console.log(' English site')
+    spanishLink.classList.add('hidden')
+}
 
 // ---------------Fin de Header Scripts ----------------------------
 
@@ -216,19 +235,19 @@ exe.addEventListener('click', function () {
 // Cuando hago MOUSEOVER en #exe
 // SI #exe contiene la clase front
 // ADD la clase hover a #exe
-exe.addEventListener('mouseover', function () {
+exe.addEventListener('pointerover', function () {
     if (exe.classList.contains('front')) {
         console.log('exe is front')
-        exe.classList.add('hover')
+        exe.classList.add('winHover')
     }
 })
 
 // Cuando hago MOUSEOUT en #exe
 // SI exe coniene la clase front
 // REMOVE la clase hover a #exe
-exe.addEventListener('mouseout', function () {
+exe.addEventListener('pointerout', function () {
     if (exe.classList.contains('front')) {
-        exe.classList.remove('hover')
+        exe.classList.remove('winHover')
     }
 })
 
@@ -291,7 +310,7 @@ resBtn.forEach(function (eachRes, i) {
     winContent[i].classList.remove('hidden')
     setTimeout(function(){
         winContent[i].classList.remove('minimized')
-    },'100')
+    },'200')
     })
 })
 

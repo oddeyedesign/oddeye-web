@@ -141,7 +141,6 @@ body {
   font-size: 100%;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--negro);
-  /* background-color: #131313; */
   /* opcional */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -154,7 +153,39 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header */
+/* --------------- Inicio de Header --------------*/
+/* Descripción: estilo  del Header en versión desktop. El header tiene
+forma "wavy" y está fijado en la ventana. Tiene un estilo glassmorfista
+
+Estructura:
+- header
+  - header__wrapper
+  - header__mask
+    - header__h1
+    - nav__ul
+      - nav__li
+    - header__social
+      - social__svg
+      - social__button
+        - social__button.hidden
+        - social__button.invisible
+    - lang
+      - lang__a.hidden
+    - mobile
+      - mobile.hidden
+      - mobile.invisible
+    - toggle
+      - toggle__checkbox
+      - toggle__handle
+    - toggle before and after
+    - toggle hover
+    - toggle inputs
+
+  - Befores
+  - Afters
+  - Hovers
+*/
+
 .header {
   width: 100%;
   min-height: 10vh;
@@ -198,6 +229,12 @@ body {
   mask-repeat: repeat-x;
 }
 
+.header__h1 {
+  width: 4rem;
+  transform: scale(1);
+  transition: transform .6s ease;
+}
+
 .nav__ul {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -211,29 +248,11 @@ body {
 
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-
+  justify-content: flex-start;
+  align-items: flex-start ;
 
   transition: background-color 1s ease,
-  transform .6s ease;
-}
-.nav__li::before{
-  content: '>';
-  opacity: 0;
-  transform: translateX(-50%);
-  transition:
-  opacity 1s ease,
-  transform 1s ease;
-}
-.nav__li:hover{
-  color:#A7FE2F;
-  background-color: black;
-  transform: scale(1.2);
-}
-.nav__li:hover:before{
- opacity: 1;
- transform: translateX(0);
+    transform .6s ease;
 }
 
 .header__social {
@@ -248,22 +267,40 @@ body {
   fill: #A7FE2F;
   transform: scale(1);
   transition: fill .6s ease,
-  opacity 1s ease,
-  transform .6s ease;
+    opacity 1s ease,
+    transform .6s ease;
   cursor: pointer;
 }
-.social__svg:hover{
-  fill: black;
-  transform: scale(1.2);
+
+.social__button {
+  width: 100%;
+  height: 3rem;
+  padding: 0 0 0 .6rem;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+
+  text-transform: uppercase;
+  font-size: 1.3rem;
+
+  color: #A7FE2F;
+  border: #A7FE2F .125rem solid;
+
+  cursor: pointer;
+  transition: opacity 1s ease;
+
+  transform: scale(1);
+  transition: all .6s ease;
 }
 
-.header__h1 {
-  width: 4rem;
-  transform: scale(1);
-  transition: transform .6s ease;
+.social__button.hidden {
+  display: none;
 }
-.header__h1:hover{
-  transform: scale(1.2);
+
+.social__button.invisible {
+  opacity: 0;
 }
 
 .lang {
@@ -276,28 +313,40 @@ body {
   transition: opacity .5s ease;
 }
 
+.lang__a.hidden {
+  display: none;
+}
+
 /* Header Mobile */
-.mobile{
+.mobile {
+  opacity: 1;
+}
+
+.mobile.hidden {
+  display: none;
+}
+
+.mobile.invisible {
   opacity: 0;
 }
+
 /* Toggle */
-/* Switch */
 .toggle {
   display: inline-block;
   height: 2.125rem;
   width: 4.2rem;
   position: relative;
 }
-/* Switch input */
-.toggle__checkbox{
+
+.toggle__checkbox {
   opacity: 0;
   width: 0;
   height: 0;
 }
-/* Slider */
-.toggle__handle{
+
+.toggle__handle {
   border-radius: 2.125rem;
-  background-color:black;
+  background-color: black;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -306,22 +355,26 @@ body {
   bottom: 0;
   transition: all .5s ease;
 }
-.toggle__handle::before{
+
+/* Toggle ::before and ::after */
+
+.toggle__handle::before {
   border-radius: 50%;
-position: absolute;
-content: "";
-height: 1.625rem;
-width: 1.625rem;
-left: .25rem;
-bottom: .25rem;
-background-color:#A7FE2F;
-transition:
-right 1s ease,
-left 1s ease,
-background-image .3s ease,
-transform .5s ease;
+  position: absolute;
+  content: "";
+  height: 1.625rem;
+  width: 1.625rem;
+  left: .25rem;
+  bottom: .25rem;
+  background-color: #A7FE2F;
+  transition:
+    right 1s ease,
+    left 1s ease,
+    background-image .3s ease,
+    transform .5s ease;
 }
-.toggle__handle::after{
+
+.toggle__handle::after {
   position: absolute;
   content: "";
   background-image: url(/assets/index/alien.svg);
@@ -329,42 +382,82 @@ transform .5s ease;
   height: 1.625rem;
   width: 1.625rem;
   right: .25rem;
-  bottom:.25rem;
+  bottom: .25rem;
   transition:
-  right 1s ease,
-  left 1s ease,
-  background-image .3s ease,
-  transform .5s ease;
+    right 1s ease,
+    left 1s ease,
+    background-image .3s ease,
+    transform .5s ease;
 }
-input:checked + .toggle__handle{
+
+/* Toggle hovers */
+.toggle__handle:hover {
+  transform: scale(1.2);
+}
+
+/* Toggle inputs */
+input:checked+.toggle__handle {
   background-color: darkgray;
 }
 
-input:checked + .toggle__handle:before{
+input:checked+.toggle__handle:before {
   transform: translateX(1.9925rem);
   background-color: #131313;
 }
 
-input:checked + .toggle__handle:after{
+input:checked+.toggle__handle:after {
   right: 0;
   left: .25rem;
   background-image: url(/assets/index/user.svg);
 }
-.toggle__handle:hover{
+
+/* Befores */
+
+.nav__li::before {
+  content: '>';
+  opacity: 0;
+  transform: translateX(-50%);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+/* Hovers */
+
+.header__h1:hover {
   transform: scale(1.2);
 }
 
-body{
-  background-image: url('/assets/index/hero__background.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #131313;
+.nav__li:hover {
+  color: #A7FE2F;
+  background-color: black;
+  transform: scale(1.2);
 }
 
-/* Hero Content */
-/* Descripción: Estilo para el main/hero
+.nav__li:hover:before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.social__svg:hover {
+  fill: black;
+  transform: scale(1.2);
+}
+
+.social__button:hover {
+  background-color: #A7FE2F;
+  color: #131313;
+  font-weight: 700;
+  transform: scale(1.1);
+}
+
+/* --------------- Fin de Header ---------------
+
+/* --------------- Inicio de Hero Content ---------------*/
+/* Descripción: Estilo para el main/hero. Esta sección contiene varios
+elementos interactivos como el logo, que sigue al cursor con la mirada,
+y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
+
   Estructura:
     -hero
     -hero__wrapper logo
@@ -389,22 +482,22 @@ body{
     -hero__moons
     -hero__smiley
 
-    -Clases activadas por JS
-    -Hover
-    -Media Queries
-    -Animaciones
+    - Befores
+    - Afters
+    - Hovers
+    - Selections
 */
 
 .hero {
   width: 100%;
   min-height: 100vh;
 
-  /* background-image: url('/assets/index/hero__background.svg');
+  background-image: url('/assets/index/hero__background.svg');
   background-repeat: no-repeat;
   background-position: top;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #131313; */
+  background-color: #131313;
 
   display: flex;
   flex-flow: column nowrap;
@@ -490,9 +583,16 @@ body{
   transition: opacity 1s ease;
 }
 
+.info.hidden {
+  display: none;
+}
+
+.info.invisible {
+  opacity: 0;
+}
+
 .info__window {
-  min-width: 20rem;
-  max-width: 35rem;
+  width: 25rem;
   position: absolute;
 
   transform:
@@ -505,27 +605,30 @@ body{
   animation: slideInLeftWindow .5s ease 1 backwards;
   animation-delay: 1s;
 }
-.info__window.winHover{
+
+.info__window.winHover {
   transform:
     rotateY(0deg) skewY(0deg) translateZ(5rem) scale(1.1);
 
   z-index: 4;
 }
 
-.info__window.front{
-  bottom: 10%;
-  left: 8%;
+.info__window.front {
+  bottom: 15%;
+  left: 10%;
 
   z-index: 4;
 }
-.info__window.back{
-  bottom: 13%;
+
+.info__window.back {
+  bottom: 18%;
   left: 5%;
 
   z-index: 3;
   filter: blur(.1rem);
 }
-.info__window.closed{
+
+.info__window.closed {
   opacity: 0;
   transform: scale(0.1);
 }
@@ -571,6 +674,10 @@ body{
   transition: background-color 1s ease;
 }
 
+.button__min.hidden {
+  display: none;
+}
+
 .button__close {
   margin: .5rem;
   cursor: pointer;
@@ -585,6 +692,10 @@ body{
   transition: background-color 1s ease;
 }
 
+.button__res.hidden {
+  display: none;
+}
+
 .window__content {
   width: 100%;
   height: 15rem;
@@ -597,8 +708,8 @@ body{
 
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 
   text-align: left;
 
@@ -610,12 +721,17 @@ body{
   transition:
     opacity .3s ease;
 }
-.window__content.minimized{
+
+.window__content.minimized {
   opacity: 0;
 }
 
+.window__content.hidden {
+  display: none;
+}
+
 .window__title {
-  width: 95%;
+  width: 90%;
   margin: .5rem;
 
   display: flex;
@@ -626,33 +742,10 @@ body{
   gap: .5rem;
 }
 
-.window__title::after {
-  display: block;
-  content: '';
-  width: 80%;
-  border: #A7FE2F dashed .0625rem;
-  margin: .5rem 0 .5rem 0;
-}
-
 .window__h1 {
-  display: inline-block;
   text-transform: uppercase;
   letter-spacing: .5rem;
-}
-
-.window__h1::before {
-  display: inline-block;
-  content: '*·.{';
-  font-size: .8rem;
-  font-weight: 400;
-}
-
-.window__h1::after {
-  display: inline-block;
-  content: '*·.{';
-  transform: scaleX(-1);
-  font-size: .8rem;
-  font-weight: 400;
+  text-align: left;
 }
 
 .window__subtitle {
@@ -664,27 +757,14 @@ body{
   letter-spacing: .4rem;
 }
 
-.window__subtitle::before {
-  display: inline-block;
-  content: '*·.-';
-  font-size: .8rem;
-}
-
-.window__subtitle::after {
-  display: inline-block;
-  content: '*·.-';
-  transform: scaleX(-1);
-  font-size: .8rem;
-}
-
 .window__ul {
+  width: 90%;
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1rem;
   margin: .5rem;
-
 }
 
 .window__li {
@@ -695,12 +775,8 @@ body{
   gap: .5rem;
 }
 
-.window__li::before {
-  display: inline-block;
-  content: '>';
-}
-
 .window__log {
+  width: 90%;
   display: inline-block;
   margin: .5rem;
   cursor: text;
@@ -731,11 +807,55 @@ body{
   animation: popIn 1.5s ease;
 }
 
-.hero__smiley:hover{
-  transform: rotate(360deg);
+/* Befores */
+.window__h1::before {
+  display: inline-block;
+  content: '*·.{';
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+.window__subtitle::before {
+  display: inline-block;
+  content: '*·.-';
+  font-size: .8rem;
+}
+
+.window__li::before {
+  display: inline-block;
+  content: '>';
+}
+
+/* Afters */
+
+.window__title::after {
+  display: block;
+  content: '';
+  width: 80%;
+  border: #A7FE2F dashed .0625rem;
+  margin: .5rem 0 .5rem 0;
+}
+
+.window__subtitle::after {
+  display: inline-block;
+  content: '*·.-';
+  transform: scaleX(-1);
+  font-size: .8rem;
+}
+
+.window__h1::after {
+  display: inline-block;
+  content: '*·.{';
+  transform: scaleX(-1);
+  font-size: .8rem;
+  font-weight: 400;
 }
 
 /* Hovers */
+.hero__smiley:hover {
+  transform: rotate(360deg);
+}
+
 .button__close:hover {
   color: black;
   background-color: #A7FE2F;
@@ -757,12 +877,24 @@ body{
   background-color: #A7FE2F;
 }
 
-/* Fin de hero content */
+/* --------------- Fin de Hero Content --------------- */
 
-/* Inicio de Services (Mobile only)  */
-.services{
+/* ---------------Inicio de Services (Mobile) ---------------*/
+/* Descripción: estilo de la sección services, que solo es visible en 
+modo mobile (sustituyendo a hero__window). Esta sección contiene un texto
+estilo marquee que hace scroll infinito en horizontal
+
+Estructura:
+- services
+- services.hidden
+- services.invisible
+  -services__ul
+    -services__li
+*/
+
+.services {
   width: 100%;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
 
   overflow: hidden;
   opacity: 1;
@@ -771,7 +903,16 @@ body{
   position: relative;
   z-index: 4;
 }
-.services__ul{
+
+.services.hidden {
+  display: none;
+}
+
+.services.invisble {
+  opacity: 0;
+}
+
+.services__ul {
   width: 600%;
   height: 4rem;
   top: calc(50% - (4rem/2));
@@ -780,24 +921,44 @@ body{
   justify-content: flex-start;
   align-items: center;
 
-  animation: scroll 10s infinite linear ; 
+  animation: scroll 10s infinite linear;
 }
-.services__li{
+
+.services__li {
   width: calc(100%/6);
   font-size: 3rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .5rem;
   white-space: nowrap;
+
+  transition: font-size .6 ease;
 }
 
-/* Fin de Services Section */
+/* --------------- Fin de Services Section --------------- */
 
-/* Inicio de First Section */
-.first{
+/* --------------- Inicio de First Section ---------------*/
+/* Descripción: Esta sección contiene un enlace a la página de porfolio.
+La sección entera tiene un efecto hover aplicado en js para simular que 
+el adorno se encoje para hacer sitio al "botón" que lleva al porfolio.
+Los bordes de la sección son ondulados, lo conseguimos con before and after.
+
+Estructura:
+- first
+  - first__wrapper
+  - first__a
+  - first__a.play
+  - first__animation
+  - first__animation.play
+  
+  - Befores
+  - Afters
+
+*/
+.first {
   width: 100%;
   height: 50vh;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
 
   position: relative;
   z-index: 2;
@@ -808,35 +969,7 @@ body{
   align-items: center;
 }
 
-.first::before{
-  width: 100%;
-  height: 10vh;
-  display: block;
-  content: '';
-
-  background-color: #A7FE2F;
-  mask-image: url(/assets/index/wavy__mask-top.svg);
-  mask-repeat: repeat-x;
-
-  position: absolute;
-  top: -10%;
-  right: 0;
-}
-.first::after{
-  width: 100%;
-  height: 10vh;
-  display: block;
-  content: '';
-
-  background-color:#A7FE2F;
-  mask-image: url(/assets/index/header__mask.svg);
-  mask-repeat: repeat-x;
-
-  position: absolute;
-  bottom: -13%;
-  right: 0;
-}
-.first__wrapper{
+.first__wrapper {
   width: 69%;
   height: 30vh;
   z-index: 2;
@@ -844,38 +977,40 @@ body{
   position: absolute;
   right: 5%;
 }
-.first__a{
+
+.first__a {
   width: 100%;
   height: 30vh;
-  background-color:#131313;
+  background-color: #131313;
   position: relative;
 
   transform: translateX(50%);
   transition: transform .3s ease,
-  color .5s ease;
+    color .5s ease;
 
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 
-  color:#131313;
+  color: #131313;
   font-size: 5vw;
   font-weight: 400;
   text-transform: uppercase;
 }
-.first__a.play{
-transform: translateX(0);
-color:#A7FE2F;
+
+.first__a.play {
+  transform: translateX(0);
+  color: #A7FE2F;
 }
 
-.first__animation{
+.first__animation {
   width: 50%;
   height: 30vh;
 
   background-image: url(/assets/index/animation/frame1-left.svg);
   background-repeat: no-repeat;
-  background-position:left;
+  background-position: left;
 
   display: flex;
   flex-flow: row nowrap;
@@ -889,12 +1024,60 @@ color:#A7FE2F;
   z-index: 1;
 }
 
-.first__animation.play{
+.first__animation.play {
   animation: play .1s linear 1 forwards;
 }
 
-/* Inicio de Second Section */
-.second{
+/*  Before */
+.first::before {
+  width: 100%;
+  height: 10vh;
+  display: block;
+  content: '';
+
+  background-color: #A7FE2F;
+  mask-image: url(/assets/index/wavy__mask-top.svg);
+  mask-repeat: repeat-x;
+
+  position: absolute;
+  top: -10%;
+  right: 0;
+}
+
+/* After */
+.first::after {
+  width: 100%;
+  height: 10vh;
+  display: block;
+  content: '';
+
+  background-color: #A7FE2F;
+  mask-image: url(/assets/index/header__mask.svg);
+  mask-repeat: repeat-x;
+
+  position: absolute;
+  bottom: -13%;
+  right: 0;
+}
+
+/* --------------- Inicio de Second Section ---------------*/
+/* Descripción: Estilo de First Section. Esta sección contiene un 
+enlace a la sección de contacto. Tiene de fondo un vídeo de un cielo
+estrellado y al hacer hover el cursor se convierte en un ovni.
+
+Estructura:
+- second
+- second__h3
+- second__video
+- second__wrapper
+- second__a
+
+- Before
+- Afters
+- Hovers
+
+*/
+.second {
   width: 100%;
   min-height: 60vh;
   mask-size: 30vw;
@@ -910,7 +1093,8 @@ color:#A7FE2F;
   background-color: blueviolet;
   cursor: url('/assets/index/ufo__cursor.svg'), auto;
 }
-.second__h3{
+
+.second__h3 {
   width: 90%;
   min-height: 2rem;
   font-size: 5vh;
@@ -921,7 +1105,10 @@ color:#A7FE2F;
   top: 25%;
   z-index: 1;
 }
-.second__video{
+
+/* Vídeo de Borys Zaitsev de Pexels:
+https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-12275368/ */
+.second__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -931,7 +1118,7 @@ color:#A7FE2F;
   filter: grayscale();
 }
 
-.second__wrapper{
+.second__wrapper {
   width: 12rem;
   min-height: 10rem;
 
@@ -951,25 +1138,16 @@ color:#A7FE2F;
 
   transform: scale(1);
   animation: beat 5s infinite ease both;
-  transition: transform 1s ease, top  ;
+  transition: transform 1s ease, top;
 }
 
-.second__wrapper:hover{
-  background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
-}
-.second__wrapper:hover .second__a{
-  transform: scale(.7);
-  color: black;
-}
-
-.second__a{
+.second__a {
   width: 90%;
   height: 6rem;
   position: absolute;
   left: calc((100% - 90%) / 2);
   top: 12%;
-  
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -982,10 +1160,14 @@ color:#A7FE2F;
 
   cursor: url('/assets/index/ufo_cursor_pointer.svg'), auto;
 }
-.second__a::before{
+
+/* Befores */
+.second__a::before {
   content: '>';
 }
-.second__a::after{
+
+/* Afters */
+.second__a::after {
   content: '';
   width: 100%;
   border: #A7FE2F .1rem dashed;
@@ -994,19 +1176,58 @@ color:#A7FE2F;
   opacity: 0;
   transition: all .5s ease;
 }
-.second__wrapper:hover .second__a:after{
+
+/* Hovers */
+.second__wrapper:hover {
+  background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
+  box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
+}
+
+.second__wrapper:hover .second__a {
+  transform: scale(.7);
+  color: black;
+}
+
+.second__wrapper:hover .second__a:after {
   border: black .1rem dashed;
   opacity: 1;
-bottom: 25%;
+  bottom: 25%;
 }
 
 
-/* Inicio de Third Section */
-.third{
+/* --------------- Fin de Second Section --------------- */
+
+
+/* --------------- Inicio de Third Section ---------------*/
+/* Descripción: estilo de Third Section. Esta sección contiene un carrousel
+sencillo de algunas marcas con las que he trabajado. La parte superior
+es ondulada y la inferior aserrada gracias a la aplicación de máscaras
+en before y after.
+
+Contenido: 
+- third
+  - third__wrapper
+  - third__span
+  - third__span.crossed
+  - carrousel
+    - carrousel__big
+      - carrousel__wrapper
+      - carrousel__img
+      - cawrrousel__h4
+    - carrousel__ul
+      - carrousel__dotbtn
+      - carrousel__dotbtn.active
+
+    - Befores
+    - Afters
+    - Hovers
+
+*/
+.third {
   width: 100%;
   height: 50vh;
   mask-size: 30vw;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
 
   position: relative;
 
@@ -1019,7 +1240,119 @@ bottom: 25%;
   background-color: rgb(143, 73, 255);
   z-index: 1;
 }
-.third::before{
+
+.third__wrapper{
+  width: 45%;
+  padding: 2%;
+  min-height: 40vh;
+  background-color: #131313;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+
+  font-size: 5vh;
+  color: #A7FE2F;
+
+  transition: all .5s ease;
+
+}
+.third__span {
+display: inline-block;
+}
+
+.third__span.crossed {
+  text-decoration: line-through;
+}
+
+.carrousel {
+  width: 45%;
+  height: 40vh;
+  position: relative;
+
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  overflow: hidden;
+}
+
+.carrousel__big {
+  width: 400%;
+  height: 40vh;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-items: flex-start;
+  align-items: center;
+
+  transform: translateX(0);
+  transition: transform 1s ease;
+}
+
+.carrousel__wrapper {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.carrousel__img {
+  width: 100%;
+  height: 8rem;
+  transition: height 1s ease;
+
+}
+
+.carrousel__h4 {
+  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #A7FE2F;
+}
+
+.carrousel__ul {
+  width: 100%;
+  min-height: 2.2rem;
+  margin: .5rem auto;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  overflow: visible;
+
+}
+
+.carrousel__dotbtn {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: transparent;
+  border: #A7FE2F .2rem solid;
+
+  transform:
+    scale(.9) rotate(45deg);
+  transition:
+    transform .6s ease,
+    background-color 1s ease;
+
+  cursor: pointer;
+}
+
+.carrousel__dotbtn.active {
+  background-color: #A7FE2F;
+}
+
+/* Befores */
+.third::before {
   width: 100%;
   height: 10vh;
   display: block;
@@ -1033,8 +1366,8 @@ bottom: 25%;
   top: -13%;
   right: 0;
 }
-
-.third::after{
+/* Afters */
+.third::after {
   width: 100%;
   height: 10vh;
   display: block;
@@ -1049,113 +1382,29 @@ bottom: 25%;
   right: 0;
 }
 
-.third__h3{
-  min-width: 45%;
-  padding: 2%;
-  min-height: 40vh;
-  background-color: #131313;
-  
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-
-  font-size: 5vh;
-  color: #A7FE2F;
-
-  transition: all .5s ease;
-}
-.third__span{
-  text-decoration: line-through;
-}
-.carrousel{
-  width: 45%;
-  height: 40vh;
-  position: relative;
-
-  display: flex;
-  flex-flow: column-reverse nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  overflow: hidden;
-}
-
-.carrousel__big{
-  width: 400%;
-  height: 40vh;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-items: flex-start;
-  align-items: center;
-
-    transform: translateX(0);
-  transition: transform 1s ease;
-}
-.carrousel__wrapper{
-  width: 100%;
-  height: 40vh;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-}
-.carrousel__img{
-  width: 100%;
-  height: 8rem;
-  transition: height 1s ease;
-
-}
-.carrousel__h4{
-  width: 100%;
-  font-size: 1.2rem;
-  text-align: center;
-  color: #A7FE2F;
-}
-.carrousel__ul{
-  width:  100%;
-  min-height: 2.2rem;
-  margin: .5rem auto;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-
-  overflow: visible;
-
-}
-
-.carrousel__dotbtn{
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: transparent;
-  border: #A7FE2F .2rem solid;
-
+/* Hovers */
+.carrousel__dotbtn:hover {
   transform:
-  scale(.9)
-  rotate(45deg);
-  transition:
-  transform .6s ease,
-  background-color 1s ease;
+    scale(1.2) rotate(-45deg);
+}
 
-  cursor: pointer;
-}
-.carrousel__dotbtn:hover{
-  transform:
-  scale(1.2)
-  rotate(-45deg);
-}
-.carrousel__dotbtn.active{
-  background-color: #A7FE2F;
-}
+/* ---------- Fin de Third Section ---------- */
 
 /* Inicio Footer */
-.footer{
+/* Descripción: estilo del footer. Esta sección es sencilla y 
+solo contiene el logo y enlaces de navegación. 
+
+Estructura:  
+- footer
+- footer__img
+- footer__ul
+- footer__span
+
+- Befores
+- Hovers
+*/
+
+.footer {
   width: 100%;
   height: 50vh;
 
@@ -1166,12 +1415,20 @@ bottom: 25%;
 
   gap: 2rem;
   transition: height .5s ease;
+
+  background-image: url('/assets/index/hero__background.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #131313;
 }
-.footer__img{
+
+.footer__img {
   width: 10rem;
 }
 
-.footer__ul{
+.footer__ul {
   width: 90%;
   display: flex;
   flex-flow: row wrap;
@@ -1184,39 +1441,24 @@ bottom: 25%;
   gap: 2rem;
 }
 
-.footer__a::before{
+.footer__span {
+  color: #a8fe2f51;
+  text-align: center;
+}
+
+/* Befores */
+.footer__a::before {
   content: '>';
   opacity: 0;
   transition: opacity .6s ease;
 }
-.footer__a:hover:before{
+
+/* Hovers */
+.footer__a:hover:before {
   opacity: 1;
 }
 
-.footer__span{
-  color:#a8fe2f51;
-  text-align: center;
-}
-
-/* Clases que se activan por JS */
-.hidden {
-  display: none;
-}
-
-.invisible {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
 /* Adaptaciones responsive */
-/* Medidas comunes:
-1920×1080 (escritorio grande)
-1440×900 (escritorio medio)
-*1366×768 (ordenador portátil medio)
-*720×1280 (móvil grande) 
-375×667 (móvil medio)
-360×640 (móvil pequeño)*/
-
 
 @media (max-width: 1336px) {
 
@@ -1233,8 +1475,8 @@ bottom: 25%;
     width: 40%;
     height: 30rem;
     position: absolute;
-    top: 8%;
-    left: calc((100% - 40%)/2.5);
+    top: 20%;
+    left: calc((100% - 40%)/2);
   }
 
   .info {
@@ -1245,8 +1487,7 @@ bottom: 25%;
   }
 
   .info__window {
-    min-width: 20rem;
-    max-width: 30rem;
+    width: 30rem;
     position: absolute;
   }
 
@@ -1272,11 +1513,16 @@ bottom: 25%;
     top: calc(50% - (55vh / 2.2));
     right: 4%;
   }
+
+  .hero__smiley{
+    bottom: 12%;
+  }
 }
 
 @media (max-width: 1000px) {
+
   /* Header */
-  .header{
+  .header {
     width: 100%;
     min-height: 1rem;
 
@@ -1291,8 +1537,8 @@ bottom: 25%;
 
     display: block;
   }
-  
-  .header__wrapper{
+
+  .header__wrapper {
     width: 100%;
     min-height: 101vh;
     position: fixed;
@@ -1317,16 +1563,16 @@ bottom: 25%;
     opacity: 1;
   }
 
-  .header__wrapper.hidden{
+  .header__wrapper.hidden {
     display: none;
   }
 
-  .header__wrapper.invisible{
+  .header__wrapper.invisible {
     transform: translateY(-100%);
     opacity: 0;
   }
 
-  .mobile{
+  .mobile {
     display: block;
     width: 6rem;
     min-height: 6rem;
@@ -1343,7 +1589,8 @@ bottom: 25%;
     opacity: 1;
     transition: all 1s ease;
   }
-  .mobile__svg{
+
+  .mobile__svg {
     width: 4.6rem;
     height: 4.6rem;
     fill: #A7FE2F;
@@ -1352,14 +1599,16 @@ bottom: 25%;
     left: 20%;
     z-index: 4;
     transition:
-    opacity 1s ease,
-    transform .6s ease;
+      opacity 1s ease,
+      transform .6s ease;
     cursor: pointer;
   }
-  .mobile__svg:hover{
+
+  .mobile__svg:hover {
     transform: scale(1.2);
   }
-  .mobile__background{
+
+  .mobile__background {
     width: 7rem;
     min-height: 7rem;
 
@@ -1378,83 +1627,62 @@ bottom: 25%;
 
     animation: rotate 30s infinite ease both;
   }
-  .nav__ul{
+
+  .nav__ul {
     width: 100%;
     display: flex;
- 
+
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
-}
-  .nav__li{
+  }
+
+  .nav__li {
     font-size: 3rem;
     justify-content: flex-start;
     align-items: flex-start;
   }
-  .nav__a{
-    margin: 0 -2rem 0 ;
+
+  .nav__a {
+    margin: 0 -2rem 0;
     transition: margin .5s ease;
   }
-  .nav__a:hover{
+
+  .nav__a:hover {
     margin: 0;
   }
- 
-  .lang{
+
+  .lang {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 2rem;
   }
-  .lang__li{
+
+  .lang__li {
     font-size: 1.5rem;
   }
-  .social{
+
+  .social {
     width: 100%;
     gap: 0;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
   }
-  .social__svg{
-    width: 3rem;
-    height: 3rem;
-  }
-  
-  .social__button{
-    width: 100%;
-    height: 3rem;
-    padding: 0 0 0 .6rem;
 
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-
-    text-transform: uppercase;
-    font-size: 1.3rem;
-
-    color: #A7FE2F;
-    border: #A7FE2F .125rem solid;
-
-    cursor: pointer;
-    transition: opacity 1s ease;
-
-    transform: scale(1);
-    transition: all .6s ease;
-  }
-  .menu__svg{
+  .social__svg {
     width: 3rem;
     height: 3rem;
   }
 
-  .social__button:hover{
-    background-color:#A7FE2F;
-    color: #131313;
-    font-weight: 700;
-    transform: scale(1.1);
+  .menu__svg {
+    width: 3rem;
+    height: 3rem;
   }
-  .toggle{
+
+  .toggle {
     position: fixed;
     top: 5%;
     right: 5%;
@@ -1512,63 +1740,75 @@ bottom: 25%;
     top: calc(50% - (40vh /2));
     right: 4%;
   }
+
   /* Second Section */
-  .second__wrapper{
+  .second__wrapper {
     top: 52%;
   }
+
   /* Third Section */
-  .third{
+  .third {
     flex-flow: column nowrap;
     height: 90vh;
   }
 
-  .third::before{
+  .third::before {
     top: -7%;
   }
-  .third::after{
+
+  .third::after {
     bottom: -9%;
   }
 
-  .third__h3{
+  .third__wrapper{
     width: 90%;
-    min-height: 30vh;
+  }
+  .third__span {
     font-size: 2.5rem;
-    z-index: 3;
   }
-  .carrousel{
+
+  .carrousel {
     width: 90%;
   }
-  .carrousel__h4{
+
+  .carrousel__h4 {
     font-size: 1.5rem;
   }
-  
-  .carrousel__img{
+
+  .carrousel__img {
     height: 7rem;
   }
-  .carrousel__ul{
+
+  .carrousel__ul {
     gap: 3rem;
   }
-  .carrousel__dotbtn{
+
+  .carrousel__dotbtn {
     width: 2rem;
     height: 2rem;
   }
 
   /* Footer */
-  .footer{
+  .footer {
     height: 70vh;
   }
-  .footer__ul{
+
+  .footer__ul {
     width: 90%;
   }
-  .footer__li{
+
+  .footer__li {
     font-size: 1.7rem;
   }
-  .footer__span{
+
+  .footer__span {
     width: 90%;
     font-size: 1.5rem;
   }
 }
+
 @media (max-width: 600px) {
+  /* Hero */
   .hero {
     min-height: 50vh;
     height: 50vh;
@@ -1581,18 +1821,23 @@ bottom: 25%;
     left: calc(50% - (15rem/1.8));
     top: calc(50% - (15rem/2));
   }
+
+  /* Services */
+  .services__li{
+    font-size: 2rem;
+  }
 }
 
 
 /* Animaciones */
 
 @keyframes fadeInTop {
-  from{
+  from {
     transform: translateY(-50%);
     opacity: 0;
   }
 
-  to{
+  to {
     transform: translateY(0);
     opacity: 1;
   }
@@ -1639,7 +1884,8 @@ bottom: 25%;
   from {
     transform: translateX(0%);
   }
-  to{
+
+  to {
     transform: translateX(-50%);
   }
 }
@@ -1661,49 +1907,58 @@ bottom: 25%;
   from {
     transform: rotate(0);
   }
-  to{
+
+  to {
     transform: rotate(360deg);
   }
 }
 
 @keyframes play {
-  0%{
+  0% {
     background-image: url(/assets/index/animation/frame1-left.svg);
   }
-  35%{
+
+  35% {
     background-image: url(/assets/index/animation/frame2-left.svg);
   }
-  75%{
+
+  75% {
     background-image: url(/assets/index/animation/frame3-left.svg);
   }
-  100%{
+
+  100% {
     background-image: url(/assets/index/animation/frame4-left.svg);
   }
 }
 
 @keyframes playReverse {
-  0%{
+  0% {
     background-image: url(/assets/index/animation/frame4-left.svg);
   }
-  35%{
+
+  35% {
     background-image: url(/assets/index/animation/frame3-left.svg);
   }
-  75%{
+
+  75% {
     background-image: url(/assets/index/animation/frame2-left.svg);
   }
-  100%{
+
+  100% {
     background-image: url(/assets/index/animation/frame1-left.svg);
   }
 }
 
 @keyframes beat {
-  0%{
+  0% {
     transform: scale(1);
   }
-  50%{
+
+  50% {
     transform: scale(1.1);
   }
-  100%{
+
+  100% {
     transform: scale(1);
   }
 }
