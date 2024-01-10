@@ -5,9 +5,9 @@
 Estructura general:
     - Barra de navegación
     - Contenido principal
-    - Contenido destacado (porfolio)
-    - Contenido destacado (contacto) 
-    - Carrousel de marcas
+    - Primera sección (CTA a porfolio)
+    - Segunda sección (CTA contacto) 
+    - Tercesa sección (Carrousel de marcas)
     - Pie de página
 -->
 
@@ -38,11 +38,12 @@ Estructura general:
     - Listado de enlaces a redes sociales: 
         -Linkedin
         -Github
-        -Instagram
-    -Toggle modo incógnito
-    -Botón de menú invisible (mobile) -->
+        -Threads
+    - Toggle modo incógnito
+    - Botón de menú (mobile)
+    - Botón de close (mobile)-->
+
     <header class="header">
-        <!-- ERROR Testeando con clase "menu" cosas de js -->
         <div class="header__wrapper">
             <!-- Logotipo -->
             <h1 class="header__h1">
@@ -87,6 +88,7 @@ Estructura general:
 
             <!-- Redes Sociales -->
             <ul class="header__social social">
+                <!-- Linkedin -->
                 <li class="social__li">
                     <a href="" class="social__a" title="Linkedin" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -96,6 +98,7 @@ Estructura general:
                         </svg>
                     </a>
                 </li>
+                <!-- Github -->
                 <li class="social__li">
                     <a href="" class="social__a" title="GitHub" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -105,6 +108,7 @@ Estructura general:
                         </svg>
                     </a>
                 </li>
+                <!-- Threads -->
                 <li class="social__li">
                     <a href="" class="social__a" title="Threads" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -116,6 +120,7 @@ Estructura general:
                         </svg>
                     </a>
                 </li>
+                <!-- Close button -->
                 <li class="social__li">
                     <button type="button" class="social__button menu" title="Close">
                         Close
@@ -138,6 +143,7 @@ Estructura general:
                 <span class="toggle__handle" title="toggle"></span>
             </label>
         </div>
+        <!-- Mobile menu button -->
         <div class="header__wrapper mobile">
             <button type="button" class="mobile__menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
@@ -152,17 +158,17 @@ Estructura general:
 
     <!--
     Sección Hero (Main)
-    *En esta sección tenemos:
-        -Logotipo en grande
-        -Un falso archivo "readme.txt" que contiene el título de la web y
+    * En esta sección tenemos:
+        - Logotipo en grande
+        - Un falso archivo "readme.txt" que contiene el título de la web y
         los servicios que ofrezco.
-        -Un falso archivo "oddeye.exe" decorativo
-        -Un svg decorativo de smiley con tres ojos
-        -Un svg decorativo de las fases de la luna
+        - Un falso archivo "oddeye.exe" decorativo
+        - Un svg decorativo de smiley con tres ojos
+        - Un svg decorativo de las fases de la luna
 
-    *Interacciones:
-        -El logotipo sigue el cursor con la mirada
-        -"readme.txt" y "oddeye.exe" se pueden minimizar,cerrar y mover por la pantalla. 
+    * Interacciones:
+        - El logotipo sigue el cursor con la mirada
+        - "readme.txt" y "oddeye.exe" se pueden minimizar,cerrar y mover por la pantalla. 
      -->
     <main class="hero">
 
@@ -457,7 +463,11 @@ Estructura general:
         <img src="assets/index/hero__smiley.svg" alt="A smiley with three eyes" class="hero__smiley" fetchpriority="low"
             loading="lazy">
     </main>
-    <!-- Services section mobile only-->
+
+    <!-- Services section (mobile only)
+    * En esta sección tenemos:
+        - Una lista de servicios que hace scroll infinito
+     -->
     <section class="section services">
         <ul class="services__ul">
             <li class="services__li">
@@ -492,7 +502,15 @@ Estructura general:
             </li>
         </ul>
     </section>
-    <!-- Second section -->
+    <!-- First section 
+    * En esta sección tenemos:
+        - Un adorno que recuerda a los "bigotes" del logo
+        - Un enlace al porfolio en h3
+
+    * Interacciónes:
+        - Cuando hacemos hover sobre la sección el "bigote" se encoje y 
+        el botón se mueve hacia la izquierda, como si apretara el bigote.
+    -->
     <section class="section first">
         <div class="first__animation"></div>
         <div class="first__wrapper">
@@ -503,7 +521,17 @@ Estructura general:
             </a>
         </div>
     </section>
-    <!-- Second section -->
+    <!-- Second section 
+    * En esta sección tenemos:
+        - Un h3 CTA
+        - Un enlace a contacto
+        - Un vídeo de fondo
+            /* Vídeo de Borys Zaitsev de Pexels:
+            https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-12275368/ */
+        
+        * Interacciones: Cuando hacemos hover el cursor se transforma en un ovni
+        que sobrevuela las estrellas
+    -->
     <section class="section second">
         <h3 class="second__h3">
             Boost your projects to a cosmic level!
@@ -517,39 +545,48 @@ Estructura general:
             poster="assets/index/thumbnail.webp" playsinline></video>
     </section>
     <!-- Third section -->
+    <!-- * En esta sección tenemos:
+        - Un texto
+        - Un carrousel sencillo con los logos de algunas marcas con las que
+        he trabajado y su nombre en h4.
+    
+        * Interacciones: Cambio de imagen en el carrousel.
+    -->
     <section class="section third">
         <div class="third__wrapper">
-        <span class="third__span">
-            Brand's I've
-            <span class="third__span crossed">
-                abducted
+            <span class="third__span">
+                Brand's I've
+                <span class="third__span crossed">
+                    abducted
+                </span>
+                worked with
             </span>
-            worked with
-        </span>
-    </div>
+        </div>
         <div class="third__carrousel carrousel">
             <ul class="carrousel__ul"></ul>
             <div class="carrousel__big">
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/logos/penguin__logo.svg" alt="0" class="carrousel__img">
+                    <img src="/assets/index/logos/penguin__logo.svg" alt="Penguin Random House Logo"
+                        class="carrousel__img">
                     <h4 class="carrousel__h4">
                         Penguin Random House
                     </h4>
                 </div>
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/logos/oni__logo.svg" alt="2" class="carrousel__img">
+                    <img src="/assets/index/logos/oni__logo.svg" alt="Oni Clothing Logo" class="carrousel__img">
                     <h4 class="carrousel__h4">
                         Oni Clothing By Wismichu
                     </h4>
                 </div>
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/logos/sz__logo.svg" alt="3" class="carrousel__img">
+                    <img src="/assets/index/logos/sz__logo.svg" alt="Survival Zombie Logo" class="carrousel__img">
                     <h4 class="carrousel__h4">
                         Survival Zombie
                     </h4>
                 </div>
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/logos/nocturna__logo.svg" alt="4" class="carrousel__img">
+                    <img src="/assets/index/logos/nocturna__logo.svg" alt="Nocturna Editorial Logo"
+                        class="carrousel__img">
                     <h4 class="carrousel__h4">
                         Nocturna Editorial
                     </h4>
@@ -557,8 +594,16 @@ Estructura general:
             </div>
         </div>
     </section>
+    <!-- Footer 
+    *Esta sección contiene:
+        - Logotipo pequeño
+        - Un listado de enlaces.
+        - Copyright
+    -->
+
     <footer class="footer">
-        <img class="footer__img" src="/assets/index/oddeye__logo__header.svg" alt="" loading="lazy" fetchpriority="low">
+        <img class="footer__img" src="/assets/index/oddeye__logo__header.svg" alt="Oddeye Logo" loading="lazy"
+            fetchpriority="low">
         <ul class="footer__ul">
             <li class="footer__li">
                 <a href="" class="footer__a">
@@ -582,7 +627,7 @@ Estructura general:
             </li>
         </ul>
         <span class="footer__span">
-            © Oddeye Creations, 2024 
+            © Oddeye Creations, 2024
         </span>
     </footer>
 </body>

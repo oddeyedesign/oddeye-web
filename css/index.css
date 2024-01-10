@@ -5,6 +5,11 @@ index.css
 - Reset / Normalizar
 - Header
 - Hero
+- First Section
+- Second Section
+- Third Section
+- Footer
+- Media Queries (Adaptaciones Responsive)
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
@@ -932,7 +937,7 @@ Estructura:
   letter-spacing: .5rem;
   white-space: nowrap;
 
-  transition: font-size .6 ease;
+  transition: font-size .6s ease;
 }
 
 /* --------------- Fin de Services Section --------------- */
@@ -1115,7 +1120,6 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   position: absolute;
   top: 0;
   left: 0;
-  filter: grayscale();
 }
 
 .second__wrapper {
@@ -1458,7 +1462,7 @@ Estructura:
   opacity: 1;
 }
 
-/* Adaptaciones responsive */
+/* Media Queries (Adaptaciones responsive) */
 
 @media (max-width: 1336px) {
 
@@ -1538,9 +1542,13 @@ Estructura:
     display: block;
   }
 
+/* BUG/ERROR Estoy teniendo problemas para adaptar esta sección.
+En el top hay una separación aunque ponga top 0% y si pongo más de 2% el header svg se va a la mitad de la pantalla.
+También se va el header__svg por ahí si intento poner height en lugar de min-height */
   .header__wrapper {
     width: 100%;
     min-height: 101vh;
+    max-height: 101vh;
     position: fixed;
     z-index: 5;
     padding: 5%;
