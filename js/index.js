@@ -116,12 +116,16 @@ const modeSwitch = (function () {
 // Llamamos a la función modeSwitch
 window.addEventListener('load', function () {
     modeSwitch()
+    // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
+    firstInteraction()
 })
 
 //Cuando la ventana cambia de tamaño
 // Llamamos a la función modeswitch
 window.addEventListener('resize', function () {
     modeSwitch()
+        // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
+    firstInteraction()
 })
 
 
@@ -472,6 +476,7 @@ hero.addEventListener('pointermove', pointerMove)
 
 // -------------Inicio de First section Scripts -----------------------
 
+// Si el modo desktop está activo:
 // Cuando hago mouseover en .first
 // ADD la clase play en .first__animation
 // ADD la clase play en .first__a
@@ -479,18 +484,33 @@ hero.addEventListener('pointermove', pointerMove)
 // REMOVE la clase plau en .first__animation
 // REMOVE la clase play en .first__a
 
-const first = document.querySelector('.first')
-const firstAnimation = document.querySelector('.first__animation')
-const firstA = document.querySelector('.first__a')
+const firstInteraction = (function() {
+    const first = document.querySelector('.first')
+    const firstAnimation = document.querySelector('.first__animation')
+    const firstA = document.querySelector('.first__a')
 
+if(desktopActive){
 first.addEventListener('pointerover', function () {
     firstAnimation.classList.add('play')
     firstA.classList.add('play')
+    
     first.addEventListener('pointerout', function () {
         firstAnimation.classList.remove('play')
         firstA.classList.remove('play')
     })
 })
+}
+else{
+    // Si el modo móvil está activo
+    // ADD la clase play a .first__animation
+    // ADD la clase play a .firstA
+        firstAnimation.classList.add('play')
+        firstA.classList.add('play')
+}
+})
+
+
+
 
 // ------------- Fin de First Section Scripts -------------------------
 
