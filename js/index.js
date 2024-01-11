@@ -38,7 +38,7 @@ const mobileWrapper = document.querySelector('.mobile')
 const closeMobMenu = document.querySelector('.social__button')
 const services = document.querySelector('.services')
 const infoWrapper = document.querySelector('.info')
-const menu = document.querySelector('.header__wrapper')
+const headerWrapper = document.querySelector('.header__wrapper')
 
 
 // Definimos la función Desktop mode para agrupar todos los cambios:
@@ -47,23 +47,23 @@ const menu = document.querySelector('.header__wrapper')
 // .services add hidden
 //.info add hidden
 // .header__wrapper add hidden
-const desktopMode = (function (){
-        console.log(screenWidth)
-        console.log('Mobile Active?' + mobileActive)
-        console.log('Desktop Active?' + desktopActive)
-        mobileWrapper.classList.add('invisible')
-        closeMobMenu.classList.add('invisible')
-        services.classList.add('invisible')
-        infoWrapper.classList.remove('hidden')
-        menu.classList.remove('hidden')
+const desktopMode = (function () {
+    console.log(screenWidth)
+    console.log('Mobile Active?' + mobileActive)
+    console.log('Desktop Active?' + desktopActive)
+    mobileWrapper.classList.add('invisible')
+    closeMobMenu.classList.add('invisible')
+    services.classList.add('invisible')
+    infoWrapper.classList.remove('hidden')
+    headerWrapper.classList.remove('hidden')
 
-        setTimeout(function(){
+    setTimeout(function () {
         mobileWrapper.classList.add('hidden')
         closeMobMenu.classList.add('hidden')
         services.classList.add('hidden')
         infoWrapper.classList.remove('invisible')
-         menu.classList.remove('invisible')
-        },50)
+        headerWrapper.classList.remove('invisible')
+    }, 50)
 })
 
 // Definimos la función mobile mode para agrupar todos los cambios:
@@ -72,25 +72,25 @@ const desktopMode = (function (){
 // .services remove hidden
 //.info remove hidden
 // .header__wrapper remove hidden
-const mobileMode = (function(){
-        console.log(screenWidth)
-        console.log('Mobile Active?' + mobileActive)
-        console.log('Desktop Active?' + desktopActive)
+const mobileMode = (function () {
+    console.log(screenWidth)
+    console.log('Mobile Active?' + mobileActive)
+    console.log('Desktop Active?' + desktopActive)
 
-        mobileWrapper.classList.remove('hidden')
-        closeMobMenu.classList.remove('hidden')
-        services.classList.remove('hidden')
-        infoWrapper.classList.add('invisible')
-        menu.classList.add('invisible')
+    mobileWrapper.classList.remove('hidden')
+    closeMobMenu.classList.remove('hidden')
+    services.classList.remove('hidden')
+    infoWrapper.classList.add('invisible')
+    headerWrapper.classList.add('invisible')
 
-        setTimeout(function(){
-            console.log('Chao')
+    setTimeout(function () {
+        console.log('Chao')
         mobileWrapper.classList.remove('invisible')
         closeMobMenu.classList.remove('invisible')
         services.classList.remove('invisible')
         infoWrapper.classList.add('hidden')
-        menu.classList.add('hidden')
-        },50)
+        headerWrapper.classList.add('hidden')
+    }, 50)
 
 })
 
@@ -101,26 +101,26 @@ const mobileMode = (function(){
 // Comprobamos si se cumplen los requisitos de mobileActive y desktopActive
 // llamamos a la función desktopmode
 // ELSE llamamos a la función mobilemode
-const modeSwitch = (function(){
+const modeSwitch = (function () {
     screenWidth = window.innerWidth
     mobileActive = screenWidth >= 1000
-    if (mobileActive){
+    if (mobileActive) {
         desktopMode()
     }
-    else{
+    else {
         mobileMode()
     }
 })
 
 //Cuando la ventana carga
 // Llamamos a la función modeSwitch
-window.addEventListener ( 'load', function (){
+window.addEventListener('load', function () {
     modeSwitch()
 })
 
 //Cuando la ventana cambia de tamaño
 // Llamamos a la función modeswitch
-window.addEventListener('resize', function(){
+window.addEventListener('resize', function () {
     modeSwitch()
 })
 
@@ -129,26 +129,74 @@ window.addEventListener('resize', function(){
 
 
 // ---------------Inicio Header Scripts ----------------------------
-// Cuando hago click en .mobile__svg:
+// Cuando hago click en .mobile:
 // REMOVE la clase hidden a .header__wrapper
-// REMOVE la clase hiden a .social__button
+// ADD la clase active a .header
+// ADD la clase invisible a .mobile
 // Espera .5s
-// REMOVE la clase invisible a .header__wrapper
+// Add la clase hidden a .mobile
+// Remove la clase invisible a .header__wrapper
+// A cada .nav__li INDEX:
+// Espera .2
+// [0] add la clase active
+// Espera .4
+// [1] add la clase active
+// Espera .6
+// [2] add la clase active
+// Espera .8
+// [3] ass la clase active
 
-const mobileMenu = document.querySelector('.mobile__svg')
+const mobileMenu = document.querySelector('.mobile')
+const header = document.querySelector('.header')
+const navLi = document.querySelectorAll('.nav__li')
 
-mobileMenu.addEventListener('click', function(){
-    menu.classList.remove('hidden')
-    setTimeout(function(){
-       menu.classList.remove('invisible')
-    },1000)
+mobileMenu.addEventListener('click', function () {
+    headerWrapper.classList.remove('hidden')
+    header.classList.add('active')
+    mobileMenu.classList.add('invisible')
+    setTimeout(function () {
+        mobileMenu.classList.add('hidden')
+        headerWrapper.classList.remove('invisible')
+        navLi.forEach(function (eachLi, i) {
+            setTimeout(function(){
+            navLi[0].classList.add('active')
+            }, 200)
+            setTimeout(function () {
+                navLi[1].classList.add('active')
+            }, 400)
+            setTimeout(function () {
+                navLi[2].classList.add('active')
+            }, 600)
+            setTimeout(function () {
+            navLi[3].classList.add('active')
+            }, 800)
+    }, 500)
+    })
 })
 
-closeMobMenu.addEventListener('click', function(){
-    menu.classList.add('invisible')
-    setTimeout(function(){
-        menu.classList.add('hidden')
-    },1000)
+// Cuando hago click en .social__button
+// ADD la clase invisible a .header__wrapper
+// REMOVE la clase active a .header
+// REMOVE la clase hidden a .mobile
+// Espera .5
+// REMOVE la clase invisible a .mobile
+// ADD la clase hidden a .header__wrapper
+// Por cada .nav__li INDEX 
+// REMOVE la clase active
+
+closeMobMenu.addEventListener('click', function () {
+    headerWrapper.classList.add('invisible')
+    header.classList.remove('active')
+    mobileMenu.classList.remove('hidden')
+    setTimeout(function () {
+        mobileMenu.classList.remove('invisible')
+        headerWrapper.classList.add('hidden')
+
+        navLi.forEach(function (eachLi, i) {
+            navLi[i].classList.remove('active')
+        })
+
+    }, 500)
 })
 
 // SI el enlace de la web contiene /ES
@@ -161,11 +209,11 @@ const spanishSite = window.location.href.includes(spanishURL)
 const spanishLink = document.getElementById('es')
 const englishLink = document.getElementById('en')
 
-if(spanishSite){
+if (spanishSite) {
     console.log('Web en Castellano')
     englishLink.classList.add('hidden')
 }
-else{
+else {
     console.log(' English site')
     spanishLink.classList.add('hidden')
 }
@@ -269,11 +317,11 @@ const winContent = document.querySelectorAll('.window__content')
 // Espera .5s 
 // Add la clase hidden a .info__window más cercano
 
-closeBtn.forEach(function(eachClose, i){
-    closeBtn[i].addEventListener('click' , function(){
+closeBtn.forEach(function (eachClose, i) {
+    closeBtn[i].addEventListener('click', function () {
         const closeButtonParent = eachClose.closest('.info__window')
         closeButtonParent.classList.add('closed')
-        setTimeout(function (){
+        setTimeout(function () {
             eachClose.closeButtonParent.classList.add('hidden')
         }, '100')
     })
@@ -291,7 +339,7 @@ minBtn.forEach(function (eachMin, i) {
         minBtn[i].classList.add('hidden')
         resBtn[i].classList.remove('hidden')
         winContent[i].classList.add('minimized')
-        setTimeout(function(){
+        setTimeout(function () {
             winContent[i].classList.add('hidden')
         }, '200')
     })
@@ -304,13 +352,13 @@ minBtn.forEach(function (eachMin, i) {
 //Espera.5s
 // Remove la clase hidden a a.window__content
 resBtn.forEach(function (eachRes, i) {
-    resBtn[i].addEventListener('click', function(){
-    resBtn[i].classList.add('hidden')
-    minBtn[i].classList.remove('hidden')
-    winContent[i].classList.remove('hidden')
-    setTimeout(function(){
-        winContent[i].classList.remove('minimized')
-    },'200')
+    resBtn[i].addEventListener('click', function () {
+        resBtn[i].classList.add('hidden')
+        minBtn[i].classList.remove('hidden')
+        winContent[i].classList.remove('hidden')
+        setTimeout(function () {
+            winContent[i].classList.remove('minimized')
+        }, '200')
     })
 })
 
@@ -330,7 +378,7 @@ const snout = document.getElementById('snout')
 const pupil = document.querySelectorAll('.eye__pupil')
 
 // Definimos la posición del cursor en 0 en los ejes xy
-let cursorPosition = {x:0 , y:0}
+let cursorPosition = { x: 0, y: 0 }
 
 // ERROR: **********************************
 // En el tutorial lo hace así, pero si lo hago así en lugar de
@@ -353,7 +401,7 @@ let cursorPosition = {x:0 , y:0}
 
 // Definimos el tamaño de la ventana con una función
 // La función contiene viewportHeight y viewportWidth
-function defineScreenSize(){
+function defineScreenSize() {
     let viewportHeight = window.innerHeight
     let viewportWidth = window.innerWidth
 }
@@ -364,8 +412,8 @@ function defineScreenSize(){
 // https://www.w3schools.com/jsref/event_clientx.asp
 // Llamamos a la función follow para seguir el movimiento del mouse
 // *Follow se define más adelante
-function pointerMove(e){
-    cursorPosition = {x:e.clientX, y:e.clientY}
+function pointerMove(e) {
+    cursorPosition = { x: e.clientX, y: e.clientY }
     follow()
 }
 
@@ -374,7 +422,7 @@ function pointerMove(e){
 // Element = elementos a transformar
 // xRatio = distancia entre element y el cursor en eje X
 // yRatio = distancia entre el element y el cursor en eje Y
-const lookAtCursor = (element , xRatio, yRatio) => {
+const lookAtCursor = (element, xRatio, yRatio) => {
     // La posición de element la define get.boundingClientRect 
     // Que devuelve el tamaño y la posición del elemento en relación al viewport
     //https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
@@ -385,37 +433,37 @@ const lookAtCursor = (element , xRatio, yRatio) => {
     const centerY = elementOffset.y + elementOffset.height / 2
     // Calculamos la distancia entre el cursor y el centro del elemento en ambos ejes
     // Redondondeamos: cursorPosition.x - menos centerX * 100 / window.innerWidth
-    const distanceLeft = Math.round(((cursorPosition.x - centerX)*100)/window.innerWidth)
+    const distanceLeft = Math.round(((cursorPosition.x - centerX) * 100) / window.innerWidth)
     // Redondeamos: cursorPosition.y - menos centerY * 100 / window.innerHeight
     // Esto nos da el vamor redondeado del porcentaje del alto y ancho de la ventana
-    const distanceTop = Math.round(((cursorPosition.y - centerY)*100)/window.innerHeight)
+    const distanceTop = Math.round(((cursorPosition.y - centerY) * 100) / window.innerHeight)
     // Aplicamos la transformación al estilo del elemento con translate calculando dos valores:
     // la distancia entre el cursor y distanceLeft/xRatio 
     // la distancia entre el cursor y distanceTop/yRatio
-    element.style.transform = `translate(${distanceLeft/xRatio}rem, ${distanceTop/yRatio}rem)`
+    element.style.transform = `translate(${distanceLeft / xRatio}rem, ${distanceTop / yRatio}rem)`
     // Añadimos una transition transform para suavizar el efecto
     element.style.transition = "transform .3s ease"
 }
 
 // Definimos la posición actual del elemento con la follow (que está en la función mousemove)
-const follow = function(){
+const follow = function () {
     // SI el elemento es X lookAtCursor (elemento, valor de xRatio, valor de yRatio)
-    if(pupil) 
-    // En el caso de pupil, como he utilizado querySelectorAll para optimizar:
-    // forEach pupil INDEX asignamos un valor distinto (1 y 2 se salen del ojo si no)
-    pupil.forEach(function (eachPupil, i){
-        lookAtCursor(pupil[0], 50, 50)
-        lookAtCursor(pupil[1], 70, 70)
-        lookAtCursor(pupil[2], 90, 90)
-    })
+    if (pupil)
+        // En el caso de pupil, como he utilizado querySelectorAll para optimizar:
+        // forEach pupil INDEX asignamos un valor distinto (1 y 2 se salen del ojo si no)
+        pupil.forEach(function (eachPupil, i) {
+            lookAtCursor(pupil[0], 50, 50)
+            lookAtCursor(pupil[1], 70, 70)
+            lookAtCursor(pupil[2], 90, 90)
+        })
 
-    if(snout) lookAtCursor(snout, 100, 100)
-    if(face) lookAtCursor(face, 80, 80)
+    if (snout) lookAtCursor(snout, 100, 100)
+    if (face) lookAtCursor(face, 80, 80)
 }
 
 // Cuando hago resize en la ventana, activo la función defineScreenSize
 // Cuando hago mousemove en la ventana, activo la función mouseMove
-window.addEventListener('resize' , defineScreenSize)
+window.addEventListener('resize', defineScreenSize)
 
 const hero = document.querySelector('.hero')
 hero.addEventListener('pointermove', pointerMove)
@@ -435,10 +483,10 @@ const first = document.querySelector('.first')
 const firstAnimation = document.querySelector('.first__animation')
 const firstA = document.querySelector('.first__a')
 
-first.addEventListener('pointerover' , function(){
+first.addEventListener('pointerover', function () {
     firstAnimation.classList.add('play')
     firstA.classList.add('play')
-    first.addEventListener('pointerout', function(){
+    first.addEventListener('pointerout', function () {
         firstAnimation.classList.remove('play')
         firstA.classList.remove('play')
     })
@@ -462,7 +510,7 @@ const carList = document.querySelector('.carrousel__ul')
 
 const dotList = document.createDocumentFragment()
 
-carItems.forEach(function (eachDot , index) {
+carItems.forEach(function (eachDot, index) {
     const li = document.createElement('li')
     li.classList.add('carrousel__li')
 
@@ -493,13 +541,13 @@ carList.appendChild(dotList)
 const dotBtn = document.querySelectorAll('.carrousel__dotbtn')
 const carBig = document.querySelector('.carrousel__big')
 
-dotBtn.forEach(function(eachDot , i){
-    dotBtn[i].addEventListener('click' , function(){
+dotBtn.forEach(function (eachDot, i) {
+    dotBtn[i].addEventListener('click', function () {
 
-        let translateXCalc = i*( 100 / carItems.length)
+        let translateXCalc = i * (100 / carItems.length)
         carBig.style.transform = `translateX(${-translateXCalc}%)`
-        
-        dotBtn.forEach(function(eachDot , i){
+
+        dotBtn.forEach(function (eachDot, i) {
             dotBtn[i].classList.remove('active')
         })
         dotBtn[i].classList.add('active')

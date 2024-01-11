@@ -156,6 +156,15 @@ body {
   -webkit-font-smoothing: antialiased;
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
+
+  /* Background */
+
+  background-image: url('/assets/index/hero__background.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #131313;
 }
 
 /* --------------- Inicio de Header --------------*/
@@ -196,6 +205,7 @@ Estructura:
   min-height: 10vh;
 
   mask-image: url(/assets/index/header__mask.svg);
+
   mask-repeat: repeat-x;
 
   position: fixed;
@@ -496,13 +506,6 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 .hero {
   width: 100%;
   min-height: 100vh;
-
-  background-image: url('/assets/index/hero__background.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #131313;
 
   display: flex;
   flex-flow: column nowrap;
@@ -955,6 +958,7 @@ Estructura:
   - first__a.play
   - first__animation
   - first__animation.play
+  - first__span
   
   - Befores
   - Afters
@@ -1033,6 +1037,13 @@ Estructura:
   animation: play .1s linear 1 forwards;
 }
 
+.first__span{
+  color: #8F49FF;
+  position: absolute;
+  bottom: 7%;
+  font-size: 1.1rem;
+  display: none;
+}
 /*  Before */
 .first::before {
   width: 100%;
@@ -1136,7 +1147,7 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   top: 48%;
   left: calc(50% - (12rem/2));
 
-  mask-image: url(/assets/index/second_mask.svg);
+  mask-image: url(/assets/index/second__button__mask.svg);
   mask-repeat: no-repeat;
   mask-size: 12rem;
 
@@ -1322,13 +1333,13 @@ display: inline-block;
 }
 
 .carrousel__ul {
-  width: 100%;
+  width: 50%;
   min-height: 2.2rem;
   margin: .5rem auto;
 
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
 
@@ -1528,7 +1539,8 @@ Estructura:
   /* Header */
   .header {
     width: 100%;
-    min-height: 1rem;
+    height: 1rem;
+    margin: 0;
 
     mask-image: none;
     background: transparent;
@@ -1536,38 +1548,39 @@ Estructura:
     backdrop-filter: none;
 
     position: fixed;
-    top: -2%;
-    left: 0;
+    top: -100%;
+    left: 0%;
 
-    display: block;
+    display: flex;
+
+    animation: none;
+    transition:
+    top .5s ease;
+    opacity: 1;
   }
 
-/* BUG/ERROR Estoy teniendo problemas para adaptar esta sección.
-En el top hay una separación aunque ponga top 0% y si pongo más de 2% el header svg se va a la mitad de la pantalla.
-También se va el header__svg por ahí si intento poner height en lugar de min-height */
-  .header__wrapper {
-    width: 100%;
-    min-height: 101vh;
-    max-height: 101vh;
-    position: fixed;
-    z-index: 5;
-    padding: 5%;
+  .header.active {
+    top: 0%;
+  }
 
-    top: -2%;
-    left: 0;
+  .header__wrapper{
+    width: 100%;
+    height: 100vh;
+    padding: 5%;
+    margin: 0;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 4rem;
 
     background: radial-gradient(circle, rgba(35, 19, 60, 0.9) 47%, rgba(18, 11, 30, 0.9) 100%);
     box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
     backdrop-filter: blur(.7rem);
 
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 4rem;
-
-    transform: translateY(0);
-    transition: all 1s ease;
+    transition: opacity .5s ease;
+    position: fixed;
     opacity: 1;
   }
 
@@ -1575,18 +1588,17 @@ También se va el header__svg por ahí si intento poner height en lugar de min-h
     display: none;
   }
 
-  .header__wrapper.invisible {
-    transform: translateY(-100%);
+  .header__wrapper.invisible{
     opacity: 0;
   }
 
   .mobile {
-    display: block;
     width: 6rem;
-    min-height: 6rem;
-    position: absolute;
-    left: 4%;
-    margin-top: 4%;
+    height: 6rem;
+
+    position: fixed;
+    top: 2%;
+    left: 2%;
     z-index: 4;
 
     background: transparent;
@@ -1595,45 +1607,53 @@ También se va el header__svg por ahí si intento poner height en lugar de min-h
     background-color: transparent;
 
     opacity: 1;
-    transition: all 1s ease;
-  }
-
-  .mobile__svg {
-    width: 4.6rem;
-    height: 4.6rem;
-    fill: #A7FE2F;
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    z-index: 4;
     transition:
-      opacity 1s ease,
-      transform .6s ease;
-    cursor: pointer;
-  }
-
-  .mobile__svg:hover {
-    transform: scale(1.2);
-  }
-
-  .mobile__background {
-    width: 7rem;
-    min-height: 7rem;
-
-    position: absolute;
-    top: 0;
-    left: 0;
+    left .5s ease,
+    opacity .5s ease;
 
     mask-image: url(/assets/index/header__mobile__mask.svg);
     mask-repeat: no-repeat;
-    mask-size: 7rem;
     mask-position: center;
 
     background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
     box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
     backdrop-filter: blur(.2rem);
 
-    animation: rotate 30s infinite ease both;
+    animation: rotate 30s infinite linear both;
+    transform: scale(1);
+    display: block;
+  }
+
+  .mobile.invisible{
+    left: -100%;
+    opacity: 0;
+  }
+
+  .mobile.hidden{
+    display: none;
+  }
+
+  .mobile__svg {
+    width: 3rem;
+    height: 3rem;
+    fill: #A7FE2F;
+
+    position: absolute;
+    top: calc(50% - (3rem/2));
+    left: calc(50% - (3rem/2));
+    z-index: 4;
+    
+    transition:
+    opacity 1s ease,
+    transform .6s ease;
+    cursor: pointer;
+
+    animation: rotate 30s linear infinite both;
+    animation-direction: reverse;
+  }
+
+  .mobile__svg:hover {
+    transform: scale(1.2);
   }
 
   .nav__ul {
@@ -1646,9 +1666,22 @@ También se va el header__svg por ahí si intento poner height en lugar de min-h
   }
 
   .nav__li {
+    width: 100%;
     font-size: 3rem;
+    text-align: left;
+
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+
+    transform: translateX(-200%);
+    transition: transform .3s ease;
+    opacity: 0;
+  }
+
+  .nav__li.active{
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .nav__a {
@@ -1678,6 +1711,8 @@ También se va el header__svg por ahí si intento poner height en lugar de min-h
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    transition: all 1s ease;
+
   }
 
   .social__svg {
@@ -1788,7 +1823,7 @@ También se va el header__svg por ahí si intento poner height en lugar de min-h
   }
 
   .carrousel__ul {
-    gap: 3rem;
+    width: 90%;
   }
 
   .carrousel__dotbtn {
@@ -1816,6 +1851,8 @@ También se va el header__svg por ahí si intento poner height en lugar de min-h
 }
 
 @media (max-width: 600px) {
+  /* Header */
+
   /* Hero */
   .hero {
     min-height: 50vh;
@@ -1833,6 +1870,18 @@ También se va el header__svg por ahí si intento poner height en lugar de min-h
   /* Services */
   .services__li{
     font-size: 2rem;
+  }
+
+  .second__h3{
+    font-size: 1.5rem;
+  }
+  .second__a{
+    font-size: 1.7rem;
+  }
+
+    /* First Section */
+  .first__span{
+    display:block;
   }
 }
 
