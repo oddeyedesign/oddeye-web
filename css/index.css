@@ -159,7 +159,7 @@ body {
 
   /* Background */
 
-  background-image: url('/assets/index/hero__background.svg');
+  background-image: url('/assets/background.svg');
   background-repeat: no-repeat;
   background-position: top;
   background-attachment: fixed;
@@ -202,11 +202,11 @@ Estructura:
 
 .header {
   width: 100%;
-  min-height: 10vh;
+  height: 12vh;
 
-  mask-image: url(/assets/index/header__mask.svg);
-
+  mask-image: url(/assets/masks/menu-mask.svg);
   mask-repeat: repeat-x;
+  mask-position: bottom;
 
   position: fixed;
 
@@ -223,7 +223,7 @@ Estructura:
 
 .header__wrapper {
   width: 90%;
-  margin: 1rem auto 1rem;
+  margin: 1rem auto;
 
   display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
@@ -289,26 +289,7 @@ Estructura:
 }
 
 .social__button {
-  width: 100%;
-  height: 3rem;
-  padding: 0 0 0 .6rem;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-
-  text-transform: uppercase;
-  font-size: 1.3rem;
-
-  color: #A7FE2F;
-  border: #A7FE2F .125rem solid;
-
-  cursor: pointer;
-  transition: opacity 1s ease;
-
-  transform: scale(1);
-  transition: all .6s ease;
+display: none;
 }
 
 .social__button.hidden {
@@ -335,7 +316,7 @@ Estructura:
 
 /* Header Mobile */
 .mobile {
-  opacity: 1;
+  display: none;
 }
 
 .mobile.hidden {
@@ -393,7 +374,7 @@ Estructura:
 .toggle__handle::after {
   position: absolute;
   content: "";
-  background-image: url(/assets/index/alien.svg);
+  background-image: url(/assets/icons/alien-icon.svg);
   background-size: contain;
   height: 1.625rem;
   width: 1.625rem;
@@ -424,7 +405,7 @@ input:checked+.toggle__handle:before {
 input:checked+.toggle__handle:after {
   right: 0;
   left: .25rem;
-  background-image: url(/assets/index/user.svg);
+  background-image: url(/assets/icons/user-icon.svg);
 }
 
 /* Befores */
@@ -467,7 +448,7 @@ input:checked+.toggle__handle:after {
   transform: scale(1.1);
 }
 
-/* --------------- Fin de Header ---------------
+/* --------------- Fin de Header ---------------*/
 
 /* --------------- Inicio de Hero Content ---------------*/
 /* Descripción: Estilo para el main/hero. Esta sección contiene varios
@@ -514,6 +495,10 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   align-items: center;
 
   position: relative;
+}
+
+.hero.disabled{
+cursor: none;
 }
 
 .logo {
@@ -979,6 +964,10 @@ Estructura:
   align-items: center;
 }
 
+.first.disabled{
+  cursor: none;
+}
+
 .first__wrapper {
   width: 69%;
   height: 30vh;
@@ -1041,32 +1030,34 @@ Estructura:
 /*  Before */
 .first::before {
   width: 100%;
-  height: 10vh;
+  height: 2rem;
   display: block;
   content: '';
 
   background-color: #A7FE2F;
-  mask-image: url(/assets/index/wavy__mask-top.svg);
+  mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
+  mask-position: top;
 
   position: absolute;
-  top: -10%;
+  top: -2rem;
   right: 0;
 }
 
 /* After */
 .first::after {
   width: 100%;
-  height: 10vh;
+  height: 2rem;
   display: block;
   content: '';
 
   background-color: #A7FE2F;
-  mask-image: url(/assets/index/header__mask.svg);
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
+  mask-position: bottom;
 
   position: absolute;
-  bottom: -13%;
+  bottom: -2rem;
   right: 0;
 }
 
@@ -1101,7 +1092,11 @@ Estructura:
   z-index: 0;
   overflow: hidden;
   background-color: blueviolet;
-  cursor: url('/assets/index/ufo__cursor.svg'), auto;
+  cursor: url('/assets/index/cursors/ufo__cursor.svg'), auto;
+}
+
+.second.disabled{
+  cursor: none;
 }
 
 .second__h3 {
@@ -1142,7 +1137,7 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   top: 48%;
   left: calc(50% - (12rem/2));
 
-  mask-image: url(/assets/index/second__button__mask.svg);
+  mask-image: url(/assets/masks/button-mask.svg);
   mask-repeat: no-repeat;
   mask-size: 12rem;
 
@@ -1168,7 +1163,7 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   font-size: 2rem;
   transition: transform 1s ease;
 
-  cursor: url('/assets/index/ufo_cursor_pointer.svg'), auto;
+  cursor: url('/assets/index/cursors/ufo_cursor_pointer.svg'), auto;
 }
 
 /* Befores */
@@ -1247,8 +1242,12 @@ Contenido:
   align-items: center;
 
   transition: all .5s ease;
-  background-color: rgb(143, 73, 255);
+  background-color: blueviolet;
   z-index: 1;
+}
+
+.third.disabled{
+  cursor: none;
 }
 
 .third__wrapper{
@@ -1364,31 +1363,33 @@ display: inline-block;
 /* Befores */
 .third::before {
   width: 100%;
-  height: 10vh;
+  height: 2rem;
   display: block;
   content: '';
 
-  background-color: rgb(143, 73, 255);
-  mask-image: url(/assets/index/wavy__mask-top.svg);
+  background-color: blueviolet;
+  mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
+  mask-position: top;
 
   position: absolute;
-  top: -13%;
+  top: -2rem;
   right: 0;
 }
 /* Afters */
 .third::after {
   width: 100%;
-  height: 10vh;
+  height: 2rem;
   display: block;
   content: '';
 
-  background-color: rgb(143, 73, 255);
-  mask-image: url(/assets/index/third__after__mask.svg);
+  background-color: blueviolet;
+  mask-image: url(/assets/masks/pointy-mask-bottom.svg);
   mask-repeat: repeat-x;
+  mask-position: bottom;
 
   position: absolute;
-  bottom: -13%;
+  bottom: -2rem;
   right: 0;
 }
 
@@ -1425,13 +1426,10 @@ Estructura:
 
   gap: 2rem;
   transition: height .5s ease;
+}
 
-  background-image: url('/assets/index/hero__background.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #131313;
+.footer.disabled{
+  cursor: none;
 }
 
 .footer__img {
@@ -1609,7 +1607,7 @@ Estructura:
     left .5s ease,
     opacity .5s ease;
 
-    mask-image: url(/assets/index/header__mobile__mask.svg);
+    mask-image: url(/assets/masks/mobile-menu-mask.svg);
     mask-repeat: no-repeat;
     mask-position: center;
 
@@ -1719,6 +1717,29 @@ Estructura:
     height: 3rem;
   }
 
+  .social__button{
+    width: 100%;
+    height: 3rem;
+    padding: 0 0 0 .6rem;
+  
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+  
+    text-transform: uppercase;
+    font-size: 1.3rem;
+  
+    color: #A7FE2F;
+    border: #A7FE2F .125rem solid;
+  
+    cursor: pointer;
+    transition: opacity 1s ease;
+  
+    transform: scale(1);
+    transition: all .6s ease;
+  }
+
   .menu__svg {
     width: 3rem;
     height: 3rem;
@@ -1794,13 +1815,6 @@ Estructura:
     height: 90vh;
   }
 
-  .third::before {
-    top: -7%;
-  }
-
-  .third::after {
-    bottom: -9%;
-  }
 
   .third__wrapper{
     width: 90%;

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oddeye Creations</title>
+    <link rel="stylesheet" href="/css/porfolio.css">
+    <script src="/js/porfolio.js" defer></script>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Header / Nav
+    - Logotipo pequeño
+    - Listado de enlaces de navegación:
+        -Home
+        -Porfolio
+        -About
+        -Contact
+    - Selección de idioma ES/EN
+    - Listado de enlaces a redes sociales: 
+        -Linkedin
+        -Github
+        -Threads
+    - Toggle modo incógnito
+    - Botón de menú (mobile)
+    - Botón de close (mobile)-->
+
+    <header class="header">
+        <div class="header__wrapper">
+            <!-- Logotipo -->
+            <h1 class="header__h1">
+                <a href="/index.html" class="header__a" title="Oddeye">
+                    <img src="assets/oddeye-logos/header-logo.svg" alt="Oddeye Logo" fetchpriority="high">
+                </a>
+            </h1>
+            <!-- Navegación -->
+            <nav class="header__nav nav">
+                <ul class="nav__ul">
+                    <li class="nav__li">
+                        <a href="/index.html" class="nav__a" title="Home" id="home">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav__li">
+                        <a href="/porfolio.html" class="nav__a" title="Porfolio" id="porfolio">
+                            Porfolio
+                        </a>
+                    </li>
+                    <li class="nav__li">
+                        <a href="" class="nav__a" title="About" id="about">
+                            About
+                        </a>
+                    </li>
+                    <li class="nav__li">
+                        <a href="" class="nav__a" title="Contact" id="contact">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Selección de idioma -->
+            <ul class="header__lang lang">
+                <li class="lang__li">
+                    <a href="" class="lang__a" title="English" id="en">EN</a>
+                </li>
+                <li class="lang__li">
+                    <a href="" class="lang__a" title="Spanish" id="es">ES</a>
+                </li>
+            </ul>
+
+            <!-- Redes Sociales -->
+            <ul class="header__social social">
+                <!-- Linkedin -->
+                <li class="social__li">
+                    <a href="" class="social__a" title="Linkedin" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="social__svg" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                        </svg>
+                    </a>
+                </li>
+                <!-- Github -->
+                <li class="social__li">
+                    <a href="" class="social__a" title="GitHub" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="social__svg" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                        </svg>
+                    </a>
+                </li>
+                <!-- Threads -->
+                <li class="social__li">
+                    <a href="" class="social__a" title="Threads" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="social__svg" viewBox="0 0 16 16">
+                            <path
+                                d="M6.81 9.204c0-.41.197-1.062 1.727-1.062.469 0 .758.034 1.146.121-.124 1.606-.91 1.818-1.674 1.818-.418 0-1.2-.218-1.2-.877Z" />
+                            <path
+                                d="M2.59 16h10.82A2.59 2.59 0 0 0 16 13.41V2.59A2.59 2.59 0 0 0 13.41 0H2.59A2.59 2.59 0 0 0 0 2.59v10.82A2.59 2.59 0 0 0 2.59 16M5.866 5.91c.567-.81 1.315-1.126 2.35-1.126.73 0 1.351.246 1.795.711.443.466.696 1.132.754 1.983q.368.154.678.363c.832.559 1.29 1.395 1.29 2.353 0 2.037-1.67 3.806-4.692 3.806-2.595 0-5.291-1.51-5.291-6.004C2.75 3.526 5.361 2 8.033 2c1.234 0 4.129.182 5.217 3.777l-1.02.264c-.842-2.56-2.607-2.968-4.224-2.968-2.675 0-4.187 1.628-4.187 5.093 0 3.107 1.69 4.757 4.222 4.757 2.083 0 3.636-1.082 3.636-2.667 0-1.079-.906-1.595-.953-1.595-.177.925-.651 2.482-2.733 2.482-1.213 0-2.26-.838-2.26-1.936 0-1.568 1.488-2.136 2.663-2.136.44 0 .97.03 1.247.086 0-.478-.404-1.296-1.426-1.296-.911 0-1.16.288-1.45.624l-.024.027c-.202-.135-.875-.601-.875-.601Z" />
+                        </svg>
+                    </a>
+                </li>
+                <!-- Close button -->
+                <li class="social__li">
+                    <button type="button" class="social__button menu" title="Close">
+                        Close
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="menu__svg " viewBox="0 0 16 16">
+                            <symbol id="x" viewbox="0 0 16 16">
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </symbol>
+                            <use href="#x"></use>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Toggle Incognito -->
+            <!-- https://www.w3schools.com/howto/howto_css_switch.asp -->
+            <label class="header__toggle toggle" title="Toggle incognito">
+                <input type="checkbox" class="toggle__checkbox">
+                <span class="toggle__handle" title="toggle"></span>
+            </label>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="header__wrapper mobile">
+                <button type="button" class="mobile__menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                </button>
+        </div>
+    </header>
+
+<!-- Porfolio title / tabs
+    -tabs
+        -tabs__span
+        -tabs__ul
+            -tabs__li
+                -tabs__h2
+-->
+
+<section class="tabs">
+    <span class="tabs__span">
+        Porfolio
+    </span>
+    <ul class="tabs__ul">
+        <li class="tabs__li">
+            <h2 class="tabs__h2">
+                Graphic Design
+            </h2>
+        </li>
+        <li class="tabs__li">
+            <h2 class="tabs__h2">
+                UX/UI
+            </h2>
+        </li>
+        <li class="tabs__li">
+            <h2 class="tabs__h2">
+                Illustration
+            </h2>
+        </li>
+        <li class="tabs__li">
+            <h2 class="tabs__h2">
+                Others
+            </h2>
+        </li>
+    </ul>
+</section>
+
+<!-- Porfolio folders -->
+<div id="graphicDesign" class="project__folder folder">
+    <ul class="folder__ul">
+        <li class="folder__li">
+            <h3 class="folder__h3">
+                Folder 1
+            </h3>
+        </li>
+        <li class="folder__li">
+            <h3 class="folder__h3">
+                Folder 2
+            </h3>
+        </li>
+        <li class="folder__li">
+            <h3 class="folder__h3">
+                Folder 3
+            </h3>
+        </li>
+        <li class="folder__li">
+            <h3 class="folder__h3">
+                Folder 4
+            </h3>
+        </li>
+    </ul>
+</div>    
+</article>
+</body>
+
+</html>

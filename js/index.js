@@ -158,6 +158,7 @@ mobileMenu.addEventListener('click', function () {
     headerWrapper.classList.remove('hidden')
     header.classList.add('active')
     mobileMenu.classList.add('invisible')
+
     setTimeout(function () {
         mobileMenu.classList.add('hidden')
         headerWrapper.classList.remove('invisible')
@@ -192,6 +193,7 @@ closeMobMenu.addEventListener('click', function () {
     headerWrapper.classList.add('invisible')
     header.classList.remove('active')
     mobileMenu.classList.remove('hidden')
+    
     setTimeout(function () {
         mobileMenu.classList.remove('invisible')
         headerWrapper.classList.add('hidden')
