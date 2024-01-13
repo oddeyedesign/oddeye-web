@@ -17,7 +17,7 @@
 
 <body>
 
-<!-- Header / Nav
+    <!-- Header / Nav
     - Logotipo pequeño
     - Listado de enlaces de navegación:
         -Home
@@ -135,17 +135,17 @@
         </div>
         <!-- Mobile menu button -->
         <div class="header__wrapper mobile">
-                <button type="button" class="mobile__menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                </button>
+            <button type="button" class="mobile__menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </button>
         </div>
     </header>
 
-<!-- Porfolio title / tabs
+    <!-- Porfolio title / tabs
     -tabs
         -tabs__span
         -tabs__ul
@@ -153,60 +153,75 @@
                 -tabs__h2
 -->
 
-<section class="tabs">
-    <span class="tabs__span">
-        Porfolio
-    </span>
-    <ul class="tabs__ul">
-        <li class="tabs__li">
-            <h2 class="tabs__h2">
-                Graphic Design
-            </h2>
-        </li>
-        <li class="tabs__li">
-            <h2 class="tabs__h2">
-                UX/UI
-            </h2>
-        </li>
-        <li class="tabs__li">
-            <h2 class="tabs__h2">
-                Illustration
-            </h2>
-        </li>
-        <li class="tabs__li">
-            <h2 class="tabs__h2">
-                Others
-            </h2>
-        </li>
-    </ul>
-</section>
+    <div class="tabs">
+        <span class="tabs__span">
+            Porfolio
+        </span>
+        <ul class="tabs__ul">
+            <li class="tabs__li">
+                <button class="tabs__button">
+                    Graphic Design
+                </button>
+            </li>
+            <li class="tabs__li">
+                <button class="tabs__button">
+                    UX/UI
+                </button>
+            </li>
+            <li class="tabs__li">
+                <button class="tabs__button">
+                    Illustration
+                </button>
+            </li>
+            <li class="tabs__li">
+                <button class="tabs__button">
+                    Others
+                </button>
+            </li>
+        </ul>
+    </div>
 
-<!-- Porfolio folders -->
-<div id="graphicDesign" class="project__folder folder">
-    <ul class="folder__ul">
-        <li class="folder__li">
-            <h3 class="folder__h3">
-                Folder 1
-            </h3>
-        </li>
-        <li class="folder__li">
-            <h3 class="folder__h3">
-                Folder 2
-            </h3>
-        </li>
-        <li class="folder__li">
-            <h3 class="folder__h3">
-                Folder 3
-            </h3>
-        </li>
-        <li class="folder__li">
-            <h3 class="folder__h3">
-                Folder 4
-            </h3>
-        </li>
-    </ul>
-</div>    
-</article>
+    <!-- Porfolio folders -->
+    <div id="graphicDesign" class="project__folder folder">
+        <ul class="folder__ul">
+            <li class="folder__li">
+                <button class="folder__button selected"></button>
+                <h2 class="folder__h2">
+                    Oni Clothing
+                </h2>
+            </li>
+            <li class="folder__li">
+                <button class="folder__button"></button>
+                <h2 class="folder__h2">
+                    Penguin Random House
+                </h2>
+            </li>
+
+            <li class="folder__li">
+                <button class="folder__button"></button>
+                <h2 class="folder__h2">
+                    Primera Orden
+                </h2>
+            </li>
+        </ul>
+    </div>
+
+        <!-- Porfolio Projects -->
+        <!-- Oni Clothing -->
+        <article class="article oni">
+            <div class="article__window">
+                <h3 class="article__h3">
+                    Project title
+                </h3>
+                <p class="article__p">
+                    Project description
+                </p>
+            </div>
+            <div class="article__galery">
+                <img src="" alt="" class="article__img">
+            </div>
+        </article>
+
 </body>
 
 </html>
