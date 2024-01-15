@@ -164,7 +164,7 @@ body {
   background-position: top;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #131313;
+  background-color: #0e0e0f;
 }
 
 /* --------------- Inicio de Header --------------*/
@@ -399,7 +399,7 @@ input:checked+.toggle__handle {
 
 input:checked+.toggle__handle:before {
   transform: translateX(1.9925rem);
-  background-color: #131313;
+  background-color: #0e0e0f;
 }
 
 input:checked+.toggle__handle:after {
@@ -443,7 +443,7 @@ input:checked+.toggle__handle:after {
 
 .social__button:hover {
   background-color: #A7FE2F;
-  color: #131313;
+  color: #0e0e0f;
   font-weight: 700;
   transform: scale(1.1);
 }
@@ -980,7 +980,7 @@ Estructura:
 .first__a {
   width: 100%;
   height: 30vh;
-  background-color: #131313;
+  background-color: #0e0e0f;
   position: relative;
 
   transform: translateX(50%);
@@ -992,7 +992,7 @@ Estructura:
   justify-content: center;
   align-items: center;
 
-  color: #131313;
+  color: #0e0e0f;
   font-size: 5vw;
   font-weight: 400;
   text-transform: uppercase;
@@ -1254,7 +1254,7 @@ Contenido:
   width: 45%;
   padding: 2%;
   min-height: 40vh;
-  background-color: #131313;
+  background-color: #0e0e0f;
 
   display: flex;
   flex-flow: column nowrap;
