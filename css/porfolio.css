@@ -653,6 +653,7 @@ input:checked+.toggle__handle:after {
 
 .folder__button.active {
   background-image: url(/assets/icons/folder-open.svg);
+  background-position: center;
 }
 
 
