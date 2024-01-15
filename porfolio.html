@@ -13,6 +13,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Preload de elementos usados como background en CSS -->
+    <!-- Lo hago por recomendación de Lighthouse:
+    https://web.dev/articles/optimize-lcp?utm_source=lighthouse&utm_medium=devtools&hl=es-419#optimize-when-the-resource-is-discovered -->
+    <link rel="preload" href="/assets/masks/button-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
+    <link rel="preload" href="/assets/masks/menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
+    <link rel="preload" href="/assets/masks/mobile-menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
+    <link rel="preload" href="/assets/masks/wavy-mask-bottom.svg" as="image" fetchpriority="high" type="image/svg+xml">
+    <link rel="preload" href="/assets/icons/folder-close.svg" as="image" fetchpriority="high" type="image/svg+xml">
+    <link rel="preload" href="/assets/icons/folder-open.svg" as="image" fetchpriority="high" type="image/svg+xml">
 </head>
 
 <body>
@@ -55,7 +65,7 @@
                         </a>
                     </li>
                     <li class="nav__li">
-                        <a href="" class="nav__a" title="About" id="about">
+                        <a href="/about.html" class="nav__a" title="About" id="about">
                             About
                         </a>
                     </li>
@@ -191,7 +201,7 @@
                 </h2>
             </li>
             <li class="folder__li">
-                <button type="button"class="folder__button"></button>
+                <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
                     Penguin Random House
                 </h2>
@@ -550,7 +560,7 @@
                 </a>
             </li>
             <li class="footer__li">
-                <a href="" class="footer__a" target="_blank" title="About">
+                <a href="/about.html" class="footer__a" target="_blank" title="About">
                     About
                 </a>
             </li>
