@@ -536,6 +536,7 @@ input:checked+.toggle__handle:after {
   color: #A4FE2F;
   border: #A4FE2F .1rem solid;
 
+  animation: popIn 1s ease 1 forwards;
   transition:
     background-color .6s ease,
     color .6s ease;
@@ -554,7 +555,6 @@ input:checked+.toggle__handle:after {
 
   gap: .5rem;
   cursor: pointer;
-
 }
 
 .tabs__button::before {
@@ -621,6 +621,7 @@ input:checked+.toggle__handle:after {
   -webkit-backdrop-filter: blur(-6rem);
   outline: .1rem solid #A4FE2F;
 
+  animation: popIn 1s ease 1 forwards;
   transition: background-color .9s ease, outline .6s ease;
   cursor: pointer;
 }
@@ -675,6 +676,8 @@ input:checked+.toggle__handle:after {
 
   position: relative;
   z-index: 0;
+
+  animation: slideInBottom 1s ease forwards;
 }
 
 .article.hidden{
@@ -1111,5 +1114,27 @@ Estructura:
 .folder__li{
   width: 6.5rem;
 }
+}
 
+@keyframes popIn {
+  from{
+    transform: scale(.5);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+}
+
+@keyframes slideInBottom {
+  from{
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
