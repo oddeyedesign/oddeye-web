@@ -463,8 +463,9 @@ input:checked+.toggle__handle:after {
 /* --------------- Fin de Header ---------------*/
 /* --------------- Inicio de About ---------------*/
 .about {
-  width: 100%;
+  width: 90%;
   min-height: 70vh;
+  margin: auto;
 
   display: flex;
   flex-flow: row nowrap;
@@ -475,12 +476,12 @@ input:checked+.toggle__handle:after {
 }
 
 .about__wrapper {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 
   background-color: #0e0e0f;
   border: .1rem solid #A7FE2F;
@@ -488,20 +489,23 @@ input:checked+.toggle__handle:after {
 
 .about__portrait {
   width: 30%;
-  height: 70vh;
+  height: 80vh;
   object-fit: cover;
 }
 
 .content {
-  width: 85%;
+  width: 70%;
+  height: 100%;
+
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   border: none;
 }
 
 .content__span {
+  width: 100%;
   text-align: left;
   color: #A7FE2F;
 }
@@ -511,6 +515,7 @@ input:checked+.toggle__handle:after {
 }
 
 .content__p {
+  display: block;
   color: #A7FE2F;
   text-align: left;
   line-height: 1.7rem;
@@ -518,6 +523,7 @@ input:checked+.toggle__handle:after {
 
 .content__img {
   width: 60%;
+  height: 8rem;
   position: relative;
   left: calc((100% - 60%)/2);
 }
@@ -580,13 +586,14 @@ Estructura:
 
 /* Befores */
 .footer__a::before {
-  content: '>';
+  content: '';
   opacity: 0;
   transition: opacity .6s ease;
 }
 
 /* Hovers */
 .footer__a:hover:before {
+  content: '>';
   opacity: 1;
 }
 
@@ -820,6 +827,10 @@ Estructura:
     min-height: 100vh;
     flex-flow: column nowrap;
   }
+  .content{
+    justify-content: space-between;
+    width: 90%;
+  }
 
   .about__portrait {
     width: 100%;
@@ -842,10 +853,15 @@ Estructura:
     width: 90%;
     font-size: 1.2rem;
   }
-
 }
 
 @media (max-width: 600px) {
+
+  /* About */
+  .content__img{
+    width: 80%;
+    left: calc((100% - 80%)/2);
+  }
 
   /* Footer */
   .footer {
@@ -854,5 +870,13 @@ Estructura:
 
   .footer__ul {
     flex-flow: column nowrap;
+  }
+
+  .footer__li{
+    width: 100%;
+  }
+
+  .footer__a{
+    width: 100%;
   }
 }

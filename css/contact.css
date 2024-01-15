@@ -1,0 +1,703 @@
+@charset "UTF-8";
+
+/* ---------------------------------------------------------- *\
+index.css
+- Reset / Normalizar
+- Header
+
+/* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img,
+picture,
+video,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* opcional */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Reseteamos las tablas */
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+  overflow: visible;
+}
+
+/* (Probándolo, no usar en producción) En el caso de añadir una  */
+/* p svg{
+  display: inline;
+  width: initial;
+} */
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--negro);
+  /* opcional */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  /* opcional */
+  /* font-smooth: always; */
+  /* opcional */
+  -webkit-font-smoothing: antialiased;
+  /* opcional */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Background */
+
+  background-image: url('/assets/background.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #0e0e0f;
+}
+
+
+/* --------------- Inicio de Header --------------*/
+/* Descripción: estilo  del Header en versión desktop. El header tiene
+forma "wavy" y está fijado en la ventana. Tiene un estilo glassmorfista
+
+Estructura:
+- header
+  - header__wrapper
+  - header__mask
+    - header__h1
+    - nav__ul
+      - nav__li
+    - header__social
+      - social__svg
+      - social__button
+        - social__button.hidden
+        - social__button.invisible
+    - lang
+      - lang__a.hidden
+    - mobile
+      - mobile.hidden
+      - mobile.invisible
+    - toggle
+      - toggle__checkbox
+      - toggle__handle
+    - toggle before and after
+    - toggle hover
+    - toggle inputs
+
+  - Befores
+  - Afters
+  - Hovers
+*/
+
+.header {
+    width: 100%;
+    min-height: 10vh;
+  
+    mask-image: url(/assets/masks/menu-mask.svg);
+    mask-repeat: repeat-x;
+  
+    position: fixed;
+    top: 0;
+  
+    z-index: 5;
+    overflow: visible;
+    background: radial-gradient(circle, rgba(188, 255, 64, 0.43)7%, rgba(62, 124, 33, 0.6) 100%);
+    box-shadow: inset 0px 0px 82px -8px rgb(168, 255, 70);
+    backdrop-filter: blur(.2rem);
+    -webkit-backdrop-filter: blur(.2rem);
+  
+    animation: fadeInTop 1s ease 1 forwards;
+  }
+  
+  .header__wrapper {
+    width: 90%;
+    margin: 1rem auto;
+  
+    display: grid;
+    grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
+    grid-template-rows: 1fr;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+  
+    overflow: visible;
+  
+    transition: all 1s ease;
+    animation: fadeInTop 1s ease forwards;
+  
+    opacity: 1;
+  }
+  
+  .header__mask {
+    display: block;
+    mask-repeat: repeat-x;
+  }
+  
+  .header__h1 {
+    width: 4rem;
+    transform: scale(1);
+    transition: transform .6s ease;
+  }
+  
+  .nav__ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  
+  .nav__li {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: black;
+  
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-start;
+  
+    transition: background-color 1s ease,
+      transform .6s ease;
+  }
+  
+  .header__social {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  
+  .social__svg {
+    width: 1.9rem;
+    height: 1.9rem;
+    fill: black;
+    transform: scale(1);
+    transition: fill .6s ease,
+      opacity 1s ease,
+      transform .6s ease;
+    cursor: pointer;
+  }
+  
+  .social__button {
+    width: 100%;
+    height: 3rem;
+    padding: 0 0 0 .6rem;
+  
+    display: none;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+  
+    text-transform: uppercase;
+    font-size: 1.3rem;
+  
+    color: black;
+    border: .125rem solid black;
+  
+    cursor: pointer;
+    transition: opacity 1s ease;
+  
+    transform: scale(1);
+    transition: all .6s ease;
+  }
+  
+  .social__button.hidden {
+    display: none;
+  }
+  
+  .social__button.invisible {
+    opacity: 0;
+  }
+  
+  .lang {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    opacity: .6;
+  
+    transition: opacity .5s ease;
+  }
+  
+  .lang__a.hidden {
+    display: none;
+  }
+  
+  /* Header Mobile */
+  .mobile {
+    display: none;
+  }
+  
+  .mobile.hidden {
+    display: none;
+  }
+  
+  .mobile.invisible {
+    opacity: 0;
+  }
+  
+  /* Toggle */
+  .toggle {
+    display: inline-block;
+    height: 2.125rem;
+    width: 4.2rem;
+    position: relative;
+  }
+  
+  .toggle__checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle__handle {
+    border-radius: 2.125rem;
+    background-color: black;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .5s ease;
+  }
+  
+  /* Toggle ::before and ::after */
+  
+  .toggle__handle::before {
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 1.625rem;
+    width: 1.625rem;
+    left: .25rem;
+    bottom: .25rem;
+    background-color: #A7FE2F;
+    transition:
+      right 1s ease,
+      left 1s ease,
+      background-image .3s ease,
+      transform .5s ease;
+  }
+  
+  .toggle__handle::after {
+    position: absolute;
+    content: "";
+    background-image: url(/assets/icons/alien-icon.svg);
+    background-size: contain;
+    height: 1.625rem;
+    width: 1.625rem;
+    right: .25rem;
+    bottom: .25rem;
+    transition:
+      right 1s ease,
+      left 1s ease,
+      background-image .3s ease,
+      transform .5s ease;
+  }
+  
+  /* Toggle hovers */
+  .toggle__handle:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Toggle inputs */
+  input:checked+.toggle__handle {
+    background-color: darkgray;
+  }
+  
+  input:checked+.toggle__handle:before {
+    transform: translateX(1.9925rem);
+    background-color: #0e0e0f;
+  }
+  
+  input:checked+.toggle__handle:after {
+    right: 0;
+    left: .25rem;
+    background-image: url(/assets/icons/user-icon.svg);
+  }
+  
+  /* Befores */
+  
+  .nav__li::before {
+    content: '>';
+    opacity: 0;
+    transform: translateX(-50%);
+    transition:
+      opacity 1s ease,
+      transform 1s ease;
+  }
+  
+  /* Hovers */
+  
+  .header__h1:hover {
+    transform: scale(1.2);
+  }
+  
+  .nav__li:hover {
+    color: black;
+    background-color: blueviolet;
+    transform: scale(1.2);
+  }
+  
+  .nav__li:hover:before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .social__svg:hover {
+    fill: blueviolet;
+    transform: scale(1.2);
+  }
+  
+  .social__button:hover {
+    background-color: blueviolet;
+    color: #0e0e0f;
+    font-weight: 700;
+    transform: scale(1.1);
+  }
+  
+  /* --------------- Fin de Header ---------------*/
+
+  @media (max-width: 1000px) {
+
+    /* Header */
+    .header {
+      width: 100%;
+      height: 1rem;
+      margin: 0;
+  
+      mask-image: none;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+  
+      position: fixed;
+      top: -100%;
+      left: 0%;
+  
+      display: flex;
+  
+      animation: none;
+      transition:
+        top .5s ease;
+      opacity: 1;
+    }
+  
+    .header.active {
+      top: 0%;
+    }
+  
+    .header__wrapper {
+      width: 100%;
+      height: 100vh;
+      padding: 5%;
+      margin: 0;
+  
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 4rem;
+  
+      background: radial-gradient(circle, rgba(156, 255, 64, 0.756)7%, rgba(25, 61, 8, 0.797) 100%);
+      box-shadow: inset 0px 0px 82px -8px rgb(168, 255, 70);
+      backdrop-filter: blur(.7rem);
+      -webkit-backdrop-filter: blur(.7rem);
+  
+      transition: opacity .5s ease;
+      position: fixed;
+      opacity: 1;
+    }
+  
+    .header__wrapper.hidden {
+      display: none;
+    }
+  
+    .header__wrapper.invisible {
+      opacity: 0;
+    }
+  
+    .mobile {
+      width: 6rem;
+      height: 6rem;
+  
+      position: fixed;
+      top: 2%;
+      left: 2%;
+      z-index: 4;
+  
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background-color: transparent;
+  
+      opacity: 1;
+      transition:
+        left .5s ease,
+        opacity .5s ease;
+  
+      mask-image: url(/assets/masks/mobile-menu-mask.svg);
+      mask-repeat: no-repeat;
+      mask-position: center;
+  
+      background: radial-gradient(circle, rgba(152, 205, 54, 0.43)7%, rgba(97, 193, 53, 0.6) 100%);
+      box-shadow: inset 0px 0px 82px -8px rgb(148, 247, 35);
+      backdrop-filter: blur(.2rem);
+      -webkit-backdrop-filter: blur(.2rem);
+  
+      animation: rotate 30s infinite linear both;
+      transform: scale(1);
+      display: block;
+    }
+  
+    .mobile.invisible {
+      left: -100%;
+      opacity: 0;
+    }
+  
+    .mobile.hidden {
+      display: none;
+    }
+  
+    .mobile__svg {
+      width: 3rem;
+      height: 3rem;
+      fill: black;
+  
+      position: absolute;
+      top: calc(50% - (3rem/2));
+      left: calc(50% - (3rem/2));
+      z-index: 4;
+  
+      transition:
+        opacity 1s ease,
+        transform .6s ease;
+      cursor: pointer;
+  
+      animation: rotate 30s linear infinite both;
+      animation-direction: reverse;
+    }
+  
+    .mobile__svg:hover {
+      transform: scale(1.2);
+    }
+  
+    .nav__ul {
+      width: 100%;
+      display: flex;
+  
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  
+    .nav__li {
+      width: 100%;
+      font-size: 3rem;
+      text-align: left;
+  
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+  
+      transform: translateX(-200%);
+      transition: transform .3s ease;
+      opacity: 0;
+    }
+  
+    .nav__li.active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  
+    .nav__a {
+      margin: 0 -2rem 0;
+      transition: margin .5s ease;
+    }
+  
+    .nav__a:hover {
+      margin: 0;
+    }
+  
+    .lang {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+  
+    .lang__li {
+      font-size: 1.5rem;
+    }
+  
+    .social {
+      width: 100%;
+      gap: 0;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      transition: all 1s ease;
+  
+    }
+  
+    .social__svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  
+    .social__button {
+      width: 100%;
+      height: 3rem;
+      padding: 0 0 0 .6rem;
+  
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+  
+      text-transform: uppercase;
+      font-size: 1.3rem;
+  
+      color: black;
+      border: .125rem solid black;
+  
+      cursor: pointer;
+      transition: opacity 1s ease;
+  
+      transform: scale(1);
+      transition: all .6s ease;
+    }
+  
+    .menu__svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  
+    .toggle {
+      position: fixed;
+      top: 5%;
+      right: 5%;
+    }
+  
+    /* About */
+    .about__wrapper {
+      min-height: 100vh;
+      flex-flow: column nowrap;
+    }
+    .content{
+      justify-content: space-between;
+      width: 90%;
+    }
+  
+    .about__portrait {
+      width: 100%;
+    }
+  }  

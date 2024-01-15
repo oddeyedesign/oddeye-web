@@ -869,13 +869,14 @@ Estructura:
 
 /* Befores */
 .footer__a::before {
-  content: '>';
+  content: '';
   opacity: 0;
   transition: opacity .6s ease;
 }
 
 /* Hovers */
 .footer__a:hover:before {
+  content: '>';
   opacity: 1;
 }
 

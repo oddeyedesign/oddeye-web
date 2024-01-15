@@ -1456,13 +1456,14 @@ Estructura:
 
 /* Befores */
 .footer__a::before {
-  content: '>';
+  content: '';
   opacity: 0;
   transition: opacity .6s ease;
 }
 
 /* Hovers */
 .footer__a:hover:before {
+  content: '>';
   opacity: 1;
 }
 
@@ -1906,6 +1907,14 @@ Estructura:
   }
   .footer__ul{
     flex-flow: column nowrap;
+  }
+
+  .footer__li{
+    width: 100%;
+  }
+
+  .footer__a{
+    width: 100%;
   }
 }
 
