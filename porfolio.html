@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Precargamos los iconos -->
+    <link rel="icons" href="/">
 </head>
 
 <body>
@@ -159,17 +162,17 @@
         </span>
         <ul class="tabs__ul">
             <li class="tabs__li active">
-                <button class="tabs__button">
+                <button type="button" class="tabs__button">
                     Graphic Design
                 </button>
             </li>
             <li class="tabs__li">
-                <button class="tabs__button">
+                <button type="button" class="tabs__button">
                     UX/UI
                 </button>
             </li>
             <li class="tabs__li">
-                <button class="tabs__button">
+                <button type="button" class="tabs__button">
                     Illustration
                 </button>
             </li>
@@ -184,21 +187,21 @@
     <!-- Porfolio folders: Graphic Design -->
     <div class="project__folder folder">
         <ul class="folder__ul">
-            <li class="folder__li">
-                <button class="folder__button active"></button>
+            <li class="folder__li active">
+                <button type="button" class="folder__button active"></button>
                 <h2 class="folder__h2">
                     Oni Clothing
                 </h2>
             </li>
             <li class="folder__li">
-                <button class="folder__button"></button>
+                <button type="button"class="folder__button"></button>
                 <h2 class="folder__h2">
                     Penguin Random House
                 </h2>
             </li>
 
             <li class="folder__li">
-                <button class="folder__button"></button>
+                <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
                     Primera Orden
                 </h2>
@@ -210,13 +213,13 @@
     <div class="project__folder folder hidden">
         <ul class="folder__ul">
             <li class="folder__li">
-                <button class="folder__button"></button>
+                <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
                     TEAcup
                 </h2>
             </li>
             <li class="folder__li">
-                <button class="folder__button"></button>
+                <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
                     MindEat
                 </h2>
@@ -228,7 +231,7 @@
     <div class="project__folder folder hidden">
         <ul class="folder__ul">
             <li class="folder__li">
-                <button class="folder__button"></button>
+                <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
                     Penguin Random House
                 </h2>
@@ -257,9 +260,9 @@
             <video src="/assets/porfolio/oni01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/oni-thumbnail06.webp"></video>
             <img src="/assets/porfolio/oni02.webp"
-                alt="Oni Clothing Typographies: Gilroy Light, Extra Bold, and Nikohaku plus Kanji" class="article__img">
+                alt="Oni Clothing Typographies: Gilroy Light, Extra Bold, and Nikohaku plus Kanji" class="article__img" fetchpriority="high">
             <img src="/assets/porfolio/oni03.webp"
-                alt="Oni Clothing Alternative logo repeated various times over a red background" class="article__img">
+                alt="Oni Clothing Alternative logo repeated various times over a red background" class="article__img" fetchpriority="high">
             <video src="/assets/porfolio/oni04.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/oni-thumbnail05.webp"></video>
             <video src="/assets/porfolio/oni05.mp4" class="article__video" autoplay muted loop
@@ -277,9 +280,9 @@
                 Software
             </span>
             <div class="software__wrapper">
-                <img src="/assets/icons/photoshop-icon.svg" alt="Adobe Photoshop Icon" class="software__img">
-                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img">
-                <img src="/assets/icons/procreate-icon.svg" alt="Procreate Icon" class="software__img">
+                <img src="/assets/icons/photoshop-icon.svg" alt="Adobe Photoshop Icon" class="software__img" loading="lazy">
+                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img" loading="lazy">
+                <img src="/assets/icons/procreate-icon.svg" alt="Procreate Icon" class="software__img" loading="lazy">
             </div>
         </div>
     </article>
@@ -306,14 +309,14 @@
 
             <img src="/assets/porfolio/penguin02.webp"
                 alt="Promotional image showing a pink background with glitter and Christmas stationary over it containing the campaign claim"
-                class="article__img">
+                class="article__img" loading="lazy">
 
             <video src="/assets/porfolio/penguin03.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/penguin-thumbnail02.webp"></video>
                                                                         
             <img src="/assets/porfolio/penguin04.webp"
                 alt="Promotional image showing a pink background with glitter with a ticket on top that contains the campaign call to action"
-                class="article__img">
+                class="article__img" loading="lazy">
         </div>
 
         <div class="article__software software">
@@ -343,7 +346,7 @@
         <div class="article__gallery">
             <video src="/assets/porfolio/primera-orden02.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/primera-orden-thumbnail03.webp"></video>
-            <img src="/assets/porfolio/primera-orden03.webp" alt="" class="article__img">
+            <img src="/assets/porfolio/primera-orden03.webp" alt="Primera Orden Logo" class="article__img" loading="lazy">
             <video src="/assets/porfolio/primera-orden01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/primera-orden-thumbnail01.webp"></video>
         </div>
@@ -396,16 +399,16 @@
             <video src="/assets/porfolio/teacup01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/teacup01-thumbnail.webp"></video>
             <img src="/assets/porfolio/teacup07.webp" alt="Promotional TEAcup image showing a mockup phone"
-                class="article__img">
+                class="article__img" loading="lazy">
             <video src="/assets/porfolio/teacup02.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/teacup02-thumbnail.webp"></video>
             <img src="/assets/porfolio/teacup03.webp" alt="An example of TEAcup's bento box design style"
-                class="article__img">
+                class="article__img" loading="lazy">
             <video src="/assets/porfolio/teacup04.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/teacup04-thumbnail.webp"></video>
             <video src="/assets/porfolio/teacup05.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/teacup05-thumbnail.webp"></video>
-            <img src="/assets/porfolio/teacup06.webp" alt="TEAcup's fonts and main color palette" class="article__img">
+            <img src="/assets/porfolio/teacup06.webp" alt="TEAcup's fonts and main color palette" class="article__img" loading="lazy">
         </div>
 
         <div class="article__software software">
@@ -413,8 +416,8 @@
                 Software
             </span>
             <div class="software__wrapper">
-                <img src="/assets/icons/figma-icon.svg" alt="Figma Icon" class="software__img">
-                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img">
+                <img src="/assets/icons/figma-icon.svg" alt="Figma Icon" class="software__img" loading="lazy">
+                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img" loading="lazy">
             </div>
         </div>
     </article>
@@ -454,13 +457,13 @@
         <div class="article__gallery">
             <video src="/assets/porfolio/mindeat01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/mindeat01-thumbnail.webp"></video>
-            <img src="/assets/porfolio/mindeat02.webp" alt="MindEat's login loading screen" class="article__img">
+            <img src="/assets/porfolio/mindeat02.webp" alt="MindEat's login loading screen" class="article__img" loading="lazy">
             <video src="/assets/porfolio/mindeat03.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/mindeat03-thumbnail.webp"></video>
             <video src="/assets/porfolio/mindeat04.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/mindeat04-thumbnail.webp"></video>
-            <img src="/assets/porfolio/mindeat05.webp" alt="MindEat's statistics preview" class="article__img">
-            <img src="/assets/porfolio/mindeat06.webp" alt="MindEat's menu configurator screen" class="article__img">
+            <img src="/assets/porfolio/mindeat05.webp" alt="MindEat's statistics preview" class="article__img" loading="lazy">
+            <img src="/assets/porfolio/mindeat06.webp" alt="MindEat's menu configurator screen" class="article__img" loading="lazy">
         </div>
 
         <div class="article__software software">
@@ -468,7 +471,7 @@
                 Software
             </span>
             <div class="software__wrapper">
-                <img src="/assets/icons/figma-icon.svg" alt="Figma Icon" class="software__img">
+                <img src="/assets/icons/figma-icon.svg" alt="Figma Icon" class="software__img" loading="lazy">
             </div>
         </div>
     </article>
@@ -491,7 +494,7 @@
 
         <div class="article__gallery">
             <img src="/assets/porfolio/prh-halloween01.webp" alt="Illustrated campaign claim: This Halloween, you are gonna read our letters"
-                class="article__img">
+                class="article__img" loading="lazy">
 
             <video src="/assets/porfolio/prh-halloween02.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/prh-halloween-thumbnail02.webp"></video>
@@ -500,7 +503,7 @@
                 poster="/assets/porfolio/prh-halloween-thumbnail03.webp"></video>
 
             <img src="/assets/porfolio/prh-halloween04.webp" alt="A picture featuring three illustrated tarot cards (Prende Fuego a la noche, Billy Summers, and Twilight)"
-                class="article__img">
+                class="article__img" loading="lazy">
 
             <video src="/assets/porfolio/prh-halloween05.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/prh-halloween-thumbnail04.webp"></video>
@@ -509,7 +512,7 @@
                 poster="/assets/porfolio/prh-halloween-thumbnail06.webp"></video>
 
             <img src="/assets/porfolio/prh-halloween07.webp" alt="A picture featuring three illustrated tarot cards (Red Queen, The Gypsy Bride, and One of Us is Lying)"
-                class="article__img">
+                class="article__img" loading="lazy">
 
             <video src="/assets/porfolio/prh-halloween08.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/prh-halloween-thumbnail08.webp"></video>
@@ -523,7 +526,7 @@
                 Software
             </span>
             <div class="software__wrapper">
-                <img src="/assets/icons/procreate-icon.svg" alt="Procreate Icon" class="software__img">
+                <img src="/assets/icons/procreate-icon.svg" alt="Procreate Icon" class="software__img" loading="lazy">
             </div>
         </div>
     </article>

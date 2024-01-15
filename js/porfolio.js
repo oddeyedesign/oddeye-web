@@ -248,9 +248,11 @@ projectFolder.forEach(function (eachFolder, i) {
             behavior: 'smooth'
         })
         projectFolder.forEach(function (eachFolder, i) {
+            projectFolder[i].classList.remove('active')
             folderBtn[i].classList.remove('active')
         })
         folderBtn[i].classList.add('active')
+        projectFolder[i].classList.add('active')
         projects.forEach(function(eachProject , i){
             projects[i].classList.add('hidden')
         })
@@ -270,11 +272,13 @@ projectFolder.forEach(function (eachFolder, i) {
 // REMOVE la clase hidden a .article [0]
 tabs[0].addEventListener('click', function(){
     projectFolder.forEach(function(eachBtn , i){
+        projectFolder[i].classList.remove('active')
         folderBtn[i].classList.remove('active')
     })
     projects.forEach(function(eachProject, i){
         projects[i].classList.add('hidden')
     })
+    projectFolder[0].classList.add('active')
     folderBtn[0].classList.add('active')
     projects[0].classList.remove('hidden')
 })
@@ -286,11 +290,13 @@ tabs[0].addEventListener('click', function(){
 // REMOVE la clase hidden a .article [3]
 tabs[1].addEventListener('click', function(){
     projectFolder.forEach(function(eachbtn , i){
+        projectFolder[i].classList.remove('active')
         folderBtn[i].classList.remove('active')
     })
     projects.forEach(function(eachProject, i){
         projects[i].classList.add('hidden')
     })
+    projectFolder[3].classList.add('active')
     folderBtn[3].classList.add('active')
     projects[3].classList.remove('hidden')
 })
@@ -302,11 +308,13 @@ tabs[1].addEventListener('click', function(){
 // REMOVE la clase hidden a .article [5]
 tabs[2].addEventListener('click', function(){
     projectFolder.forEach(function(eachBtn, i){
+        projectFolder[i].classList.remove('active')
         folderBtn[i].classList.remove('active')
     })
     projects.forEach(function(eachProject , i){
         projects[i].classList.add('hidden')
     })
+    projectFolder[5].classList.add('active')
     folderBtn[5].classList.add('active')
     projects[5].classList.remove('hidden')
 })
