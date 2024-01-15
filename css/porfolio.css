@@ -546,12 +546,20 @@ input:checked+.toggle__handle:after {
 
 .tabs__button::before {
   display: block;
-  content: '>';
+  content: '';
 }
 
 .tabs__li:hover {
   background-color: #A4FE2F;
   color: black;
+}
+
+.tabs__li.active{
+  background-color: red;
+}
+.tabs__li.active::before{
+  display: block;
+  content: '>';
 }
 
 /* Project Folders */
@@ -566,12 +574,16 @@ input:checked+.toggle__handle:after {
   align-items: center;
 }
 
+.folder.hidden{
+  display: none;
+}
+
 .folder__ul {
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
 }
 
@@ -597,12 +609,12 @@ input:checked+.toggle__handle:after {
   cursor: pointer;
 }
 
-.folder__button.selected {
+.folder__button.active {
   background-image: url(/assets/icons/folder-open.svg);
 }
 
 .folder__button:hover {
-  transform: scale(.6);
+  transform: scale(.9);
 }
 
 .folder__h2 {
@@ -621,6 +633,10 @@ input:checked+.toggle__handle:after {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+}
+
+.article.hidden{
+  display: none;
 }
 
 .article__window {

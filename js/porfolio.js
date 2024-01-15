@@ -146,8 +146,8 @@ mobileMenu.addEventListener('click', function () {
         mobileMenu.classList.add('hidden')
         headerWrapper.classList.remove('invisible')
         navLi.forEach(function (eachLi, i) {
-            setTimeout(function(){
-            navLi[0].classList.add('active')
+            setTimeout(function () {
+                navLi[0].classList.add('active')
             }, 200)
             setTimeout(function () {
                 navLi[1].classList.add('active')
@@ -156,9 +156,9 @@ mobileMenu.addEventListener('click', function () {
                 navLi[2].classList.add('active')
             }, 600)
             setTimeout(function () {
-            navLi[3].classList.add('active')
+                navLi[3].classList.add('active')
             }, 800)
-    }, 500)
+        }, 500)
     })
 })
 
@@ -176,7 +176,7 @@ closeMobMenu.addEventListener('click', function () {
     headerWrapper.classList.add('invisible')
     header.classList.remove('active')
     mobileMenu.classList.remove('hidden')
-    
+
     setTimeout(function () {
         mobileMenu.classList.remove('invisible')
         headerWrapper.classList.add('hidden')
@@ -210,3 +210,100 @@ else {
 // ---------------Fin de Header Scripts ----------------------------
 
 // ---------------Inicio de Tabs Scripts ---------------------------
+
+// Cuando hago click en CUALQUIER .tabs__li
+// REMOVE la clase active a TODOS los tabs__li
+// ADD la clase active a tab__li MISMO INDEX
+// ADD la clase hidden a todos los .folder
+// REMOVE la clase hidden .folder MISMO INDEX
+const tabs = document.querySelectorAll('.tabs__li')
+const projectFolder = document.querySelectorAll('.folder__li')
+const folders = document.querySelectorAll('.folder')
+
+tabs.forEach(function (eachTab, i) {
+    tabs[i].addEventListener('click', function () {
+        tabs.forEach(function (eachTab, i) {
+            tabs[i].classList.remove('active')
+        })
+        tabs[i].classList.add('active')
+        folders.forEach(function (eachFolder, i) {
+            folders[i].classList.add('hidden')
+        })
+        folders[i].classList.remove('hidden')
+    })
+})
+
+// Cuango hago click en CUALQUIER .folder__button
+// REMOVE la clase active a TODOS los .folder__button
+// ADD la clase active al .folder__button MISMO INDEX
+// ADD la clase hidden a TODOS los .article
+// REMOVE la clase hidden a .article mismo index
+const folderBtn = document.querySelectorAll('.folder__button')
+const projects = document.querySelectorAll('.article')
+
+folderBtn.forEach(function (eachFolder, i) {
+    folderBtn[i].addEventListener('click', function () {
+        folderBtn.forEach(function (eachFolder, i) {
+            folderBtn[i].classList.remove('active')
+        })
+        folderBtn[i].classList.add('active')
+        projects.forEach(function(eachProject , i){
+            projects[i].classList.add('hidden')
+        })
+        projects[i].classList.remove('hidden')
+    })
+})
+
+//Cuando hago click en cualquier .tabs__li
+// el primer .folder__li que no tiene la clase hidden
+//se le ADD la clase active
+// y  REMOVE la clase hidden al .article hidden MISMO INDEX
+
+// Cuando hago click en .tabs__li [0]
+// REMOVE la clase active a TODOS los .folder__button
+// ADD la clase hidden a TODOS los .article
+// ADD la clase active a .folder__li[0]
+// REMOVE la clase hidden a .article [0]
+tabs[0].addEventListener('click', function(){
+    folderBtn.forEach(function(eachBtn , i){
+        folderBtn[i].classList.remove('active')
+    })
+    projects.forEach(function(eachProject, i){
+        projects[i].classList.add('hidden')
+    })
+    folderBtn[0].classList.add('active')
+    projects[0].classList.remove('hidden')
+})
+
+// Cuando hago click en .tabs__li [1]
+// REMOVE la clase active a TODOS los .folder__button
+// ADD la clase hidden a TODOS los .article
+// ADD la clase active a .folder__li[3]
+// REMOVE la clase hidden a .article [3]
+tabs[1].addEventListener('click', function(){
+    folderBtn.forEach(function(eachbtn , i){
+        folderBtn[i].classList.remove('active')
+    })
+    projects.forEach(function(eachProject, i){
+        projects[i].classList.add('hidden')
+    })
+    folderBtn[3].classList.add('active')
+    projects[3].classList.remove('hidden')
+})
+
+// Cuando hago click en .tabs__li [2]
+// REMOVE la clase active a TODOS los .folder__button
+// ADD la clase hidden a TODOS los .article
+// ADD la clase active a .folder__li[5]
+// REMOVE la clase hidden a .article [5]
+tabs[2].addEventListener('click', function(){
+    folderBtn.forEach(function(eachBtn, i){
+        folderBtn[i].classList.remove('active')
+    })
+    projects.forEach(function(eachProject , i){
+        projects[i].classList.add('hidden')
+    })
+    folderBtn[5].classList.add('active')
+    projects[5].classList.remove('hidden')
+})
+
