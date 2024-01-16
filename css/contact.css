@@ -577,7 +577,7 @@ Estructura:
 
 .footer {
   width: 100%;
-  min-height: 50vh;
+  min-height: 70vh;
 
   display: flex;
   flex-flow: column nowrap;
@@ -863,7 +863,7 @@ Estructura:
 
   /* Footer */
   .footer {
-    height: 60vh;
+    height: 70vh;
   }
 
   .footer__ul {
@@ -884,6 +884,9 @@ Estructura:
 @media (max-width: 600px) {
   /* Footer */
 
+  .footer{
+    height: 100vh;
+  }
 
   .footer__ul {
     flex-flow: column nowrap;
@@ -895,6 +898,11 @@ Estructura:
 
   .footer__a{
     width: 100%;
+  }
+
+  /* Contact */
+  .contact{
+
   }
 }
 
