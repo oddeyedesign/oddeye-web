@@ -523,7 +523,7 @@ else{
 // Creo un LI
 // Les ADD la clase carrousel__li
 // Dentro de cada LI creo un botón
-// los botónes ADD la clase carrousel__dotbtn
+// los botónes ADD la clase carrousel__button
 // Metemos los botones dentro de los li
 // Metemos los li dentro del fragmento
 // Metemos el fragmento dentro de carrousel_ul
@@ -537,7 +537,7 @@ carItems.forEach(function (eachDot, index) {
     li.classList.add('carrousel__li')
 
     const dotBtn = document.createElement('button')
-    dotBtn.classList.add('carrousel__dotbtn')
+    dotBtn.classList.add('carrousel__button')
 
     li.appendChild(dotBtn)
     dotList.appendChild(li)
@@ -545,22 +545,22 @@ carItems.forEach(function (eachDot, index) {
 
 carList.appendChild(dotList)
 
-//Cuando hago click en carrousel__dotBtn[0]
+//Cuando hago click en carrousel__button[0]
 //.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
 
-//Cuando hago click en carrousel__dotBtn[1]
+//Cuando hago click en carrousel__button[1]
 //.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
 
-//Cuando hago click en carrousel__dotBtn[2]
+//Cuando hago click en carrousel__button[2]
 //.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
 
-//Cuando hago click en carrousel__dotBtn[3]
+//Cuando hago click en carrousel__button[3]
 //.carrousel__big translateX() --> INDEX * (100/dotBtn.lengh)
 
-//Cuando hago clic en .carrousel__dotbtn REMOVE active
+//Cuando hago clic en .carrousel__button REMOVE active
 // .carrousel_dotbtn mismo index ADD active
 
-const dotBtn = document.querySelectorAll('.carrousel__dotbtn')
+const dotBtn = document.querySelectorAll('.carrousel__button')
 const carBig = document.querySelector('.carrousel__big')
 
 dotBtn.forEach(function (eachDot, i) {

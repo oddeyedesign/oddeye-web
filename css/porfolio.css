@@ -3,7 +3,11 @@
 /* ---------------------------------------------------------- *\
 index.css
 - Reset / Normalizar
-- Header
+- Tabs
+- Folders
+- Proyectos
+- Media Queries
+- Animaciones
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
@@ -463,10 +467,27 @@ input:checked+.toggle__handle:after {
 
 /* --------------- Fin de Header ---------------*/
 
-/* Inicio de Porfolio title / tabs */
+/* --------------- Inicio de Tabs --------------*/
+/* Descripción: estilo de las tabs de selección de categoría.
+Esta sección está fixed para asegurar su acceso en todo momento.
+Tiene forma wavy y estilo glassmorfista */
+
+/* Estructura:
+
+-tabs
+  -tabs__span
+  -tabs__ul
+    -tabs__li
+    -tabs__button
+  
+  -befores
+  -afters
+  -hovers
+
+*/
 .tabs {
   width: 100%;
-  height: 30vh;
+  height: 26vh;
 
   display: flex;
   flex-flow: column nowrap;
@@ -479,34 +500,16 @@ input:checked+.toggle__handle:after {
   -webkit-backdrop-filter: blur(.4rem);
 
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
   z-index: 2;
-}
-
-.tabs::after {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
-  mask-repeat: repeat-x;
-  mask-position: bottom;
-
-  position: absolute;
-  bottom: -2rem;
-  backdrop-filter: blur(.4rem);
-  -webkit-backdrop-filter: blur(.4rem);
-  background-color: rgba(137, 43, 226, 0.8);
-
 }
 
 .tabs__span {
   width: 90%;
   font-size: 3rem;
   margin: 5% 0 0;
-  
+
   text-transform: uppercase;
   text-align: left;
   color: #A4FE2F;
@@ -557,26 +560,70 @@ input:checked+.toggle__handle:after {
   cursor: pointer;
 }
 
+.tabs__li.active {
+  color: #A4FE2F;
+  background-color: black;
+}
+
+/* Befores */
 .tabs__button::before {
   display: block;
   content: '';
 }
 
+.tabs__li.active::before {
+  display: block;
+  content: '>';
+}
+
+/* Afters */
+.tabs::after {
+  width: 100%;
+  height: 2rem;
+  display: block;
+  content: '';
+
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+  mask-repeat: repeat-x;
+  mask-position: bottom;
+
+  position: absolute;
+  bottom: -2rem;
+
+  background-color: rgba(137, 43, 226, 0.8);
+
+  /* BUG? El backdrop filter no se está aplicando */
+  backdrop-filter: blur(.4rem);
+  -webkit-backdrop-filter: blur(.4rem);
+
+}
+
+/* Hovers */
 .tabs__li:hover {
   background-color: #A4FE2F;
   color: black;
 }
 
-.tabs__li.active{
-  color: #A4FE2F;
-  background-color: black;
-}
-.tabs__li.active::before{
-  display: block;
-  content: '>';
-}
+/* ---------------- Fin de Tabs ----------------- */
 
-/* Project Folders */
+/* ------------- Inicio de Folders ---------------*/
+/* Descripción: Estilo de las "carpetas" de selección de proyecto.
+Esta sección está fixed al bottom para asegurar su acceso en todo momento.
+También tiene estilo glassmorfista */
+
+/* Estructura:
+-folder
+-folder.hidden
+  -folder__ul
+    -folder__li
+    -folder__li.active
+      -folder__button
+      -folder__button.active
+      -folder__h2
+
+-hovers
+*/
+
 .folder {
   height: 15vh;
   width: 100%;
@@ -592,7 +639,7 @@ input:checked+.toggle__handle:after {
   z-index: 2;
 }
 
-.folder.hidden{
+.folder.hidden {
   display: none;
 }
 
@@ -603,17 +650,17 @@ input:checked+.toggle__handle:after {
   justify-content: center;
   align-items: flex-start;
   gap: 2rem;
-  
+
 }
 
 .folder__li {
- width: 8rem;
- height: 8rem;
+  width: 8rem;
+  height: 8rem;
 
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
 
   border-radius: 1rem;
   background-color: rgba(28, 6, 49, 0.692);
@@ -625,17 +672,10 @@ input:checked+.toggle__handle:after {
   transition: background-color .9s ease, outline .6s ease;
   cursor: pointer;
 }
-.folder__li.active{
-  background-color:blueviolet;
-  outline: .3rem solid #A4FE2F;
-}
-.folder__li:hover{
-  background-color: black;
-  outline: .3rem solid #A4FE2F;
-}
 
-.folder__li:hover .folder__button {
-  transform: scale(.9);
+.folder__li.active {
+  background-color: blueviolet;
+  outline: .3rem solid #A4FE2F;
 }
 
 .folder__button {
@@ -656,18 +696,57 @@ input:checked+.toggle__handle:after {
   background-position: center;
 }
 
-
 .folder__h2 {
   color: #A4FE2F;
   text-align: center;
   margin: 0 2%;
 }
 
-/* Project gallery */
+/* Hovers */
+.folder__li:hover {
+  background-color: black;
+  outline: .3rem solid #A4FE2F;
+}
+.folder__li:hover .folder__button {
+  transform: scale(.9);
+}
+/* ---------------- Fin de Folders ------------- */
+
+/* ------------ Inicio de Proyectos --------------*/
+/* Descripción: Estilo de la galería de proyectos.
+Esta sección contiene información sobre los proyectos,
+un grid de imágenes y vídeos, y el software utilizado */
+/* 
+-article
+-article.hidden
+  -article__window
+    -article__title
+    -article__h3
+    -article__p
+
+  -article__ul
+    -article__li
+    -article__a
+    -article__a.download
+
+  -article__gallery
+    -article__video
+    -article__img
+
+  -software
+    -software__wrapper
+      -software__span
+      -sofrware__img
+
+-Befores
+-Hovers
+  
+*/
+
 .article {
   width: 100%;
   min-height: 100vh;
-  margin: 38vh 0 auto;
+  margin: 35vh auto;
 
   display: flex;
   flex-flow: column nowrap;
@@ -681,7 +760,7 @@ input:checked+.toggle__handle:after {
   animation: slideInBottom 1s ease forwards;
 }
 
-.article.hidden{
+.article.hidden {
   display: none;
 }
 
@@ -696,7 +775,6 @@ input:checked+.toggle__handle:after {
   justify-content: flex-start;
   align-items: center;
   border: .1rem solid #A4FE2F;
-
 }
 
 .article__title {
@@ -720,7 +798,7 @@ input:checked+.toggle__handle:after {
   padding: 2%;
 }
 
-.article__ul{
+.article__ul {
   width: 90%;
   min-height: 3rem;
   display: flex;
@@ -728,25 +806,22 @@ input:checked+.toggle__handle:after {
   justify-content: space-between;
   align-items: flex-start;
 }
-.article__li{
+
+.article__li {
   width: calc(95%/2);
-  background-color:blueviolet;
-  color:#A4FE2F;
+  background-color: blueviolet;
+  color: #A4FE2F;
   border: .1rem solid #A4FE2F;
 
   transform: scale(1);
   transition: transform .6s ease,
-  background-color .6s ease;
+    background-color .6s ease;
 }
-.article__li:hover{
-  transform: scale(.9);
-  background-color: black;
-  color:#A4FE2F;
-}
-.article__a{
+
+.article__a {
   width: 100%;
   margin: 2%;
-  
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -754,23 +829,8 @@ input:checked+.toggle__handle:after {
   gap: .5rem;
 }
 
-.article__a::before{
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  content: '';
-
-  background-image: url(/assets/icons/figma-icon.svg);
-  background-repeat: no-repeat;
-}
-
-.download::before{
-  background-image: url(/assets/icons/pdf-file-icon.svg);
-}
-
 .article__gallery {
   width: 100%;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -781,11 +841,9 @@ input:checked+.toggle__handle:after {
 
 .article__img {
   width: 100%;
-
-
 }
 
-.software{
+.software {
   width: 90%;
 
   display: flex;
@@ -794,92 +852,54 @@ input:checked+.toggle__handle:after {
   align-items: flex-start;
   gap: 2rem;
 }
-.software__wrapper{
+
+.software__wrapper {
   width: 100%;
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
 }
-.software__span{
+
+.software__span {
   width: 25%;
   color: #A4FE2F;
   text-transform: uppercase;
   font-size: 2rem;
 }
-.software__img{
+
+.software__img {
   width: 4rem;
   height: 4rem;
 }
 
-/* Inicio Footer */
-/* Descripción: estilo del footer. Esta sección es sencilla y 
-solo contiene el logo y enlaces de navegación. 
-
-Estructura:  
-- footer
-- footer__img
-- footer__ul
-- footer__span
-
-- Befores
-- Hovers
-*/
-
-.footer {
-  width: 100%;
-  min-height: 50vh;
-  margin: 5% 0 10% 0;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
-  gap: 2rem;
-  transition: height .5s ease;
-}
-
-.footer.disabled{
-  cursor: none;
-}
-
-.footer__img {
-  width: 10rem;
-}
-
-.footer__ul {
-  width: 90%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-
-  color: #A7FE2F;
-  font-size: 1.6rem;
-  text-align: center;
-  gap: 2rem;
-}
-
-.footer__span {
-  color: #a8fe2f51;
-  text-align: center;
-}
-
 /* Befores */
-.footer__a::before {
+.article__a::before {
+  display: block;
+  width: 1rem;
+  height: 1rem;
   content: '';
-  opacity: 0;
-  transition: opacity .6s ease;
+
+  background-image: url(/assets/icons/figma-icon.svg);
+  background-repeat: no-repeat;
+}
+
+.download::before {
+  background-image: url(/assets/icons/pdf-file-icon.svg);
 }
 
 /* Hovers */
-.footer__a:hover:before {
-  content: '>';
-  opacity: 1;
+.article__li:hover {
+  transform: scale(.9);
+  background-color: black;
+  color: #A4FE2F;
 }
 
+/* ------------- Fin de proyectos ---------------*/
+
+/* ------------- Media Queries ----------------*/
 @media (max-width: 1000px) {
 
   /* Header */
@@ -1103,57 +1123,63 @@ Estructura:
     top: 5%;
     right: 5%;
   }
-/* Article */
-.article__gallery {
-  grid-template-columns: repeat(1, 1fr);
-}
 
   /* Tabs */
-  .tabs{
-  height: 25vh;
+  .tabs {
+    height: 25vh;
   }
-  .tabs__span{
+
+  .tabs__span {
     text-align: center;
-    }
+  }
 
   /* Folders */
-.folder__li{
-  width: 6.5rem;
-}
-}
-@media (max-width: 600px){
-  /* Tabs */
-  .tabs__span{
-    text-align: right;
+  .folder__li {
+    width: 6.5rem;
   }
-  /* Article */
-  .article{
-    margin-bottom: 50%;
+
+  /* Projects */
+  .article__gallery {
+    grid-template-columns: repeat(1, 1fr);
   }
-  /* Footer */
-  .footer{
-    display: none;
-  }
+
 }
 
+@media (max-width: 600px) {
+
+  /* Tabs */
+  .tabs__span {
+    text-align: right;
+  }
+
+  /* Projects */
+  .article {
+    margin-bottom: 50%;
+  }
+
+}
+
+/* -------------- Animaciones -------------*/
 @keyframes popIn {
-  from{
+  from {
     transform: scale(.5);
     opacity: 0;
   }
-  to{
+
+  to {
     transform: scale(1);
     opacity: 1;
   }
-  
+
 }
 
 @keyframes slideInBottom {
-  from{
+  from {
     transform: translateY(100%);
     opacity: 0;
   }
-  to{
+
+  to {
     transform: translateX(0);
     opacity: 1;
   }

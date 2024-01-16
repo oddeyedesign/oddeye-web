@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Este archivo HTML contiene la página de porfolio de la página web
+Estructura general:
+    - Barra de navegación
+    - Barra de tabs
+    - Selector de proyectos
+    - Contenido de los proyectos
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +36,7 @@
 <body>
 
     <!-- Header / Nav
+    * En esta sección tenemos:
     - Logotipo pequeño
     - Listado de enlaces de navegación:
         -Home
@@ -155,13 +164,18 @@
         </div>
     </header>
 
-    <!-- Porfolio title / tabs
-    -tabs
-        -tabs__span
-        -tabs__ul
-            -tabs__li
-                -tabs__h2
--->
+    <!-- Porfolio Tabs
+    * En esta sección tenemos:
+    - Título de la sección
+    - Listado de tabs
+        -Graphic Design
+        -UX/UI
+        -Illustration
+        -Others(Nota: Quitada por el momento)
+
+    *Interacciones:
+        - Cada tab muestra distintas carpetas que contienen cada proyecto.
+    -->
 
     <div class="tabs" id="tabs">
         <span class="tabs__span">
@@ -169,17 +183,17 @@
         </span>
         <ul class="tabs__ul">
             <li class="tabs__li active">
-                <button type="button" class="tabs__button">
+                <button type="button" class="tabs__button" title="Graphic Design Tab">
                     Graphic Design
                 </button>
             </li>
             <li class="tabs__li">
-                <button type="button" class="tabs__button">
+                <button type="button" class="tabs__button" title="UX/UI Tab">
                     UX/UI
                 </button>
             </li>
             <li class="tabs__li">
-                <button type="button" class="tabs__button">
+                <button type="button" class="tabs__button" title="Illustration Tab">
                     Illustration
                 </button>
             </li>
@@ -191,15 +205,38 @@
         </ul>
     </div>
 
-    <!-- Porfolio folders: Graphic Design -->
+    <!-- Menú fixed de selección de proyecto 
+    *En esta sección tenemos:
+        -Listado de proyectos de diseño gráfico
+            -Oni Clothing
+            -Penguin Random House Navidad
+            -Primera Orden
+
+        - Listado de proyectos de UX/UI
+            -TEAcup
+            -MindEat
+
+        - Listado de proyectos de Ilustración
+            -Penguin Random House Halloween
+            - (Nota: añadir al menos un proyecto más)
+
+    *Interacciones:
+        -Cada carpeta muestra un proyecto distinto cuando la clickas.
+     -->
+
+         <!-- Porfolio folders: Graphic Design -->
     <div class="project__folder folder">
         <ul class="folder__ul">
+
+            <!-- Oni Clothing -->
             <li class="folder__li active">
                 <button type="button" class="folder__button active"></button>
                 <h2 class="folder__h2">
                     Oni Clothing
                 </h2>
             </li>
+
+            <!-- PRH Navidad-->
             <li class="folder__li">
                 <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
@@ -207,6 +244,7 @@
                 </h2>
             </li>
 
+            <!-- Primera Orden -->
             <li class="folder__li">
                 <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
@@ -218,6 +256,8 @@
 
     <!-- Porfolio folders: UX/UI -->
     <div class="project__folder folder hidden">
+
+        <!-- Teacup -->
         <ul class="folder__ul">
             <li class="folder__li">
                 <button type="button" class="folder__button"></button>
@@ -225,6 +265,8 @@
                     TEAcup
                 </h2>
             </li>
+
+            <!-- Mindeat -->
             <li class="folder__li">
                 <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
@@ -237,6 +279,8 @@
     <!-- Porfolio folders: Illustration -->
     <div class="project__folder folder hidden">
         <ul class="folder__ul">
+
+            <!-- PRH Halloween -->
             <li class="folder__li">
                 <button type="button" class="folder__button"></button>
                 <h2 class="folder__h2">
@@ -246,10 +290,19 @@
         </ul>
     </div>
 
-    <!-- Porfolio Projects -->
+    <!-- Porfolio Projects: Contenido -->
+    <!--
+        - Ventana con título y descripción del proyecto
+        - Enlace a proyecto (UX/UI only)
+        - Grid con imágenes y vídeos del proyecto
+        - Software utilizado
+     -->
+
     <!-- Graphic design -->
     <!-- Oni Clothing -->
     <article class="article">
+
+        <!-- Información sobre el proyecto -->
         <div class="article__window">
             <div class="article__title">
                 <h3 class="article__h3">
@@ -263,6 +316,8 @@
                 creatures in a cyberpunk style.
             </p>
         </div>
+
+        <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
             <video src="/assets/porfolio/oni01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/oni-thumbnail06.webp"></video>
@@ -282,6 +337,7 @@
                 poster="/assets/porfolio/oni-thumbnail02.webp"></video>
         </div>
 
+        <!-- Software -->
         <div class="article__software software">
             <span class="software__span">
                 Software
@@ -296,6 +352,8 @@
 
     <!-- Penguin Random House -->
     <article class="article hidden">
+
+        <!-- Información sobre el proyecto -->
         <div class="article__window">
             <div class="article__title">
                 <h3 class="article__h3">
@@ -310,6 +368,8 @@
                 vibrang colors, without losing the Christmas essence that this campaign needed.
             </p>
         </div>
+
+        <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
             <video src="/assets/porfolio/penguin01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/penguin-thumbnail01.webp"></video>
@@ -326,6 +386,7 @@
                 class="article__img" loading="lazy">
         </div>
 
+        <!-- Software -->
         <div class="article__software software">
             <span class="software__span">
                 Software
@@ -338,6 +399,8 @@
 
     <!-- Primera Orden -->
     <article class="article hidden">
+
+        <!-- Información sobre el proyecto -->
         <div class="article__window">
             <div class="article__title">
                 <h3 class="article__h3">
@@ -350,6 +413,8 @@
                 digital illustration, their pixelized avatars adorning custom designed business cards.
             </p>
         </div>
+
+        <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
             <video src="/assets/porfolio/primera-orden02.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/primera-orden-thumbnail03.webp"></video>
@@ -358,6 +423,7 @@
                 poster="/assets/porfolio/primera-orden-thumbnail01.webp"></video>
         </div>
 
+        <!-- Software -->
         <div class="article__software software">
             <span class="software__span">
                 Software
@@ -371,6 +437,8 @@
     <!-- UX/UI Design -->
     <!-- TEAcup -->
     <article class="article hidden">
+
+        <!-- Información sobre el proyecto -->
         <div class="article__window">
             <div class="article__title">
                 <h3 class="article__h3">
@@ -387,6 +455,7 @@
             </p>
         </div>
 
+        <!-- Enlace al proyecto -->
         <ul class="article__ul">
             <li class="article__li">
                 <a href="/assets/downloads/ppt_teacup_memoria.pdf" class="article__a download"
@@ -402,6 +471,7 @@
             </li>
         </ul>
 
+        <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
             <video src="/assets/porfolio/teacup01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/teacup01-thumbnail.webp"></video>
@@ -418,6 +488,7 @@
             <img src="/assets/porfolio/teacup06.webp" alt="TEAcup's fonts and main color palette" class="article__img" loading="lazy">
         </div>
 
+        <!-- Software -->
         <div class="article__software software">
             <span class="software__span">
                 Software
@@ -431,6 +502,8 @@
 
     <!-- MindEat -->
     <article class="article hidden">
+
+        <!-- Información sobre el proyecto -->
         <div class="article__window">
             <div class="article__title">
                 <h3 class="article__h3">
@@ -445,6 +518,7 @@
             </p>
         </div>
 
+        <!-- Enlaces al proyecto -->
         <ul class="article__ul">
             <!-- <li class="article__li">
                 <a href="" class="article__a download" title="Case Study Download"
@@ -461,6 +535,7 @@
             </li>
         </ul>
 
+        <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
             <video src="/assets/porfolio/mindeat01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/mindeat01-thumbnail.webp"></video>
@@ -473,6 +548,7 @@
             <img src="/assets/porfolio/mindeat06.webp" alt="MindEat's menu configurator screen" class="article__img" loading="lazy">
         </div>
 
+        <!-- Software -->
         <div class="article__software software">
             <span class="software__span">
                 Software
@@ -486,6 +562,8 @@
     <!-- Illustration -->
     <!-- Penguin Random House Halloween -->
     <article class="article hidden">
+
+        <!-- Información sobre el proyecto -->
         <div class="article__window">
             <div class="article__title">
                 <h3 class="article__h3">
@@ -499,6 +577,7 @@
             </p>
         </div>
 
+        <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
             <img src="/assets/porfolio/prh-halloween01.webp" alt="Illustrated campaign claim: This Halloween, you are gonna read our letters"
                 class="article__img" loading="lazy">
@@ -528,6 +607,7 @@
                 poster="/assets/porfolio/prh-halloween-thumbnail09.webp"></video>
         </div>
 
+        <!-- Software -->
         <div class="article__software software">
             <span class="software__span">
                 Software
@@ -537,43 +617,6 @@
             </div>
         </div>
     </article>
-
-    <!-- Footer 
-    *Esta sección contiene:
-        - Logotipo pequeño
-        - Un listado de enlaces.
-        - Copyright
-    -->
-
-    <footer class="footer">
-        <img class="footer__img" src="/assets/oddeye-logos/header-logo.svg" alt="Oddeye Logo" loading="lazy"
-            fetchpriority="low">
-        <ul class="footer__ul">
-            <li class="footer__li">
-                <a href="/index.html" class="footer__a" target="_blank" title="Home">
-                    Home
-                </a>
-            </li>
-            <li class="footer__li">
-                <a href="" class="footer__a" target="_blank" title="Porfolio">
-                    Porfolio
-                </a>
-            </li>
-            <li class="footer__li">
-                <a href="/about.html" class="footer__a" target="_blank" title="About">
-                    About
-                </a>
-            </li>
-            <li class="footer__li">
-                <a href="/contact.html" class="footer__a" target="_blank" title="Contact">
-                    Contact
-                </a>
-            </li>
-        </ul>
-        <span class="footer__span">
-            © Oddeye Creations, 2024
-        </span>
-    </footer>
 
 </body>
 

@@ -4,6 +4,8 @@
 index.css
 - Reset / Normalizar
 - Header
+- Formulario de contacto
+- Footer
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
@@ -464,22 +466,48 @@ input:checked+.toggle__handle:after {
 /* --------------- Fin de Header ---------------*/
 
 /* --------------- Inicio de Contact ---------------*/
+/* Descripción: estilo de la sección de contacto.
+Contiene una contact form básica con nombre, mail y mensaje.
+La contact form no es funcional (falta backend) *
+
+Estructura:
+-contact
+  -contact__wrapper
+    -contact__label
+    -contact__input
+    -contact__message
+    -contact__button
+  -contact__submit
+
+-Befores
+-Afters
+-Hovers
+*/
 
 .contact {
   width: 100%;
   min-height: 100vh;
+  padding-top: 10vh;
 
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  position: relative;
-  top: 7rem;
+
+  background-color:rgba(0, 0, 0, .6);
+
+  backdrop-filter: blur(.2rem);
+  -webkit-backdrop-filter: blur(.2rem);
 }
 
 .contact__wrapper {
   width: 50vw;
   min-height: 10vh;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .contact__label {
@@ -493,14 +521,9 @@ input:checked+.toggle__handle:after {
 .contact__input {
   width: 100%;
   height: 2rem;
-  border: .1rem solid #A7FE2F;
+  border-bottom: .1rem solid #A7FE2F;
   color: #A7FE2F;
-  background-color: black;
   padding: 1%;
-}
-
-.contact__input::selection {
-  background-color: blueviolet;
 }
 
 .contact__message {
@@ -512,10 +535,6 @@ input:checked+.toggle__handle:after {
   padding: 1%;
 }
 
-.contact__message::selection {
-  background-color: blueviolet;
-}
-
 .contact__button {
   width: 100%;
   height: 8rem;
@@ -525,13 +544,15 @@ input:checked+.toggle__handle:after {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+
+  z-index: 1;
 }
 
 .contact__submit {
   mask-image: url(/assets/masks/button-mask.svg);
   width: 12rem;
   height: 10rem;
-  margin-top: 10%;
+  margin-top: 5%;
 
   mask-repeat: no-repeat;
   mask-size: 10rem;
@@ -552,12 +573,43 @@ input:checked+.toggle__handle:after {
   transition: mask-size .5s ease, color 1s ease, background 1s ease, box-shadow 1s ease;
 }
 
+/* Afters */
+.contact::after{
+  width: 100%;
+  height: 2rem;
+  display: block;
+  content: '';
+
+  background-color:rgba(0, 0, 0, .6);
+  mask-image: url(/assets/masks/pointy-mask-bottom.svg);
+  mask-repeat: repeat-x;
+  mask-position: bottom;
+
+  backdrop-filter: blur(.2rem);
+  -webkit-backdrop-filter: blur(.2rem);
+
+  position: absolute;
+  bottom: -2rem;
+  right: 0;
+
+  z-index: 0;
+}
+/* Hovers */
 .contact__submit:hover {
   color: black;
   background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
   mask-size: 7rem;
 }
+
+/* Selection */
+.contact__input::selection {
+  background-color: blueviolet;
+}
+.contact__message::selection {
+  background-color: blueviolet;
+}
+
 
 /* --------------- Fin de Contact ---------------*/
 

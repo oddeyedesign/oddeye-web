@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Este archivo HTML contiene la página de about 
+Estructura general:
+    - Barra de navegación
+    - Sección about
+    - Footer
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,13 +160,27 @@
 
     </header>
 
+    <!-- Sección About Me (Main) 
+    * En esta sección tenemos:
+    - Una foto (NOTA: Foto provisional, cambiar por una con mejor calidad)
+    - Un breve texto sobre mí
+    - Un adorno con las fases de la luna (NOTA: Sustituir por un after?)
+    - Footer
+    -->
 <main class="about">
+
+    <!-- Wrapper -->
     <div class="about__wrapper">
+        <!-- Retrato -->
         <img class="about__portrait" src="/assets/about/oddeyeportrait.webp" alt="">
-        <div class="about__wrapper content">
+        <!-- Contenido de texto -->
+        <div class="about__content content">
             <span class="content__span">
                 Hi! I’m Odei Siruela, the
+
+                <!-- Palabra con efecto tachado -->
                 <span class="content__span crossed">alien</span>
+
                 person behind Odd Eye Creations.
             </span>
             <p class="content__p">
@@ -175,11 +196,19 @@
             <span class="content__span">
                 Let's collaborate and create stellar products together!
             </span>
-            <img src="/assets/about/horizontal__moons.svg" alt="" class="content__img">
+
+            <!-- Adorno -->
+            <!-- <img src="/assets/about/horizontal__moons.svg" alt="" class="content__img"> -->
         </div>
     </div>
 </main>
 
+    <!-- Footer 
+    *Esta sección contiene:
+        - Logotipo pequeño
+        - Un listado de enlaces.
+        - Copyright
+    -->
 <footer class="footer">
     <img class="footer__img" src="/assets/oddeye-logos/header-logo.svg" alt="Oddeye Logo" loading="lazy"
         fetchpriority="low">

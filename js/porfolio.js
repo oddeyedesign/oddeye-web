@@ -323,3 +323,4 @@ tabs[2].addEventListener('click', function(){
     projects[5].classList.remove('hidden')
 })
 
+// ---------------Fin de Tabs Scripts ---------------------------
