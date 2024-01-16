@@ -202,7 +202,7 @@ Estructura:
 
 .header {
   width: 100%;
-  height: 12vh;
+  height: 10vh;
 
   mask-image: url(/assets/masks/menu-mask.svg);
   mask-repeat: repeat-x;
@@ -1123,7 +1123,7 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
 }
 
 .second__wrapper {
-  width: 12rem;
+  width: 14rem;
   min-height: 10rem;
 
   background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
@@ -1135,15 +1135,17 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   z-index: 1;
 
   top: 45%;
-  left: calc(50% - (12rem/2));
+  left: calc(50% - (14rem/2));
 
   mask-image: url(/assets/masks/button-mask.svg);
   mask-repeat: no-repeat;
-  mask-size: 12rem;
+  mask-size: 14rem;
+  mask-position: center;
 
   transform: scale(1);
   animation: beat 5s infinite ease both;
-  transition: transform 1s ease, top;
+  transition: transform 1s ease,
+  background 1s ease, mask-size 1s ease, box-shadow 1s ease;
 }
 
 .second__a {
@@ -1151,7 +1153,7 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   height: 6rem;
   position: absolute;
   left: calc((100% - 90%) / 2);
-  top: 12%;
+  top: calc(50% - (6rem/2));
 
   display: flex;
   flex-flow: row nowrap;
@@ -1172,7 +1174,7 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
 }
 
 /* Afters */
-.second__a::after {
+/* .second__a::after {
   content: '';
   width: 100%;
   border: #A7FE2F .1rem dashed;
@@ -1180,12 +1182,13 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   bottom: -50%;
   opacity: 0;
   transition: all .5s ease;
-}
+} */
 
 /* Hovers */
 .second__wrapper:hover {
   background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
+  mask-size: 9rem;
 }
 
 .second__wrapper:hover .second__a {
@@ -1193,11 +1196,11 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   color: black;
 }
 
-.second__wrapper:hover .second__a:after {
+/* .second__wrapper:hover .second__a:after {
   border: black .1rem dashed;
   opacity: 1;
   bottom: 25%;
-}
+} */
 
 
 /* --------------- Fin de Second Section --------------- */
