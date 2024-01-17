@@ -20,17 +20,15 @@ Estructura general:
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-    <!-- Preload de elementos usados como background en CSS -->
-    <!-- Lo hago por recomendación de Lighthouse:
-    https://web.dev/articles/optimize-lcp?utm_source=lighthouse&utm_medium=devtools&hl=es-419#optimize-when-the-resource-is-discovered -->
-    <link rel="preload" href="/assets/masks/button-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/mobile-menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
 </head>
 
 <body>
-     <!-- Header / Nav -->
+    <!-- Transición/carga de la página-->
+    <div class="waves__top active"></div>
+    <div class="waves__bottom active"></div>
+
+
+    <!-- Header / Nav -->
     <!-- - Logotipo pequeño
     - Listado de enlaces de navegación:
         -Home
@@ -148,16 +146,16 @@ Estructura general:
         </div>
         <!-- Mobile menu button -->
         <div class="header__wrapper mobile">
-                <button type="button" class="mobile__menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                </button>
+            <button type="button" class="mobile__menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </button>
         </div>
     </header>
-    
+
     <main class="contact">
         <form method="POST" action="mailto:info@oddeye.pro" enctype="multipart/form-data" class="contact__form">
 
@@ -183,7 +181,7 @@ Estructura general:
             </div>
 
             <div class="contact__button">
-            <input class="contact__submit" type="submit" value="Send">
+                <input class="contact__submit" type="submit" value="Send">
             </div>
 
         </form>
@@ -220,4 +218,5 @@ Estructura general:
     </footer>
 
 </body>
+
 </html>

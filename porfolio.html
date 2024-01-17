@@ -22,18 +22,13 @@ Estructura general:
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Preload de elementos usados como background en CSS -->
-    <!-- Lo hago por recomendación de Lighthouse:
-    https://web.dev/articles/optimize-lcp?utm_source=lighthouse&utm_medium=devtools&hl=es-419#optimize-when-the-resource-is-discovered -->
-    <link rel="preload" href="/assets/masks/button-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/mobile-menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/wavy-mask-bottom.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/icons/folder-close.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/icons/folder-open.svg" as="image" fetchpriority="high" type="image/svg+xml">
 </head>
 
 <body>
+
+    <!-- Transición/carga de la página-->
+    <div class="waves__top active"></div>
+    <div class="waves__bottom active"></div>
 
     <!-- Header / Nav
     * En esta sección tenemos:
@@ -224,7 +219,7 @@ Estructura general:
         -Cada carpeta muestra un proyecto distinto cuando la clickas.
      -->
 
-         <!-- Porfolio folders: Graphic Design -->
+    <!-- Porfolio folders: Graphic Design -->
     <div class="project__folder folder">
         <ul class="folder__ul">
 
@@ -322,9 +317,11 @@ Estructura general:
             <video src="/assets/porfolio/oni01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/oni-thumbnail06.webp"></video>
             <img src="/assets/porfolio/oni02.webp"
-                alt="Oni Clothing Typographies: Gilroy Light, Extra Bold, and Nikohaku plus Kanji" class="article__img" fetchpriority="high">
+                alt="Oni Clothing Typographies: Gilroy Light, Extra Bold, and Nikohaku plus Kanji" class="article__img"
+                fetchpriority="high">
             <img src="/assets/porfolio/oni03.webp"
-                alt="Oni Clothing Alternative logo repeated various times over a red background" class="article__img" fetchpriority="high">
+                alt="Oni Clothing Alternative logo repeated various times over a red background" class="article__img"
+                fetchpriority="high">
             <video src="/assets/porfolio/oni04.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/oni-thumbnail05.webp"></video>
             <video src="/assets/porfolio/oni05.mp4" class="article__video" autoplay muted loop
@@ -343,8 +340,10 @@ Estructura general:
                 Software
             </span>
             <div class="software__wrapper">
-                <img src="/assets/icons/photoshop-icon.svg" alt="Adobe Photoshop Icon" class="software__img" loading="lazy">
-                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img" loading="lazy">
+                <img src="/assets/icons/photoshop-icon.svg" alt="Adobe Photoshop Icon" class="software__img"
+                    loading="lazy">
+                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img"
+                    loading="lazy">
                 <img src="/assets/icons/procreate-icon.svg" alt="Procreate Icon" class="software__img" loading="lazy">
             </div>
         </div>
@@ -380,7 +379,7 @@ Estructura general:
 
             <video src="/assets/porfolio/penguin03.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/penguin-thumbnail02.webp"></video>
-                                                                        
+
             <img src="/assets/porfolio/penguin04.webp"
                 alt="Promotional image showing a pink background with glitter with a ticket on top that contains the campaign call to action"
                 class="article__img" loading="lazy">
@@ -418,7 +417,8 @@ Estructura general:
         <div class="article__gallery">
             <video src="/assets/porfolio/primera-orden02.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/primera-orden-thumbnail03.webp"></video>
-            <img src="/assets/porfolio/primera-orden03.webp" alt="Primera Orden Logo" class="article__img" loading="lazy">
+            <img src="/assets/porfolio/primera-orden03.webp" alt="Primera Orden Logo" class="article__img"
+                loading="lazy">
             <video src="/assets/porfolio/primera-orden01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/primera-orden-thumbnail01.webp"></video>
         </div>
@@ -485,7 +485,8 @@ Estructura general:
                 poster="/assets/porfolio/teacup04-thumbnail.webp"></video>
             <video src="/assets/porfolio/teacup05.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/teacup05-thumbnail.webp"></video>
-            <img src="/assets/porfolio/teacup06.webp" alt="TEAcup's fonts and main color palette" class="article__img" loading="lazy">
+            <img src="/assets/porfolio/teacup06.webp" alt="TEAcup's fonts and main color palette" class="article__img"
+                loading="lazy">
         </div>
 
         <!-- Software -->
@@ -495,7 +496,8 @@ Estructura general:
             </span>
             <div class="software__wrapper">
                 <img src="/assets/icons/figma-icon.svg" alt="Figma Icon" class="software__img" loading="lazy">
-                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img" loading="lazy">
+                <img src="/assets/icons/illustrator-icon.svg" alt="Adobe Illustrator Icon" class="software__img"
+                    loading="lazy">
             </div>
         </div>
     </article>
@@ -539,13 +541,16 @@ Estructura general:
         <div class="article__gallery">
             <video src="/assets/porfolio/mindeat01.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/mindeat01-thumbnail.webp"></video>
-            <img src="/assets/porfolio/mindeat02.webp" alt="MindEat's login loading screen" class="article__img" loading="lazy">
+            <img src="/assets/porfolio/mindeat02.webp" alt="MindEat's login loading screen" class="article__img"
+                loading="lazy">
             <video src="/assets/porfolio/mindeat03.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/mindeat03-thumbnail.webp"></video>
             <video src="/assets/porfolio/mindeat04.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/mindeat04-thumbnail.webp"></video>
-            <img src="/assets/porfolio/mindeat05.webp" alt="MindEat's statistics preview" class="article__img" loading="lazy">
-            <img src="/assets/porfolio/mindeat06.webp" alt="MindEat's menu configurator screen" class="article__img" loading="lazy">
+            <img src="/assets/porfolio/mindeat05.webp" alt="MindEat's statistics preview" class="article__img"
+                loading="lazy">
+            <img src="/assets/porfolio/mindeat06.webp" alt="MindEat's menu configurator screen" class="article__img"
+                loading="lazy">
         </div>
 
         <!-- Software -->
@@ -579,8 +584,9 @@ Estructura general:
 
         <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
-            <img src="/assets/porfolio/prh-halloween01.webp" alt="Illustrated campaign claim: This Halloween, you are gonna read our letters"
-                class="article__img" loading="lazy">
+            <img src="/assets/porfolio/prh-halloween01.webp"
+                alt="Illustrated campaign claim: This Halloween, you are gonna read our letters" class="article__img"
+                loading="lazy">
 
             <video src="/assets/porfolio/prh-halloween02.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/prh-halloween-thumbnail02.webp"></video>
@@ -588,7 +594,8 @@ Estructura general:
             <video src="/assets/porfolio/prh-halloween03.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/prh-halloween-thumbnail03.webp"></video>
 
-            <img src="/assets/porfolio/prh-halloween04.webp" alt="A picture featuring three illustrated tarot cards (Prende Fuego a la noche, Billy Summers, and Twilight)"
+            <img src="/assets/porfolio/prh-halloween04.webp"
+                alt="A picture featuring three illustrated tarot cards (Prende Fuego a la noche, Billy Summers, and Twilight)"
                 class="article__img" loading="lazy">
 
             <video src="/assets/porfolio/prh-halloween05.mp4" class="article__video" autoplay muted loop
@@ -597,7 +604,8 @@ Estructura general:
             <video src="/assets/porfolio/prh-halloween06.mp4" class="article__video" autoplay muted loop
                 poster="/assets/porfolio/prh-halloween-thumbnail06.webp"></video>
 
-            <img src="/assets/porfolio/prh-halloween07.webp" alt="A picture featuring three illustrated tarot cards (Red Queen, The Gypsy Bride, and One of Us is Lying)"
+            <img src="/assets/porfolio/prh-halloween07.webp"
+                alt="A picture featuring three illustrated tarot cards (Red Queen, The Gypsy Bride, and One of Us is Lying)"
                 class="article__img" loading="lazy">
 
             <video src="/assets/porfolio/prh-halloween08.mp4" class="article__video" autoplay muted loop
@@ -617,7 +625,6 @@ Estructura general:
             </div>
         </div>
     </article>
-
 </body>
 
 </html>

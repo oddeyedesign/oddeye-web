@@ -1,5 +1,68 @@
 'use strict'
 
+// -----------------Inicio de Animación de carga ----------------
+// Cuando carga la página
+// ADD la clase hidden a .loading__wrapper
+// ADD la clase invisible a .loading__wrapper
+// ADD la clase active a .waves__top
+// ADD la clase active a .waves__bottom
+// Espera 1s
+// REMOVE la clase active a .waves__top
+// REMOVE la clase active a .waves__bottom
+// REMOVE la clase hidden a .loading__wrapper
+// Espera .5s
+// REMOVE la clase invisible a .loading__wrapper
+// ADD la clase hidden a .waves__top
+// ADD la clase hidden a .waves__bottom
+// const wavesTop = document.querySelector('.waves__top')
+// const wavesBottom = document.querySelector('.waves__bottom')
+// const elementsToHide = document.querySelector('.loading__wrapper')
+
+// window.addEventListener('DOMContentLoaded', function (e) {
+//     e.stopPropagation
+//     elementsToHide.classList.add('hidden')
+//     elementsToHide.classList.add('invisible')
+//     wavesTop.classList.add('active')
+//     wavesBottom.classList.add('active')
+//     window.addEventListener('load', function (e) {
+
+//         setTimeout(function () {
+//             elementsToHide.classList.remove('hidden')
+//             setTimeout(function () {
+//                 elementsToHide.classList.remove('invisible')
+//             }, 100)
+//         }, 200)
+//         setTimeout(function () {
+//             wavesTop.classList.remove('active')
+//             wavesBottom.classList.remove('active')
+//             setTimeout(function () {
+//                 wavesTop.classList.add('hidden')
+//                 wavesBottom.classList.add('hidden')
+//             }, 500)
+//         }, 1000)
+
+//     })
+// })
+
+// Cuando carga la página
+// REMOVE la clase active de .waves__top
+// REMOVE la clase active de .waves__bottom
+// Antes de cerrar la página
+// ADD la clase active de .waves__top
+// ADD la clase active de .waves__bottom
+
+const wavesTop = document.querySelector('.waves__top')
+const wavesBottom = document.querySelector('.waves__bottom')
+
+window.addEventListener('load' , function(){
+    wavesBottom.classList.remove('active')
+    wavesTop.classList.remove('active')
+})
+
+
+
+// -----------------Fin de Animación de carga ----------------
+
 // ---------------Inicio de Responsive Scripts ----------------------------
 // Si el ancho de la pantalla es superior a 1000
 // ADD la clase invisible a .mobile
@@ -124,7 +187,7 @@ window.addEventListener('load', function () {
 // Llamamos a la función modeswitch
 window.addEventListener('resize', function () {
     modeSwitch()
-        // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
+    // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
     firstInteraction()
 })
 
@@ -163,8 +226,8 @@ mobileMenu.addEventListener('click', function () {
         mobileMenu.classList.add('hidden')
         headerWrapper.classList.remove('invisible')
         navLi.forEach(function (eachLi, i) {
-            setTimeout(function(){
-            navLi[0].classList.add('active')
+            setTimeout(function () {
+                navLi[0].classList.add('active')
             }, 200)
             setTimeout(function () {
                 navLi[1].classList.add('active')
@@ -173,9 +236,9 @@ mobileMenu.addEventListener('click', function () {
                 navLi[2].classList.add('active')
             }, 600)
             setTimeout(function () {
-            navLi[3].classList.add('active')
+                navLi[3].classList.add('active')
             }, 800)
-    }, 500)
+        }, 500)
     })
 })
 
@@ -193,7 +256,7 @@ closeMobMenu.addEventListener('click', function () {
     headerWrapper.classList.add('invisible')
     header.classList.remove('active')
     mobileMenu.classList.remove('hidden')
-    
+
     setTimeout(function () {
         mobileMenu.classList.remove('invisible')
         headerWrapper.classList.add('hidden')
@@ -486,29 +549,29 @@ hero.addEventListener('pointermove', pointerMove)
 // REMOVE la clase plau en .first__animation
 // REMOVE la clase play en .first__a
 
-const firstInteraction = (function() {
+const firstInteraction = (function () {
     const first = document.querySelector('.first')
     const firstAnimation = document.querySelector('.first__animation')
     const firstA = document.querySelector('.first__a')
 
-if(desktopActive){
-first.addEventListener('pointerover', function () {
-    firstAnimation.classList.add('play')
-    firstA.classList.add('play')
-    
-    first.addEventListener('pointerout', function () {
-        firstAnimation.classList.remove('play')
-        firstA.classList.remove('play')
-    })
-})
-}
-else{
-    // Si el modo móvil está activo
-    // ADD la clase play a .first__animation
-    // ADD la clase play a .firstA
+    if (desktopActive) {
+        first.addEventListener('pointerover', function () {
+            firstAnimation.classList.add('play')
+            firstA.classList.add('play')
+
+            first.addEventListener('pointerout', function () {
+                firstAnimation.classList.remove('play')
+                firstA.classList.remove('play')
+            })
+        })
+    }
+    else {
+        // Si el modo móvil está activo
+        // ADD la clase play a .first__animation
+        // ADD la clase play a .firstA
         firstAnimation.classList.add('play')
         firstA.classList.add('play')
-}
+    }
 })
 
 

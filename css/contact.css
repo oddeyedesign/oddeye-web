@@ -163,6 +163,93 @@ body {
   background-color: #0e0e0f;
 }
 
+/* Animación de carga de página / transición */
+/* Descripción: Animación de carga de la página
+Estructura:
+-waves__top
+-waves__top.active
+-waves__top.hidden
+-waves__bottom
+-waves__bottom.active
+-waves__bottom.hidden
+
+-Before
+-After
+
+*/
+.waves__top{
+  width: 100%;
+  height: calc(50vh);
+  position: fixed;
+  background-color:#A7FE2F;
+  z-index: 6;
+  top: 0;
+  display: block;
+
+  transform: translateY(-200%);
+  transition: transform 1s ease;
+}
+.waves__top.active{
+  transform: translateY(0);
+}
+.waves__top.hidden{
+  display: none;
+}
+
+.waves__bottom{
+  width: 100%;
+  height: calc(50vh);
+  position: fixed;
+  background-color:#A7FE2F;
+  z-index: 6;
+  bottom: 0;
+  display: block;
+
+  transform: translateY(200%);
+  transition: transform 1s ease;
+}
+
+.waves__bottom.active{
+  transform: translateY(0%);
+}
+
+.waves__bottom.hidden{
+  display: none;
+}
+
+/* Before */
+.waves__bottom::before{
+  width: 118%;
+  height: 2rem;
+  display: block;
+  content: '';
+
+  background-color:#A7FE2F;
+  mask-image: url(/assets/masks/wavy-mask-top.svg);
+  mask-repeat: repeat-x;
+  mask-position: top;
+
+  position: absolute;
+  top: -2rem;
+  right: 0;
+}
+
+/* After */
+.waves__top::after{
+  width: 100%;
+  height: 2rem;
+  display: block;
+  content: '';
+  
+  background-color:#A7FE2F;
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+  mask-repeat: repeat-x;
+  mask-position: bottom;
+  
+  position: absolute;
+  bottom: -2rem;
+  right: 0;
+  }
 
 /* --------------- Inicio de Header --------------*/
 /* Descripción: estilo  del Header en versión desktop. El header tiene
@@ -952,10 +1039,6 @@ Estructura:
     width: 100%;
   }
 
-  /* Contact */
-  .contact{
-
-  }
 }
 
 

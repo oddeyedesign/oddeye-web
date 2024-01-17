@@ -24,20 +24,13 @@ Estructura general:
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-        <!-- Preload de elementos usados como background en CSS -->
-    <!-- Lo hago por recomendación de Lighthouse:
-    https://web.dev/articles/optimize-lcp?utm_source=lighthouse&utm_medium=devtools&hl=es-419#optimize-when-the-resource-is-discovered -->
-    <link rel="preload" href="/assets/masks/button-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/mobile-menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/wavy-mask-bottom.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/wavy-mask-top.svg" as="image" fetchpriority="high" type="image/svg+xml">
 </head>
 
 <body>
-    <!-- Transición página, testeando -->
-    
+
+    <!-- Transición/carga de la página-->
+    <div class="waves__top active"></div>
+    <div class="waves__bottom active"></div>
 
     <!-- Header / Nav -->
     <!-- - Logotipo pequeño
@@ -157,16 +150,15 @@ Estructura general:
         </div>
         <!-- Mobile menu button -->
         <div class="header__wrapper mobile">
-                <button type="button" class="mobile__menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
-                        viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                </button>
+            <button type="button" class="mobile__menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mobile__svg"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </button>
         </div>
     </header>
-
     <!--
     Sección Hero (Main)
     * En esta sección tenemos:
@@ -576,25 +568,29 @@ Estructura general:
             <ul class="carrousel__ul"></ul>
             <div class="carrousel__big">
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/carrousel-logos/penguin__logo.svg" alt="Penguin Random House Logo" class="carrousel__img" loading="lazy">
+                    <img src="/assets/index/carrousel-logos/penguin__logo.svg" alt="Penguin Random House Logo"
+                        class="carrousel__img" loading="lazy">
                     <h4 class="carrousel__h4">
                         Penguin Random House
                     </h4>
                 </div>
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/carrousel-logos/oni__logo.svg" alt="Oni Clothing Logo" class="carrousel__img" loading="lazy">
+                    <img src="/assets/index/carrousel-logos/oni__logo.svg" alt="Oni Clothing Logo"
+                        class="carrousel__img" loading="lazy">
                     <h4 class="carrousel__h4">
                         Oni Clothing By Wismichu
                     </h4>
                 </div>
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/carrousel-logos/sz__logo.svg" alt="Survival Zombie Logo" class="carrousel__img" loading="lazy">
+                    <img src="/assets/index/carrousel-logos/sz__logo.svg" alt="Survival Zombie Logo"
+                        class="carrousel__img" loading="lazy">
                     <h4 class="carrousel__h4">
                         Survival Zombie
                     </h4>
                 </div>
                 <div class="carrousel__wrapper">
-                    <img src="/assets/index/carrousel-logos/nocturna__logo.svg" alt="Nocturna Editorial Logo" class="carrousel__img" loading="lazy">
+                    <img src="/assets/index/carrousel-logos/nocturna__logo.svg" alt="Nocturna Editorial Logo"
+                        class="carrousel__img" loading="lazy">
                     <h4 class="carrousel__h4">
                         Nocturna Editorial
                     </h4>

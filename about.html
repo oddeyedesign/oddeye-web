@@ -21,15 +21,13 @@ Estructura general:
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Preload de elementos usados como background en CSS -->
-    <!-- Lo hago por recomendación de Lighthouse:
-    https://web.dev/articles/optimize-lcp?utm_source=lighthouse&utm_medium=devtools&hl=es-419#optimize-when-the-resource-is-discovered -->
-    <link rel="preload" href="/assets/masks/button-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
-    <link rel="preload" href="/assets/masks/mobile-menu-mask.svg" as="image" fetchpriority="high" type="image/svg+xml">
 </head>
 
 <body>
+
+    <!-- Transición/carga de la página-->
+    <div class="waves__top active"></div>
+    <div class="waves__bottom active"></div>
 
     <!-- Header / Nav
     - Logotipo pequeño
@@ -167,41 +165,44 @@ Estructura general:
     - Un adorno con las fases de la luna (NOTA: Sustituir por un after?)
     - Footer
     -->
-<main class="about">
+    <main class="about">
 
-    <!-- Wrapper -->
-    <div class="about__wrapper">
-        <!-- Retrato -->
-        <img class="about__portrait" src="/assets/about/oddeyeportrait.webp" alt="">
-        <!-- Contenido de texto -->
-        <div class="about__content content">
-            <span class="content__span">
-                Hi! I’m Odei Siruela, the
+        <!-- Wrapper -->
+        <div class="about__wrapper">
+            <!-- Retrato -->
+            <img class="about__portrait" src="/assets/about/oddeyeportrait.webp" alt="">
+            <!-- Contenido de texto -->
+            <div class="about__content content">
+                <span class="content__span">
+                    Hi! I’m Odei Siruela, the
 
-                <!-- Palabra con efecto tachado -->
-                <span class="content__span crossed">alien</span>
+                    <!-- Palabra con efecto tachado -->
+                    <span class="content__span crossed">alien</span>
 
-                person behind Odd Eye Creations.
-            </span>
-            <p class="content__p">
-                I'm an experienced graphic designer based in Madrid, Spain. My unique blend of creativity, attention to
-                detail, and a touch of eccentricity sets my work apart. As an openly queer autistic individual, I bring
-                a distinctive perspective to my designs, fostering an unconventional approach that resonates with users.
-            </p>
-            <p class="content__p">
-                My love for videogames ignited my creative spark,
-                guiding me towards the realm of UX/UI and web design, which I recently studied at CEI Design School.
-                I aspire to create visually stunning and functional interfaces for my favorite developers.
-            </p>
-            <span class="content__span">
-                Let's collaborate and create stellar products together!
-            </span>
+                    person behind Odd Eye Creations.
+                </span>
+                <p class="content__p">
+                    I'm an experienced graphic designer based in Madrid, Spain. My unique blend of creativity, attention
+                    to
+                    detail, and a touch of eccentricity sets my work apart. As an openly autistic person, I
+                    bring
+                    a distinctive perspective to my designs, fostering an unconventional approach that resonates with
+                    users.
+                </p>
+                <p class="content__p">
+                    My love for videogames ignited my creative spark,
+                    guiding me towards the realm of UX/UI and web design, which I recently studied at CEI Design School.
+                    I aspire to create visually stunning and functional interfaces for my favorite developers.
+                </p>
+                <span class="content__span">
+                    Let's collaborate and create stellar products together!
+                </span>
 
-            <!-- Adorno -->
-            <!-- <img src="/assets/about/horizontal__moons.svg" alt="" class="content__img"> -->
+                <!-- Adorno -->
+                <!-- <img src="/assets/about/horizontal__moons.svg" alt="" class="content__img"> -->
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
     <!-- Footer 
     *Esta sección contiene:
@@ -209,35 +210,35 @@ Estructura general:
         - Un listado de enlaces.
         - Copyright
     -->
-<footer class="footer">
-    <img class="footer__img" src="/assets/oddeye-logos/header-logo.svg" alt="Oddeye Logo" loading="lazy"
-        fetchpriority="low">
-    <ul class="footer__ul">
-        <li class="footer__li">
-            <a href="/index.html" class="footer__a" target="_blank" title="Home">
-                Home
-            </a>
-        </li>
-        <li class="footer__li">
-            <a href="" class="footer__a" target="_blank" title="Porfolio">
-                Porfolio
-            </a>
-        </li>
-        <li class="footer__li">
-            <a href="/about.html" class="footer__a" target="_blank" title="About">
-                About
-            </a>
-        </li>
-        <li class="footer__li">
-            <a href="/contact.html" class="footer__a" target="_blank" title="Contact">
-                Contact
-            </a>
-        </li>
-    </ul>
-    <span class="footer__span">
-        © Oddeye Creations, 2024
-    </span>
-</footer>
+    <footer class="footer">
+        <img class="footer__img" src="/assets/oddeye-logos/header-logo.svg" alt="Oddeye Logo" loading="lazy"
+            fetchpriority="low">
+        <ul class="footer__ul">
+            <li class="footer__li">
+                <a href="/index.html" class="footer__a" target="_blank" title="Home">
+                    Home
+                </a>
+            </li>
+            <li class="footer__li">
+                <a href="" class="footer__a" target="_blank" title="Porfolio">
+                    Porfolio
+                </a>
+            </li>
+            <li class="footer__li">
+                <a href="/about.html" class="footer__a" target="_blank" title="About">
+                    About
+                </a>
+            </li>
+            <li class="footer__li">
+                <a href="/contact.html" class="footer__a" target="_blank" title="Contact">
+                    Contact
+                </a>
+            </li>
+        </ul>
+        <span class="footer__span">
+            © Oddeye Creations, 2024
+        </span>
+    </footer>
 
 </body>
 
