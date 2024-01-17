@@ -51,14 +51,17 @@
 // ADD la clase active de .waves__top
 // ADD la clase active de .waves__bottom
 
+const loadingAnimation = () => {
 const wavesTop = document.querySelector('.waves__top')
 const wavesBottom = document.querySelector('.waves__bottom')
 
-window.addEventListener('load' , function(){
+window.addEventListener('load' , () => {
     wavesBottom.classList.remove('active')
     wavesTop.classList.remove('active')
 })
+}
 
+loadingAnimation()
 
 // -----------------Fin de Animación de carga ----------------
 
@@ -66,25 +69,19 @@ window.addEventListener('load' , function(){
 // Si el ancho de la pantalla es superior a 1000
 // ADD la clase invisible a .mobile
 // ADD la clase invisible a .social__button
-// ADD la clase invisible a .services
-// REMOVE la clase hidden a .info
+
 // Esperar .5s
 // Add la clase hidden a .mobile
 // ADD la clase hidden a .social__button
-// ADD la clse hidden a .services
-// REMOVE la clase invisible a .info
+
 
 // Si es inferior o igual a mil
 // REMOVE la clase hidden a .mobile
 // REMOVE la clase hidden a .social__button
-// REMOVE la clase hidden a .services
-// ADD la clase invisible a .info
 // ADD la clase invisible a .header__wrapper
 // Esperar .5s
 // REMOVE la clase invisible a .mobile
 // REMOVE la clase invisible a .social__button
-// REMOVE la clase invisible a .services
-// ADD la clase hidden a .info
 // ADD la calse hidden a .header__wrapper
 // No consigo que funcione, haciendo pruebas...
 
@@ -103,8 +100,6 @@ const headerWrapper = document.querySelector('.header__wrapper')
 // Definimos la función Desktop mode para agrupar todos los cambios:
 // .mobile add hidden
 // .social__button add hidden
-// .services add hidden
-//.info add hidden
 // .header__wrapper add hidden
 const desktopMode = (function () {
     console.log(screenWidth)
@@ -124,8 +119,6 @@ const desktopMode = (function () {
 // Definimos la función mobile mode para agrupar todos los cambios:
 // .mobile remove hidden
 // .social__button remove hidden
-// .services remove hidden
-//.info remove hidden
 // .header__wrapper remove hidden
 const mobileMode = (function () {
     console.log(screenWidth)

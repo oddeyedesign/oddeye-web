@@ -165,8 +165,6 @@ body {
   background-color: #0e0e0f;
 }
 
-
-
 /* Animación de carga de página / transición */
 /* Descripción: Animación de carga de la página
 Estructura:
@@ -929,6 +927,20 @@ un grid de imágenes y vídeos, y el software utilizado */
   width: 100%;
 }
 
+/* Display de los vídeos por tamaño */
+
+.big{
+  display: block;
+}
+.medium{
+  display: none;
+}
+.small{
+  display: none;
+}
+
+/* -------------------------------- */
+
 .article__img {
   width: 100%;
 }
@@ -990,8 +1002,8 @@ un grid de imágenes y vídeos, y el software utilizado */
 /* ------------- Fin de proyectos ---------------*/
 
 /* ------------- Media Queries ----------------*/
-@media (max-width: 1000px) {
 
+@media (max-width: 1000px) {
   /* Header */
   .header {
     width: 100%;
@@ -1235,6 +1247,18 @@ un grid de imágenes y vídeos, y el software utilizado */
 
 }
 
+@media (max-width: 720px){
+  .big{
+    display: none;
+  }
+  .medium{
+    display: block;
+  }
+  .small{
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
 
   /* Tabs */
@@ -1247,6 +1271,18 @@ un grid de imágenes y vídeos, y el software utilizado */
     margin-bottom: 50%;
   }
 
+}
+
+@media (max-width: 480px){
+  .big{
+    display: none;
+  }
+  .medium{
+    display: none;
+  }
+  .small{
+    display: block;
+  }
 }
 
 /* -------------- Animaciones -------------*/

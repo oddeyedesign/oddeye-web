@@ -1,48 +1,6 @@
 'use strict'
 
 // -----------------Inicio de Animación de carga ----------------
-// Cuando carga la página
-// ADD la clase hidden a .loading__wrapper
-// ADD la clase invisible a .loading__wrapper
-// ADD la clase active a .waves__top
-// ADD la clase active a .waves__bottom
-// Espera 1s
-// REMOVE la clase active a .waves__top
-// REMOVE la clase active a .waves__bottom
-// REMOVE la clase hidden a .loading__wrapper
-// Espera .5s
-// REMOVE la clase invisible a .loading__wrapper
-// ADD la clase hidden a .waves__top
-// ADD la clase hidden a .waves__bottom
-// const wavesTop = document.querySelector('.waves__top')
-// const wavesBottom = document.querySelector('.waves__bottom')
-// const elementsToHide = document.querySelector('.loading__wrapper')
-
-// window.addEventListener('DOMContentLoaded', function (e) {
-//     e.stopPropagation
-//     elementsToHide.classList.add('hidden')
-//     elementsToHide.classList.add('invisible')
-//     wavesTop.classList.add('active')
-//     wavesBottom.classList.add('active')
-//     window.addEventListener('load', function (e) {
-
-//         setTimeout(function () {
-//             elementsToHide.classList.remove('hidden')
-//             setTimeout(function () {
-//                 elementsToHide.classList.remove('invisible')
-//             }, 100)
-//         }, 200)
-//         setTimeout(function () {
-//             wavesTop.classList.remove('active')
-//             wavesBottom.classList.remove('active')
-//             setTimeout(function () {
-//                 wavesTop.classList.add('hidden')
-//                 wavesBottom.classList.add('hidden')
-//             }, 500)
-//         }, 1000)
-
-//     })
-// })
 
 // Cuando carga la página
 // REMOVE la clase active de .waves__top
@@ -51,15 +9,17 @@
 // ADD la clase active de .waves__top
 // ADD la clase active de .waves__bottom
 
-const wavesTop = document.querySelector('.waves__top')
-const wavesBottom = document.querySelector('.waves__bottom')
-
-window.addEventListener('load' , function(){
-    wavesBottom.classList.remove('active')
-    wavesTop.classList.remove('active')
-})
-
-
+const loadingAnimation = () => {
+    const wavesTop = document.querySelector('.waves__top')
+    const wavesBottom = document.querySelector('.waves__bottom')
+    
+    window.addEventListener('load' , () => {
+        wavesBottom.classList.remove('active')
+        wavesTop.classList.remove('active')
+    })
+    }
+    
+    loadingAnimation()
 
 // -----------------Fin de Animación de carga ----------------
 
