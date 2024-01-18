@@ -727,8 +727,6 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   transition: opacity 1s ease;
 }
 
-
-
 .info.hidden {
   display: none;
 }
@@ -738,7 +736,7 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 }
 
 .info__window {
-  width: 25rem;
+  width: 30%;
   position: absolute;
 
   transform:
@@ -843,17 +841,18 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 
 .window__content {
   width: 100%;
-  height: 15rem;
+  min-height: 15rem;
   background-color: black;
   color: #A7FE2F;
   border-top: none;
   border-bottom: #A7FE2F solid .10em;
   border-left: #A7FE2F solid .10em;
   border-right: #A7FE2F solid .10em;
+  padding: 2%;
 
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   text-align: left;
@@ -1331,6 +1330,9 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   position: absolute;
   top: 0;
   left: 0;
+
+  filter:grayscale(100%) brightness(.4) contrast(.9);
+  -webkit-filter: grayscale(100%) brightness(.4) contrast(.9);
 }
 
 .second__wrapper {
@@ -1516,7 +1518,7 @@ Contenido:
 
 .carrousel__big {
   width: 400%;
-  height: 25vh;
+  min-height: 25vh;
 
   display: flex;
   flex-flow: row nowrap;
@@ -1712,6 +1714,41 @@ Estructura:
 
 /* Media Queries (Adaptaciones responsive) */
 
+@media (min-width: 1920px){
+  .nav__li{
+    font-size: 1.7rem;
+  }
+  .info{
+    min-height: 30vh;
+  }
+  .window__content{
+   height: 30vh;
+    font-size: 1.4rem;
+  }
+  .second__wrapper{
+    width: 20rem;
+    height: 20rem;
+    mask-size: 20rem;
+    left: calc(50% - (20rem/2));
+  }
+  .second__a{
+    font-size: 3rem;
+  }
+  .carrousel__button{
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .carrousel__h4{
+    font-size: 2rem;
+  }
+  .carrousel__img{
+    min-height:16vh;
+  }
+  .carrousel__wrapper{
+    min-height: 25vh;
+  }
+}
+
 @media (max-width: 1336px) {
 
   /* Main */
@@ -1794,7 +1831,7 @@ Estructura:
     top: -100%;
     left: 0%;
 
-    display: flex;
+    display: block;
 
     animation: none;
     transition:
@@ -2139,7 +2176,6 @@ Estructura:
 }
 
 @media (max-width: 600px) {
-  /* Header */
 
   /* Hero */
   .hero {

@@ -317,11 +317,15 @@ Estructura:
   -webkit-backdrop-filter: blur(.2rem);
 
   animation: fadeInTop 1s ease 1 forwards;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__wrapper {
   width: 90%;
-  margin: 1rem auto;
+  margin: 0 0 .5rem 0;
 
   display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
@@ -769,7 +773,7 @@ También tiene estilo glassmorfista */
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 4%;
 
 }
 
@@ -1052,6 +1056,28 @@ un grid de imágenes y vídeos, y el software utilizado */
 
 /* ------------- Media Queries ----------------*/
 
+@media (min-width: 1920px){
+  .nav__li{
+    font-size: 1.7rem;
+  }
+  .tabs__ul{
+    justify-content: space-between;
+  }
+  .tabs__li{
+    width: 30%;
+   font-size: 1.6rem;
+  }
+
+  .article__window{
+    font-size: 1.5rem;
+  }
+  .folder__li{
+    width: 10rem;
+    height: 10rem;
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 1000px) {
   /* Header */
   .header {
@@ -1069,7 +1095,7 @@ un grid de imágenes y vídeos, y el software utilizado */
     top: -100%;
     left: 0%;
 
-    display: flex;
+    display: block;
 
     animation: none;
     transition:
