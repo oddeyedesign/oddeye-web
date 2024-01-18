@@ -153,14 +153,13 @@ body {
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
 
-  /* Background */
+}
 
-  background-image: url('/assets/background.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #0e0e0f;
+/* Filtro de color modo incógnito */
+body .incognito {
+  filter: sepia(100%);
+  -webkit-filter: sepia(100%);
+  transition: filter 1s ease;
 }
 
 /* Animación de carga de página / transición */
@@ -175,13 +174,12 @@ Estructura:
 
 -Before
 -After
-
-*/
-.waves__top{
+- Incognito */
+ .waves__top {
   width: 100%;
   height: calc(50vh);
   position: fixed;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   z-index: 6;
   top: 0;
   display: block;
@@ -189,18 +187,20 @@ Estructura:
   transform: translateY(-200%);
   transition: transform 1s ease;
 }
-.waves__top.active{
+
+.waves__top.active {
   transform: translateY(0);
 }
-.waves__top.hidden{
+
+.waves__top.hidden {
   display: none;
 }
 
-.waves__bottom{
+.waves__bottom {
   width: 100%;
   height: calc(50vh);
   position: fixed;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   z-index: 6;
   bottom: 0;
   display: block;
@@ -209,22 +209,22 @@ Estructura:
   transition: transform 1s ease;
 }
 
-.waves__bottom.active{
+.waves__bottom.active {
   transform: translateY(0%);
 }
 
-.waves__bottom.hidden{
+.waves__bottom.hidden {
   display: none;
 }
 
 /* Before */
-.waves__bottom::before{
+.waves__bottom::before {
   width: 118%;
   height: 2rem;
   display: block;
   content: '';
 
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
   mask-position: top;
@@ -235,21 +235,30 @@ Estructura:
 }
 
 /* After */
-.waves__top::after{
+.waves__top::after {
   width: 100%;
   height: 2rem;
   display: block;
   content: '';
-  
-  background-color:#A7FE2F;
+
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
-  
+
   position: absolute;
   bottom: -2rem;
   right: 0;
-  }
+}
+
+/* Incognito */
+.waves__bottom.incognito::before {
+  display: none;
+}
+
+.waves__top.incognito::after {
+  display: none;
+}
 
 /* --------------- Inicio de Header --------------*/
 /* Descripción: estilo  del Header en versión desktop. El header tiene
@@ -282,6 +291,7 @@ Estructura:
   - Befores
   - Afters
   - Hovers
+  - Incognito
 */
 
 .header {
@@ -550,6 +560,26 @@ input:checked+.toggle__handle:after {
   transform: scale(1.1);
 }
 
+/* Incognito */
+.header.incognito {
+  width: 100%;
+  mask-image: none;
+
+  position: fixed;
+  background: none;
+  box-shadow: none;
+  background-color: rgba(143, 136, 136, 0.7);
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+}
+
+
 /* --------------- Fin de Header ---------------*/
 
 /* --------------- Inicio de About ---------------*/
@@ -566,11 +596,12 @@ Estructura:
     -content__img
 
   -Afters
+  - Incognito
 */
 
 .about {
-  width: 90%;
-  min-height: 70vh;
+  width: 100%;
+  min-height: 100vh;
   margin: auto;
 
   display: flex;
@@ -578,11 +609,18 @@ Estructura:
   justify-content: center;
   align-items: center;
 
-  margin-top: 7%;
+  background-image: url('/assets/background.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #0e0e0f;
+
 }
 
 .about__wrapper {
-  width: 100%;
+  margin-top: 6%;
+  width: 90%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -591,6 +629,8 @@ Estructura:
 
   background-color: #0e0e0f;
   border: .1rem solid #A7FE2F;
+
+  animation: slideInLeft 2s ease 1 forwards;
 }
 
 .about__portrait {
@@ -609,7 +649,7 @@ Estructura:
   justify-content: center;
   align-items: center;
   border: none;
-  
+
   gap: 2rem;
 }
 
@@ -632,7 +672,7 @@ Estructura:
 }
 
 /* Afters */
-.content::after{
+.content::after {
   width: 60%;
   height: 5rem;
   content: '';
@@ -642,6 +682,12 @@ Estructura:
   background-position: center;
 
   margin-top: 5%;
+}
+
+/* Incognito */
+.about__portrait.incognito {
+  filter: brightness(.6);
+  -webkit-filter: brightness(.7);
 }
 
 /* --------------- Fin de About ---------------*/
@@ -663,8 +709,7 @@ Estructura:
 
 .footer {
   width: 100%;
-  min-height: 50vh;
-  margin: 5% 0 10% 0;
+  padding: 5%;
 
   display: flex;
   flex-flow: column nowrap;
@@ -673,6 +718,14 @@ Estructura:
 
   gap: 2rem;
   transition: height .5s ease;
+
+
+  background-image: url('/assets/background.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #0e0e0f;
 }
 
 .footer.disabled {
@@ -944,16 +997,17 @@ Estructura:
     min-height: 100vh;
     flex-flow: column nowrap;
   }
-  .content{
+
+  .content {
     justify-content: space-between;
     width: 90%;
   }
 
-  .content__p{
+  .content__p {
     width: 100%;
   }
 
-  .content__span{
+  .content__span {
     width: 100%;
   }
 
@@ -978,6 +1032,34 @@ Estructura:
     width: 90%;
     font-size: 1.2rem;
   }
+
+  /* Incognito */
+  .header.incognito {
+    width: 100%;
+    height: 6rem;
+    display: block;
+    transition:
+      top .5s ease;
+    opacity: 1;
+    background: none;
+  }
+
+  .mobile.incognito {
+    animation: none;
+    mask: none;
+    border-radius: 50%;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile__svg.incognito {
+    position: static;
+    animation: none;
+    animation-direction: reverse;
+  }
+
 }
 
 @media (max-width: 600px) {
@@ -991,11 +1073,68 @@ Estructura:
     flex-flow: column nowrap;
   }
 
-  .footer__li{
+  .footer__li {
     width: 100%;
   }
 
-  .footer__a{
+  .footer__a {
     width: 100%;
+  }
+}
+
+/* Animaciones */
+
+@keyframes fadeInTop {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform:
+      scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform:
+      scale(1.2);
+  }
+
+  100% {
+    transform:
+      scale(1);
+  }
+}
+
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateX(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

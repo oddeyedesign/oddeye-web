@@ -156,13 +156,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   /* Background */
-
-  background-image: url('/assets/background.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
   background-color: #0e0e0f;
+}
+
+/* Filtro de color modo incógnito */
+body .incognito {
+  filter: sepia(100%);
+  -webkit-filter: sepia(100%);
+  transition: filter 1s ease;
 }
 
 /* Animación de carga de página / transición */
@@ -177,6 +178,7 @@ Estructura:
 
 -Before
 -After
+-Incognito
 
 */
 .waves__top{
@@ -253,6 +255,15 @@ Estructura:
   right: 0;
   }
 
+  /* Incognito */
+.waves__bottom.incognito::before {
+  display: none;
+}
+
+.waves__top.incognito::after {
+  display: none;
+}
+
 /* --------------- Inicio de Header --------------*/
 /* Descripción: estilo  del Header en versión desktop. El header tiene
 forma "wavy" y está fijado en la ventana. Tiene un estilo glassmorfista
@@ -284,6 +295,7 @@ Estructura:
   - Befores
   - Afters
   - Hovers
+  - Incognito
 */
 
 .header {
@@ -553,6 +565,25 @@ input:checked+.toggle__handle:after {
   transform: scale(1.1);
 }
 
+/* Incognito */
+.header.incognito {
+  width: 100%;
+  mask-image: none;
+
+  position: fixed;
+  background: none;
+  box-shadow: none;
+  background-color: rgba(27, 24, 24, 0.7);
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+}
+
 /* --------------- Fin de Header ---------------*/
 
 /* --------------- Inicio de Tabs --------------*/
@@ -570,6 +601,7 @@ Tiene forma wavy y estilo glassmorfista */
   -befores
   -afters
   -hovers
+  -incognito
 
 */
 .tabs {
@@ -682,6 +714,14 @@ Tiene forma wavy y estilo glassmorfista */
 .tabs__li:hover {
   background-color: #A4FE2F;
   color: black;
+}
+
+/* Incognito */
+.tabs{
+  height: 30vh;
+}
+.tabs.incognito::after{
+  display: none;
 }
 
 /* ---------------- Fin de Tabs ----------------- */
@@ -820,6 +860,7 @@ un grid de imágenes y vídeos, y el software utilizado */
 
 -Befores
 -Hovers
+-incognito
   
 */
 
@@ -924,18 +965,12 @@ un grid de imágenes y vídeos, y el software utilizado */
   /* transition: transform .5s ease; */
 }
 
-/* .article__img:hover{
-  transform: scale(1.1);
-}
-.article__video:hover{
-  transform: scale(1.1);
-} */
 
 /* Display de los vídeos por tamaño */
 
-.big{
+/* .big{
   display: none;
-}
+} */
 .medium{
   display: block;
 }
@@ -1001,6 +1036,16 @@ un grid de imágenes y vídeos, y el software utilizado */
   transform: scale(.9);
   background-color: black;
   color: #A4FE2F;
+}
+
+/* Incognito */
+.article__img.incognito{
+  filter: brightness(.6);
+  -webkit-filter: brightness(.6);
+}
+.article__video.incognito{
+  filter: brightness(.6);
+  -webkit-filter: brightness(.6);
 }
 
 /* ------------- Fin de proyectos ---------------*/
@@ -1247,6 +1292,31 @@ un grid de imágenes y vídeos, y el software utilizado */
   /* Projects */
   .article__gallery {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+   /* Incognito */
+   .header.incognito {
+    width: 100%;
+    height: 6rem;
+    display: block;
+    transition:
+      top .5s ease;
+    opacity: 1;
+    background: none;
+  }
+  .mobile.incognito {
+    animation: none;
+    mask: none;
+    border-radius: 50%;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mobile__svg.incognito {
+    position: static;
+    animation: none;
+    animation-direction: reverse;
   }
 
 }

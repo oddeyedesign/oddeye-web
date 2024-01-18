@@ -146,6 +146,7 @@ body {
   font-size: 100%;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--negro);
+
   /* opcional */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -156,15 +157,13 @@ body {
   -webkit-font-smoothing: antialiased;
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
+}
 
-  /* Background */
-
-  background-image: url('/assets/background.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #0e0e0f;
+/* Filtro de color modo incógnito */
+body .incognito {
+  filter: sepia(100%);
+  -webkit-filter: sepia(100%);
+  transition: filter 1s ease;
 }
 
 /* Animación de carga de página / transición */
@@ -179,13 +178,14 @@ Estructura:
 
 -Before
 -After
+-Incognito
 
 */
-.waves__top{
+.waves__top {
   width: 100%;
   height: calc(50vh);
   position: fixed;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   z-index: 6;
   top: 0;
   display: block;
@@ -193,18 +193,20 @@ Estructura:
   transform: translateY(-200%);
   transition: transform 1s ease;
 }
-.waves__top.active{
+
+.waves__top.active {
   transform: translateY(0);
 }
-.waves__top.hidden{
+
+.waves__top.hidden {
   display: none;
 }
 
-.waves__bottom{
+.waves__bottom {
   width: 100%;
   height: calc(50vh);
   position: fixed;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   z-index: 6;
   bottom: 0;
   display: block;
@@ -213,22 +215,22 @@ Estructura:
   transition: transform 1s ease;
 }
 
-.waves__bottom.active{
+.waves__bottom.active {
   transform: translateY(0%);
 }
 
-.waves__bottom.hidden{
+.waves__bottom.hidden {
   display: none;
 }
 
 /* Before */
-.waves__bottom::before{
+.waves__bottom::before {
   width: 118%;
   height: 2rem;
   display: block;
   content: '';
 
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
   mask-position: top;
@@ -238,22 +240,32 @@ Estructura:
   right: 0;
 }
 
+
 /* After */
-.waves__top::after{
+.waves__top::after {
   width: 100%;
   height: 2rem;
   display: block;
   content: '';
-  
-  background-color:#A7FE2F;
+
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
-  
+
   position: absolute;
   bottom: -2rem;
   right: 0;
-  }
+}
+
+/* Incognito */
+.waves__bottom.incognito::before {
+  display: none;
+}
+
+.waves__top.incognito::after {
+  display: none;
+}
 
 /* --------------- Inicio de Header --------------*/
 /* Descripción: estilo  del Header en versión desktop. El header tiene
@@ -286,6 +298,7 @@ Estructura:
   - Befores
   - Afters
   - Hovers
+  - Incognito
 */
 
 .header {
@@ -308,6 +321,7 @@ Estructura:
 
   animation: fadeInTop 1s ease 1 forwards;
 }
+
 
 .header__wrapper {
   width: 90%;
@@ -353,7 +367,7 @@ Estructura:
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-items: flex-start ;
+  align-items: flex-start;
 
   transition: background-color 1s ease,
     transform .6s ease;
@@ -377,7 +391,7 @@ Estructura:
 }
 
 .social__button {
-display: none;
+  display: none;
 }
 
 .social__button.hidden {
@@ -536,6 +550,25 @@ input:checked+.toggle__handle:after {
   transform: scale(1.1);
 }
 
+/* Incognito */
+.header.incognito {
+  width: 100%;
+  mask-image: none;
+
+  position: fixed;
+  background: none;
+  box-shadow: none;
+  background-color: rgba(27, 24, 24, 0.7);
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+}
+
 /* --------------- Fin de Header ---------------*/
 
 /* --------------- Inicio de Hero Content ---------------*/
@@ -546,6 +579,9 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   Estructura:
     -hero
     -hero__wrapper logo
+      -hero__normal
+        -normal__h2
+        -normal__span
       -logo__mask
       -logo__body
       -logo__svg
@@ -559,7 +595,7 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
       -button__res
       -window__content
       -window__title
-      -window__h1
+      -window__h2
       -window__subtitle
       -window__ul
       -window-li
@@ -571,6 +607,7 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
     - Afters
     - Hovers
     - Selections
+    - Incognito
 */
 
 .hero {
@@ -583,10 +620,29 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   align-items: center;
 
   position: relative;
+
+  background-image: url(/assets/background.svg);
+  background-color: #0e0e0f;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.hero.disabled{
-cursor: none;
+
+.hero.disabled {
+  cursor: none;
+}
+
+.normal {
+  display: none;
+}
+
+.normal__h2 {
+  opacity: 0;
+}
+
+.normal__span {
+  opacity: 0;
 }
 
 .logo {
@@ -605,6 +661,7 @@ cursor: none;
   top: 12%;
   left: calc((100% - 35%)/ 2.2);
 }
+
 
 .logo__mask {
   display: block;
@@ -666,6 +723,8 @@ cursor: none;
   transition: opacity 1s ease;
 }
 
+
+
 .info.hidden {
   display: none;
 }
@@ -726,7 +785,6 @@ cursor: none;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .window__wrapper .button {
@@ -825,7 +883,7 @@ cursor: none;
   gap: .5rem;
 }
 
-.window__h1 {
+.window__h2 {
   text-transform: uppercase;
   letter-spacing: .5rem;
   text-align: left;
@@ -960,6 +1018,53 @@ cursor: none;
   background-color: #A7FE2F;
 }
 
+/* Incognito */
+.hero.incognito {
+  min-height: 60vh;
+}
+
+.normal.incognito {
+  display: block;
+  width: 70%;
+  margin-top: 4%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.normal__h2.incognito {
+  opacity: 1;
+  color: white;
+  font-size: 9vw;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.normal__span.incognito {
+  text-align: center;
+  opacity: 1;
+  color: white;
+  font-size: 3vw;
+}
+
+.logo.incognito {
+  display: none;
+}
+
+.info.incognito {
+  display: none;
+}
+
+.hero__moons.incognito {
+  display: none;
+}
+
+.hero__smiley.incognito {
+  display: none;
+}
+
 /* --------------- Fin de Hero Content --------------- */
 
 /* ---------------Inicio de Services (Mobile) ---------------*/
@@ -1052,7 +1157,7 @@ Estructura:
   align-items: center;
 }
 
-.first.disabled{
+.first.disabled {
   cursor: none;
 }
 
@@ -1132,6 +1237,10 @@ Estructura:
   right: 0;
 }
 
+.first.incognito::before {
+  display: none;
+}
+
 /* After */
 .first::after {
   width: 100%;
@@ -1149,6 +1258,10 @@ Estructura:
   right: 0;
 }
 
+.first.incognito::after {
+  display: none;
+}
+
 /* --------------- Inicio de Second Section ---------------*/
 /* Descripción: Estilo de First Section. Esta sección contiene un 
 enlace a la sección de contacto. Tiene de fondo un vídeo de un cielo
@@ -1156,7 +1269,7 @@ estrellado y al hacer hover el cursor se convierte en un ovni.
 
 Estructura:
 - second
-- second__h3
+- second__h4
 - second__video
 - second__wrapper
 - second__a
@@ -1164,6 +1277,7 @@ Estructura:
 - Before
 - Afters
 - Hovers
+- Incognito
 
 */
 .second {
@@ -1183,11 +1297,11 @@ Estructura:
   cursor: url('/assets/index/cursors/ufo__cursor.svg'), auto;
 }
 
-.second.disabled{
+.second.disabled {
   cursor: none;
 }
 
-.second__h3 {
+.second__h4 {
   width: 90%;
   min-height: 2rem;
   font-size: 5vh;
@@ -1197,6 +1311,11 @@ Estructura:
   position: absolute;
   top: 22%;
   z-index: 1;
+}
+
+.second__normal .normal__span {
+  font-size: 5vw;
+  text-align: center;
 }
 
 /* Vídeo de Borys Zaitsev de Pexels:
@@ -1233,7 +1352,7 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   transform: scale(1);
   animation: beat 5s infinite ease both;
   transition: transform 1s ease,
-  background 1s ease, mask-size 1s ease, box-shadow 1s ease;
+    background 1s ease, mask-size 1s ease, box-shadow 1s ease;
 }
 
 .second__a {
@@ -1256,21 +1375,11 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   cursor: url('/assets/index/cursors/ufo_cursor_pointer.svg'), auto;
 }
 
+
 /* Befores */
 .second__a::before {
   content: '>';
 }
-
-/* Afters */
-/* .second__a::after {
-  content: '';
-  width: 100%;
-  border: #A7FE2F .1rem dashed;
-  position: absolute;
-  bottom: -50%;
-  opacity: 0;
-  transition: all .5s ease;
-} */
 
 /* Hovers */
 .second__wrapper:hover {
@@ -1284,12 +1393,33 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   color: black;
 }
 
-/* .second__wrapper:hover .second__a:after {
-  border: black .1rem dashed;
-  opacity: 1;
-  bottom: 25%;
-} */
+/* Incognito */
+.second.incognito {
+  cursor: default;
+  background-color: #0e0e0f;
+  min-height: 50vh;
 
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+
+.second__h4.incognito {
+  display: none;
+}
+
+.second__a.incognito {
+  cursor: pointer;
+}
+
+.second__video.incognito {
+  display: none;
+}
+
+.second__wrapper.incognito {
+  position: static;
+  min-height: 5rem;
+  mask-image: none;
+}
 
 /* --------------- Fin de Second Section --------------- */
 
@@ -1317,7 +1447,6 @@ Contenido:
     - Befores
     - Afters
     - Hovers
-
 */
 .third {
   width: 100%;
@@ -1337,11 +1466,12 @@ Contenido:
   z-index: 1;
 }
 
-.third.disabled{
+.third.disabled {
   cursor: none;
 }
 
-.third__wrapper{
+
+.third__wrapper {
   width: 45%;
   padding: 2%;
   min-height: 40vh;
@@ -1357,10 +1487,10 @@ Contenido:
   color: #A7FE2F;
 
   transition: all .5s ease;
-
 }
+
 .third__span {
-display: inline-block;
+  display: inline-block;
 }
 
 .third__span.crossed {
@@ -1374,7 +1504,7 @@ display: inline-block;
 
   display: flex;
   flex-flow: column-reverse nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
 
   overflow: hidden;
@@ -1382,7 +1512,7 @@ display: inline-block;
 
 .carrousel__big {
   width: 400%;
-  height: 40vh;
+  height: 25vh;
 
   display: flex;
   flex-flow: row nowrap;
@@ -1395,12 +1525,13 @@ display: inline-block;
 
 .carrousel__wrapper {
   width: 100%;
-  height: 40vh;
+
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
+
 }
 
 .carrousel__img {
@@ -1466,6 +1597,11 @@ display: inline-block;
   top: -2rem;
   right: 0;
 }
+
+.third.incognito::before {
+  display: none;
+}
+
 /* Afters */
 .third::after {
   width: 100%;
@@ -1481,6 +1617,10 @@ display: inline-block;
   position: absolute;
   bottom: -2rem;
   right: 0;
+}
+
+.third.incognito::after {
+  display: none;
 }
 
 /* Hovers */
@@ -1516,9 +1656,15 @@ Estructura:
 
   gap: 2rem;
   transition: height .5s ease;
+
+  background-image: url(/assets/background.svg);
+  background-color: #0e0e0f;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.footer.disabled{
+.footer.disabled {
   cursor: none;
 }
 
@@ -1573,6 +1719,11 @@ Estructura:
     position: relative;
   }
 
+  .hero.incognito {
+    height: 50vh;
+    display: flex;
+  }
+
   .logo {
     width: 40%;
     height: 30rem;
@@ -1616,7 +1767,7 @@ Estructura:
     right: 4%;
   }
 
-  .hero__smiley{
+  .hero__smiley {
     bottom: 12%;
   }
 }
@@ -1626,7 +1777,7 @@ Estructura:
   /* Header */
   .header {
     width: 100%;
-    height: 1rem;
+    height: 0rem;
     margin: 0;
 
     mask-image: none;
@@ -1643,7 +1794,7 @@ Estructura:
 
     animation: none;
     transition:
-    top .5s ease;
+      top .5s ease;
     opacity: 1;
   }
 
@@ -1651,7 +1802,7 @@ Estructura:
     top: 0%;
   }
 
-  .header__wrapper{
+  .header__wrapper {
     width: 100%;
     height: 100vh;
     padding: 5%;
@@ -1677,7 +1828,7 @@ Estructura:
     display: none;
   }
 
-  .header__wrapper.invisible{
+  .header__wrapper.invisible {
     opacity: 0;
   }
 
@@ -1698,8 +1849,8 @@ Estructura:
 
     opacity: 1;
     transition:
-    left .5s ease,
-    opacity .5s ease;
+      left .5s ease,
+      opacity .5s ease;
 
     mask-image: url(/assets/masks/mobile-menu-mask.svg);
     mask-repeat: no-repeat;
@@ -1715,12 +1866,12 @@ Estructura:
     display: block;
   }
 
-  .mobile.invisible{
+  .mobile.invisible {
     left: -100%;
     opacity: 0;
   }
 
-  .mobile.hidden{
+  .mobile.hidden {
     display: none;
   }
 
@@ -1733,10 +1884,10 @@ Estructura:
     top: calc(50% - (3rem/2));
     left: calc(50% - (3rem/2));
     z-index: 4;
-    
+
     transition:
-    opacity 1s ease,
-    transform .6s ease;
+      opacity 1s ease,
+      transform .6s ease;
     cursor: pointer;
 
     animation: rotate 30s linear infinite both;
@@ -1770,7 +1921,7 @@ Estructura:
     opacity: 0;
   }
 
-  .nav__li.active{
+  .nav__li.active {
     transform: translateX(0);
     opacity: 1;
   }
@@ -1811,25 +1962,25 @@ Estructura:
     height: 3rem;
   }
 
-  .social__button{
+  .social__button {
     width: 100%;
     height: 3rem;
     padding: 0 0 0 .6rem;
-  
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-  
+
     text-transform: uppercase;
     font-size: 1.3rem;
-  
+
     color: #A7FE2F;
     border: #A7FE2F .125rem solid;
-  
+
     cursor: pointer;
     transition: opacity 1s ease;
-  
+
     transform: scale(1);
     transition: all .6s ease;
   }
@@ -1910,9 +2061,10 @@ Estructura:
   }
 
 
-  .third__wrapper{
+  .third__wrapper {
     width: 90%;
   }
+
   .third__span {
     font-size: 2.5rem;
   }
@@ -1955,6 +2107,31 @@ Estructura:
     width: 90%;
     font-size: 1.2rem;
   }
+
+  /* Incognito */
+  .header.incognito {
+    width: 100%;
+    height: 6rem;
+    display: block;
+    transition:
+      top .5s ease;
+    opacity: 1;
+    background: none;
+  }
+  .mobile.incognito {
+    animation: none;
+    mask: none;
+    border-radius: 50%;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mobile__svg.incognito {
+    position: static;
+    animation: none;
+    animation-direction: reverse;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1974,38 +2151,51 @@ Estructura:
     top: calc(50% - (15rem/2));
   }
 
+
   /* Services */
-  .services__li{
+  .services__li {
     font-size: 2rem;
   }
 
-  .second__h3{
+  .second__h3 {
     font-size: 1.5rem;
   }
-  .second__a{
+
+  .second__a {
     font-size: 1.7rem;
   }
 
-    /* First Section */
-  .first__span{
-    display:block;
+  /* First Section */
+  .first__span {
+    display: block;
   }
-/* Second section */
+
+  /* Second section */
 
   /* Footer */
-  .footer{
-  height: 100vh;
+  .footer {
+    height: 100vh;
   }
-  .footer__ul{
+
+  .footer__ul {
     flex-flow: column nowrap;
   }
 
-  .footer__li{
+  .footer__li {
     width: 100%;
   }
 
-  .footer__a{
+  .footer__a {
     width: 100%;
+  }
+
+  /* Incognito */
+  .normal__h2.incognito {
+    font-size: 3.5rem;
+  }
+
+  .normal__span.incognito {
+    font-size: 1.5rem;
   }
 }
 

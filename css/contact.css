@@ -142,6 +142,7 @@ body {
   font-size: 100%;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--negro);
+
   /* opcional */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -152,16 +153,17 @@ body {
   -webkit-font-smoothing: antialiased;
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
-
-  /* Background */
-
-  background-image: url('/assets/background.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #0e0e0f;
 }
+
+
+/* Filtro de color modo incógnito */
+body .incognito {
+  filter: sepia(100%);
+  -webkit-filter: sepia(100%);
+  transition: filter 1s ease;
+}
+
+
 
 /* Animación de carga de página / transición */
 /* Descripción: Animación de carga de la página
@@ -175,13 +177,14 @@ Estructura:
 
 -Before
 -After
+-Incognito
 
 */
-.waves__top{
+.waves__top {
   width: 100%;
   height: calc(50vh);
   position: fixed;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   z-index: 6;
   top: 0;
   display: block;
@@ -189,18 +192,20 @@ Estructura:
   transform: translateY(-200%);
   transition: transform 1s ease;
 }
-.waves__top.active{
+
+.waves__top.active {
   transform: translateY(0);
 }
-.waves__top.hidden{
+
+.waves__top.hidden {
   display: none;
 }
 
-.waves__bottom{
+.waves__bottom {
   width: 100%;
   height: calc(50vh);
   position: fixed;
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   z-index: 6;
   bottom: 0;
   display: block;
@@ -209,22 +214,22 @@ Estructura:
   transition: transform 1s ease;
 }
 
-.waves__bottom.active{
+.waves__bottom.active {
   transform: translateY(0%);
 }
 
-.waves__bottom.hidden{
+.waves__bottom.hidden {
   display: none;
 }
 
 /* Before */
-.waves__bottom::before{
+.waves__bottom::before {
   width: 118%;
   height: 2rem;
   display: block;
   content: '';
 
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
   mask-position: top;
@@ -234,22 +239,32 @@ Estructura:
   right: 0;
 }
 
+
 /* After */
-.waves__top::after{
+.waves__top::after {
   width: 100%;
   height: 2rem;
   display: block;
   content: '';
-  
-  background-color:#A7FE2F;
+
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
-  
+
   position: absolute;
   bottom: -2rem;
   right: 0;
-  }
+}
+
+/* Incognito */
+.waves__bottom.incognito::before {
+  display: none;
+}
+
+.waves__top.incognito::after {
+  display: none;
+}
 
 /* --------------- Inicio de Header --------------*/
 /* Descripción: estilo  del Header en versión desktop. El header tiene
@@ -282,27 +297,30 @@ Estructura:
   - Befores
   - Afters
   - Hovers
+  - Incognito
 */
 
 .header {
   width: 100%;
-  min-height: 10vh;
+  height: 10vh;
 
   mask-image: url(/assets/masks/menu-mask.svg);
   mask-repeat: repeat-x;
+  mask-position: bottom;
 
   position: fixed;
-  top: 0;
 
   z-index: 5;
   overflow: visible;
+
   background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  -webkit-backdrop-filter: blur(.2rem);
   backdrop-filter: blur(.2rem);
+  -webkit-backdrop-filter: blur(.2rem);
 
   animation: fadeInTop 1s ease 1 forwards;
 }
+
 
 .header__wrapper {
   width: 90%;
@@ -372,26 +390,7 @@ Estructura:
 }
 
 .social__button {
-  width: 100%;
-  height: 3rem;
-  padding: 0 0 0 .6rem;
-
   display: none;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-
-  text-transform: uppercase;
-  font-size: 1.3rem;
-
-  color: #A7FE2F;
-  border: .125rem solid #A7FE2F;
-
-  cursor: pointer;
-  transition: opacity 1s ease;
-
-  transform: scale(1);
-  transition: all .6s ease;
 }
 
 .social__button.hidden {
@@ -528,8 +527,8 @@ input:checked+.toggle__handle:after {
 }
 
 .nav__li:hover {
-  color: black;
-  background-color: #A7FE2F;
+  color: #A7FE2F;
+  background-color: black;
   transform: scale(1.2);
 }
 
@@ -544,10 +543,29 @@ input:checked+.toggle__handle:after {
 }
 
 .social__button:hover {
-  background-color: blueviolet;
-  color: #A7FE2F;
+  background-color: #A7FE2F;
+  color: #0e0e0f;
   font-weight: 700;
   transform: scale(1.1);
+}
+
+/* Incognito */
+.header.incognito {
+  width: 100%;
+  mask-image: none;
+
+  position: fixed;
+  background: none;
+  box-shadow: none;
+  background-color: rgba(27, 24, 24, 0.7);
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  top: 0;
+  left: 0;
 }
 
 /* --------------- Fin de Header ---------------*/
@@ -581,7 +599,7 @@ Estructura:
   justify-content: center;
   align-items: center;
 
-  background-color:rgba(0, 0, 0, .6);
+  background-color:#000000;
 
   backdrop-filter: blur(.2rem);
   -webkit-backdrop-filter: blur(.2rem);
@@ -595,6 +613,8 @@ Estructura:
   flex-flow: column nowrap;
   justify-content: center;
   align-items: flex-start;
+
+  animation: slideInLeft 2s ease 1 forwards;
 }
 
 .contact__label {
@@ -667,7 +687,7 @@ Estructura:
   display: block;
   content: '';
 
-  background-color:rgba(0, 0, 0, .6);
+  background-color:#000000;
   mask-image: url(/assets/masks/pointy-mask-bottom.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
@@ -695,6 +715,22 @@ Estructura:
 }
 .contact__message::selection {
   background-color: blueviolet;
+}
+
+/* Incognito */
+.contact__submit.incognito{
+  height: 4rem;
+  background: none;
+  box-shadow: none;
+  background-color: #1e1e22;
+  mask: none;
+  animation: none;
+  transform: scale(1);
+}
+
+.contact__submit.incognito:hover{
+  border: .1rem solid white;
+  transform: scale(1.2);
 }
 
 
@@ -725,6 +761,13 @@ Estructura:
 
   gap: 2rem;
   transition: height .5s ease;
+
+    /* Fondo del body */
+    background-image: url(/assets/background.svg);
+    background-color: #0e0e0f;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .footer.disabled {
@@ -1017,6 +1060,30 @@ Estructura:
     width: 90%;
     font-size: 1.2rem;
   }
+    /* Incognito */
+    .header.incognito {
+      width: 100%;
+      height: 6rem;
+      display: block;
+      transition:
+        top .5s ease;
+      opacity: 1;
+      background: none;
+    }
+    .mobile.incognito {
+      animation: none;
+      mask: none;
+      border-radius: 50%;
+      top: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mobile__svg.incognito {
+      position: static;
+      animation: none;
+      animation-direction: reverse;
+    }
 }
 
 
@@ -1043,6 +1110,61 @@ Estructura:
 
 
 /* Animaciones */
+
+@keyframes fadeInTop {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform:
+      scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform:
+      scale(1.2);
+  }
+
+  100% {
+    transform:
+      scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateX(0);
+  }
+}
 
 @keyframes beat {
   0% {

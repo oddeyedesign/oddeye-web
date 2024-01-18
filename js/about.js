@@ -1,5 +1,26 @@
 'use strict'
 
+// ----------------Toggle el modo incógnito--------------------
+
+const incognito = () => {
+    const toggleCheckbox = document.querySelector('.toggle__checkbox')
+    // Selección de TODOS los elementos del documento 
+    const fullWebsite = document.querySelectorAll('*')
+
+    // A todos los elementos del documento
+    fullWebsite.forEach(function (eaachElement , i){
+        // Cuando hago click en .toggle__checkbox
+        toggleCheckbox.addEventListener('click', () => {
+        // Toggle la clase incognito en todos los elementos 
+        fullWebsite[i].classList.toggle('incognito')
+     })
+    })
+    }
+
+    incognito()
+
+// ----------------Fin toggle modo incógnito--------------------
+
 // -----------------Inicio de Animación de carga ----------------
 
 const loadingAnimation = () => {

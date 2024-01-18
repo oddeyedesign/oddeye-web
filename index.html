@@ -33,7 +33,8 @@ Estructura general:
     <div class="waves__bottom active"></div>
 
     <!-- Header / Nav -->
-    <!-- - Logotipo pequeño
+    <!-- 
+    - Logotipo pequeño (h1)
     - Listado de enlaces de navegación:
         -Home
         -Porfolio
@@ -162,7 +163,8 @@ Estructura general:
     <!--
     Sección Hero (Main)
     * En esta sección tenemos:
-        - Logotipo en grande
+         - Contenido oculto que solo aparece cuando toggle incógnito
+        - Logotipo en grande 
         - Un falso archivo "readme.txt" que contiene el título de la web y
         los servicios que ofrezco.
         - Un falso archivo "oddeye.exe" decorativo
@@ -174,6 +176,16 @@ Estructura general:
         - "readme.txt" y "oddeye.exe" se pueden minimizar,cerrar y mover por la pantalla. 
      -->
     <main class="hero">
+
+        <!-- Contenido que solo se muestra en modo incógnito -->
+        <div class="hero__normal normal ">
+            <h2 class="normal__h2">
+                Odei Siruela
+            </h2>
+            <span class="normal__span">
+                A very normal designer
+            </span>
+        </div>
 
         <div class="hero__wrapper logo">
             <!-- Logotipo en svg-->
@@ -388,9 +400,9 @@ Estructura general:
             -->
                 <div class="window__content">
                     <div class="window__title" title="Oddeye Creations">
-                        <h1 class="window__h1">
+                        <h2 class="window__h2">
                             Oddeye
-                        </h1>
+                        </h2>
                         <div class="window__subtitle">
                             <span class="window__creations">
                                 Creations
@@ -400,19 +412,19 @@ Estructura general:
                     <!-- Listado de servicios -->
                     <ul class="window__ul">
                         <li class="window__li">
-                            <h2 class="window__h2">
+                            <h3 class="window__h3">
                                 Graphic Design
-                            </h2>
+                            </h3>
                         </li>
                         <li class="window__li">
-                            <h2 class="window__h2">
+                            <h3 class="window__h3">
                                 UX/UI Design
-                            </h2>
+                            </h3>
                         </li>
                         <li class="window__li">
-                            <h2 class="window__h2">
+                            <h3 class="window__h3">
                                 Illustration
-                            </h2>
+                            </h3>
                         </li>
                     </ul>
                 </div>
@@ -517,15 +529,16 @@ Estructura general:
         <div class="first__animation"></div>
         <div class="first__wrapper">
             <a href="/porfolio.html" class="first__a" title="Check out my porfolio" target="_blank">
-                <h3 class="first__h3">
-                    Oddeye's porfolio
-                </h3>
+                <h4 class="first__h4">
+                    Porfolio
+                </h4>
             </a>
         </div>
     </section>
     <!-- Second section 
     * En esta sección tenemos:
-        - Un h3 CTA
+        - Contenido oculto que solo aparece cuando toggle incógnito
+        - Un h4 CTA
         - Un enlace a contacto
         - Un vídeo de fondo
             /* Vídeo de Borys Zaitsev de Pexels:
@@ -535,9 +548,17 @@ Estructura general:
         que sobrevuela las estrellas
     -->
     <section class="section second">
-        <h3 class="second__h3">
+
+        <!-- Contenido que solo se muestra en modo incógnito -->
+        <div class="second__normal normal ">
+            <span class="normal__span">
+              Definitely NOT an alien
+            </span>
+        </div>
+
+        <h4 class="second__h4">
             Boost your projects to a cosmic level!
-        </h3>
+        </h4>
         <div class="second__wrapper">
             <a href="/contact.html" class="second__a" title="Contact me" target="_blank">
                 Hire me!
