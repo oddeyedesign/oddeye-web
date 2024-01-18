@@ -934,10 +934,10 @@ un grid de imágenes y vídeos, y el software utilizado */
 /* Display de los vídeos por tamaño */
 
 .big{
-  display: block;
+  display: none;
 }
 .medium{
-  display: none;
+  display: block;
 }
 .small{
   display: none;

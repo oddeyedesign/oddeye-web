@@ -2,17 +2,14 @@
 
 // -----------------Inicio de Animación de carga ----------------
 
-// Cuando carga la página
-// REMOVE la clase active de .waves__top
-// REMOVE la clase active de .waves__bottom
-// Antes de cerrar la página
-// ADD la clase active de .waves__top
-// ADD la clase active de .waves__bottom
 
 const loadingAnimation = () => {
     const wavesTop = document.querySelector('.waves__top')
     const wavesBottom = document.querySelector('.waves__bottom')
 
+    // Cuando carga la página
+    // REMOVE la clase active de .waves__top
+    // REMOVE la clase active de .waves__bottom
     window.addEventListener('load', () => {
         wavesBottom.classList.remove('active')
         wavesTop.classList.remove('active')
@@ -24,104 +21,88 @@ loadingAnimation()
 // -----------------Fin de Animación de carga ----------------
 
 // ---------------Inicio de Responsive Scripts ----------------------------
-// Si el ancho de la pantalla es superior a 1000
-// ADD la clase invisible a .mobile
-// ADD la clase invisible a .social__button
-// Esperar .5s
-// Add la clase hidden a .mobile
-// ADD la clase hidden a .social__button
 
-// Si es inferior o igual a mil
-// REMOVE la clase hidden a .mobile
-// REMOVE la clase hidden a .social__button
-// ADD la clase invisible a .header__wrapper
-// Esperar .5s
-// REMOVE la clase invisible a .mobile
-// REMOVE la clase invisible a .social__button
-// ADD la calse hidden a .header__wrapper
+const adaptScreen = () => {
 
-// Definimos el valor inicial de ancho de la pantalla
-// Definimos que la pantalla del modo móvil <= que 1000
-// Definimos que la pantalla del modo desktop es > que 1000
-let screenWidth = window.innerWidth
-let mobileActive = screenWidth <= 1000
-let desktopActive = screenWidth > 1000
+    // Definimos el valor inicial de ancho de la pantalla
+    // Definimos que la pantalla del modo móvil <= que 1000
+    // Definimos que la pantalla del modo desktop es > que 1000
+    let screenWidth = window.innerWidth
+    let mobileActive = screenWidth <= 1000
 
-// Seleccionamos todos los elementos a editar
-const mobileWrapper = document.querySelector('.mobile')
-const closeMobMenu = document.querySelector('.social__button')
-const headerWrapper = document.querySelector('.header__wrapper')
+    // Seleccionamos todos los elementos a editar
+    const mobileWrapper = document.querySelector('.mobile')
+    const closeMobMenu = document.querySelector('.social__button')
+    const headerWrapper = document.querySelector('.header__wrapper')
 
-// Definimos la función Desktop mode para agrupar todos los cambios:
-// .mobile add hidden
-// .social__button add hidden
-// .header__wrapper add hidden
-const desktopMode = (() => {
-    console.log(screenWidth)
-    console.log('Mobile Active?' + mobileActive)
-    console.log('Desktop Active?' + desktopActive)
-    mobileWrapper.classList.add('invisible')
-    closeMobMenu.classList.add('invisible')
-    headerWrapper.classList.remove('hidden')
+    const desktopMode = (() => {
+        //  Si desktop mode:
+        // ADD la clase invisible a .mobile
+        // ADD la clase invisible a .social__button
+        // REMOVE la clase hidden a .header__wrapper
+        mobileWrapper.classList.add('invisible')
+        closeMobMenu.classList.add('invisible')
+        headerWrapper.classList.remove('hidden')
 
-    setTimeout(() => {
-        mobileWrapper.classList.add('hidden')
-        closeMobMenu.classList.add('hidden')
-        headerWrapper.classList.remove('invisible')
-    }, 50)
-})
+        // Espera .05
+        // ADD la clase hidden a .mobile
+        // ADD la clase hidden a .social__button
+        // REMOVE la clase invisible a .header__wrapper
+        setTimeout(() => {
+            mobileWrapper.classList.add('hidden')
+            closeMobMenu.classList.add('hidden')
+            headerWrapper.classList.remove('invisible')
+        }, 50)
+    })
 
-// Definimos la función mobile mode para agrupar todos los cambios:
-// .mobile remove hidden
-// .social__button remove hidden
-// .header__wrapper remove hidden
-const mobileMode = (() => {
-    console.log(screenWidth)
-    console.log('Mobile Active?' + mobileActive)
-    console.log('Desktop Active?' + desktopActive)
+    const mobileMode = (() => {
+        // Si mobile mode:
+        // REMOVE la clase hidden a .mobile
+        // REMOVE la clase hidden a .social__button
+        // ADD la clase invisible a .header__wrapper
+        mobileWrapper.classList.remove('hidden')
+        closeMobMenu.classList.remove('hidden')
+        headerWrapper.classList.add('invisible')
 
-    mobileWrapper.classList.remove('hidden')
-    closeMobMenu.classList.remove('hidden')
-    headerWrapper.classList.add('invisible')
+        // Espera .05
+        // REMOVE la clase invisible a .mobile
+        // REMOVE la clase invisible a .social__button
+        // ADD la clase hidden a .header__wrapper
+        setTimeout(() => {
+            mobileWrapper.classList.remove('invisible')
+            closeMobMenu.classList.remove('invisible')
+            headerWrapper.classList.add('hidden')
+        }, 50)
+    })
 
-    setTimeout(() => {
-        console.log('Chao')
-        mobileWrapper.classList.remove('invisible')
-        closeMobMenu.classList.remove('invisible')
-        headerWrapper.classList.add('hidden')
-    }, 50)
+    const modeSwitch = (function () {
+        let screenWidth = window.innerWidth
+        let mobileActive = screenWidth <= 1000
+        // Si mobileActive es igual a false
+        // llamamos a la función desktopmode
+        // ELSE llamamos a la función mobilemode
+        if (!mobileActive) {
+            desktopMode()
+        }
+        else {
+            mobileMode()
+        }
+    })
 
-})
+    //Cuando la ventana carga
+    // Llamamos a la función modeSwitch
+    window.addEventListener('load', function () {
+        modeSwitch()
+    })
 
-// Definimos la función modeSwitch para no tener que repetir todo lo anterior
-// Cuando quedamos aplicar los modos móvil/desktop
-// Si mobileActive es igual a false
-// Comprobamos el valor del ancho de la pantalla de nuevo (sin hacer esto no funciona)
-// Comprobamos si se cumplen los requisitos de mobileActive y desktopActive
-// llamamos a la función desktopmode
-// ELSE llamamos a la función mobilemode
-const modeSwitch = (() => {
-    screenWidth = window.innerWidth
-    mobileActive = screenWidth >= 1000
-    if (mobileActive) {
-        desktopMode()
-    }
-    else {
-        mobileMode()
-    }
-})
+    //Cuando la ventana cambia de tamaño
+    // Llamamos a la función modeswitch
+    window.addEventListener('resize', function () {
+        modeSwitch()
+    })
+}
 
-//Cuando la ventana carga
-// Llamamos a la función modeSwitch
-window.addEventListener('load', () => {
-    modeSwitch()
-})
-
-//Cuando la ventana cambia de tamaño
-// Llamamos a la función modeswitch
-window.addEventListener('resize', () => {
-    modeSwitch()
-})
+adaptScreen()
 
 // ---------------Fin de Responsive Scripts ----------------------------
 
@@ -132,6 +113,8 @@ const mobileMenuInteraction = () => {
     const mobileMenu = document.querySelector('.mobile')
     const header = document.querySelector('.header')
     const navLi = document.querySelectorAll('.nav__li')
+    const closeMobMenu = document.querySelector('.social__button')
+    const headerWrapper = document.querySelector('.header__wrapper')
 
     // Cuando hago click en .mobile:
     // REMOVE la clase hidden a .header__wrapper
@@ -217,7 +200,6 @@ const mobileMenuInteraction = () => {
 mobileMenuInteraction()
 
 
-
 const languageSelector = () => {
 
     // SI el enlace de la web contiene /ES
@@ -244,7 +226,6 @@ languageSelector()
 // ---------------Fin de Header Scripts ----------------------------
 
 // ---------------Inicio de Tabs Scripts ---------------------------
-
 
 const porfolioNavigation = () => {
 
