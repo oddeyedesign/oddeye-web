@@ -12,240 +12,244 @@
 const loadingAnimation = () => {
     const wavesTop = document.querySelector('.waves__top')
     const wavesBottom = document.querySelector('.waves__bottom')
-    
-    window.addEventListener('load' , () => {
+
+    window.addEventListener('load', () => {
         wavesBottom.classList.remove('active')
         wavesTop.classList.remove('active')
     })
-    }
-    
-    loadingAnimation()
+}
+
+loadingAnimation()
 
 // -----------------Fin de Animación de carga ----------------
 
 // ---------------Inicio de Responsive Scripts ----------------------------
-// Si el ancho de la pantalla es superior a 1000
-// ADD la clase invisible a .mobile
-// ADD la clase invisible a .social__button
-// ADD la clase invisible a .services
-// REMOVE la clase hidden a .info
-// Esperar .5s
-// Add la clase hidden a .mobile
-// ADD la clase hidden a .social__button
-// ADD la clse hidden a .services
-// REMOVE la clase invisible a .info
+const adaptScreen = () => {
 
-// Si es inferior o igual a mil
-// REMOVE la clase hidden a .mobile
-// REMOVE la clase hidden a .social__button
-// REMOVE la clase hidden a .services
-// ADD la clase invisible a .info
-// ADD la clase invisible a .header__wrapper
-// Esperar .5s
-// REMOVE la clase invisible a .mobile
-// REMOVE la clase invisible a .social__button
-// REMOVE la clase invisible a .services
-// ADD la clase hidden a .info
-// ADD la calse hidden a .header__wrapper
-// No consigo que funcione, haciendo pruebas...
+    // Definimos el valor inicial de ancho de la pantalla
+    // Definimos que la pantalla del modo móvil <= que 1000
+    // Definimos que la pantalla del modo desktop es > que 1000
+    let screenWidth = window.innerWidth
+    let mobileActive = screenWidth <= 1000
 
-// Definimos el valor inicial de ancho de la pantalla
-// Definimos que la pantalla del modo móvil <= que 1000
-// Definimos que la pantalla del modo desktop es > que 1000
-let screenWidth = window.innerWidth
-let mobileActive = screenWidth <= 1000
-let desktopActive = screenWidth > 1000
+    // Seleccionamos todos los elementos a editar
+    const mobileWrapper = document.querySelector('.mobile')
+    const closeMobMenu = document.querySelector('.social__button')
+    const services = document.querySelector('.services')
+    const infoWrapper = document.querySelector('.info')
+    const headerWrapper = document.querySelector('.header__wrapper')
 
-// Seleccionamos todos los elementos a editar
-const mobileWrapper = document.querySelector('.mobile')
-const closeMobMenu = document.querySelector('.social__button')
-const services = document.querySelector('.services')
-const infoWrapper = document.querySelector('.info')
-const headerWrapper = document.querySelector('.header__wrapper')
+    const desktopMode = (() => {
+        //  Si desktop mode:
+        // ADD la clase invisible a .mobile
+        // ADD la clase invisible a .social__button
+        // ADD la clase invisible a .services
+        // REMOVE la clase hidden a .info
+        // REMOVE la clase hidden a .header__wrapper
+        mobileWrapper.classList.add('invisible')
+        closeMobMenu.classList.add('invisible')
+        services.classList.add('invisible')
+        infoWrapper.classList.remove('hidden')
+        headerWrapper.classList.remove('hidden')
 
+        // Espera .05
+        // ADD la clase hidden a .mobile
+        // ADD la clase hidden a .social__button
+        // ADD la clase hidden a .services
+        // REMOVE la clase invisible a .info
+        // REMOVE la clase invisible a .header__wrapper
+        setTimeout(() => {
+            mobileWrapper.classList.add('hidden')
+            closeMobMenu.classList.add('hidden')
+            services.classList.add('hidden')
+            infoWrapper.classList.remove('invisible')
+            headerWrapper.classList.remove('invisible')
+        }, 50)
+    })
 
-// Definimos la función Desktop mode para agrupar todos los cambios:
-// .mobile add hidden
-// .social__button add hidden
-// .services add hidden
-//.info add hidden
-// .header__wrapper add hidden
-const desktopMode = (function () {
-    console.log(screenWidth)
-    console.log('Mobile Active?' + mobileActive)
-    console.log('Desktop Active?' + desktopActive)
-    mobileWrapper.classList.add('invisible')
-    closeMobMenu.classList.add('invisible')
-    services.classList.add('invisible')
-    infoWrapper.classList.remove('hidden')
-    headerWrapper.classList.remove('hidden')
+    const mobileMode = (() => {
+        // Si mobile mode:
+        // REMOVE la clase hidden a .mobile
+        // REMOVE la clase hidden a .social__button
+        // REMOVE la clase hidden a .services
+        // ADD la clase invisible a .info
+        // ADD la clase invisible a .header__wrapper
+        mobileWrapper.classList.remove('hidden')
+        closeMobMenu.classList.remove('hidden')
+        services.classList.remove('hidden')
+        infoWrapper.classList.add('invisible')
+        headerWrapper.classList.add('invisible')
 
-    setTimeout(function () {
-        mobileWrapper.classList.add('hidden')
-        closeMobMenu.classList.add('hidden')
-        services.classList.add('hidden')
-        infoWrapper.classList.remove('invisible')
-        headerWrapper.classList.remove('invisible')
-    }, 50)
-})
+        // Espera .05
+        // REMOVE la clase invisible a .mobile
+        // REMOVE la clase invisible a .social__button
+        // REMOVE la clase invisible a .services
+        // ADD la clase hidden a .info
+        // ADD la clase hidden a .header__wrapper
+        setTimeout(() => {
+            mobileWrapper.classList.remove('invisible')
+            closeMobMenu.classList.remove('invisible')
+            services.classList.remove('invisible')
+            infoWrapper.classList.add('hidden')
+            headerWrapper.classList.add('hidden')
+        }, 50)
+    })
 
-// Definimos la función mobile mode para agrupar todos los cambios:
-// .mobile remove hidden
-// .social__button remove hidden
-// .services remove hidden
-//.info remove hidden
-// .header__wrapper remove hidden
-const mobileMode = (function () {
-    console.log(screenWidth)
-    console.log('Mobile Active?' + mobileActive)
-    console.log('Desktop Active?' + desktopActive)
+    const modeSwitch = (function () {
+        let screenWidth = window.innerWidth
+        let mobileActive = screenWidth <= 1000
+        // Si mobileActive es igual a false
+        // llamamos a la función desktopmode
+        // ELSE llamamos a la función mobilemode
+        if (!mobileActive) {
+            desktopMode()
+        }
+        else {
+            mobileMode()
+        }
+    })
 
-    mobileWrapper.classList.remove('hidden')
-    closeMobMenu.classList.remove('hidden')
-    services.classList.remove('hidden')
-    infoWrapper.classList.add('invisible')
-    headerWrapper.classList.add('invisible')
+    //Cuando la ventana carga
+    // Llamamos a la función modeSwitch
+    window.addEventListener('load', function () {
+        modeSwitch()
+        // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
+        firstInteraction()
+    })
 
-    setTimeout(function () {
-        console.log('Chao')
-        mobileWrapper.classList.remove('invisible')
-        closeMobMenu.classList.remove('invisible')
-        services.classList.remove('invisible')
-        infoWrapper.classList.add('hidden')
-        headerWrapper.classList.add('hidden')
-    }, 50)
+    //Cuando la ventana cambia de tamaño
+    // Llamamos a la función modeswitch
+    window.addEventListener('resize', function () {
+        modeSwitch()
+        // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
+        firstInteraction()
+    })
+}
 
-})
-
-// Definimos la función modeSwitch para no tener que repetir todo lo anterior
-// Cuando quedamos aplicar los modos móvil/desktop
-// Si mobileActive es igual a false
-// Comprobamos el valor del ancho de la pantalla de nuevo (sin hacer esto no funciona)
-// Comprobamos si se cumplen los requisitos de mobileActive y desktopActive
-// llamamos a la función desktopmode
-// ELSE llamamos a la función mobilemode
-const modeSwitch = (function () {
-    screenWidth = window.innerWidth
-    mobileActive = screenWidth >= 1000
-    if (mobileActive) {
-        desktopMode()
-    }
-    else {
-        mobileMode()
-    }
-})
-
-//Cuando la ventana carga
-// Llamamos a la función modeSwitch
-window.addEventListener('load', function () {
-    modeSwitch()
-    // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
-    firstInteraction()
-})
-
-//Cuando la ventana cambia de tamaño
-// Llamamos a la función modeswitch
-window.addEventListener('resize', function () {
-    modeSwitch()
-    // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
-    firstInteraction()
-})
-
+adaptScreen()
 
 // ---------------Fin de Responsive Scripts ----------------------------
 
 
 // ---------------Inicio Header Scripts ----------------------------
-// Cuando hago click en .mobile:
-// REMOVE la clase hidden a .header__wrapper
-// ADD la clase active a .header
-// ADD la clase invisible a .mobile
-// Espera .5s
-// Add la clase hidden a .mobile
-// Remove la clase invisible a .header__wrapper
-// A cada .nav__li INDEX:
-// Espera .2
-// [0] add la clase active
-// Espera .4
-// [1] add la clase active
-// Espera .6
-// [2] add la clase active
-// Espera .8
-// [3] ass la clase active
+const mobileMenuInteraction = () => {
+    //Selectores
+    const closeMobMenu = document.querySelector('.social__button')
+    const mobileMenu = document.querySelector('.mobile')
+    const header = document.querySelector('.header')
+    const navLi = document.querySelectorAll('.nav__li')
+    const headerWrapper = document.querySelector('.header__wrapper')
 
-const mobileMenu = document.querySelector('.mobile')
-const header = document.querySelector('.header')
-const navLi = document.querySelectorAll('.nav__li')
+    const expandMenu = () => {
+        // REMOVE la clase hidden a .header__wrapper
+        // ADD la clase active a .header
+        // ADD la clase invisible a .mobile
+        headerWrapper.classList.remove('hidden')
+        header.classList.add('active')
+        mobileMenu.classList.add('invisible')
+    }
 
-mobileMenu.addEventListener('click', function () {
-    headerWrapper.classList.remove('hidden')
-    header.classList.add('active')
-    mobileMenu.classList.add('invisible')
-
-    setTimeout(function () {
-        mobileMenu.classList.add('hidden')
-        headerWrapper.classList.remove('invisible')
-        navLi.forEach(function (eachLi, i) {
-            setTimeout(function () {
-                navLi[0].classList.add('active')
-            }, 200)
-            setTimeout(function () {
-                navLi[1].classList.add('active')
-            }, 400)
-            setTimeout(function () {
-                navLi[2].classList.add('active')
-            }, 600)
-            setTimeout(function () {
-                navLi[3].classList.add('active')
-            }, 800)
-        }, 500)
-    })
-})
-
-// Cuando hago click en .social__button
-// ADD la clase invisible a .header__wrapper
-// REMOVE la clase active a .header
-// REMOVE la clase hidden a .mobile
-// Espera .5
-// REMOVE la clase invisible a .mobile
-// ADD la clase hidden a .header__wrapper
-// Por cada .nav__li INDEX 
-// REMOVE la clase active
-
-closeMobMenu.addEventListener('click', function () {
-    headerWrapper.classList.add('invisible')
-    header.classList.remove('active')
-    mobileMenu.classList.remove('hidden')
-
-    setTimeout(function () {
-        mobileMenu.classList.remove('invisible')
-        headerWrapper.classList.add('hidden')
-
-        navLi.forEach(function (eachLi, i) {
-            navLi[i].classList.remove('active')
+    const navAnimation = () => {
+        // Espera .5s
+        // Add la clase hidden a .mobile
+        // Remove la clase invisible a .header__wrapper
+        // A cada .nav__li INDEX:
+        // Espera .2
+        // [0] add la clase active
+        // Espera .4
+        // [1] add la clase active
+        // Espera .6
+        // [2] add la clase active
+        // Espera .8
+        // [3] ass la clase active
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden')
+            headerWrapper.classList.remove('invisible')
+            navLi.forEach(function (eachLi, i) {
+                setTimeout(() => {
+                    navLi[0].classList.add('active')
+                }, 200)
+                setTimeout(() => {
+                    navLi[1].classList.add('active')
+                }, 400)
+                setTimeout(() => {
+                    navLi[2].classList.add('active')
+                }, 600)
+                setTimeout(() => {
+                    navLi[3].classList.add('active')
+                }, 800)
+            }, 500)
         })
+    }
 
-    }, 500)
-})
 
-// SI el enlace de la web contiene /ES
-// ADD la clase hidden a #EN
-// SI NO add la clase hidden a ES
-// https://www.w3schools.com/howto/howto_js_get_url.asp
 
-const spanishURL = "/es"
-const spanishSite = window.location.href.includes(spanishURL)
-const spanishLink = document.getElementById('es')
-const englishLink = document.getElementById('en')
+    const closeMenu = () => {
+        // ADD la clase invisible a .header__wrapper
+        // REMOVE la clase active a .header
+        // REMOVE la clase hidden a .mobile
+        headerWrapper.classList.add('invisible')
+        header.classList.remove('active')
+        mobileMenu.classList.remove('hidden')
+    }
 
-if (spanishSite) {
-    console.log('Web en Castellano')
-    englishLink.classList.add('hidden')
+    // Espera .5
+    // REMOVE la clase invisible a .mobile
+    // ADD la clase hidden a .header__wrapper
+    // Por cada .nav__li INDEX 
+    // REMOVE la clase active
+    const disableMenu = () => {
+        setTimeout(() => {
+            mobileMenu.classList.remove('invisible')
+            headerWrapper.classList.add('hidden')
+
+            navLi.forEach(function (eachLi, i) {
+                navLi[i].classList.remove('active')
+            })
+        }, 500)
+    }
+
+    // Cuando hago click en .mobile
+    // Activo expandMenu
+    // Activo navAnimation
+    mobileMenu.addEventListener('click', () => {
+        expandMenu()
+        navAnimation()
+    })
+
+    // Cuando hago click en .social__button
+    // Activo closeMenu
+    // Activo disableMenu
+    closeMobMenu.addEventListener('click', () => {
+        closeMenu()
+        disableMenu()
+    })
 }
-else {
-    console.log(' English site')
-    spanishLink.classList.add('hidden')
+
+mobileMenuInteraction()
+
+const languageSelector = () => {
+
+    // SI el enlace de la web contiene /ES
+    // ADD la clase hidden a #EN
+    // SI NO add la clase hidden a ES
+    // https://www.w3schools.com/howto/howto_js_get_url.asp
+    const spanishURL = "/es"
+    const spanishSite = window.location.href.includes(spanishURL)
+    const spanishLink = document.getElementById('es')
+    const englishLink = document.getElementById('en')
+
+    if (spanishSite) {
+        console.log('Web en Castellano')
+        englishLink.classList.add('hidden')
+    }
+    else {
+        console.log(' English site')
+        spanishLink.classList.add('hidden')
+    }
 }
+
+languageSelector()
 
 // ---------------Fin de Header Scripts ----------------------------
 
@@ -258,29 +262,37 @@ else {
 // .window__content: Cuando hago click en min aplico clase hidden a window__content y a min y se la quito a res
 // res: cuando hago click se le add la classe hidden de nuevo y se la remove a min
 
+const fakeWindowInteraction = () => {
+
 // Selecciono los elementos
 const readme = document.getElementById('readme')
 const exe = document.getElementById('exe')
-
-console.log(readme)
-console.log(exe)
+const heroWin = document.querySelectorAll('.info__window')
+const closeBtn = document.querySelectorAll('.button__close')
+const minBtn = document.querySelectorAll('.button__min')
+const resBtn = document.querySelectorAll('.button__res')
+const winContent = document.querySelectorAll('.window__content')
 
 // Cuando hago CLICK en #readme
 // REMOVE la clase front a #exe
 // ADD la clase back a #exe
 // REMOVE la clase back a #readme
 // ADD la clase front a #readme
-readme.addEventListener('click', function () {
+const readMeFront = () => {
     exe.classList.remove('front')
     exe.classList.add('back')
     readme.classList.remove('back')
     readme.classList.add('front')
+    }
+
+readme.addEventListener('click', () => {
+    readMeFront()
 })
 
 // Cuando hago MOUSEOVER en #readme
 // SI #readme contiene la clase front
 // ADD la clase hover a #readme
-readme.addEventListener('pointerover', function () {
+readme.addEventListener('pointerover', () => {
     if (readme.classList.contains('front')) {
         console.log('readme is front')
         readme.classList.add('winHover')
@@ -290,7 +302,7 @@ readme.addEventListener('pointerover', function () {
 // Cuando hago MOUSEOUT en #readme
 // SI readme coniene la clase front
 // REMOVE la clase hover a #readme
-readme.addEventListener('pointerout', function () {
+readme.addEventListener('pointerout', () => {
     if (readme.classList.contains('front')) {
         readme.classList.remove('winHover')
     }
@@ -301,7 +313,7 @@ readme.addEventListener('pointerout', function () {
 // ADD la clase back a #readme
 // REMOVE la clase back a #exe
 // ADD la clase front a #exe
-exe.addEventListener('click', function () {
+exe.addEventListener('click', () => {
     readme.classList.remove('front')
     readme.classList.add('back')
     exe.classList.remove('back')
@@ -312,7 +324,7 @@ exe.addEventListener('click', function () {
 // Cuando hago MOUSEOVER en #exe
 // SI #exe contiene la clase front
 // ADD la clase hover a #exe
-exe.addEventListener('pointerover', function () {
+exe.addEventListener('pointerover', () => {
     if (exe.classList.contains('front')) {
         console.log('exe is front')
         exe.classList.add('winHover')
@@ -322,7 +334,7 @@ exe.addEventListener('pointerover', function () {
 // Cuando hago MOUSEOUT en #exe
 // SI exe coniene la clase front
 // REMOVE la clase hover a #exe
-exe.addEventListener('pointerout', function () {
+exe.addEventListener('pointerout', () => {
     if (exe.classList.contains('front')) {
         exe.classList.remove('winHover')
     }
@@ -333,11 +345,7 @@ exe.addEventListener('pointerout', function () {
 // se le remove la clase hidden a .button__min mismo index
 //se le add la clase hidden a .button__res
 
-const heroWin = document.querySelectorAll('.info__window')
-const closeBtn = document.querySelectorAll('.button__close')
-const minBtn = document.querySelectorAll('.button__min')
-const resBtn = document.querySelectorAll('.button__res')
-const winContent = document.querySelectorAll('.window__content')
+
 
 
 // Cuando hago click en CUALQUIER .button__close
@@ -390,6 +398,10 @@ resBtn.forEach(function (eachRes, i) {
         }, '200')
     })
 })
+
+}
+
+fakeWindowInteraction()
 
 // Interacción del Logo: ojos que siguen al cursor
 // Sigo este tutorial: https://www.youtube.com/watch?v=cwT0oLU8iF4
@@ -501,20 +513,20 @@ hero.addEventListener('pointermove', pointerMove)
 
 // -------------Inicio de First section Scripts -----------------------
 
-// Si el modo desktop está activo:
-// Cuando hago mouseover en .first
-// ADD la clase play en .first__animation
-// ADD la clase play en .first__a
-// Cuando hago mouseout en .first
-// REMOVE la clase plau en .first__animation
-// REMOVE la clase play en .first__a
 
 const firstInteraction = (function () {
     const first = document.querySelector('.first')
     const firstAnimation = document.querySelector('.first__animation')
     const firstA = document.querySelector('.first__a')
 
-    if (desktopActive) {
+    // Si el modo desktop está activo:
+    // Cuando hago mouseover en .first
+    // ADD la clase play en .first__animation
+    // ADD la clase play en .first__a
+    // Cuando hago mouseout en .first
+    // REMOVE la clase plau en .first__animation
+    // REMOVE la clase play en .first__a
+    if (!adaptScreen.mobileActive) {
         first.addEventListener('pointerover', function () {
             firstAnimation.classList.add('play')
             firstA.classList.add('play')

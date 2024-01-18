@@ -126,85 +126,104 @@ window.addEventListener('resize', () => {
 // ---------------Fin de Responsive Scripts ----------------------------
 
 // ---------------Inicio Header Scripts ----------------------------
-// Cuando hago click en .mobile:
-// REMOVE la clase hidden a .header__wrapper
-// ADD la clase active a .header
-// ADD la clase invisible a .mobile
-// Espera .5s
-// Add la clase hidden a .mobile
-// Remove la clase invisible a .header__wrapper
-// A cada .nav__li INDEX:
-// Espera .2
-// [0] add la clase active
-// Espera .4
-// [1] add la clase active
-// Espera .6
-// [2] add la clase active
-// Espera .8
-// [3] ass la clase active
 
-const mobileMenu = document.querySelector('.mobile')
-const header = document.querySelector('.header')
-const navLi = document.querySelectorAll('.nav__li')
+const mobileMenuInteraction = () => {
 
-mobileMenu.addEventListener('click', () => {
-    headerWrapper.classList.remove('hidden')
-    header.classList.add('active')
-    mobileMenu.classList.add('invisible')
+    const mobileMenu = document.querySelector('.mobile')
+    const header = document.querySelector('.header')
+    const navLi = document.querySelectorAll('.nav__li')
 
-    setTimeout(() => {
-        mobileMenu.classList.add('hidden')
-        headerWrapper.classList.remove('invisible')
-        navLi.forEach(function (eachLi, i) {
-            setTimeout(() => {
-                navLi[0].classList.add('active')
-            }, 200)
-            setTimeout(() => {
-                navLi[1].classList.add('active')
-            }, 400)
-            setTimeout(() => {
-                navLi[2].classList.add('active')
-            }, 600)
-            setTimeout(() => {
-                navLi[3].classList.add('active')
-            }, 800)
-        }, 500)
-    })
-})
+    // Cuando hago click en .mobile:
+    // REMOVE la clase hidden a .header__wrapper
+    // ADD la clase active a .header
+    // ADD la clase invisible a .mobile
+    // Espera .5s
+    // Add la clase hidden a .mobile
+    // Remove la clase invisible a .header__wrapper
+    // A cada .nav__li INDEX:
+    // Espera .2
+    // [0] add la clase active
+    // Espera .4
+    // [1] add la clase active
+    // Espera .6
+    // [2] add la clase active
+    // Espera .8
+    // [3] ass la clase active
 
-// Cuando hago click en .social__button
-// ADD la clase invisible a .header__wrapper
-// REMOVE la clase active a .header
-// REMOVE la clase hidden a .mobile
-// Espera .5
-// REMOVE la clase invisible a .mobile
-// ADD la clase hidden a .header__wrapper
-// Por cada .nav__li INDEX 
-// REMOVE la clase active
+    const expandMenu = () => {
+        headerWrapper.classList.remove('hidden')
+        header.classList.add('active')
+        mobileMenu.classList.add('invisible')
+    }
 
-closeMobMenu.addEventListener('click', function () {
-    headerWrapper.classList.add('invisible')
-    header.classList.remove('active')
-    mobileMenu.classList.remove('hidden')
-
-    setTimeout(() => {
-        mobileMenu.classList.remove('invisible')
-        headerWrapper.classList.add('hidden')
-
-        navLi.forEach(function (eachLi, i) {
-            navLi[i].classList.remove('active')
+    const navAnimation = () => {
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden')
+            headerWrapper.classList.remove('invisible')
+            navLi.forEach(function (eachLi, i) {
+                setTimeout(() => {
+                    navLi[0].classList.add('active')
+                }, 200)
+                setTimeout(() => {
+                    navLi[1].classList.add('active')
+                }, 400)
+                setTimeout(() => {
+                    navLi[2].classList.add('active')
+                }, 600)
+                setTimeout(() => {
+                    navLi[3].classList.add('active')
+                }, 800)
+            }, 500)
         })
+    }
 
-    }, 500)
-})
+    // Cuando hago click en .social__button
+    // ADD la clase invisible a .header__wrapper
+    // REMOVE la clase active a .header
+    // REMOVE la clase hidden a .mobile
+    // Espera .5
+    // REMOVE la clase invisible a .mobile
+    // ADD la clase hidden a .header__wrapper
+    // Por cada .nav__li INDEX 
+    // REMOVE la clase active
+    const closeMenu = () => {
+        headerWrapper.classList.add('invisible')
+        header.classList.remove('active')
+        mobileMenu.classList.remove('hidden')
+    }
 
-// SI el enlace de la web contiene /ES
-// ADD la clase hidden a #EN
-// SI NO add la clase hidden a ES
-// https://www.w3schools.com/howto/howto_js_get_url.asp
+    const disableMenu = () => {
+        setTimeout(() => {
+            mobileMenu.classList.remove('invisible')
+            headerWrapper.classList.add('hidden')
+
+            navLi.forEach(function (eachLi, i) {
+                navLi[i].classList.remove('active')
+            })
+        }, 500)
+    }
+
+    mobileMenu.addEventListener('click', () => {
+        expandMenu()
+        navAnimation()
+    })
+
+    closeMobMenu.addEventListener('click', () => {
+        closeMenu()
+        disableMenu()
+    })
+}
+
+mobileMenuInteraction()
+
+
 
 const languageSelector = () => {
 
+    // SI el enlace de la web contiene /ES
+    // ADD la clase hidden a #EN
+    // SI NO add la clase hidden a ES
+    // https://www.w3schools.com/howto/howto_js_get_url.asp
     const spanishURL = "/es"
     const spanishSite = window.location.href.includes(spanishURL)
     const spanishLink = document.getElementById('es')
@@ -226,124 +245,133 @@ languageSelector()
 
 // ---------------Inicio de Tabs Scripts ---------------------------
 
-// Cuando hago click en CUALQUIER .tabs__li
-// REMOVE la clase active a TODOS los tabs__li
-// ADD la clase active a tab__li MISMO INDEX
-// ADD la clase hidden a todos los .folder
-// REMOVE la clase hidden .folder MISMO INDEX
 
 const porfolioNavigation = () => {
-    
+
     const tabs = document.querySelectorAll('.tabs__li')
     const projectFolder = document.querySelectorAll('.folder__li')
     const folders = document.querySelectorAll('.folder')
     const folderBtn = document.querySelectorAll('.folder__button')
     const projects = document.querySelectorAll('.article')
 
-    tabs.forEach(function (eachTab, i) {
-        tabs[i].addEventListener('click', function () {
-            window.scroll({
-                top: 0,
-                behavior: 'smooth'
+    const tabActivation = () => {
+        // Cuando hago click en CUALQUIER .tabs__li
+        // REMOVE la clase active a TODOS los tabs__li
+        // ADD la clase active a tab__li MISMO INDEX
+        // ADD la clase hidden a todos los .folder
+        // REMOVE la clase hidden .folder MISMO INDEX
+        tabs.forEach(function (eachTab, i) {
+            tabs[i].addEventListener('click', function () {
+                window.scroll({
+                    top: 0,
+                    behavior: 'smooth'
+                })
+                tabs.forEach(function (eachTab, i) {
+                    tabs[i].classList.remove('active')
+                })
+                tabs[i].classList.add('active')
+                folders.forEach(function (eachFolder, i) {
+                    folders[i].classList.add('hidden')
+                })
+                folders[i].classList.remove('hidden')
             })
-            tabs.forEach(function (eachTab, i) {
-                tabs[i].classList.remove('active')
+        })
+    }
+
+    const folderActivation = () => {
+        // Cuango hago click en CUALQUIER .folder__button
+        // REMOVE la clase active a TODOS los .folder__button
+        // ADD la clase active al .folder__button MISMO INDEX
+        // ADD la clase hidden a TODOS los .article
+        // REMOVE la clase hidden a .article mismo index
+        projectFolder.forEach(function (eachFolder, i) {
+            projectFolder[i].addEventListener('click', function () {
+                window.scroll({
+                    top: 0,
+                    behavior: 'smooth'
+                })
+                projectFolder.forEach(function (eachFolder, i) {
+                    projectFolder[i].classList.remove('active')
+                    folderBtn[i].classList.remove('active')
+                })
+                folderBtn[i].classList.add('active')
+                projectFolder[i].classList.add('active')
+                projects.forEach(function (eachProject, i) {
+                    projects[i].classList.add('hidden')
+                })
+                projects[i].classList.remove('hidden')
             })
-            tabs[i].classList.add('active')
-            folders.forEach(function (eachFolder, i) {
-                folders[i].classList.add('hidden')
+        })
+    }
+
+    tabActivation()
+    folderActivation()
+
+    const defaultProjects = () => {
+        const defaultDesignProject = () => {
+            // Cuando hago click en .tabs__li [0]
+            // REMOVE la clase active a TODOS los .folder__button
+            // ADD la clase hidden a TODOS los .article
+            // ADD la clase active a .folder__li[0]
+            // REMOVE la clase hidden a .article [0]
+            tabs[0].addEventListener('click', function () {
+                projectFolder.forEach(function (eachBtn, i) {
+                    projectFolder[i].classList.remove('active')
+                    folderBtn[i].classList.remove('active')
+                })
+                projects.forEach(function (eachProject, i) {
+                    projects[i].classList.add('hidden')
+                })
+                projectFolder[0].classList.add('active')
+                folderBtn[0].classList.add('active')
+                projects[0].classList.remove('hidden')
             })
-            folders[i].classList.remove('hidden')
-        })
-    })
-
-
-    // Cuango hago click en CUALQUIER .folder__button
-    // REMOVE la clase active a TODOS los .folder__button
-    // ADD la clase active al .folder__button MISMO INDEX
-    // ADD la clase hidden a TODOS los .article
-    // REMOVE la clase hidden a .article mismo index
-
-
-    projectFolder.forEach(function (eachFolder, i) {
-        projectFolder[i].addEventListener('click', function () {
-            window.scroll({
-                top: 0,
-                behavior: 'smooth'
+        }
+        const defaultUxProject = () => {
+            // Cuando hago click en .tabs__li [1]
+            // REMOVE la clase active a TODOS los .folder__button
+            // ADD la clase hidden a TODOS los .article
+            // ADD la clase active a .folder__li[3]
+            // REMOVE la clase hidden a .article [3]
+            tabs[1].addEventListener('click', function () {
+                projectFolder.forEach(function (eachbtn, i) {
+                    projectFolder[i].classList.remove('active')
+                    folderBtn[i].classList.remove('active')
+                })
+                projects.forEach(function (eachProject, i) {
+                    projects[i].classList.add('hidden')
+                })
+                projectFolder[3].classList.add('active')
+                folderBtn[3].classList.add('active')
+                projects[3].classList.remove('hidden')
             })
-            projectFolder.forEach(function (eachFolder, i) {
-                projectFolder[i].classList.remove('active')
-                folderBtn[i].classList.remove('active')
+        }
+        const defaultIllustrationProject = () => {
+            // Cuando hago click en .tabs__li [2]
+            // REMOVE la clase active a TODOS los .folder__button
+            // ADD la clase hidden a TODOS los .article
+            // ADD la clase active a .folder__li[5]
+            // REMOVE la clase hidden a .article [5]
+            tabs[2].addEventListener('click', function () {
+                projectFolder.forEach(function (eachBtn, i) {
+                    projectFolder[i].classList.remove('active')
+                    folderBtn[i].classList.remove('active')
+                })
+                projects.forEach(function (eachProject, i) {
+                    projects[i].classList.add('hidden')
+                })
+                projectFolder[5].classList.add('active')
+                folderBtn[5].classList.add('active')
+                projects[5].classList.remove('hidden')
             })
-            folderBtn[i].classList.add('active')
-            projectFolder[i].classList.add('active')
-            projects.forEach(function (eachProject, i) {
-                projects[i].classList.add('hidden')
-            })
-            projects[i].classList.remove('hidden')
-        })
-    })
+        }
 
-    //Cuando hago click en cualquier .tabs__li
-    // el primer .folder__li que no tiene la clase hidden
-    //se le ADD la clase active
-    // y  REMOVE la clase hidden al .article hidden MISMO INDEX
+        defaultDesignProject()
+        defaultUxProject()
+        defaultIllustrationProject()
+    }
 
-    // Cuando hago click en .tabs__li [0]
-    // REMOVE la clase active a TODOS los .folder__button
-    // ADD la clase hidden a TODOS los .article
-    // ADD la clase active a .folder__li[0]
-    // REMOVE la clase hidden a .article [0]
-
-    tabs[0].addEventListener('click', function () {
-        projectFolder.forEach(function (eachBtn, i) {
-            projectFolder[i].classList.remove('active')
-            folderBtn[i].classList.remove('active')
-        })
-        projects.forEach(function (eachProject, i) {
-            projects[i].classList.add('hidden')
-        })
-        projectFolder[0].classList.add('active')
-        folderBtn[0].classList.add('active')
-        projects[0].classList.remove('hidden')
-    })
-
-    // Cuando hago click en .tabs__li [1]
-    // REMOVE la clase active a TODOS los .folder__button
-    // ADD la clase hidden a TODOS los .article
-    // ADD la clase active a .folder__li[3]
-    // REMOVE la clase hidden a .article [3]
-    tabs[1].addEventListener('click', function () {
-        projectFolder.forEach(function (eachbtn, i) {
-            projectFolder[i].classList.remove('active')
-            folderBtn[i].classList.remove('active')
-        })
-        projects.forEach(function (eachProject, i) {
-            projects[i].classList.add('hidden')
-        })
-        projectFolder[3].classList.add('active')
-        folderBtn[3].classList.add('active')
-        projects[3].classList.remove('hidden')
-    })
-
-    // Cuando hago click en .tabs__li [2]
-    // REMOVE la clase active a TODOS los .folder__button
-    // ADD la clase hidden a TODOS los .article
-    // ADD la clase active a .folder__li[5]
-    // REMOVE la clase hidden a .article [5]
-    tabs[2].addEventListener('click', function () {
-        projectFolder.forEach(function (eachBtn, i) {
-            projectFolder[i].classList.remove('active')
-            folderBtn[i].classList.remove('active')
-        })
-        projects.forEach(function (eachProject, i) {
-            projects[i].classList.add('hidden')
-        })
-        projectFolder[5].classList.add('active')
-        folderBtn[5].classList.add('active')
-        projects[5].classList.remove('hidden')
-    })
-
+    defaultProjects()
 }
 
 porfolioNavigation()
