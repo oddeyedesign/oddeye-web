@@ -320,12 +320,16 @@ Estructura:
   -webkit-backdrop-filter: blur(.2rem);
 
   animation: fadeInTop 1s ease 1 forwards;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .header__wrapper {
   width: 90%;
-  margin: 1rem auto;
+  margin: 0 0 .5rem 0;
 
   display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
