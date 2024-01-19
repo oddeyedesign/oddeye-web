@@ -6,6 +6,7 @@ index.css
 - Header
 - Formulario de contacto
 - Footer
+*/
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
@@ -142,7 +143,6 @@ body {
   font-size: 100%;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--negro);
-
   /* opcional */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -153,8 +153,19 @@ body {
   -webkit-font-smoothing: antialiased;
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
+
+  /* Background */
+  background-color: #0e0e0f;
 }
 
+/* Estilo del header por defecto */
+header {  
+  mask-image: url(/assets/masks/menu-mask.svg);
+  mask-repeat: repeat-x;
+  mask-position: bottom;
+  backdrop-filter: blur(.2rem);
+  -webkit-backdrop-filter: blur(.2rem);
+}
 
 /* Filtro de color modo incógnito */
 body .incognito {
@@ -162,8 +173,6 @@ body .incognito {
   -webkit-filter: sepia(100%);
   transition: filter 1s ease;
 }
-
-
 
 /* Animación de carga de página / transición */
 /* Descripción: Animación de carga de la página
@@ -304,10 +313,6 @@ Estructura:
   width: 100%;
   height: 10vh;
 
-  mask-image: url(/assets/masks/menu-mask.svg);
-  mask-repeat: repeat-x;
-  mask-position: bottom;
-
   position: fixed;
 
   z-index: 5;
@@ -315,8 +320,6 @@ Estructura:
 
   background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
 
   animation: fadeInTop 1s ease 1 forwards;
 
@@ -333,8 +336,6 @@ Estructura:
   display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
   grid-template-rows: 1fr;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: 1rem;
 
   overflow: visible;
@@ -422,6 +423,13 @@ Estructura:
 /* Header Mobile */
 .mobile {
   display: none;
+  mask-image: url(/assets/masks/mobile-menu-mask.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  animation: rotate 30s infinite linear both;
+  transform: scale(1);
+  display: block;
 }
 
 .mobile.hidden {
@@ -595,7 +603,7 @@ Estructura:
 
 .contact {
   width: 100%;
-  min-height: 100vh;
+  min-height: 110vh;
   padding-top: 10vh;
 
   display: flex;
@@ -891,29 +899,13 @@ Estructura:
     left: 2%;
     z-index: 4;
 
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: transparent;
-
     opacity: 1;
     transition:
       left .5s ease,
       opacity .5s ease;
 
-    mask-image: url(/assets/masks/mobile-menu-mask.svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
+      background: rgba(137, 43, 226, 0.607);
 
-    background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-    backdrop-filter: blur(.2rem);
-    -webkit-backdrop-filter: blur(.2rem);
-
-    animation: rotate 30s infinite linear both;
-    transform: scale(1);
-    display: block;
   }
 
   .mobile.invisible {
@@ -1048,6 +1040,7 @@ Estructura:
 
   /* Contact */
   .contact{
+    min-height: 115vh;
     top: 10rem;
   }
   .contact__wrapper{

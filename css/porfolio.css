@@ -8,8 +8,9 @@ index.css
 - Proyectos
 - Media Queries
 - Animaciones
+  */
 
-/* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
+  /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
   margin: 0;
   padding: 0;
@@ -159,6 +160,15 @@ body {
   background-color: #0e0e0f;
 }
 
+/* Estilo del header por defecto */
+header {  
+  mask-image: url(/assets/masks/menu-mask.svg);
+  mask-repeat: repeat-x;
+  mask-position: bottom;
+  backdrop-filter: blur(.2rem);
+  -webkit-backdrop-filter: blur(.2rem);
+}
+
 /* Filtro de color modo incógnito */
 body .incognito {
   filter: sepia(100%);
@@ -302,9 +312,6 @@ Estructura:
   width: 100%;
   min-height: 10vh;
 
-  mask-image: url(/assets/masks/menu-mask.svg);
-  mask-repeat: repeat-x;
-
   position: fixed;
   top: 0;
 
@@ -313,8 +320,6 @@ Estructura:
 
   background: radial-gradient(circle, rgba(0, 0, 0, 0.43) 47%, rgba(24, 32, 18, 0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(7, 8, 6);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
 
   animation: fadeInTop 1s ease 1 forwards;
 
@@ -330,8 +335,6 @@ Estructura:
   display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
   grid-template-rows: 1fr;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: 1rem;
 
   overflow: visible;
@@ -438,6 +441,14 @@ Estructura:
 /* Header Mobile */
 .mobile {
   display: none;
+
+  mask-image: url(/assets/masks/mobile-menu-mask.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  animation: rotate 30s infinite linear both;
+  transform: scale(1);
+  display: block;
 }
 
 .mobile.hidden {
@@ -1138,37 +1149,20 @@ un grid de imágenes y vídeos, y el software utilizado */
   }
 
   .mobile {
-    width: 6rem;
-    height: 6rem;
+    width: 4.5rem;
+    height: 4.5rem;
 
     position: fixed;
     top: 2%;
     left: 2%;
     z-index: 4;
 
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: transparent;
-
     opacity: 1;
     transition:
       left .5s ease,
       opacity .5s ease;
 
-    mask-image: url(/assets/masks/mobile-menu-mask.svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-
-    background: radial-gradient(circle, rgba(44, 24, 75, 0.43) 47%, rgba(30, 16, 52, 0.6) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(9, 2, 11);
-    backdrop-filter: blur(.2rem);
-    -webkit-backdrop-filter: blur(.2rem);
-
-    animation: rotate 30s infinite linear both;
-    transform: scale(1);
-    display: block;
+    background: rgba(29, 12, 45, 0.607);
   }
 
   .mobile.invisible {

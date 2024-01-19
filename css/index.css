@@ -1,17 +1,18 @@
-@charset "UTF-8";
+  @charset "UTF-8";
 
-/* ---------------------------------------------------------- *\
-index.css
-- Reset / Normalizar
-- Header
-- Hero
-- First Section
-- Second Section
-- Third Section
-- Footer
-- Media Queries (Adaptaciones Responsive)
+  /* ---------------------------------------------------------- *\
+  index.css
+  - Reset / Normalizar
+  - Header
+  - Hero
+  - First Section
+  - Second Section
+  - Third Section
+  - Footer
+  - Media Queries (Adaptaciones Responsive)
+  */
 
-/* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
+  /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
   margin: 0;
   padding: 0;
@@ -146,7 +147,6 @@ body {
   font-size: 100%;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--negro);
-
   /* opcional */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -157,1636 +157,640 @@ body {
   -webkit-font-smoothing: antialiased;
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
+
+  /* Background */
+  background-color: #0e0e0f;
 }
 
-/* Filtro de color modo incógnito */
-body .incognito {
-  filter: sepia(100%);
-  -webkit-filter: sepia(100%);
-  transition: filter 1s ease;
-}
-
-/* Animación de carga de página / transición */
-/* Descripción: Animación de carga de la página
-Estructura:
--waves__top
--waves__top.active
--waves__top.hidden
--waves__bottom
--waves__bottom.active
--waves__bottom.hidden
-
--Before
--After
--Incognito
-
-*/
-.waves__top {
-  width: 100%;
-  height: calc(50vh);
-  position: fixed;
-  background-color: #A7FE2F;
-  z-index: 6;
-  top: 0;
-  display: block;
-
-  transform: translateY(-200%);
-  transition: transform 1s ease;
-}
-
-.waves__top.active {
-  transform: translateY(0);
-}
-
-.waves__top.hidden {
-  display: none;
-}
-
-.waves__bottom {
-  width: 100%;
-  height: calc(50vh);
-  position: fixed;
-  background-color: #A7FE2F;
-  z-index: 6;
-  bottom: 0;
-  display: block;
-
-  transform: translateY(200%);
-  transition: transform 1s ease;
-}
-
-.waves__bottom.active {
-  transform: translateY(0%);
-}
-
-.waves__bottom.hidden {
-  display: none;
-}
-
-/* Before */
-.waves__bottom::before {
-  width: 118%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  background-color: #A7FE2F;
-  mask-image: url(/assets/masks/wavy-mask-top.svg);
-  mask-repeat: repeat-x;
-  mask-position: top;
-
-  position: absolute;
-  top: -2rem;
-  right: 0;
-}
-
-
-/* After */
-.waves__top::after {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  background-color: #A7FE2F;
-  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
-  mask-repeat: repeat-x;
-  mask-position: bottom;
-
-  position: absolute;
-  bottom: -2rem;
-  right: 0;
-}
-
-/* Incognito */
-.waves__bottom.incognito::before {
-  display: none;
-}
-
-.waves__top.incognito::after {
-  display: none;
-}
-
-/* --------------- Inicio de Header --------------*/
-/* Descripción: estilo  del Header en versión desktop. El header tiene
-forma "wavy" y está fijado en la ventana. Tiene un estilo glassmorfista
-
-Estructura:
-- header
-  - header__wrapper
-  - header__mask
-    - header__h1
-    - nav__ul
-      - nav__li
-    - header__social
-      - social__svg
-      - social__button
-        - social__button.hidden
-        - social__button.invisible
-    - lang
-      - lang__a.hidden
-    - mobile
-      - mobile.hidden
-      - mobile.invisible
-    - toggle
-      - toggle__checkbox
-      - toggle__handle
-    - toggle before and after
-    - toggle hover
-    - toggle inputs
-
-  - Befores
-  - Afters
-  - Hovers
-  - Incognito
-*/
-
-.header {
-  width: 100%;
-  height: 10vh;
-
+/* Estilo del header por defecto */
+header {  
   mask-image: url(/assets/masks/menu-mask.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
-
-  position: fixed;
-
-  z-index: 5;
-  overflow: visible;
-
-  background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
   backdrop-filter: blur(.2rem);
   -webkit-backdrop-filter: blur(.2rem);
-
-  animation: fadeInTop 1s ease 1 forwards;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
+  /* Filtro de color modo incógnito */
+  body .incognito {
+    filter: sepia(100%);
+    -webkit-filter: sepia(100%);
+    transition: filter 1s ease;
+  }
 
-.header__wrapper {
-  width: 90%;
-  margin: 0 0 .5rem 0;
+  /* Animación de carga de página / transición */
+  /* Descripción: Animación de carga de la página
+  Estructura:
+  -waves__top
+  -waves__top.active
+  -waves__top.hidden
+  -waves__bottom
+  -waves__bottom.active
+  -waves__bottom.hidden
 
-  display: grid;
-  grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
-  grid-template-rows: 1fr;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
+  -Before
+  -After
+  -Incognito
 
-  overflow: visible;
+  */
+  .waves__top {
+    width: 100%;
+    height: calc(50vh + 2rem);
+    position: fixed;
+    background-color: #A7FE2F;
+    z-index: 6;
+    top: 0;
+    display: block;
 
-  transition: all 1s ease;
-  animation: fadeInTop 1s ease forwards;
+    transform: translateY(-200%);
+    transition: transform 1s ease;
+  }
 
-  opacity: 1;
-}
+  .waves__top.active {
+    transform: translateY(0);
+  }
 
-.header__mask {
-  display: block;
-  mask-repeat: repeat-x;
-}
+  .waves__top.hidden {
+    display: none;
+  }
 
-.header__h1 {
-  width: 4rem;
-  transform: scale(1);
-  transition: transform .6s ease;
-}
+  .waves__bottom {
+    width: 100%;
+    height: calc(50vh + 2rem);
+    position: fixed;
+    background-color: #A7FE2F;
+    z-index: 6;
+    bottom: 0;
+    display: block;
 
-.nav__ul {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
+    transform: translateY(200%);
+    transition: transform 1s ease;
+  }
 
-.nav__li {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  color: #A7FE2F;
+  .waves__bottom.active {
+    transform: translateY(0%);
+  }
 
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: flex-start;
+  .waves__bottom.hidden {
+    display: none;
+  }
 
-  transition: background-color 1s ease,
-    transform .6s ease;
-}
+  /* Before */
+  .waves__bottom::before {
+    width: 118%;
+    height: 2rem;
+    display: block;
+    content: '';
 
-.header__social {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
+    background-color: #A7FE2F;
+    mask-image: url(/assets/masks/wavy-mask-top.svg);
+    mask-repeat: repeat-x;
+    mask-position: top;
 
-.social__svg {
-  width: 1.9rem;
-  height: 1.9rem;
-  fill: #A7FE2F;
-  transform: scale(1);
-  transition: fill .6s ease,
-    opacity 1s ease,
-    transform .6s ease;
-  cursor: pointer;
-}
+    position: absolute;
+    top: -2rem;
+    right: 0;
+  }
 
-.social__button {
-  display: none;
-}
 
-.social__button.hidden {
-  display: none;
-}
+  /* After */
+  .waves__top::after {
+    width: 100%;
+    height: 2rem;
+    display: block;
+    content: '';
 
-.social__button.invisible {
-  opacity: 0;
-}
+    background-color: #A7FE2F;
+    mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+    mask-repeat: repeat-x;
+    mask-position: bottom;
 
-.lang {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-align: center;
-  color: #A7FE2F;
-  opacity: .6;
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+  }
 
-  transition: opacity .5s ease;
-}
+  /* Incognito */
+  .waves__bottom.incognito::before {
+    display: none;
+  }
 
-.lang__a.hidden {
-  display: none;
-}
+  .waves__top.incognito::after {
+    display: none;
+  }
 
-/* Header Mobile */
-.mobile {
-  display: none;
-}
-
-.mobile.hidden {
-  display: none;
-}
-
-.mobile.invisible {
-  opacity: 0;
-}
-
-/* Toggle */
-.toggle {
-  display: inline-block;
-  height: 2.125rem;
-  width: 4.2rem;
-  position: relative;
-}
-
-.toggle__checkbox {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.toggle__handle {
-  border-radius: 2.125rem;
-  background-color: black;
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: all .5s ease;
-}
-
-/* Toggle ::before and ::after */
-
-.toggle__handle::before {
-  border-radius: 50%;
-  position: absolute;
-  content: "";
-  height: 1.625rem;
-  width: 1.625rem;
-  left: .25rem;
-  bottom: .25rem;
-  background-color: #A7FE2F;
-  transition:
-    right 1s ease,
-    left 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
-}
-
-.toggle__handle::after {
-  position: absolute;
-  content: "";
-  background-image: url(/assets/icons/alien-icon.svg);
-  background-size: contain;
-  height: 1.625rem;
-  width: 1.625rem;
-  right: .25rem;
-  bottom: .25rem;
-  transition:
-    right 1s ease,
-    left 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
-}
-
-/* Toggle hovers */
-.toggle__handle:hover {
-  transform: scale(1.2);
-}
-
-/* Toggle inputs */
-input:checked+.toggle__handle {
-  background-color: darkgray;
-}
-
-input:checked+.toggle__handle:before {
-  transform: translateX(1.9925rem);
-  background-color: #0e0e0f;
-}
-
-input:checked+.toggle__handle:after {
-  right: 0;
-  left: .25rem;
-  background-image: url(/assets/icons/user-icon.svg);
-}
-
-/* Befores */
-
-.nav__li::before {
-  content: '>';
-  opacity: 0;
-  transform: translateX(-50%);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
-}
-
-/* Hovers */
-
-.header__h1:hover {
-  transform: scale(1.2);
-}
-
-.nav__li:hover {
-  color: #A7FE2F;
-  background-color: black;
-  transform: scale(1.2);
-}
-
-.nav__li:hover:before {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.social__svg:hover {
-  fill: black;
-  transform: scale(1.2);
-}
-
-.social__button:hover {
-  background-color: #A7FE2F;
-  color: #0e0e0f;
-  font-weight: 700;
-  transform: scale(1.1);
-}
-
-/* Incognito */
-.header.incognito {
-  width: 100%;
-  mask-image: none;
-
-  position: fixed;
-  background: none;
-  box-shadow: none;
-  background-color: rgba(27, 24, 24, 0.7);
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-
-  top: 0;
-  left: 0;
-}
-
-/* --------------- Fin de Header ---------------*/
-
-/* --------------- Inicio de Hero Content ---------------*/
-/* Descripción: Estilo para el main/hero. Esta sección contiene varios
-elementos interactivos como el logo, que sigue al cursor con la mirada,
-y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
+  /* --------------- Inicio de Header --------------*/
+  /* Descripción: estilo  del Header en versión desktop. El header tiene
+  forma "wavy" y está fijado en la ventana. Tiene un estilo glassmorfista
 
   Estructura:
-    -hero
-    -hero__wrapper logo
-      -hero__normal
-        -normal__h2
-        -normal__span
-      -logo__mask
-      -logo__body
-      -logo__svg
-    -info__window window
-      -window__wrapper
-      -window__wrapper button
-      -window__name
-      -button__svg
-      -button__min
-      -button__close
-      -button__res
-      -window__content
-      -window__title
-      -window__h2
-      -window__subtitle
-      -window__ul
-      -window-li
-      -window__log
-    -hero__moons
-    -hero__smiley
+  - header
+    - header__wrapper
+    - header__mask
+      - header__h1
+      - nav__ul
+        - nav__li
+      - header__social
+        - social__svg
+        - social__button
+          - social__button.hidden
+          - social__button.invisible
+      - lang
+        - lang__a.hidden
+      - mobile
+        - mobile.hidden
+        - mobile.invisible
+      - toggle
+        - toggle__checkbox
+        - toggle__handle
+      - toggle before and after
+      - toggle hover
+      - toggle inputs
 
     - Befores
     - Afters
     - Hovers
-    - Selections
     - Incognito
-*/
+  */
 
-.hero {
-  width: 100%;
-  min-height: 100vh;
+  .header {
+    width: 100%;
+    height: 10vh;
 
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
 
-  position: relative;
+    z-index: 5;
+    overflow: visible;
 
-  background-image: url(/assets/background.svg);
-  background-color: #0e0e0f;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
+    box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
 
+    animation: fadeInTop 1s ease 1 forwards;
 
-.hero.disabled {
-  cursor: none;
-}
-
-.normal {
-  display: none;
-}
-
-.normal__h2 {
-  opacity: 0;
-}
-
-.normal__span {
-  opacity: 0;
-}
-
-.logo {
-  width: 35%;
-  height: 35vh;
-  position: absolute;
-  margin: 0 4rem 0 0;
-  z-index: 1;
-
-  transition:
-    width .5s ease,
-    margin 1s ease;
-
-  animation: logo 20s ease infinite forwards;
-
-  top: 12%;
-  left: calc((100% - 35%)/ 2.2);
-}
-
-
-.logo__mask {
-  display: block;
-}
-
-.logo__body {
-  clip-path: url(#body__mask);
-
-  background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
-
-  z-index: 0;
-  margin: auto;
-
-  animation: popIn 2s ease 1 forwards;
-}
-
-.logo__svg {
-  position: absolute;
-  left: 5%;
-  top: 3%;
-  z-index: 2;
-  transform: scale(1.1);
-}
-
-.eye__first {
-  animation: popIn 1s ease 1 backwards;
-  animation-delay: .4s;
-  transform-origin: center;
-}
-
-.eye__second {
-  animation: popIn 1s ease 1 backwards;
-  animation-delay: .6s;
-  transform-origin: center;
-}
-
-.eye__third {
-  animation: popIn 1s ease 1 backwards;
-  animation-delay: .8s;
-  transform-origin: center;
-}
-
-.snout {
-  animation: popIn 1s ease 1 backwards;
-  animation-delay: 1s;
-  transform-origin: bottom;
-}
-
-.info {
-  width: 100%;
-  height: 20rem;
-  position: absolute;
-  top: 55%;
-
-  opacity: 1;
-  transition: opacity 1s ease;
-}
-
-.info.hidden {
-  display: none;
-}
-
-.info.invisible {
-  opacity: 0;
-}
-
-.info__window {
-  width: 30%;
-  position: absolute;
-
-  transform:
-    rotateY(10deg) skewY(-5deg) translateZ(-5rem);
-
-  transition:
-    all .5s ease;
-
-  cursor: pointer;
-  animation: slideInLeftWindow .5s ease 1 backwards;
-  animation-delay: 1s;
-}
-
-.info__window.winHover {
-  transform:
-    rotateY(0deg) skewY(0deg) translateZ(5rem) scale(1.1);
-
-  z-index: 4;
-}
-
-.info__window.front {
-  bottom: 15%;
-  left: 10%;
-
-  z-index: 4;
-}
-
-.info__window.back {
-  bottom: 18%;
-  left: 5%;
-
-  z-index: 3;
-  filter: blur(.1rem);
-}
-
-.info__window.closed {
-  opacity: 0;
-  transform: scale(0.1);
-}
-
-.window__wrapper {
-  width: 100%;
-  border: #A7FE2F solid .10rem;
-  background-color: black;
-  color: #A7FE2F;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.window__wrapper .button {
-  border: none;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.window__name {
-  margin: .5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: .2rem;
-}
-
-.button__svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: #A7FE2F solid .0625rem;
-}
-
-.button__min {
-  margin: .5rem;
-  cursor: pointer;
-
-  transition: background-color 1s ease;
-}
-
-.button__min.hidden {
-  display: none;
-}
-
-.button__close {
-  margin: .5rem;
-  cursor: pointer;
-
-  transition: background-color 1s ease;
-}
-
-.button__res {
-  margin: .5rem;
-  cursor: pointer;
-
-  transition: background-color 1s ease;
-}
-
-.button__res.hidden {
-  display: none;
-}
-
-.window__content {
-  width: 100%;
-  min-height: 15rem;
-  background-color: black;
-  color: #A7FE2F;
-  border-top: none;
-  border-bottom: #A7FE2F solid .10em;
-  border-left: #A7FE2F solid .10em;
-  border-right: #A7FE2F solid .10em;
-  padding: 2%;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
-
-  text-align: left;
-
-  gap: .5rem;
-  opacity: 1;
-
-  transform: scale(1);
-
-  transition:
-    opacity .3s ease;
-}
-
-.window__content.minimized {
-  opacity: 0;
-}
-
-.window__content.hidden {
-  display: none;
-}
-
-.window__title {
-  width: 90%;
-  margin: .5rem;
-
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  gap: .5rem;
-}
-
-.window__h2 {
-  text-transform: uppercase;
-  letter-spacing: .5rem;
-  text-align: left;
-}
-
-.window__subtitle {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-transform: uppercase;
-  letter-spacing: .4rem;
-}
-
-.window__ul {
-  width: 90%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-  margin: .5rem;
-}
-
-.window__li {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: .5rem;
-}
-
-.window__log {
-  width: 90%;
-  display: inline-block;
-  margin: .5rem;
-  cursor: text;
-}
-
-.hero__moons {
-  width: 10vw;
-  height: 80vh;
-  position: absolute;
-  right: 5%;
-  top: calc(50% - (80vh / 2.2));
-
-  transition:
-    height 1s ease-in-out,
-    position 1s ease;
-
-  animation: popIn 1s ease 1 backwards;
-  animation-delay: 1.4s;
-}
-
-.hero__smiley {
-  width: 10vw;
-  position: absolute;
-  left: 5%;
-  bottom: 7%;
-
-  transition: all 1s ease;
-  animation: popIn 1.5s ease;
-}
-
-/* Befores */
-.window__h1::before {
-  display: inline-block;
-  content: '*·.{';
-  font-size: .8rem;
-  font-weight: 400;
-}
-
-.window__subtitle::before {
-  display: inline-block;
-  content: '*·.-';
-  font-size: .8rem;
-}
-
-.window__li::before {
-  display: inline-block;
-  content: '>';
-}
-
-/* Afters */
-
-.window__title::after {
-  display: block;
-  content: '';
-  width: 80%;
-  border: #A7FE2F dashed .0625rem;
-  margin: .5rem 0 .5rem 0;
-}
-
-.window__subtitle::after {
-  display: inline-block;
-  content: '*·.-';
-  transform: scaleX(-1);
-  font-size: .8rem;
-}
-
-.window__h1::after {
-  display: inline-block;
-  content: '*·.{';
-  transform: scaleX(-1);
-  font-size: .8rem;
-  font-weight: 400;
-}
-
-/* Hovers */
-.hero__smiley:hover {
-  transform: rotate(360deg);
-}
-
-.button__close:hover {
-  color: black;
-  background-color: #A7FE2F;
-}
-
-.button__min:hover {
-  color: black;
-  background-color: #A7FE2F;
-}
-
-.button__res:hover {
-  color: black;
-  background-color: #A7FE2F;
-}
-
-/* Selección de texto */
-.window__log::selection {
-  color: black;
-  background-color: #A7FE2F;
-}
-
-/* Incognito */
-.hero.incognito {
-  min-height: 60vh;
-}
-
-.normal.incognito {
-  display: block;
-  width: 70%;
-  margin-top: 4%;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.normal__h2.incognito {
-  opacity: 1;
-  color: white;
-  font-size: 9vw;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.normal__span.incognito {
-  text-align: center;
-  opacity: 1;
-  color: white;
-  font-size: 3vw;
-}
-
-.logo.incognito {
-  display: none;
-}
-
-.info.incognito {
-  display: none;
-}
-
-.hero__moons.incognito {
-  display: none;
-}
-
-.hero__smiley.incognito {
-  display: none;
-}
-
-/* --------------- Fin de Hero Content --------------- */
-
-/* ---------------Inicio de Services (Mobile) ---------------*/
-/* Descripción: estilo de la sección services, que solo es visible en 
-modo mobile (sustituyendo a hero__window). Esta sección contiene un texto
-estilo marquee que hace scroll infinito en horizontal
-
-Estructura:
-- services
-- services.hidden
-- services.invisible
-  -services__ul
-    -services__li
-*/
-
-.services {
-  width: 100%;
-  background-color: #A7FE2F;
-
-  overflow: hidden;
-  opacity: 1;
-  transition: opacity 1s ease;
-
-  position: relative;
-  z-index: 4;
-}
-
-.services.hidden {
-  display: none;
-}
-
-.services.invisble {
-  opacity: 0;
-}
-
-.services__ul {
-  width: 600%;
-  height: 4rem;
-  top: calc(50% - (4rem/2));
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  animation: scroll 10s infinite linear;
-}
-
-.services__li {
-  width: calc(100%/6);
-  font-size: 3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .5rem;
-  white-space: nowrap;
-
-  transition: font-size .6s ease;
-}
-
-/* --------------- Fin de Services Section --------------- */
-
-/* --------------- Inicio de First Section ---------------*/
-/* Descripción: Esta sección contiene un enlace a la página de porfolio.
-La sección entera tiene un efecto hover aplicado en js para simular que 
-el adorno se encoje para hacer sitio al "botón" que lleva al porfolio.
-Los bordes de la sección son ondulados, lo conseguimos con before and after.
-
-Estructura:
-- first
-  - first__wrapper
-  - first__a
-  - first__a.play
-  - first__animation
-  - first__animation.play
-  
-  - Befores
-  - Afters
-
-*/
-.first {
-  width: 100%;
-  height: 50vh;
-  background-color: #A7FE2F;
-
-  position: relative;
-  z-index: 2;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.first.disabled {
-  cursor: none;
-}
-
-.first__wrapper {
-  width: 69%;
-  height: 30vh;
-  z-index: 2;
-  overflow: hidden;
-  position: absolute;
-  right: 5%;
-}
-
-.first__a {
-  width: 100%;
-  height: 30vh;
-  background-color: #0e0e0f;
-  position: relative;
-
-  transform: translateX(50%);
-  transition: transform .3s ease,
-    color .5s ease;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
-  color: #0e0e0f;
-  font-size: 5vw;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.first__a.play {
-  transform: translateX(0);
-  color: #A7FE2F;
-}
-
-.first__animation {
-  width: 50%;
-  height: 30vh;
-
-  background-image: url(/assets/index/animation/frame1-left.svg);
-  background-repeat: no-repeat;
-  background-position: left;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: absolute;
-  left: 5%;
-
-  animation: playReverse .1s linear 1 backwards;
-  z-index: 1;
-}
-
-.first__animation.play {
-  animation: play .1s linear 1 forwards;
-}
-
-/*  Before */
-.first::before {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  background-color: #A7FE2F;
-  mask-image: url(/assets/masks/wavy-mask-top.svg);
-  mask-repeat: repeat-x;
-  mask-position: top;
-
-  position: absolute;
-  top: -2rem;
-  right: 0;
-}
-
-.first.incognito::before {
-  display: none;
-}
-
-/* After */
-.first::after {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  background-color: #A7FE2F;
-  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
-  mask-repeat: repeat-x;
-  mask-position: bottom;
-
-  position: absolute;
-  bottom: -2rem;
-  right: 0;
-}
-
-.first.incognito::after {
-  display: none;
-}
-
-/* --------------- Inicio de Second Section ---------------*/
-/* Descripción: Estilo de First Section. Esta sección contiene un 
-enlace a la sección de contacto. Tiene de fondo un vídeo de un cielo
-estrellado y al hacer hover el cursor se convierte en un ovni.
-
-Estructura:
-- second
-- second__h4
-- second__video
-- second__wrapper
-- second__a
-
-- Before
-- Afters
-- Hovers
-- Incognito
-
-*/
-.second {
-  width: 100%;
-  min-height: 70vh;
-  mask-size: 30vw;
-
-  position: relative;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-  overflow: hidden;
-  background-color: blueviolet;
-  cursor: url('/assets/index/cursors/ufo__cursor.svg'), auto;
-}
-
-.second.disabled {
-  cursor: none;
-}
-
-.second__h4 {
-  width: 90%;
-  min-height: 2rem;
-  font-size: 5vh;
-  text-align: center;
-  color: #A7FE2F;
-
-  position: absolute;
-  top: 22%;
-  z-index: 1;
-}
-
-.second__normal .normal__span {
-  font-size: 5vw;
-  text-align: center;
-}
-
-/* Vídeo de Borys Zaitsev de Pexels:
-https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-12275368/ */
-.second__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  filter:grayscale(100%) brightness(.4) contrast(.9);
-  -webkit-filter: grayscale(100%) brightness(.4) contrast(.9);
-}
-
-.second__wrapper {
-  width: 14rem;
-  min-height: 10rem;
-
-  background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
-
-  position: absolute;
-  z-index: 1;
-
-  top: 45%;
-  left: calc(50% - (14rem/2));
-
-  mask-image: url(/assets/masks/button-mask.svg);
-  mask-repeat: no-repeat;
-  mask-size: 14rem;
-  mask-position: center;
-
-  transform: scale(1);
-  animation: beat 5s infinite ease both;
-  transition: transform 1s ease,
-    background 1s ease, mask-size 1s ease, box-shadow 1s ease;
-}
-
-.second__a {
-  width: 90%;
-  height: 6rem;
-  position: absolute;
-  left: calc((100% - 90%) / 2);
-  top: calc(50% - (6rem/2));
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  color: #A7FE2F;
-  font-size: 2rem;
-  transition: transform 1s ease;
-
-  cursor: url('/assets/index/cursors/ufo_cursor_pointer.svg'), auto;
-}
-
-
-/* Befores */
-.second__a::before {
-  content: '>';
-}
-
-/* Hovers */
-.second__wrapper:hover {
-  background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
-  mask-size: 9rem;
-}
-
-.second__wrapper:hover .second__a {
-  transform: scale(.7);
-  color: black;
-}
-
-/* Incognito */
-.second.incognito {
-  cursor: default;
-  background-color: #0e0e0f;
-  min-height: 50vh;
-
-  flex-flow: column nowrap;
-  gap: 2rem;
-}
-
-.second__h4.incognito {
-  display: none;
-}
-
-.second__a.incognito {
-  cursor: pointer;
-}
-
-.second__video.incognito {
-  display: none;
-}
-
-.second__wrapper.incognito {
-  position: static;
-  min-height: 5rem;
-  mask-image: none;
-}
-
-/* --------------- Fin de Second Section --------------- */
-
-
-/* --------------- Inicio de Third Section ---------------*/
-/* Descripción: estilo de Third Section. Esta sección contiene un carrousel
-sencillo de algunas marcas con las que he trabajado. La parte superior
-es ondulada y la inferior aserrada gracias a la aplicación de máscaras
-en before y after.
-
-Contenido: 
-- third
-  - third__wrapper
-  - third__span
-  - third__span.crossed
-  - carrousel
-    - carrousel__big
-      - carrousel__wrapper
-      - carrousel__img
-      - cawrrousel__h4
-    - carrousel__ul
-      - carrousel__button
-      - carrousel__button.active
-
-    - Befores
-    - Afters
-    - Hovers
-*/
-.third {
-  width: 100%;
-  height: 50vh;
-  mask-size: 30vw;
-  background-color: #A7FE2F;
-
-  position: relative;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-
-  transition: all .5s ease;
-  background-color: blueviolet;
-  z-index: 1;
-}
-
-.third.disabled {
-  cursor: none;
-}
-
-
-.third__wrapper {
-  width: 45%;
-  padding: 2%;
-  min-height: 40vh;
-  background-color: #0e0e0f;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-
-  font-size: 5vh;
-  color: #A7FE2F;
-
-  transition: all .5s ease;
-}
-
-.third__span {
-  display: inline-block;
-}
-
-.third__span.crossed {
-  text-decoration: line-through;
-}
-
-.carrousel {
-  width: 45%;
-  min-height: 40vh;
-  position: relative;
-
-  display: flex;
-  flex-flow: column-reverse nowrap;
-  justify-content: center;
-  align-items: flex-start;
-
-  overflow: hidden;
-}
-
-.carrousel__big {
-  width: 400%;
-  min-height: 25vh;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-items: flex-start;
-  align-items: center;
-
-  transform: translateX(0);
-  transition: transform 1s ease;
-}
-
-.carrousel__wrapper {
-  width: 100%;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-
-}
-
-.carrousel__img {
-  width: 100%;
-  height: 8rem;
-  transition: height 1s ease;
-}
-
-.carrousel__h4 {
-  width: 100%;
-  font-size: 1.2rem;
-  text-align: center;
-  color: #A7FE2F;
-}
-
-.carrousel__ul {
-  width: 50%;
-  min-height: 2.2rem;
-  margin: .5rem auto;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1.5rem;
-
-  overflow: visible;
-
-}
-
-.carrousel__button {
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: transparent;
-  border: #A7FE2F .2rem solid;
-
-  transform:
-    scale(.9) rotate(45deg);
-  transition:
-    transform .6s ease,
-    background-color 1s ease;
-
-  cursor: pointer;
-}
-
-.carrousel__button.active {
-  background-color: #A7FE2F;
-}
-
-/* Befores */
-.third::before {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  background-color: blueviolet;
-  mask-image: url(/assets/masks/wavy-mask-top.svg);
-  mask-repeat: repeat-x;
-  mask-position: top;
-
-  position: absolute;
-  top: -2rem;
-  right: 0;
-}
-
-.third.incognito::before {
-  display: none;
-}
-
-/* Afters */
-.third::after {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  background-color: blueviolet;
-  mask-image: url(/assets/masks/pointy-mask-bottom.svg);
-  mask-repeat: repeat-x;
-  mask-position: bottom;
-
-  position: absolute;
-  bottom: -2rem;
-  right: 0;
-}
-
-.third.incognito::after {
-  display: none;
-}
-
-/* Hovers */
-.carrousel__button:hover {
-  transform:
-    scale(1.2) rotate(-45deg);
-}
-
-/* ---------- Fin de Third Section ---------- */
-
-/* Inicio Footer */
-/* Descripción: estilo del footer. Esta sección es sencilla y 
-solo contiene el logo y enlaces de navegación. 
-
-Estructura:  
-- footer
-- footer__img
-- footer__ul
-- footer__span
-
-- Befores
-- Hovers
-*/
-
-.footer {
-  width: 100%;
-  height: 50vh;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
-  gap: 2rem;
-  transition: height .5s ease;
-
-  background-image: url(/assets/background.svg);
-  background-color: #0e0e0f;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.footer.disabled {
-  cursor: none;
-}
-
-.footer__img {
-  width: 10rem;
-}
-
-.footer__ul {
-  width: 90%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-
-  color: #A7FE2F;
-  font-size: 1.6rem;
-  text-align: center;
-  gap: 2rem;
-}
-
-.footer__span {
-  width: 90%;
-  color: #a8fe2f51;
-  text-align: center;
-}
-
-/* Befores */
-.footer__a::before {
-  content: '';
-  opacity: 0;
-  transition: opacity .6s ease;
-}
-
-/* Hovers */
-.footer__a:hover:before {
-  content: '>';
-  opacity: 1;
-}
-
-/* Fin de footer */
-
-/* Media Queries (Adaptaciones responsive) */
-
-@media (min-width: 1920px){
-  .nav__li{
-    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .info{
-    min-height: 30vh;
-  }
-  .window__content{
-   height: 30vh;
-    font-size: 1.4rem;
-  }
-  .second__wrapper{
-    width: 20rem;
-    height: 20rem;
-    mask-size: 20rem;
-    left: calc(50% - (20rem/2));
-  }
-  .second__a{
-    font-size: 3rem;
-  }
-  .carrousel__button{
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-  .carrousel__h4{
-    font-size: 2rem;
-  }
-  .carrousel__img{
-    min-height:16vh;
-  }
-  .carrousel__wrapper{
-    min-height: 25vh;
-  }
-}
 
-@media (max-width: 1336px) {
+  .header__wrapper {
+    width: 90%;
+    margin: 0 0 .5rem 0;
 
-  /* Main */
-  .hero {
-    height: 100vh;
-    gap: 5rem;
-    padding: 0%;
+    display: grid;
+    grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+
+    overflow: visible;
+
+    transition: all 1s ease;
+    animation: fadeInTop 1s ease forwards;
+
+    opacity: 1;
+  }
+
+  .header__mask {
     display: block;
+    mask-repeat: repeat-x;
+  }
+
+  .header__h1 {
+    width: 4rem;
+    transform: scale(1);
+    transition: transform .6s ease;
+  }
+
+  .nav__ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .nav__li {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #A7FE2F;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    transition: background-color 1s ease,
+      transform .6s ease;
+  }
+
+  .header__social {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .social__svg {
+    width: 1.9rem;
+    height: 1.9rem;
+    fill: #A7FE2F;
+    transform: scale(1);
+    transition: fill .6s ease,
+      opacity 1s ease,
+      transform .6s ease;
+    cursor: pointer;
+  }
+
+  .social__button {
+    display: none;
+  }
+
+  .social__button.hidden {
+    display: none;
+  }
+
+  .social__button.invisible {
+    opacity: 0;
+  }
+
+  .lang {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #A7FE2F;
+    opacity: .6;
+
+    transition: opacity .5s ease;
+  }
+
+  .lang__a.hidden {
+    display: none;
+  }
+
+  /* Header Mobile */
+  .mobile {
+    display: none;
+    
+    mask-image: url(/assets/masks/mobile-menu-mask.svg);
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    animation: rotate 30s infinite linear both;
+    transform: scale(1);
+    display: block;
+  }
+
+  .mobile.hidden {
+    display: none;
+  }
+
+  .mobile.invisible {
+    opacity: 0;
+  }
+
+  /* Toggle */
+  .toggle {
+    display: inline-block;
+    height: 2.125rem;
+    width: 4.2rem;
     position: relative;
   }
 
-  .hero.incognito {
-    height: 50vh;
+  .toggle__checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle__handle {
+    border-radius: 2.125rem;
+    background-color: black;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .5s ease;
+  }
+
+  /* Toggle ::before and ::after */
+
+  .toggle__handle::before {
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 1.625rem;
+    width: 1.625rem;
+    left: .25rem;
+    bottom: .25rem;
+    background-color: #A7FE2F;
+    transition:
+      right 1s ease,
+      left 1s ease,
+      background-image .3s ease,
+      transform .5s ease;
+  }
+
+  .toggle__handle::after {
+    position: absolute;
+    content: "";
+    background-image: url(/assets/icons/alien-icon.svg);
+    background-size: contain;
+    height: 1.625rem;
+    width: 1.625rem;
+    right: .25rem;
+    bottom: .25rem;
+    transition:
+      right 1s ease,
+      left 1s ease,
+      background-image .3s ease,
+      transform .5s ease;
+  }
+
+  /* Toggle hovers */
+  .toggle__handle:hover {
+    transform: scale(1.2);
+  }
+
+  /* Toggle inputs */
+  input:checked+.toggle__handle {
+    background-color: darkgray;
+  }
+
+  input:checked+.toggle__handle:before {
+    transform: translateX(1.9925rem);
+    background-color: #0e0e0f;
+  }
+
+  input:checked+.toggle__handle:after {
+    right: 0;
+    left: .25rem;
+    background-image: url(/assets/icons/user-icon.svg);
+  }
+
+  /* Befores */
+
+  .nav__li::before {
+    content: '>';
+    opacity: 0;
+    transform: translateX(-50%);
+    transition:
+      opacity 1s ease,
+      transform 1s ease;
+  }
+
+  /* Hovers */
+
+  .header__h1:hover {
+    transform: scale(1.2);
+  }
+
+  .nav__li:hover {
+    color: #A7FE2F;
+    background-color: black;
+    transform: scale(1.2);
+  }
+
+  .nav__li:hover:before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .social__svg:hover {
+    fill: black;
+    transform: scale(1.2);
+  }
+
+  .social__button:hover {
+    background-color: #A7FE2F;
+    color: #0e0e0f;
+    font-weight: 700;
+    transform: scale(1.1);
+  }
+
+  /* Incognito */
+  .header.incognito {
+    width: 100%;
+    mask-image: none;
+
+    position: fixed;
+    background: none;
+    box-shadow: none;
+    background-color: rgba(27, 24, 24, 0.7);
+
     display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    top: 0;
+    left: 0;
+  }
+
+  /* --------------- Fin de Header ---------------*/
+
+  /* --------------- Inicio de Hero Content ---------------*/
+  /* Descripción: Estilo para el main/hero. Esta sección contiene varios
+  elementos interactivos como el logo, que sigue al cursor con la mirada,
+  y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
+
+    Estructura:
+      -hero
+      -hero__wrapper logo
+        -hero__normal
+          -normal__h2
+          -normal__span
+        -logo__mask
+        -logo__body
+        -logo__svg
+      -info__window window
+        -window__wrapper
+        -window__wrapper button
+        -window__name
+        -button__svg
+        -button__min
+        -button__close
+        -button__res
+        -window__content
+        -window__title
+        -window__h2
+        -window__subtitle
+        -window__ul
+        -window-li
+        -window__log
+      -hero__moons
+      -hero__smiley
+
+      - Befores
+      - Afters
+      - Hovers
+      - Selections
+      - Incognito
+  */
+
+  .hero {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    background-image: url(/assets/background.svg);
+    background-color: #0e0e0f;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+  .hero.disabled {
+    cursor: none;
+  }
+
+  .normal {
+    display: none;
+  }
+
+  .normal__h2 {
+    opacity: 0;
+  }
+
+  .normal__span {
+    opacity: 0;
   }
 
   .logo {
-    width: 40%;
-    height: 30rem;
+    width: 35%;
+    height: 35vh;
     position: absolute;
-    top: 20%;
-    left: calc((100% - 40%)/2);
+    margin: 0 4rem 0 0;
+    z-index: 1;
+
+    transition:
+      width .5s ease,
+      margin 1s ease;
+
+    animation: logo 20s ease infinite forwards;
+
+    top: 12%;
+    left: calc((100% - 35%)/ 2.2);
+  }
+
+
+  .logo__mask {
+    display: block;
+  }
+
+  .logo__body {
+    clip-path: url(#body__mask);
+
+    background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
+    box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
+    backdrop-filter: blur(.2rem);
+    -webkit-backdrop-filter: blur(.2rem);
+
+    z-index: 0;
+    margin: auto;
+
+    animation: popIn 2s ease 1 forwards;
+  }
+
+  .logo__svg {
+    position: absolute;
+    left: 5%;
+    top: 3%;
+    z-index: 2;
+    transform: scale(1.1);
+  }
+
+  .eye__first {
+    animation: popIn 1s ease 1 backwards;
+    animation-delay: .4s;
+    transform-origin: center;
+  }
+
+  .eye__second {
+    animation: popIn 1s ease 1 backwards;
+    animation-delay: .6s;
+    transform-origin: center;
+  }
+
+  .eye__third {
+    animation: popIn 1s ease 1 backwards;
+    animation-delay: .8s;
+    transform-origin: center;
+  }
+
+  .snout {
+    animation: popIn 1s ease 1 backwards;
+    animation-delay: 1s;
+    transform-origin: bottom;
   }
 
   .info {
     width: 100%;
-    height: 17rem;
+    height: 20rem;
     position: absolute;
     top: 55%;
+
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+  .info.hidden {
+    display: none;
+  }
+
+  .info.invisible {
+    opacity: 0;
   }
 
   .info__window {
-    width: 30rem;
+    width: 30%;
     position: absolute;
+
+    transform:
+      rotateY(10deg) skewY(-5deg) translateZ(-5rem);
+
+    transition:
+      all .5s ease;
+
+    cursor: pointer;
+    animation: slideInLeftWindow .5s ease 1 backwards;
+    animation-delay: 1s;
   }
 
+  .info__window.winHover {
+    transform:
+      rotateY(0deg) skewY(0deg) translateZ(5rem) scale(1.1);
+
+    z-index: 4;
+  }
+
+  .info__window.front {
+    bottom: 15%;
+    left: 10%;
+
+    z-index: 4;
+  }
+
+  .info__window.back {
+    bottom: 18%;
+    left: 5%;
+
+    z-index: 3;
+    filter: blur(.1rem);
+  }
+
+  .info__window.closed {
+    opacity: 0;
+    transform: scale(0.1);
+  }
 
   .window__wrapper {
+    width: 100%;
+    border: #A7FE2F solid .10rem;
     background-color: black;
     color: #A7FE2F;
 
@@ -1796,580 +800,1557 @@ Estructura:
     align-items: center;
   }
 
+  .window__wrapper .button {
+    border: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .window__name {
+    margin: .5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: .2rem;
+  }
+
+  .button__svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: #A7FE2F solid .0625rem;
+  }
+
+  .button__min {
+    margin: .5rem;
+    cursor: pointer;
+
+    transition: background-color 1s ease;
+  }
+
+  .button__min.hidden {
+    display: none;
+  }
+
+  .button__close {
+    margin: .5rem;
+    cursor: pointer;
+
+    transition: background-color 1s ease;
+  }
+
+  .button__res {
+    margin: .5rem;
+    cursor: pointer;
+
+    transition: background-color 1s ease;
+  }
+
+  .button__res.hidden {
+    display: none;
+  }
+
   .window__content {
     width: 100%;
-    height: 14rem;
-    overflow: hidden;
+    min-height: 15rem;
+    background-color: black;
+    color: #A7FE2F;
+    border: #A7FE2F solid .10em;
+    border-top: none;
+    padding: 2%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-align: left;
+
+    gap: .5rem;
+
+    transition:
+      opacity .3s ease;
+  }
+
+  .window__content.minimized {
+    opacity: 0;
+  }
+
+  .window__content.hidden {
+    display: none;
+  }
+
+  .window__title {
+    width: 90%;
+    margin: .5rem;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    gap: .5rem;
+  }
+
+  .window__h2 {
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    text-align: left;
+  }
+
+  .window__subtitle {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+  }
+
+  .window__ul {
+    width: 90%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: .5rem;
+  }
+
+  .window__li {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+
+  .window__log {
+    width: 90%;
+    display: inline-block;
+    margin: .5rem;
+    cursor: text;
   }
 
   .hero__moons {
-    height: 55vh;
-    top: calc(50% - (55vh / 2.2));
-    right: 4%;
+    width: 10vw;
+    height: 80vh;
+    position: absolute;
+    right: 5%;
+    top: calc(50% - (80vh / 2.2));
+
+    transition:
+      height 1s ease-in-out,
+      position 1s ease;
+
+    animation: popIn 1s ease 1 backwards;
+    animation-delay: 1.4s;
   }
 
   .hero__smiley {
-    bottom: 12%;
-  }
-}
-
-@media (max-width: 1000px) {
-
-  /* Header */
-  .header {
-    width: 100%;
-    height: 0rem;
-    margin: 0;
-
-    mask-image: none;
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    position: fixed;
-    top: -100%;
-    left: 0%;
-
-    display: block;
-
-    animation: none;
-    transition:
-      top .5s ease;
-    opacity: 1;
-  }
-
-  .header.active {
-    top: 0%;
-  }
-
-  .header__wrapper {
-    width: 100%;
-    height: 100vh;
-    padding: 5%;
-    margin: 0;
-
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 4rem;
-
-    background: radial-gradient(circle, rgba(35, 19, 60, 0.9) 47%, rgba(18, 11, 30, 0.9) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
-    backdrop-filter: blur(.7rem);
-    -webkit-backdrop-filter: blur(.7rem);
-
-    transition: opacity .5s ease;
-    position: fixed;
-    opacity: 1;
-  }
-
-  .header__wrapper.hidden {
-    display: none;
-  }
-
-  .header__wrapper.invisible {
-    opacity: 0;
-  }
-
-  .mobile {
-    width: 6rem;
-    height: 6rem;
-
-    position: fixed;
-    top: 2%;
-    left: 2%;
-    z-index: 4;
-
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: transparent;
-
-    opacity: 1;
-    transition:
-      left .5s ease,
-      opacity .5s ease;
-
-    mask-image: url(/assets/masks/mobile-menu-mask.svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-
-    background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-    backdrop-filter: blur(.2rem);
-    -webkit-backdrop-filter: blur(.2rem);
-
-    animation: rotate 30s infinite linear both;
-    transform: scale(1);
-    display: block;
-  }
-
-  .mobile.invisible {
-    left: -100%;
-    opacity: 0;
-  }
-
-  .mobile.hidden {
-    display: none;
-  }
-
-  .mobile__svg {
-    width: 3rem;
-    height: 3rem;
-    fill: #A7FE2F;
-
+    width: 10vw;
     position: absolute;
-    top: calc(50% - (3rem/2));
-    left: calc(50% - (3rem/2));
-    z-index: 4;
+    left: 5%;
+    bottom: 7%;
 
-    transition:
-      opacity 1s ease,
-      transform .6s ease;
-    cursor: pointer;
-
-    animation: rotate 30s linear infinite both;
-    animation-direction: reverse;
+    transition: all 1s ease;
+    animation: popIn 1.5s ease;
   }
 
-  .mobile__svg:hover {
-    transform: scale(1.2);
+  /* Befores */
+  .window__h1::before {
+    display: inline-block;
+    content: '*·.{';
+    font-size: .8rem;
+    font-weight: 400;
   }
 
-  .nav__ul {
-    width: 100%;
+  .window__subtitle::before {
+    display: inline-block;
+    content: '*·.-';
+    font-size: .8rem;
+  }
+
+  .window__li::before {
+    display: inline-block;
+    content: '>';
+  }
+
+  /* Afters */
+
+  .window__title::after {
+    display: block;
+    content: '';
+    width: 80%;
+    border: #A7FE2F dashed .0625rem;
+    margin: .5rem 0 .5rem 0;
+  }
+
+  .window__subtitle::after {
+    display: inline-block;
+    content: '*·.-';
+    transform: scaleX(-1);
+    font-size: .8rem;
+  }
+
+  .window__h1::after {
+    display: inline-block;
+    content: '*·.{';
+    transform: scaleX(-1);
+    font-size: .8rem;
+    font-weight: 400;
+  }
+
+  /* Hovers */
+  .hero__smiley:hover {
+    transform: rotate(360deg);
+  }
+
+  .button__close:hover {
+    color: black;
+    background-color: #A7FE2F;
+  }
+
+  .button__min:hover {
+    color: black;
+    background-color: #A7FE2F;
+  }
+
+  .button__res:hover {
+    color: black;
+    background-color: #A7FE2F;
+  }
+
+  /* Selección de texto */
+  .window__log::selection {
+    color: black;
+    background-color: #A7FE2F;
+  }
+
+  /* Incognito */
+  .hero.incognito {
+    min-height: 60vh;
+  }
+
+  .normal.incognito {
+    display: block;
+    width: 70%;
+    margin-top: 4%;
+
     display: flex;
-
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
   }
 
-  .nav__li {
+  .normal__h2.incognito {
+    opacity: 1;
+    color: white;
+    font-size: 9vw;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .normal__span.incognito {
+    text-align: center;
+    opacity: 1;
+    color: white;
+    font-size: 3vw;
+  }
+
+  .logo.incognito {
+    display: none;
+  }
+
+  .info.incognito {
+    display: none;
+  }
+
+  .hero__moons.incognito {
+    display: none;
+  }
+
+  .hero__smiley.incognito {
+    display: none;
+  }
+
+  /* --------------- Fin de Hero Content --------------- */
+
+  /* ---------------Inicio de Services (Mobile) ---------------*/
+  /* Descripción: estilo de la sección services, que solo es visible en 
+  modo mobile (sustituyendo a hero__window). Esta sección contiene un texto
+  estilo marquee que hace scroll infinito en horizontal
+
+  Estructura:
+  - services
+  - services.hidden
+  - services.invisible
+    -services__ul
+      -services__li
+  */
+
+  .services {
     width: 100%;
-    font-size: 3rem;
-    text-align: left;
+    background-color: #A7FE2F;
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 1s ease;
 
-    transform: translateX(-200%);
-    transition: transform .3s ease;
+    position: relative;
+    z-index: 4;
+  }
+
+  .services.hidden {
+    display: none;
+  }
+
+  .services.invisble {
     opacity: 0;
   }
 
-  .nav__li.active {
-    transform: translateX(0);
-    opacity: 1;
+  .services__ul {
+    width: 600%;
+    height: 4rem;
+    top: calc(50% - (4rem/2));
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    animation: scroll 10s infinite linear;
   }
 
-  .nav__a {
-    margin: 0 -2rem 0;
-    transition: margin .5s ease;
+  .services__li {
+    width: calc(100%/6);
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    white-space: nowrap;
+
+    transition: font-size .6s ease;
   }
 
-  .nav__a:hover {
-    margin: 0;
-  }
+  /* --------------- Fin de Services Section --------------- */
 
-  .lang {
+  /* --------------- Inicio de First Section ---------------*/
+  /* Descripción: Esta sección contiene un enlace a la página de porfolio.
+  La sección entera tiene un efecto hover aplicado en js para simular que 
+  el adorno se encoje para hacer sitio al "botón" que lleva al porfolio.
+  Los bordes de la sección son ondulados, lo conseguimos con before and after.
+
+  Estructura:
+  - first
+    - first__wrapper
+    - first__a
+    - first__a.play
+    - first__animation
+    - first__animation.play
+    
+    - Befores
+    - Afters
+
+  */
+  .first {
+    width: 100%;
+    height: 50vh;
+    background-color: #A7FE2F;
+
+    position: relative;
+    z-index: 2;
+
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .first.disabled {
+    cursor: none;
+  }
+
+  .first__wrapper {
+    width: 69%;
+    height: 30vh;
+    z-index: 2;
+    overflow: hidden;
+    position: absolute;
+    right: 5%;
+
+    color: #0e0e0f;
+    font-size: 5vw;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .first__a {
+    width: 100%;
+    height: 30vh;
+    background-color: #0e0e0f;
+    position: relative;
+
+    transform: translateX(50%);
+    transition: transform .3s ease,
+      color .5s ease;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .first__a.play {
+    transform: translateX(0);
+    color: #A7FE2F;
+  }
+
+  .first__animation {
+    width: 50%;
+    height: 30vh;
+
+    background-image: url(/assets/index/animation/frame1-left.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 5%;
+
+    animation: playReverse .1s linear 1 backwards;
+    z-index: 1;
+  }
+
+  .first__animation.play {
+    animation: play .1s linear 1 forwards;
+  }
+
+  /*  Before */
+  .first::before {
+    width: 100%;
+    height: 2rem;
+    display: block;
+    content: '';
+
+    background-color: #A7FE2F;
+    mask-image: url(/assets/masks/wavy-mask-top.svg);
+    mask-repeat: repeat-x;
+    mask-position: top;
+
+    position: absolute;
+    top: -2rem;
+    right: 0;
+  }
+
+  .first.incognito::before {
+    display: none;
+  }
+
+  /* After */
+  .first::after {
+    width: 100%;
+    height: 2rem;
+    display: block;
+    content: '';
+
+    background-color: #A7FE2F;
+    mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+    mask-repeat: repeat-x;
+    mask-position: bottom;
+
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+  }
+
+  .first.incognito::after {
+    display: none;
+  }
+
+  /* --------------- Inicio de Second Section ---------------*/
+  /* Descripción: Estilo de First Section. Esta sección contiene un 
+  enlace a la sección de contacto. Tiene de fondo un vídeo de un cielo
+  estrellado y al hacer hover el cursor se convierte en un ovni.
+
+  Estructura:
+  - second
+  - second__h4
+  - second__video
+  - second__wrapper
+  - second__a
+
+  - Before
+  - Afters
+  - Hovers
+  - Incognito
+
+  */
+  .second {
+    width: 100%;
+    min-height: 70vh;
+    mask-size: 30vw;
+
+    position: relative;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    overflow: hidden;
+    background-color: blueviolet;
+    cursor: url('/assets/index/cursors/ufo__cursor.svg'), auto;
+  }
+
+  .second.disabled {
+    cursor: none;
+  }
+
+  .second__h4 {
+    width: 90%;
+    min-height: 2rem;
+    font-size: 5vh;
+    text-align: center;
+    color: #A7FE2F;
+
+    position: absolute;
+    top: 22%;
+    z-index: 1;
+  }
+
+  .second__normal .normal__span {
+    font-size: 5vw;
+    text-align: center;
+  }
+
+  /* Vídeo de Borys Zaitsev de Pexels:
+  https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-12275368/ */
+  .second__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    filter:grayscale(100%) brightness(.4) contrast(.9);
+    -webkit-filter: grayscale(100%) brightness(.4) contrast(.9);
+  }
+
+  .second__wrapper {
+    width: 14rem;
+    min-height: 10rem;
+
+    position: absolute;
+    z-index: 1;
+
+    top: 45%;
+    left: calc(50% - (14rem/2));
+
+    mask-image: url(/assets/masks/button-mask.svg);
+    mask-repeat: no-repeat;
+    mask-size: 14rem;
+    mask-position: center;
+
+    background-color: blueviolet;
+
+    transform: scale(1);
+    animation: beat 5s infinite ease both;
+    transition: transform 1s ease,
+      background 1s ease, mask-size 1s ease, box-shadow 1s ease;
+  }
+
+  .second__a {
+    width: 90%;
+    height: 2rem;
+
+    position: absolute;
+    left: calc((100% - 90%) / 2);
+    top: calc(50% - (2rem/2));
+    text-align: center;
+
+    color: #A7FE2F;
+    font-size: 2rem;
+    transition: transform 1s ease;
+
+    cursor: url('/assets/index/cursors/ufo_cursor_pointer.svg'), auto;
+  }
+
+
+  /* Befores */
+  .second__a::before {
+    content: '>';
+  }
+
+  /* Hovers */
+  .second__wrapper:hover {
+    background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
+    box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
+    mask-size: 9rem;
+  }
+
+  .second__wrapper:hover .second__a {
+    transform: scale(.7);
+    color: black;
+  }
+
+  /* Incognito */
+  .second.incognito {
+    cursor: default;
+    background-color: #0e0e0f;
+    min-height: 50vh;
+
+    flex-flow: column nowrap;
     gap: 2rem;
   }
 
-  .lang__li {
-    font-size: 1.5rem;
+  .second__h4.incognito {
+    display: none;
   }
 
-  .social {
+  .second__a.incognito {
+    cursor: pointer;
+  }
+
+  .second__video.incognito {
+    display: none;
+  }
+
+  .second__wrapper.incognito {
+    position: static;
+    min-height: 5rem;
+    mask-image: none;
+  }
+
+  /* --------------- Fin de Second Section --------------- */
+
+
+  /* --------------- Inicio de Third Section ---------------*/
+  /* Descripción: estilo de Third Section. Esta sección contiene un carrousel
+  sencillo de algunas marcas con las que he trabajado. La parte superior
+  es ondulada y la inferior aserrada gracias a la aplicación de máscaras
+  en before y after.
+
+  Contenido: 
+  - third
+    - third__wrapper
+    - third__span
+    - third__span.crossed
+    - carrousel
+      - carrousel__big
+        - carrousel__wrapper
+        - carrousel__img
+        - cawrrousel__h4
+      - carrousel__ul
+        - carrousel__button
+        - carrousel__button.active
+
+      - Befores
+      - Afters
+      - Hovers
+  */
+  .third {
     width: 100%;
-    gap: 0;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    transition: all 1s ease;
+    height: 50vh;
+    mask-size: 30vw;
+    background-color: #A7FE2F;
 
-  }
-
-  .social__svg {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .social__button {
-    width: 100%;
-    height: 3rem;
-    padding: 0 0 0 .6rem;
+    position: relative;
 
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
 
-    text-transform: uppercase;
-    font-size: 1.3rem;
-
-    color: #A7FE2F;
-    border: #A7FE2F .125rem solid;
-
-    cursor: pointer;
-    transition: opacity 1s ease;
-
-    transform: scale(1);
-    transition: all .6s ease;
+    transition: all .5s ease;
+    background-color: blueviolet;
+    z-index: 1;
   }
 
-  .menu__svg {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .toggle {
-    position: fixed;
-    top: 5%;
-    right: 5%;
-  }
-
-  /* Main */
-  .hero {
-    min-height: 60vh;
-    max-height: 65vh;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  .logo {
-    width: 30rem;
-    height: 30rem;
-    margin: 0;
-    left: calc(50% - (30rem/1.8));
-    top: calc(50% - (30rem/2));
-  }
-
-  .info {
-    width: 100%;
-    height: 17rem;
-    position: absolute;
-    top: 55%;
-  }
-
-  .info__window {
-    width: 65%;
-    position: absolute;
-  }
-
-  .front {
-    bottom: 2%;
-    left: 25%;
-  }
-
-  .back {
-    bottom: 15%;
-    left: 10%;
-  }
-
-  .window__content {
-    width: 100%;
-  }
-
-  .hero__smiley {
-    width: 13vw;
-    right: 4%;
-  }
-
-  .hero__moons {
-    height: 40vh;
-    top: calc(50% - (40vh /2));
-    right: 4%;
-  }
-
-  /* Second Section */
-  .second__wrapper {
-    top: 52%;
-  }
-
-  /* Third Section */
-  .third {
-    flex-flow: column nowrap;
-    height: 90vh;
+  .third.disabled {
+    cursor: none;
   }
 
 
   .third__wrapper {
-    width: 90%;
+    width: 45%;
+    padding: 2%;
+    min-height: 40vh;
+    background-color: #0e0e0f;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+
+    font-size: 5vh;
+    color: #A7FE2F;
+
+    transition: all .5s ease;
   }
 
   .third__span {
-    font-size: 2.5rem;
+    display: inline-block;
+  }
+
+  .third__span.crossed {
+    text-decoration: line-through;
   }
 
   .carrousel {
-    width: 90%;
+    width: 45%;
+    min-height: 40vh;
+    position: relative;
+
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    overflow: hidden;
   }
 
-  .carrousel__h4 {
-    font-size: 1.5rem;
+  .carrousel__big {
+    width: 400%;
+    min-height: 25vh;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: flex-start;
+    align-items: center;
+
+    transform: translateX(0);
+    transition: transform 1s ease;
+  }
+
+  .carrousel__wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+
   }
 
   .carrousel__img {
-    height: 7rem;
+    width: 100%;
+    height: 8rem;
+    transition: height 1s ease;
+  }
+
+  .carrousel__h4 {
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #A7FE2F;
   }
 
   .carrousel__ul {
-    width: 90%;
+    width: 50%;
+    min-height: 2.2rem;
+    margin: .5rem auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+
+    overflow: visible;
+
   }
 
   .carrousel__button {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: transparent;
+    border: #A7FE2F .2rem solid;
+
+    transform:
+      scale(.9) rotate(45deg);
+    transition:
+      transform .6s ease,
+      background-color 1s ease;
+
+    cursor: pointer;
   }
 
-  /* Footer */
+  .carrousel__button.active {
+    background-color: #A7FE2F;
+  }
+
+  /* Befores */
+  .third::before {
+    width: 100%;
+    height: 2rem;
+    display: block;
+    content: '';
+
+    background-color: blueviolet;
+    mask-image: url(/assets/masks/wavy-mask-top.svg);
+    mask-repeat: repeat-x;
+    mask-position: top;
+
+    position: absolute;
+    top: -2rem;
+    right: 0;
+  }
+
+  .third.incognito::before {
+    display: none;
+  }
+
+  /* Afters */
+  .third::after {
+    width: 100%;
+    height: 2rem;
+    display: block;
+    content: '';
+
+    background-color: blueviolet;
+    mask-image: url(/assets/masks/pointy-mask-bottom.svg);
+    mask-repeat: repeat-x;
+    mask-position: bottom;
+
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+  }
+
+  .third.incognito::after {
+    display: none;
+  }
+
+  /* Hovers */
+  .carrousel__button:hover {
+    transform:
+      scale(1.2) rotate(-45deg);
+  }
+
+  /* ---------- Fin de Third Section ---------- */
+
+  /* Inicio Footer */
+  /* Descripción: estilo del footer. Esta sección es sencilla y 
+  solo contiene el logo y enlaces de navegación. 
+
+  Estructura:  
+  - footer
+  - footer__img
+  - footer__ul
+  - footer__span
+
+  - Befores
+  - Hovers
+  */
+
   .footer {
-    height: 70vh;
+    width: 100%;
+    height: 50vh;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2rem;
+    transition: height .5s ease;
+
+    background-image: url(/assets/background.svg);
+    background-color: #0e0e0f;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .footer.disabled {
+    cursor: none;
+  }
+
+  .footer__img {
+    width: 10rem;
   }
 
   .footer__ul {
     width: 90%;
-  }
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
 
-  .footer__li {
-    font-size: 1.7rem;
+    color: #A7FE2F;
+    font-size: 1.6rem;
+    text-align: center;
+    gap: 2rem;
   }
 
   .footer__span {
     width: 90%;
-    font-size: 1.2rem;
+    color: #a8fe2f51;
+    text-align: center;
   }
 
-  /* Incognito */
-  .header.incognito {
-    width: 100%;
-    height: 6rem;
-    display: block;
-    transition:
-      top .5s ease;
-    opacity: 1;
-    background: none;
-  }
-  .mobile.incognito {
-    animation: none;
-    mask: none;
-    border-radius: 50%;
-    top: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .mobile__svg.incognito {
-    position: static;
-    animation: none;
-    animation-direction: reverse;
-  }
-}
-
-@media (max-width: 600px) {
-
-  /* Hero */
-  .hero {
-    min-height: 50vh;
-    height: 50vh;
-  }
-
-  .logo {
-    width: 15rem;
-    height: 15rem;
-    height: fit-content;
-    left: calc(50% - (15rem/1.8));
-    top: calc(50% - (15rem/2));
-  }
-
-
-  /* Services */
-  .services__li {
-    font-size: 2rem;
-  }
-
-  .second__h3 {
-    font-size: 1.5rem;
-  }
-
-  .second__a {
-    font-size: 1.7rem;
-  }
-
-  /* First Section */
-  .first__span {
-    display: block;
-  }
-
-  /* Second section */
-
-  /* Footer */
-  .footer {
-    height: 100vh;
-  }
-
-  .footer__ul {
-    flex-flow: column nowrap;
-  }
-
-  .footer__li {
-    width: 100%;
-  }
-
-  .footer__a {
-    width: 100%;
-  }
-
-  /* Incognito */
-  .normal__h2.incognito {
-    font-size: 3.5rem;
-  }
-
-  .normal__span.incognito {
-    font-size: 1.5rem;
-  }
-}
-
-
-/* Animaciones */
-
-@keyframes fadeInTop {
-  from {
-    transform: translateY(-50%);
+  /* Befores */
+  .footer__a::before {
+    content: '';
     opacity: 0;
+    transition: opacity .6s ease;
   }
 
-  to {
-    transform: translateY(0);
+  /* Hovers */
+  .footer__a:hover:before {
+    content: '>';
     opacity: 1;
   }
-}
 
-@keyframes popIn {
-  0% {
-    opacity: 0;
-    transform:
-      scale(0);
+  /* Fin de footer */
+
+  /* Media Queries (Adaptaciones responsive) */
+
+  @media (min-width: 1920px){
+    .nav__li{
+      font-size: 1.7rem;
+    }
+    .info{
+      min-height: 30vh;
+    }
+    .window__content{
+    height: 30vh;
+      font-size: 1.4rem;
+    }
+    .second__wrapper{
+      width: 20rem;
+      height: 20rem;
+      mask-size: 20rem;
+      left: calc(50% - (20rem/2));
+    }
+    .second__a{
+      font-size: 3rem;
+    }
+    .carrousel__button{
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .carrousel__h4{
+      font-size: 2rem;
+    }
+    .carrousel__img{
+      min-height:16vh;
+    }
+    .carrousel__wrapper{
+      min-height: 25vh;
+    }
   }
 
-  50% {
-    opacity: 1;
-    transform:
-      scale(1.2);
+  @media (max-width: 1336px) {
+
+    /* Main */
+    .hero {
+      height: 100vh;
+      gap: 5rem;
+      padding: 0%;
+      display: block;
+      position: relative;
+    }
+
+    .hero.incognito {
+      height: 50vh;
+      display: flex;
+    }
+
+    .logo {
+      width: 40%;
+      height: 30rem;
+      position: absolute;
+      top: 20%;
+      left: calc((100% - 40%)/2);
+    }
+
+    .info {
+      width: 100%;
+      height: 17rem;
+      position: absolute;
+      top: 55%;
+    }
+
+    .info__window {
+      width: 30rem;
+      position: absolute;
+    }
+
+
+    .window__wrapper {
+      background-color: black;
+      color: #A7FE2F;
+
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .window__content {
+      width: 100%;
+      height: 14rem;
+      overflow: hidden;
+    }
+
+    .hero__moons {
+      height: 55vh;
+      top: calc(50% - (55vh / 2.2));
+      right: 4%;
+    }
+
+    .hero__smiley {
+      bottom: 12%;
+    }
   }
 
-  100% {
-    transform:
-      scale(1);
-  }
-}
+  @media (max-width: 1000px) {
 
-@keyframes logo {
-  0% {
-    transform:
-      rotate(-10deg);
+    /* Header */
+    .header {
+      width: 100%;
+      height: 0rem;
+      margin: 0;
+
+      mask-image: none;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+
+      position: fixed;
+      top: -100%;
+      left: 0%;
+
+      display: block;
+
+      animation: none;
+      transition:
+        top .5s ease;
+      opacity: 1;
+    }
+
+    .header.active {
+      top: 0%;
+    }
+
+    .header__wrapper {
+      width: 100%;
+      height: 100vh;
+      padding: 5%;
+      margin: 0;
+
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 4rem;
+
+      background: radial-gradient(circle, rgba(35, 19, 60, 0.9) 47%, rgba(18, 11, 30, 0.9) 100%);
+      box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
+      backdrop-filter: blur(.7rem);
+      -webkit-backdrop-filter: blur(.7rem);
+
+      transition: opacity .5s ease;
+      position: fixed;
+      opacity: 1;
+    }
+
+    .header__wrapper.hidden {
+      display: none;
+    }
+
+    .header__wrapper.invisible {
+      opacity: 0;
+    }
+
+    .mobile {
+      width: 6rem;
+      height: 6rem;
+
+      position: fixed;
+      top: 2%;
+      left: 2%;
+      z-index: 4;
+
+      background: rgba(137, 43, 226, 0.607);
+
+      opacity: 1;
+      transition:
+        left .5s ease,
+        opacity .5s ease;
+    }
+
+    .mobile.invisible {
+      left: -100%;
+      opacity: 0;
+    }
+
+    .mobile.hidden {
+      display: none;
+    }
+
+    .mobile__svg {
+      width: 3rem;
+      height: 3rem;
+      fill: #A7FE2F;
+
+      position: absolute;
+      top: calc(50% - (3rem/2));
+      left: calc(50% - (3rem/2));
+      z-index: 4;
+
+      transition:
+        opacity 1s ease,
+        transform .6s ease;
+      cursor: pointer;
+
+      animation: rotate 30s linear infinite both;
+      animation-direction: reverse;
+    }
+
+    .mobile__svg:hover {
+      transform: scale(1.2);
+    }
+
+    .nav__ul {
+      width: 100%;
+      display: flex;
+
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .nav__li {
+      width: 100%;
+      font-size: 3rem;
+      text-align: left;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      transform: translateX(-200%);
+      transition: transform .3s ease;
+      opacity: 0;
+    }
+
+    .nav__li.active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .nav__a {
+      margin: 0 -2rem 0;
+      transition: margin .5s ease;
+    }
+
+    .nav__a:hover {
+      margin: 0;
+    }
+
+    .lang {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .lang__li {
+      font-size: 1.5rem;
+    }
+
+    .social {
+      width: 100%;
+      gap: 0;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      transition: all 1s ease;
+
+    }
+
+    .social__svg {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .social__button {
+      width: 100%;
+      height: 3rem;
+      padding: 0 0 0 .6rem;
+
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+
+      text-transform: uppercase;
+      font-size: 1.3rem;
+
+      color: #A7FE2F;
+      border: #A7FE2F .125rem solid;
+
+      cursor: pointer;
+      transition: opacity 1s ease;
+
+      transform: scale(1);
+      transition: all .6s ease;
+    }
+
+    .menu__svg {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .toggle {
+      position: fixed;
+      top: 5%;
+      right: 5%;
+    }
+
+    /* Main */
+    .hero {
+      min-height: 60vh;
+      max-height: 65vh;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      width: 30rem;
+      height: 30rem;
+      margin: 0;
+      left: calc(50% - (30rem/1.8));
+      top: calc(50% - (30rem/2));
+    }
+
+    .info {
+      width: 100%;
+      height: 17rem;
+      position: absolute;
+      top: 55%;
+    }
+
+    .info__window {
+      width: 65%;
+      position: absolute;
+    }
+
+    .front {
+      bottom: 2%;
+      left: 25%;
+    }
+
+    .back {
+      bottom: 15%;
+      left: 10%;
+    }
+
+    .window__content {
+      width: 100%;
+    }
+
+    .hero__smiley {
+      width: 13vw;
+      right: 4%;
+    }
+
+    .hero__moons {
+      height: 40vh;
+      top: calc(50% - (40vh /2));
+      right: 4%;
+    }
+
+    /* Second Section */
+    .second__wrapper {
+      top: 52%;
+    }
+
+    /* Third Section */
+    .third {
+      flex-flow: column nowrap;
+      height: 90vh;
+    }
+
+
+    .third__wrapper {
+      width: 90%;
+    }
+
+    .third__span {
+      font-size: 2.5rem;
+    }
+
+    .carrousel {
+      width: 90%;
+    }
+
+    .carrousel__h4 {
+      font-size: 1.5rem;
+    }
+
+    .carrousel__img {
+      height: 7rem;
+    }
+
+    .carrousel__ul {
+      width: 90%;
+    }
+
+    .carrousel__button {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    /* Footer */
+    .footer {
+      height: 70vh;
+    }
+
+    .footer__ul {
+      width: 90%;
+    }
+
+    .footer__li {
+      font-size: 1.7rem;
+    }
+
+    .footer__span {
+      width: 90%;
+      font-size: 1.2rem;
+    }
+
+    /* Incognito */
+    .header.incognito {
+      width: 100%;
+      height: 6rem;
+      display: block;
+      transition:
+        top .5s ease;
+      opacity: 1;
+      background: none;
+    }
+    .mobile.incognito {
+      animation: none;
+      mask: none;
+      border-radius: 50%;
+      top: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mobile__svg.incognito {
+      position: static;
+      animation: none;
+      animation-direction: reverse;
+    }
   }
 
-  50% {
-    transform:
-      rotate(10deg);
+  @media (max-width: 600px) {
+
+    /* Hero */
+    .hero {
+      min-height: 50vh;
+      height: 50vh;
+    }
+
+    .logo {
+      width: 15rem;
+      height: 15rem;
+      height: fit-content;
+      left: calc(50% - (15rem/1.8));
+      top: calc(50% - (15rem/2));
+    }
+
+
+    /* Services */
+    .services__li {
+      font-size: 2rem;
+    }
+
+    .second__h3 {
+      font-size: 1.5rem;
+    }
+
+    .second__a {
+      font-size: 1.7rem;
+    }
+
+    /* First Section */
+    .first__span {
+      display: block;
+    }
+
+    /* Second section */
+
+    /* Footer */
+    .footer {
+      height: 100vh;
+    }
+
+    .footer__ul {
+      flex-flow: column nowrap;
+    }
+
+    .footer__li {
+      width: 100%;
+    }
+
+    .footer__a {
+      width: 100%;
+    }
+
+    /* Incognito */
+    .normal__h2.incognito {
+      font-size: 3.5rem;
+    }
+
+    .normal__span.incognito {
+      font-size: 1.5rem;
+    }
   }
 
-  100% {
-    transform:
-      rotate(-10deg);
+
+  /* Animaciones */
+
+  @keyframes fadeInTop {
+    from {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
-}
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform:
+        scale(0);
+    }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0%);
+    50% {
+      opacity: 1;
+      transform:
+        scale(1.2);
+    }
+
+    100% {
+      transform:
+        scale(1);
+    }
   }
 
-  to {
-    transform: translateX(-50%);
-  }
-}
+  @keyframes logo {
+    0% {
+      transform:
+        rotate(-10deg);
+    }
 
-@keyframes slideInLeftWindow {
-  from {
-    opacity: 0;
-    transform: translateX(-50%);
-  }
+    50% {
+      transform:
+        rotate(10deg);
+    }
 
-  to {
-    opacity: 1;
-    transform:
-      translateX(0) rotateY(10deg) skewY(-5deg) translateZ(-5rem);
-  }
-}
+    100% {
+      transform:
+        rotate(-10deg);
+    }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0);
   }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
+  @keyframes scroll {
+    from {
+      transform: translateX(0%);
+    }
 
-@keyframes play {
-  0% {
-    background-image: url(/assets/index/animation/frame1-left.svg);
-  }
-
-  35% {
-    background-image: url(/assets/index/animation/frame2-left.svg);
+    to {
+      transform: translateX(-50%);
+    }
   }
 
-  75% {
-    background-image: url(/assets/index/animation/frame3-left.svg);
+  @keyframes slideInLeftWindow {
+    from {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+
+    to {
+      opacity: 1;
+      transform:
+        translateX(0) rotateY(10deg) skewY(-5deg) translateZ(-5rem);
+    }
   }
 
-  100% {
-    background-image: url(/assets/index/animation/frame4-left.svg);
-  }
-}
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
 
-@keyframes playReverse {
-  0% {
-    background-image: url(/assets/index/animation/frame4-left.svg);
-  }
-
-  35% {
-    background-image: url(/assets/index/animation/frame3-left.svg);
+    to {
+      transform: rotate(360deg);
+    }
   }
 
-  75% {
-    background-image: url(/assets/index/animation/frame2-left.svg);
+  @keyframes play {
+    0% {
+      background-image: url(/assets/index/animation/frame1-left.svg);
+    }
+
+    35% {
+      background-image: url(/assets/index/animation/frame2-left.svg);
+    }
+
+    75% {
+      background-image: url(/assets/index/animation/frame3-left.svg);
+    }
+
+    100% {
+      background-image: url(/assets/index/animation/frame4-left.svg);
+    }
   }
 
-  100% {
-    background-image: url(/assets/index/animation/frame1-left.svg);
-  }
-}
+  @keyframes playReverse {
+    0% {
+      background-image: url(/assets/index/animation/frame4-left.svg);
+    }
 
-@keyframes beat {
-  0% {
-    transform: scale(1);
+    35% {
+      background-image: url(/assets/index/animation/frame3-left.svg);
+    }
+
+    75% {
+      background-image: url(/assets/index/animation/frame2-left.svg);
+    }
+
+    100% {
+      background-image: url(/assets/index/animation/frame1-left.svg);
+    }
   }
 
-  50% {
-    transform: scale(1.1);
-  }
+  @keyframes beat {
+    0% {
+      transform: scale(1);
+    }
 
-  100% {
-    transform: scale(1);
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
   }
-}
