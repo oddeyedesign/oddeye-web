@@ -158,20 +158,11 @@ body {
   background-color: #0e0e0f;
 }
 
-/* Estilo del header por defecto */
-header {  
-  mask-image: url(/assets/masks/menu-mask.svg);
-  mask-repeat: repeat-x;
-  mask-position: bottom;
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
-}
-
 /* Filtro de color modo incógnito */
 body .incognito {
   filter: sepia(100%);
   -webkit-filter: sepia(100%);
-  transition: filter 1s ease;
+  transition: all 1s ease;
 }
 
 /* Animación de carga de página / transición */
@@ -190,43 +181,32 @@ Estructura:
 
 */
 .waves__top {
-  width: 100%;
-  height: calc(50vh);
-  position: fixed;
-  background-color: #A7FE2F;
-  z-index: 6;
   top: 0;
-  display: block;
-
   transform: translateY(-200%);
-  transition: transform 1s ease;
-}
-
-.waves__top.active {
-  transform: translateY(0);
-}
-
-.waves__top.hidden {
-  display: none;
 }
 
 .waves__bottom {
+  bottom: 0;
+  transform: translateY(200%);
+}
+
+.waves__top,
+.waves__bottom {
   width: 100%;
-  height: calc(50vh);
+  height: calc(50vh + 2rem);
   position: fixed;
   background-color: #A7FE2F;
   z-index: 6;
-  bottom: 0;
   display: block;
-
-  transform: translateY(200%);
   transition: transform 1s ease;
 }
 
+.waves__top.active,
 .waves__bottom.active {
-  transform: translateY(0%);
+  transform: translateY(0);
 }
 
+.waves__top.hidden,
 .waves__bottom.hidden {
   display: none;
 }
@@ -310,71 +290,77 @@ Estructura:
 */
 
 .header {
-  width: 100%;
-  height: 10vh;
-
+  min-height: 10vh;
   position: fixed;
-
-  z-index: 5;
   overflow: visible;
-
-  background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-
-  animation: fadeInTop 1s ease 1 forwards;
-
   display: flex;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
 }
 
+.header::after {
+  content: '';
+  height: 2rem;
+  position: absolute;
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+  mask-position: bottom;
+  bottom: -2rem;
+}
+
+.header,
+.header::after {
+  width: 100%;
+  background-color: rgba(108, 33, 177, 0.868);
+  backdrop-filter: blur(.4rem);
+  -webkit-backdrop-filter: blur(.4rem);
+  animation: fadeInTop 1s ease 1 forwards;
+  z-index: 5;
+}
 
 .header__wrapper {
   width: 90%;
-  margin: 0 0 .5rem 0;
-
-  display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
-  grid-template-rows: 1fr;
-  gap: 1rem;
-
-  overflow: visible;
-
-  transition: all 1s ease;
+  transition: al 1s ease;
+  align-items: center;
   animation: fadeInTop 1s ease forwards;
-
-  opacity: 1;
-}
-
-.header__mask {
-  display: block;
-  mask-repeat: repeat-x;
 }
 
 .header__h1 {
-  width: 4rem;
+  width: 4.5rem;
+}
+
+.header__h1,
+.social__svg {
   transform: scale(1);
   transition: transform .6s ease;
 }
 
 .nav__ul {
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.header__wrapper,
+.nav__ul {
+  display: grid;
   gap: 1rem;
 }
 
 .nav__li {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  color: #A7FE2F;
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-
   transition: background-color 1s ease,
     transform .6s ease;
+}
+
+.nav__li,
+.lang {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #A7FE2F;
+  text-align: center;
 }
 
 .header__social {
@@ -387,18 +373,25 @@ Estructura:
   width: 1.9rem;
   height: 1.9rem;
   fill: #A7FE2F;
-  transform: scale(1);
   transition: fill .6s ease,
     opacity 1s ease,
     transform .6s ease;
   cursor: pointer;
 }
 
-.social__button {
-  display: none;
+.social__button{
+  width: 100%;
+  height: 3rem;
+  padding: 0 0 0 .6rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #A7FE2F;
+  border: #A7FE2F .125rem solid;
 }
 
-.social__button.hidden {
+.social__button,
+.social__button.hidden,
+.lang__a.hidden {
   display: none;
 }
 
@@ -407,22 +400,14 @@ Estructura:
 }
 
 .lang {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-align: center;
-  color: #A7FE2F;
   opacity: .6;
-
   transition: opacity .5s ease;
-}
-
-.lang__a.hidden {
-  display: none;
 }
 
 /* Header Mobile */
 .mobile {
   display: none;
+
   mask-image: url(/assets/masks/mobile-menu-mask.svg);
   mask-repeat: no-repeat;
   mask-position: center;
@@ -459,10 +444,7 @@ Estructura:
   background-color: black;
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: all .5s ease;
 }
 
@@ -470,34 +452,27 @@ Estructura:
 
 .toggle__handle::before {
   border-radius: 50%;
-  position: absolute;
-  content: "";
-  height: 1.625rem;
-  width: 1.625rem;
   left: .25rem;
-  bottom: .25rem;
   background-color: #A7FE2F;
-  transition:
-    right 1s ease,
-    left 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
 }
 
 .toggle__handle::after {
-  position: absolute;
-  content: "";
   background-image: url(/assets/icons/alien-icon.svg);
   background-size: contain;
+  right: .25rem;
+}
+
+.toggle__handle::before,
+.toggle__handle::after {
+  position: absolute;
+  content: "";
   height: 1.625rem;
   width: 1.625rem;
-  right: .25rem;
-  bottom: .25rem;
   transition:
-    right 1s ease,
-    left 1s ease,
+    inset 1s ease,
     background-image .3s ease,
     transform .5s ease;
+  bottom: .25rem;
 }
 
 /* Toggle hovers */
@@ -554,33 +529,24 @@ input:checked+.toggle__handle:after {
   transform: scale(1.2);
 }
 
-.social__button:hover {
-  background-color: #A7FE2F;
-  color: #0e0e0f;
-  font-weight: 700;
-  transform: scale(1.1);
-}
-
 /* Incognito */
 .header.incognito {
   width: 100%;
-  mask-image: none;
-
   position: fixed;
-  background: none;
-  box-shadow: none;
   background-color: rgba(27, 24, 24, 0.7);
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  inset: 0 100% 100% 0;
+}
 
-  top: 0;
-  left: 0;
+.header.incognito::after {
+  display: none;
 }
 
 /* --------------- Fin de Header ---------------*/
+
 
 /* --------------- Inicio de Contact ---------------*/
 /* Descripción: estilo de la sección de contacto.
@@ -833,56 +799,49 @@ Estructura:
 @media (max-width: 1000px) {
 
   /* Header */
-  .header {
+  .header{
     width: 100%;
-    height: 1rem;
-    margin: 0;
-
-    mask-image: none;
+    position: fixed;
+    height: 0rem;
     background: transparent;
-    box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-
-    position: fixed;
-    top: -100%;
-    left: 0%;
-
+    inset: -100% 0 0 0;
     display: block;
-
     animation: none;
     transition:
-      top .5s ease;
-    opacity: 1;
+      inset .2s ease;
+  }
+
+  .header::after {
+    display: none;
   }
 
   .header.active {
-    top: 0%;
+    inset: 0 0 0 0;
   }
 
   .header__wrapper {
     width: 100%;
     height: 100vh;
     padding: 5%;
-    margin: 0;
 
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: flex-start;
-    gap: 4rem;
 
-    background: radial-gradient(circle, rgba(35, 19, 60, 0.9) 47%, rgba(18, 11, 30, 0.9) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
+    gap: 4rem;
+    background: rgba(24, 3, 44, 0.8);
     backdrop-filter: blur(.7rem);
     -webkit-backdrop-filter: blur(.7rem);
-
-    transition: opacity .5s ease;
+    transition: opacity .4s ease;
     position: fixed;
     opacity: 1;
   }
 
-  .header__wrapper.hidden {
+  .header__wrapper.hidden,
+  .mobile.hidden {
     display: none;
   }
 
@@ -893,28 +852,19 @@ Estructura:
   .mobile {
     width: 6rem;
     height: 6rem;
-
     position: fixed;
-    top: 2%;
-    left: 2%;
+    inset: 2% 0 0 2%;
     z-index: 4;
-
+    background: rgba(137, 43, 226, 0.607);
     opacity: 1;
     transition:
       left .5s ease,
       opacity .5s ease;
-
-      background: rgba(137, 43, 226, 0.607);
-
   }
 
   .mobile.invisible {
-    left: -100%;
+    inset: 0 0 0 -10%;
     opacity: 0;
-  }
-
-  .mobile.hidden {
-    display: none;
   }
 
   .mobile__svg {
@@ -928,8 +878,7 @@ Estructura:
     z-index: 4;
 
     transition:
-      opacity 1s ease,
-      transform .6s ease;
+      opacity 1s ease, fill .6s ease;
     cursor: pointer;
 
     animation: rotate 30s linear infinite both;
@@ -937,27 +886,27 @@ Estructura:
   }
 
   .mobile__svg:hover {
-    transform: scale(1.2);
+    fill: black;
+  }
+
+  .nav__ul,
+  .nav__li,
+  .lang {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .nav__ul {
     width: 100%;
-    display: flex;
-
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
   }
 
   .nav__li {
     width: 100%;
     font-size: 3rem;
     text-align: left;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-
     transform: translateX(-200%);
     transition: transform .3s ease;
     opacity: 0;
@@ -978,10 +927,6 @@ Estructura:
   }
 
   .lang {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
     gap: 2rem;
   }
 
@@ -992,6 +937,7 @@ Estructura:
   .social {
     width: 100%;
     gap: 0;
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -1005,26 +951,21 @@ Estructura:
   }
 
   .social__button {
-    width: 100%;
-    height: 3rem;
-    padding: 0 0 0 .6rem;
-
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-
-    text-transform: uppercase;
-    font-size: 1.3rem;
-
-    color: #A7FE2F;
-    border: .125rem solid #A7FE2F;
-
-    cursor: pointer;
-    transition: opacity 1s ease;
-
     transform: scale(1);
+    transition: opacity 1s ease;
+    cursor: pointer;
     transition: all .6s ease;
+  }
+
+  .social__button:hover {
+    background-color: #A7FE2F;
+    color: #0e0e0f;
+    font-weight: 700;
+    transform: scale(1.1);
   }
 
   .menu__svg {
@@ -1037,6 +978,32 @@ Estructura:
     top: 5%;
     right: 5%;
   }
+
+    /* Incognito */
+    .header.incognito {
+      background: transparent;
+      display: block;
+    }
+
+    .mobile.incognito {
+      animation: none;
+      mask: none;
+      border-radius: 50%;
+      top: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mobile__svg.incognito {
+      position: static;
+      animation: none;
+    }
+
+    .header__wrapper.incognito{
+      background: #0e0e0f;
+      transition: all 1s ease;
+    }
 
   /* Contact */
   .contact{
@@ -1064,30 +1031,7 @@ Estructura:
     width: 90%;
     font-size: 1.2rem;
   }
-    /* Incognito */
-    .header.incognito {
-      width: 100%;
-      height: 6rem;
-      display: block;
-      transition:
-        top .5s ease;
-      opacity: 1;
-      background: none;
-    }
-    .mobile.incognito {
-      animation: none;
-      mask: none;
-      border-radius: 50%;
-      top: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .mobile__svg.incognito {
-      position: static;
-      animation: none;
-      animation-direction: reverse;
-    }
+
 }
 
 
