@@ -62,6 +62,14 @@ const mobileMenuInteraction = () => {
     const navLi = document.querySelectorAll('.nav__li')
     const closeMobMenu = document.querySelector('.social__button')
     const headerWrapper = document.querySelector('.header__wrapper')
+    const mobileMode = window.innerWidth < 1000
+    
+    function hideWrapper(){
+    if (mobileMode) {
+        headerWrapper.classList.add('hidden')
+    }}
+
+    hideWrapper()
 
     // Cuando hago click en .mobile:
     // REMOVE la clase hidden a .header__wrapper

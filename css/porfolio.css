@@ -1030,7 +1030,7 @@ un grid de imágenes y vídeos, y el software utilizado */
     background: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    inset: -100% 0 0 0;
+    inset: -200% 0 0 0;
     display: block;
     animation: none;
     transition:
