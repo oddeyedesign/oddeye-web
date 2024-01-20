@@ -141,7 +141,7 @@ svg {
 body {
   min-height: 100vh;
   font-size: 100%;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   color: var(--negro);
   /* opcional */
   -webkit-hyphens: auto;
@@ -195,7 +195,7 @@ Estructura:
   width: 100%;
   height: calc(50vh + 2rem);
   position: fixed;
-  background-color: #A7FE2F;
+  background-color: #a7fe2f;
   z-index: 6;
   display: block;
   transition: transform 1s ease;
@@ -216,9 +216,9 @@ Estructura:
   width: 118%;
   height: 2rem;
   display: block;
-  content: '';
+  content: "";
 
-  background-color: #A7FE2F;
+  background-color: #a7fe2f;
   mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
   mask-position: top;
@@ -228,15 +228,14 @@ Estructura:
   right: 0;
 }
 
-
 /* After */
 .waves__top::after {
   width: 100%;
   height: 2rem;
   display: block;
-  content: '';
+  content: "";
 
-  background-color: #A7FE2F;
+  background-color: #a7fe2f;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
@@ -300,7 +299,7 @@ Estructura:
 }
 
 .header::after {
-  content: '';
+  content: "";
   height: 2rem;
   position: absolute;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
@@ -312,15 +311,15 @@ Estructura:
 .header::after {
   width: 100%;
   background-color: rgba(108, 33, 177, 0.868);
-  backdrop-filter: blur(.4rem);
-  -webkit-backdrop-filter: blur(.4rem);
+  backdrop-filter: blur(0.4rem);
+  -webkit-backdrop-filter: blur(0.4rem);
   animation: fadeInTop 1s ease 1 forwards;
   z-index: 5;
 }
 
 .header__wrapper {
   width: 90%;
-  grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
+  grid-template-columns: 0.5fr 2fr 0.5fr 1fr 0.5fr;
   transition: al 1s ease;
   align-items: center;
   animation: fadeInTop 1s ease forwards;
@@ -333,7 +332,7 @@ Estructura:
 .header__h1,
 .social__svg {
   transform: scale(1);
-  transition: transform .6s ease;
+  transition: transform 0.6s ease;
 }
 
 .nav__ul {
@@ -351,15 +350,14 @@ Estructura:
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-  transition: background-color 1s ease,
-    transform .6s ease;
+  transition: background-color 1s ease, transform 0.6s ease;
 }
 
 .nav__li,
 .lang {
   font-size: 1.4rem;
   text-transform: uppercase;
-  color: #A7FE2F;
+  color: #a7fe2f;
   text-align: center;
 }
 
@@ -372,21 +370,19 @@ Estructura:
 .social__svg {
   width: 1.9rem;
   height: 1.9rem;
-  fill: #A7FE2F;
-  transition: fill .6s ease,
-    opacity 1s ease,
-    transform .6s ease;
+  fill: #a7fe2f;
+  transition: fill 0.6s ease, opacity 1s ease, transform 0.6s ease;
   cursor: pointer;
 }
 
 .social__button {
   width: 100%;
   height: 3rem;
-  padding: 0 0 0 .6rem;
+  padding: 0 0 0 0.6rem;
   text-transform: uppercase;
   font-size: 1.3rem;
-  color: #A7FE2F;
-  border: #A7FE2F .125rem solid;
+  color: #a7fe2f;
+  border: #a7fe2f 0.125rem solid;
 }
 
 .social__button,
@@ -400,8 +396,8 @@ Estructura:
 }
 
 .lang {
-  opacity: .6;
-  transition: opacity .5s ease;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
 }
 
 /* Header Mobile */
@@ -444,21 +440,21 @@ Estructura:
   position: absolute;
   cursor: pointer;
   inset: 0;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 /* Toggle ::before and ::after */
 
 .toggle__handle::before {
   border-radius: 50%;
-  left: .25rem;
-  background-color: #A7FE2F;
+  left: 0.25rem;
+  background-color: #a7fe2f;
 }
 
 .toggle__handle::after {
   background-image: url(/assets/icons/alien-icon.svg);
   background-size: contain;
-  right: .25rem;
+  right: 0.25rem;
 }
 
 .toggle__handle::before,
@@ -467,11 +463,8 @@ Estructura:
   content: "";
   height: 1.625rem;
   width: 1.625rem;
-  transition:
-    inset 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
-  bottom: .25rem;
+  transition: inset 1s ease, background-image 0.3s ease, transform 0.5s ease;
+  bottom: 0.25rem;
 }
 
 /* Toggle hovers */
@@ -480,36 +473,34 @@ Estructura:
 }
 
 /* Toggle inputs */
-input:checked+.toggle__handle {
+input:checked + .toggle__handle {
   background-color: darkgray;
 }
 
-input:checked+.toggle__handle:before {
+input:checked + .toggle__handle:before {
   transform: translateX(1.9925rem);
   background-color: #0e0e0f;
 }
 
-input:checked+.toggle__handle:after {
+input:checked + .toggle__handle:after {
   right: 0;
-  left: .25rem;
+  left: 0.25rem;
   background-image: url(/assets/icons/user-icon.svg);
 }
 
 /* Befores */
 
 .nav__li::before {
-  content: '>';
+  content: ">";
   opacity: 0;
   transform: translateX(-50%);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 /* Hovers */
 
 .nav__li:hover {
-  color: #A7FE2F;
+  color: #a7fe2f;
   background-color: black;
 }
 
@@ -545,7 +536,6 @@ input:checked+.toggle__handle:after {
 }
 
 /* --------------- Fin de Header ---------------*/
-
 
 /* --------------- Inicio de Contact ---------------*/
 /* Descripción: estilo de la sección de contacto.
@@ -592,10 +582,9 @@ Estructura:
 .contact__input,
 .contact__message,
 .contact__submit {
-  color: #A7FE2F;
+  color: #a7fe2f;
   padding: 1%;
 }
-
 
 .contact__label {
   text-transform: uppercase;
@@ -612,12 +601,12 @@ Estructura:
 
 .contact__input {
   height: 2rem;
-  border-bottom: .1rem solid #A7FE2F;
+  border-bottom: 0.1rem solid #a7fe2f;
 }
 
 .contact__message {
   max-height: 20vh;
-  border: .1rem solid #A7FE2F;
+  border: 0.1rem solid #a7fe2f;
   background-color: black;
   resize: none;
 }
@@ -642,7 +631,8 @@ Estructura:
   text-transform: lowercase;
   font-size: 1.5rem;
   animation: beat 4s ease infinite forwards;
-  transition: mask-size .5s ease, color 1s ease, background 1s ease, box-shadow 1s ease;
+  transition: mask-size 0.5s ease, color 1s ease, background 1s ease,
+    box-shadow 1s ease;
 }
 
 /* Afters */
@@ -650,7 +640,7 @@ Estructura:
   width: 100%;
   height: 2rem;
   display: block;
-  content: '';
+  content: "";
   background-color: black;
   mask-image: url(/assets/masks/pointy-mask-bottom.svg);
   mask-position: bottom;
@@ -663,7 +653,11 @@ Estructura:
 /* Hovers */
 .contact__submit:hover {
   color: black;
-  background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(138, 255, 92, 0.43) 47%,
+    rgba(119, 255, 92, 0.6) 100%
+  );
   box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
   mask-size: 7rem;
 }
@@ -683,10 +677,9 @@ Estructura:
 }
 
 .contact__submit.incognito:hover {
-  border: .1rem solid white;
+  border: 0.1rem solid white;
   transform: scale(1.2);
 }
-
 
 /* --------------- Fin de Contact ---------------*/
 
@@ -710,7 +703,7 @@ Estructura:
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  color: #A7FE2F;
+  color: #a7fe2f;
 }
 
 .footer {
@@ -718,7 +711,7 @@ Estructura:
   min-height: 70vh;
   flex-flow: column nowrap;
   gap: 2rem;
-  transition: height .5s ease;
+  transition: height 0.5s ease;
   background-image: url(/assets/background.svg);
   background-color: #0e0e0f;
   background-attachment: fixed;
@@ -742,25 +735,24 @@ Estructura:
 }
 
 .footer__span {
-  opacity: .8;
+  opacity: 0.8;
   text-align: center;
 }
 
 /* Befores */
 .footer__a::before {
-  content: '';
+  content: "";
   opacity: 0;
-  transition: opacity .6s ease, content .6s ease;
+  transition: opacity 0.6s ease, content 0.6s ease;
 }
 
 /* Hovers */
 .footer__a:hover:before {
-  content: '>';
+  content: ">";
   opacity: 1;
 }
 
 @media (min-width: 1920px) {
-
   .nav__li,
   .contact__label {
     font-size: 1.7rem;
@@ -768,7 +760,6 @@ Estructura:
 }
 
 @media (max-width: 1000px) {
-
   /* Header */
   .header {
     width: 100%;
@@ -780,8 +771,7 @@ Estructura:
     inset: -200% 0 0 0;
     display: block;
     animation: none;
-    transition:
-      inset .2s ease;
+    transition: inset 0.2s ease;
   }
 
   .header::after {
@@ -804,9 +794,9 @@ Estructura:
 
     gap: 4rem;
     background: rgba(24, 3, 44, 0.8);
-    backdrop-filter: blur(.7rem);
-    -webkit-backdrop-filter: blur(.7rem);
-    transition: opacity .4s ease;
+    backdrop-filter: blur(0.7rem);
+    -webkit-backdrop-filter: blur(0.7rem);
+    transition: opacity 0.4s ease;
     position: fixed;
     opacity: 1;
   }
@@ -828,9 +818,7 @@ Estructura:
     z-index: 4;
     background: rgba(137, 43, 226, 0.607);
     opacity: 1;
-    transition:
-      left .5s ease,
-      opacity .5s ease;
+    transition: left 0.5s ease, opacity 0.5s ease;
     display: block;
   }
 
@@ -842,15 +830,14 @@ Estructura:
   .mobile__svg {
     width: 3rem;
     height: 3rem;
-    fill: #A7FE2F;
+    fill: #a7fe2f;
 
     position: absolute;
-    top: calc(50% - (3rem/2));
-    left: calc(50% - (3rem/2));
+    top: calc(50% - (3rem / 2));
+    left: calc(50% - (3rem / 2));
     z-index: 4;
 
-    transition:
-      opacity 1s ease, fill .6s ease;
+    transition: opacity 1s ease, fill 0.6s ease;
     cursor: pointer;
 
     animation: rotate 30s linear infinite both;
@@ -880,7 +867,7 @@ Estructura:
     font-size: 3rem;
     text-align: left;
     transform: translateX(-200%);
-    transition: transform .3s ease;
+    transition: transform 0.3s ease;
     opacity: 0;
   }
 
@@ -891,7 +878,7 @@ Estructura:
 
   .nav__a {
     margin: 0 -2rem 0;
-    transition: margin .5s ease;
+    transition: margin 0.5s ease;
   }
 
   .nav__a:hover {
@@ -914,7 +901,6 @@ Estructura:
     flex-flow: row nowrap;
     justify-content: space-between;
     transition: all 1s ease;
-
   }
 
   .social__svg {
@@ -930,11 +916,11 @@ Estructura:
     transform: scale(1);
     transition: opacity 1s ease;
     cursor: pointer;
-    transition: all .6s ease;
+    transition: all 0.6s ease;
   }
 
   .social__button:hover {
-    background-color: #A7FE2F;
+    background-color: #a7fe2f;
     color: #0e0e0f;
     font-weight: 700;
     transform: scale(1.1);
@@ -998,9 +984,7 @@ Estructura:
     width: 90%;
     font-size: 1.2rem;
   }
-
 }
-
 
 @media (max-width: 600px) {
   /* Footer */
@@ -1020,9 +1004,7 @@ Estructura:
   .footer__a {
     width: 100%;
   }
-
 }
-
 
 /* Animaciones */
 
@@ -1041,19 +1023,16 @@ Estructura:
 @keyframes popIn {
   0% {
     opacity: 0;
-    transform:
-      scale(0);
+    transform: scale(0);
   }
 
   50% {
     opacity: 1;
-    transform:
-      scale(1.2);
+    transform: scale(1.2);
   }
 
   100% {
-    transform:
-      scale(1);
+    transform: scale(1);
   }
 }
 
@@ -1067,7 +1046,6 @@ Estructura:
   }
 }
 
-
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -1076,8 +1054,7 @@ Estructura:
 
   to {
     opacity: 1;
-    transform:
-      translateX(0);
+    transform: translateX(0);
   }
 }
 

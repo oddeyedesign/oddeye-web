@@ -10,7 +10,7 @@ index.css
 - Animaciones
   */
 
-  /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
+/* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
   margin: 0;
   padding: 0;
@@ -143,7 +143,7 @@ svg {
 body {
   min-height: 100vh;
   font-size: 100%;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   color: var(--negro);
   /* opcional */
   -webkit-hyphens: auto;
@@ -197,7 +197,7 @@ Estructura:
   width: 100%;
   height: calc(50vh + 2rem);
   position: fixed;
-  background-color: #A7FE2F;
+  background-color: #a7fe2f;
   z-index: 6;
   display: block;
   transition: transform 1s ease;
@@ -218,9 +218,9 @@ Estructura:
   width: 118%;
   height: 2rem;
   display: block;
-  content: '';
+  content: "";
 
-  background-color: #A7FE2F;
+  background-color: #a7fe2f;
   mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
   mask-position: top;
@@ -230,15 +230,14 @@ Estructura:
   right: 0;
 }
 
-
 /* After */
 .waves__top::after {
   width: 100%;
   height: 2rem;
   display: block;
-  content: '';
+  content: "";
 
-  background-color: #A7FE2F;
+  background-color: #a7fe2f;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
@@ -303,7 +302,7 @@ Estructura:
 }
 
 .header::after {
-  content: '';
+  content: "";
   height: 2rem;
   position: absolute;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
@@ -315,15 +314,15 @@ Estructura:
 .header::after {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.83);
-  backdrop-filter: blur(.4rem);
-  -webkit-backdrop-filter: blur(.4rem);
+  backdrop-filter: blur(0.4rem);
+  -webkit-backdrop-filter: blur(0.4rem);
   animation: fadeInTop 1s ease 1 forwards;
   z-index: 5;
 }
 
 .header__wrapper {
   width: 90%;
-  grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
+  grid-template-columns: 0.5fr 2fr 0.5fr 1fr 0.5fr;
   transition: al 1s ease;
   align-items: center;
   animation: fadeInTop 1s ease forwards;
@@ -336,7 +335,7 @@ Estructura:
 .header__h1,
 .social__svg {
   transform: scale(1);
-  transition: transform .6s ease;
+  transition: transform 0.6s ease;
 }
 
 .nav__ul {
@@ -354,15 +353,14 @@ Estructura:
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-  transition: background-color 1s ease,
-    transform .6s ease;
+  transition: background-color 1s ease, transform 0.6s ease;
 }
 
 .nav__li,
 .lang {
   font-size: 1.4rem;
   text-transform: uppercase;
-  color: #A7FE2F;
+  color: #a7fe2f;
   text-align: center;
 }
 
@@ -375,21 +373,19 @@ Estructura:
 .social__svg {
   width: 1.9rem;
   height: 1.9rem;
-  fill: #A7FE2F;
-  transition: fill .6s ease,
-    opacity 1s ease,
-    transform .6s ease;
+  fill: #a7fe2f;
+  transition: fill 0.6s ease, opacity 1s ease, transform 0.6s ease;
   cursor: pointer;
 }
 
-.social__button{
+.social__button {
   width: 100%;
   height: 3rem;
-  padding: 0 0 0 .6rem;
+  padding: 0 0 0 0.6rem;
   text-transform: uppercase;
   font-size: 1.3rem;
-  color: #A7FE2F;
-  border: #A7FE2F .125rem solid;
+  color: #a7fe2f;
+  border: #a7fe2f 0.125rem solid;
 }
 
 .social__button,
@@ -403,8 +399,8 @@ Estructura:
 }
 
 .lang {
-  opacity: .6;
-  transition: opacity .5s ease;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
 }
 
 /* Header Mobile */
@@ -446,21 +442,21 @@ Estructura:
   position: absolute;
   cursor: pointer;
   inset: 0;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 /* Toggle ::before and ::after */
 
 .toggle__handle::before {
   border-radius: 50%;
-  left: .25rem;
-  background-color: #A7FE2F;
+  left: 0.25rem;
+  background-color: #a7fe2f;
 }
 
 .toggle__handle::after {
   background-image: url(/assets/icons/alien-icon.svg);
   background-size: contain;
-  right: .25rem;
+  right: 0.25rem;
 }
 
 .toggle__handle::before,
@@ -469,11 +465,8 @@ Estructura:
   content: "";
   height: 1.625rem;
   width: 1.625rem;
-  transition:
-    inset 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
-  bottom: .25rem;
+  transition: inset 1s ease, background-image 0.3s ease, transform 0.5s ease;
+  bottom: 0.25rem;
 }
 
 /* Toggle hovers */
@@ -482,30 +475,28 @@ Estructura:
 }
 
 /* Toggle inputs */
-input:checked+.toggle__handle {
+input:checked + .toggle__handle {
   background-color: darkgray;
 }
 
-input:checked+.toggle__handle:before {
+input:checked + .toggle__handle:before {
   transform: translateX(1.9925rem);
   background-color: #0e0e0f;
 }
 
-input:checked+.toggle__handle:after {
+input:checked + .toggle__handle:after {
   right: 0;
-  left: .25rem;
+  left: 0.25rem;
   background-image: url(/assets/icons/user-icon.svg);
 }
 
 /* Befores */
 
 .nav__li::before {
-  content: '>';
+  content: ">";
   opacity: 0;
   transform: translateX(-50%);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 /* Hovers */
@@ -515,7 +506,7 @@ input:checked+.toggle__handle:after {
 }
 
 .nav__li:hover {
-  color: #A7FE2F;
+  color: #a7fe2f;
   background-color: black;
   transform: scale(1.2);
 }
@@ -577,15 +568,14 @@ Tiene forma wavy y estilo glassmorfista */
   gap: 1rem;
 
   background-color: rgba(137, 43, 226, 0.8);
-  backdrop-filter: blur(.4rem);
-  -webkit-backdrop-filter: blur(.4rem);
+  backdrop-filter: blur(0.4rem);
+  -webkit-backdrop-filter: blur(0.4rem);
 
   position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
 }
-
 
 .tabs__ul {
   width: 90%;
@@ -610,19 +600,17 @@ Tiene forma wavy y estilo glassmorfista */
   align-items: center;
 
   background-color: blueviolet;
-  color: #A4FE2F;
-  border: #A4FE2F .1rem solid;
+  color: #a4fe2f;
+  border: #a4fe2f 0.1rem solid;
 
   animation: popIn 1s ease 1 forwards;
-  transition:
-    background-color .6s ease,
-    color .6s ease;
+  transition: background-color 0.6s ease, color 0.6s ease;
 
   cursor: pointer;
 }
 
 .tabs__button {
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
   text-transform: lowercase;
 
   display: flex;
@@ -630,24 +618,24 @@ Tiene forma wavy y estilo glassmorfista */
   justify-content: center;
   align-items: center;
 
-  gap: .5rem;
+  gap: 0.5rem;
   cursor: pointer;
 }
 
 .tabs__li.active {
-  color: #A4FE2F;
+  color: #a4fe2f;
   background-color: black;
 }
 
 /* Befores */
 .tabs__button::before {
   display: block;
-  content: '';
+  content: "";
 }
 
 .tabs__li.active::before {
   display: block;
-  content: '>';
+  content: ">";
 }
 
 /* Afters */
@@ -655,7 +643,7 @@ Tiene forma wavy y estilo glassmorfista */
   width: 100%;
   height: 2rem;
   display: block;
-  content: '';
+  content: "";
 
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
@@ -667,22 +655,21 @@ Tiene forma wavy y estilo glassmorfista */
   background-color: rgba(137, 43, 226, 0.8);
 
   /* BUG? El backdrop filter no se está aplicando */
-  backdrop-filter: blur(.4rem);
-  -webkit-backdrop-filter: blur(.4rem);
-
+  backdrop-filter: blur(0.4rem);
+  -webkit-backdrop-filter: blur(0.4rem);
 }
 
 /* Hovers */
 .tabs__li:hover {
-  background-color: #A4FE2F;
+  background-color: #a4fe2f;
   color: black;
 }
 
 /* Incognito */
-.tabs{
+.tabs {
   height: 30vh;
 }
-.tabs.incognito::after{
+.tabs.incognito::after {
   display: none;
 }
 
@@ -706,13 +693,13 @@ También tiene estilo glassmorfista */
 -hovers
 */
 
-.folder, .folder__ul, .folder__li{
-  
+.folder,
+.folder__ul,
+.folder__li {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
   align-items: center;
-
 }
 .folder {
   height: 15vh;
@@ -737,7 +724,6 @@ También tiene estilo glassmorfista */
   justify-content: center;
   align-items: flex-start;
   gap: 4%;
-
 }
 
 .folder__li {
@@ -746,18 +732,18 @@ También tiene estilo glassmorfista */
 
   border-radius: 1rem;
   background-color: rgba(28, 6, 49, 0.692);
-  backdrop-filter: blur(.4rem);
+  backdrop-filter: blur(0.4rem);
   -webkit-backdrop-filter: blur(-6rem);
-  outline: .1rem solid #A4FE2F;
+  outline: 0.1rem solid #a4fe2f;
 
   animation: popIn 1s ease 1 forwards;
-  transition: background-color .9s ease, outline .6s ease;
+  transition: background-color 0.9s ease, outline 0.6s ease;
   cursor: pointer;
 }
 
 .folder__li.active {
   background-color: blueviolet;
-  outline: .3rem solid #A4FE2F;
+  outline: 0.3rem solid #a4fe2f;
 }
 
 .folder__button {
@@ -769,7 +755,7 @@ También tiene estilo glassmorfista */
   background-position: center;
 
   transform: scale(1);
-  transition: transform .6s ease, background-image .3s ease;
+  transition: transform 0.6s ease, background-image 0.3s ease;
   cursor: pointer;
 }
 
@@ -778,7 +764,7 @@ También tiene estilo glassmorfista */
 }
 
 .folder__h2 {
-  color: #A4FE2F;
+  color: #a4fe2f;
   text-align: center;
   margin: 0 2%;
 }
@@ -786,10 +772,10 @@ También tiene estilo glassmorfista */
 /* Hovers */
 .folder__li:hover {
   background-color: black;
-  outline: .3rem solid #A4FE2F;
+  outline: 0.3rem solid #a4fe2f;
 }
 .folder__li:hover .folder__button {
-  transform: scale(.9);
+  transform: scale(0.9);
 }
 /* ---------------- Fin de Folders ------------- */
 
@@ -825,7 +811,11 @@ un grid de imágenes y vídeos, y el software utilizado */
   
 */
 
-.article, .article__window, .article__h3, .article__a, .article__ul{
+.article,
+.article__window,
+.article__h3,
+.article__a,
+.article__ul {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -851,14 +841,14 @@ un grid de imágenes y vídeos, y el software utilizado */
   width: 90%;
   min-height: 30vh;
   background-color: black;
-  color: #A4FE2F;
+  color: #a4fe2f;
   flex-flow: column nowrap;
-  border: .1rem solid #A4FE2F;
+  border: 0.1rem solid #a4fe2f;
 }
 
 .article__title {
   width: 100%;
-  border-bottom: .1rem solid #A4FE2F;
+  border-bottom: 0.1rem solid #a4fe2f;
 }
 
 .article__h3 {
@@ -880,21 +870,20 @@ un grid de imágenes y vídeos, y el software utilizado */
 }
 
 .article__li {
-  width: calc(95%/2);
+  width: calc(95% / 2);
   background-color: blueviolet;
-  color: #A4FE2F;
-  border: .1rem solid #A4FE2F;
+  color: #a4fe2f;
+  border: 0.1rem solid #a4fe2f;
 
   transform: scale(1);
-  transition: transform .6s ease,
-    background-color .6s ease;
+  transition: transform 0.6s ease, background-color 0.6s ease;
 }
 
 .article__a {
   width: 100%;
   margin: 2%;
   justify-content: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .article__gallery {
@@ -903,7 +892,7 @@ un grid de imágenes y vídeos, y el software utilizado */
   grid-template-columns: repeat(3, 1fr);
 }
 
-.article__img{
+.article__img {
   width: 100%;
   /* transition: transform .5s ease; */
 }
@@ -912,16 +901,15 @@ un grid de imágenes y vídeos, y el software utilizado */
   /* transition: transform .5s ease; */
 }
 
-
 /* Display de los vídeos por tamaño */
 
 /* .big{
   display: none;
 } */
-.medium{
+.medium {
   display: block;
 }
-.small{
+.small {
   display: none;
 }
 
@@ -953,7 +941,7 @@ un grid de imágenes y vídeos, y el software utilizado */
 
 .software__span {
   width: 25%;
-  color: #A4FE2F;
+  color: #a4fe2f;
   text-transform: uppercase;
   font-size: 2rem;
 }
@@ -968,7 +956,7 @@ un grid de imágenes y vídeos, y el software utilizado */
   display: block;
   width: 1rem;
   height: 1rem;
-  content: '';
+  content: "";
 
   background-image: url(/assets/icons/figma-icon.svg);
   background-repeat: no-repeat;
@@ -980,41 +968,41 @@ un grid de imágenes y vídeos, y el software utilizado */
 
 /* Hovers */
 .article__li:hover {
-  transform: scale(.9);
+  transform: scale(0.9);
   background-color: black;
-  color: #A4FE2F;
+  color: #a4fe2f;
 }
 
 /* Incognito */
-.article__img.incognito{
-  filter: brightness(.6);
-  -webkit-filter: brightness(.6);
+.article__img.incognito {
+  filter: brightness(0.6);
+  -webkit-filter: brightness(0.6);
 }
-.article__video.incognito{
-  filter: brightness(.6);
-  -webkit-filter: brightness(.6);
+.article__video.incognito {
+  filter: brightness(0.6);
+  -webkit-filter: brightness(0.6);
 }
 
 /* ------------- Fin de proyectos ---------------*/
 
 /* ------------- Media Queries ----------------*/
 
-@media (min-width: 1920px){
-  .nav__li{
+@media (min-width: 1920px) {
+  .nav__li {
     font-size: 1.7rem;
   }
-  .tabs__ul{
+  .tabs__ul {
     justify-content: space-between;
   }
-  .tabs__li{
+  .tabs__li {
     width: 30%;
-   font-size: 1.6rem;
+    font-size: 1.6rem;
   }
 
-  .article__window{
+  .article__window {
     font-size: 1.5rem;
   }
-  .folder__li{
+  .folder__li {
     width: 10rem;
     height: 10rem;
     font-size: 1.5rem;
@@ -1023,7 +1011,7 @@ un grid de imágenes y vídeos, y el software utilizado */
 
 @media (max-width: 1000px) {
   /* Header */
-  .header{
+  .header {
     width: 100%;
     position: fixed;
     height: 0rem;
@@ -1033,8 +1021,7 @@ un grid de imágenes y vídeos, y el software utilizado */
     inset: -200% 0 0 0;
     display: block;
     animation: none;
-    transition:
-      inset .2s ease;
+    transition: inset 0.2s ease;
   }
 
   .header::after {
@@ -1057,9 +1044,9 @@ un grid de imágenes y vídeos, y el software utilizado */
 
     gap: 4rem;
     background: rgba(24, 3, 44, 0.8);
-    backdrop-filter: blur(.7rem);
-    -webkit-backdrop-filter: blur(.7rem);
-    transition: opacity .4s ease;
+    backdrop-filter: blur(0.7rem);
+    -webkit-backdrop-filter: blur(0.7rem);
+    transition: opacity 0.4s ease;
     position: fixed;
     opacity: 1;
   }
@@ -1082,10 +1069,8 @@ un grid de imágenes y vídeos, y el software utilizado */
     z-index: 4;
     background: rgba(0, 0, 0, 0.607);
     opacity: 1;
-    transition:
-      left .5s ease,
-      opacity .5s ease;
-   animation: rotate 30s infinite linear both;
+    transition: left 0.5s ease, opacity 0.5s ease;
+    animation: rotate 30s infinite linear both;
   }
 
   .mobile.invisible {
@@ -1096,15 +1081,14 @@ un grid de imágenes y vídeos, y el software utilizado */
   .mobile__svg {
     width: 3rem;
     height: 3rem;
-    fill: #A7FE2F;
+    fill: #a7fe2f;
 
     position: absolute;
-    top: calc(50% - (3rem/2));
-    left: calc(50% - (3rem/2));
+    top: calc(50% - (3rem / 2));
+    left: calc(50% - (3rem / 2));
     z-index: 4;
 
-    transition:
-      opacity 1s ease, fill .6s ease;
+    transition: opacity 1s ease, fill 0.6s ease;
     cursor: pointer;
 
     animation: rotate 30s linear infinite both;
@@ -1134,7 +1118,7 @@ un grid de imágenes y vídeos, y el software utilizado */
     font-size: 3rem;
     text-align: left;
     transform: translateX(-200%);
-    transition: transform .3s ease;
+    transition: transform 0.3s ease;
     opacity: 0;
   }
 
@@ -1145,7 +1129,7 @@ un grid de imágenes y vídeos, y el software utilizado */
 
   .nav__a {
     margin: 0 -2rem 0;
-    transition: margin .5s ease;
+    transition: margin 0.5s ease;
   }
 
   .nav__a:hover {
@@ -1168,7 +1152,6 @@ un grid de imágenes y vídeos, y el software utilizado */
     flex-flow: row nowrap;
     justify-content: space-between;
     transition: all 1s ease;
-
   }
 
   .social__svg {
@@ -1184,11 +1167,11 @@ un grid de imágenes y vídeos, y el software utilizado */
     transform: scale(1);
     transition: opacity 1s ease;
     cursor: pointer;
-    transition: all .6s ease;
+    transition: all 0.6s ease;
   }
 
   .social__button:hover {
-    background-color: #A7FE2F;
+    background-color: #a7fe2f;
     color: #0e0e0f;
     font-weight: 700;
     transform: scale(1.1);
@@ -1224,48 +1207,46 @@ un grid de imágenes y vídeos, y el software utilizado */
     grid-template-columns: repeat(1, 1fr);
   }
 
-      /* Incognito */
-      .header.incognito {
-        background: transparent;
-        display: block;
-      }
-  
-      .mobile.incognito {
-        animation: none;
-        mask: none;
-        border-radius: 50%;
-        top: 20%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-  
-      .mobile__svg.incognito {
-        position: static;
-        animation: none;
-      }
-  
-      .header__wrapper.incognito{
-        background: #0e0e0f;
-        transition: all 1s ease;
-      }
-
-}
-
-@media (max-width: 720px){
-  .big{
-    display: none;
-  }
-  .medium{
+  /* Incognito */
+  .header.incognito {
+    background: transparent;
     display: block;
   }
-  .small{
+
+  .mobile.incognito {
+    animation: none;
+    mask: none;
+    border-radius: 50%;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile__svg.incognito {
+    position: static;
+    animation: none;
+  }
+
+  .header__wrapper.incognito {
+    background: #0e0e0f;
+    transition: all 1s ease;
+  }
+}
+
+@media (max-width: 720px) {
+  .big {
+    display: none;
+  }
+  .medium {
+    display: block;
+  }
+  .small {
     display: none;
   }
 }
 
 @media (max-width: 600px) {
-
   /* Tabs */
   .tabs__span {
     text-align: right;
@@ -1275,17 +1256,16 @@ un grid de imágenes y vídeos, y el software utilizado */
   .article {
     margin-bottom: 50%;
   }
-
 }
 
-@media (max-width: 480px){
-  .big{
+@media (max-width: 480px) {
+  .big {
     display: none;
   }
-  .medium{
+  .medium {
     display: none;
   }
-  .small{
+  .small {
     display: block;
   }
 }
@@ -1293,7 +1273,7 @@ un grid de imágenes y vídeos, y el software utilizado */
 /* -------------- Animaciones -------------*/
 @keyframes popIn {
   from {
-    transform: scale(.5);
+    transform: scale(0.5);
     opacity: 0;
   }
 
@@ -1301,7 +1281,6 @@ un grid de imágenes y vídeos, y el software utilizado */
     transform: scale(1);
     opacity: 1;
   }
-
 }
 
 @keyframes slideInBottom {
