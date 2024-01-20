@@ -1206,7 +1206,7 @@ input:checked+.toggle__handle:after {
   mask-size: 30vw;
 
   position: relative;
-
+  color: #A7FE2F;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -1226,8 +1226,6 @@ input:checked+.toggle__handle:after {
   min-height: 2rem;
   font-size: 5vh;
   text-align: center;
-  color: #A7FE2F;
-
   position: absolute;
   top: 22%;
   z-index: 1;
@@ -1254,21 +1252,16 @@ input:checked+.toggle__handle:after {
 
 .second__wrapper {
   width: 14rem;
-  min-height: 10rem;
-
+  height: 10rem;
   position: absolute;
   z-index: 1;
-
   top: 45%;
   left: calc(50% - (14rem/2));
-
   mask-image: url(/assets/masks/button-mask.svg);
   mask-repeat: no-repeat;
   mask-size: 14rem;
   mask-position: center;
-
   background-color: blueviolet;
-
   transform: scale(1);
   animation: beat 5s infinite ease both;
   transition: transform 1s ease,
@@ -1277,18 +1270,18 @@ input:checked+.toggle__handle:after {
 
 .second__a {
   width: 90%;
-  height: 2rem;
-
-  position: absolute;
+  height: 10rem;
+  position: relative;
   left: calc((100% - 90%) / 2);
-  top: calc(50% - (2rem/2));
+  top: calc(50% - (10rem/2));
   text-align: center;
-
-  color: #A7FE2F;
   font-size: 2rem;
-  transition: transform 1s ease;
-
+  transition: transform 1s ease, font-size 1s ease;
   cursor: url('/assets/index/cursors/ufo_cursor_pointer.svg'), auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -1301,7 +1294,7 @@ input:checked+.toggle__handle:after {
 .second__wrapper:hover {
   background: radial-gradient(circle, rgba(138, 255, 92, 0.43) 47%, rgba(119, 255, 92, 0.6) 100%);
   box-shadow: inset 0px 0px 82px -8px rgb(138, 255, 55);
-  mask-size: 9rem;
+  mask-size: 10rem;
 }
 
 .second__wrapper:hover .second__a {
@@ -1629,9 +1622,13 @@ input:checked+.toggle__handle:after {
   }
 
   .second__a {
+    height: 10rem;
     font-size: 3rem;
+    top: calc(50% - (10rem/2));
   }
-
+  .second__wrapper:hover .second__a {
+    transform: scale(.5);
+  }
   .carrousel__button {
     width: 2.5rem;
     height: 2.5rem;
@@ -1685,7 +1682,6 @@ input:checked+.toggle__handle:after {
     width: 30rem;
     position: absolute;
   }
-
 
   .window__wrapper {
     background-color: black;
@@ -1953,8 +1949,9 @@ input:checked+.toggle__handle:after {
 
   /* Second Section */
   .second__wrapper {
-    top: 52%;
+    top: 57%;
   }
+
 
   /* Third Section */
   .third {
@@ -2057,12 +2054,10 @@ input:checked+.toggle__handle:after {
     font-size: 2rem;
   }
 
-  .second__h3 {
-    font-size: 1.5rem;
-  }
+  /* Second */
 
-  .second__a {
-    font-size: 1.7rem;
+  .second__h4{
+    font-size: 4vh;
   }
 
   /* First Section */
@@ -2070,10 +2065,6 @@ input:checked+.toggle__handle:after {
     display: block;
   }
 
-  /* Second section */
-  .second__h4{
-    font-size: 4vh;
-  }
   /* Footer */
   .footer {
     height: 100vh;
