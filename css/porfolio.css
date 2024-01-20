@@ -8,8 +8,9 @@ index.css
 - Proyectos
 - Media Queries
 - Animaciones
+  */
 
-/* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
+  /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
   margin: 0;
   padding: 0;
@@ -163,7 +164,7 @@ body {
 body .incognito {
   filter: sepia(100%);
   -webkit-filter: sepia(100%);
-  transition: filter 1s ease;
+  transition: all 1s ease;
 }
 
 /* Animación de carga de página / transición */
@@ -181,54 +182,45 @@ Estructura:
 -Incognito
 
 */
-.waves__top{
-  width: 100%;
-  height: calc(50vh);
-  position: fixed;
-  background-color:#A7FE2F;
-  z-index: 6;
+.waves__top {
   top: 0;
-  display: block;
-
   transform: translateY(-200%);
+}
+
+.waves__bottom {
+  bottom: 0;
+  transform: translateY(200%);
+}
+
+.waves__top,
+.waves__bottom {
+  width: 100%;
+  height: calc(50vh + 2rem);
+  position: fixed;
+  background-color: #A7FE2F;
+  z-index: 6;
+  display: block;
   transition: transform 1s ease;
 }
-.waves__top.active{
+
+.waves__top.active,
+.waves__bottom.active {
   transform: translateY(0);
 }
-.waves__top.hidden{
-  display: none;
-}
 
-.waves__bottom{
-  width: 100%;
-  height: calc(50vh);
-  position: fixed;
-  background-color:#A7FE2F;
-  z-index: 6;
-  bottom: 0;
-  display: block;
-
-  transform: translateY(200%);
-  transition: transform 1s ease;
-}
-
-.waves__bottom.active{
-  transform: translateY(0%);
-}
-
-.waves__bottom.hidden{
+.waves__top.hidden,
+.waves__bottom.hidden {
   display: none;
 }
 
 /* Before */
-.waves__bottom::before{
+.waves__bottom::before {
   width: 118%;
   height: 2rem;
   display: block;
   content: '';
 
-  background-color:#A7FE2F;
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-top.svg);
   mask-repeat: repeat-x;
   mask-position: top;
@@ -238,24 +230,25 @@ Estructura:
   right: 0;
 }
 
+
 /* After */
-.waves__top::after{
+.waves__top::after {
   width: 100%;
   height: 2rem;
   display: block;
   content: '';
-  
-  background-color:#A7FE2F;
+
+  background-color: #A7FE2F;
   mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
   mask-position: bottom;
-  
+
   position: absolute;
   bottom: -2rem;
   right: 0;
-  }
+}
 
-  /* Incognito */
+/* Incognito */
 .waves__bottom.incognito::before {
   display: none;
 }
@@ -299,74 +292,78 @@ Estructura:
 */
 
 .header {
-  width: 100%;
   min-height: 10vh;
-
-  mask-image: url(/assets/masks/menu-mask.svg);
-  mask-repeat: repeat-x;
-
   position: fixed;
-  top: 0;
-
-  z-index: 5;
   overflow: visible;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  inset: 0 0 100% 0;
+}
 
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.43) 47%, rgba(24, 32, 18, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(7, 8, 6);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
+.header::after {
+  content: '';
+  height: 2rem;
+  position: absolute;
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+  mask-position: bottom;
+  bottom: -2rem;
+}
 
+.header,
+.header::after {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.83);
+  backdrop-filter: blur(.4rem);
+  -webkit-backdrop-filter: blur(.4rem);
   animation: fadeInTop 1s ease 1 forwards;
+  z-index: 5;
 }
 
 .header__wrapper {
   width: 90%;
-  margin: 1rem auto;
-
-  display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
-  grid-template-rows: 1fr;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-
-  overflow: visible;
-
-  transition: all 1s ease;
+  transition: al 1s ease;
+  align-items: center;
   animation: fadeInTop 1s ease forwards;
-
-  opacity: 1;
-}
-
-.header__mask {
-  display: block;
-  mask-repeat: repeat-x;
 }
 
 .header__h1 {
-  width: 4rem;
+  width: 4.5rem;
+}
+
+.header__h1,
+.social__svg {
   transform: scale(1);
   transition: transform .6s ease;
 }
 
 .nav__ul {
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.header__wrapper,
+.nav__ul {
+  display: grid;
   gap: 1rem;
 }
 
 .nav__li {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  color: #A4FE2F;
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-
   transition: background-color 1s ease,
     transform .6s ease;
+}
+
+.nav__li,
+.lang {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #A7FE2F;
+  text-align: center;
 }
 
 .header__social {
@@ -379,37 +376,25 @@ Estructura:
   width: 1.9rem;
   height: 1.9rem;
   fill: #A7FE2F;
-  transform: scale(1);
   transition: fill .6s ease,
     opacity 1s ease,
     transform .6s ease;
   cursor: pointer;
 }
 
-.social__button {
+.social__button{
   width: 100%;
   height: 3rem;
   padding: 0 0 0 .6rem;
-
-  display: none;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-
   text-transform: uppercase;
   font-size: 1.3rem;
-
   color: #A7FE2F;
-  border: #A4FE2F .125rem solid;
-
-  cursor: pointer;
-  transition: opacity 1s ease;
-
-  transform: scale(1);
-  transition: all .6s ease;
+  border: #A7FE2F .125rem solid;
 }
 
-.social__button.hidden {
+.social__button,
+.social__button.hidden,
+.lang__a.hidden {
   display: none;
 }
 
@@ -418,22 +403,19 @@ Estructura:
 }
 
 .lang {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-align: center;
-  color: #A4FE2F;
   opacity: .6;
-
   transition: opacity .5s ease;
-}
-
-.lang__a.hidden {
-  display: none;
 }
 
 /* Header Mobile */
 .mobile {
   display: none;
+
+  mask-image: url(/assets/masks/mobile-menu-mask.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  transform: scale(1);
 }
 
 .mobile.hidden {
@@ -460,13 +442,10 @@ Estructura:
 
 .toggle__handle {
   border-radius: 2.125rem;
-  background-color: rgba(137, 43, 226, 0.542);
+  background-color: black;
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: all .5s ease;
 }
 
@@ -474,34 +453,27 @@ Estructura:
 
 .toggle__handle::before {
   border-radius: 50%;
-  position: absolute;
-  content: "";
-  height: 1.625rem;
-  width: 1.625rem;
   left: .25rem;
-  bottom: .25rem;
   background-color: #A7FE2F;
-  transition:
-    right 1s ease,
-    left 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
 }
 
 .toggle__handle::after {
-  position: absolute;
-  content: "";
   background-image: url(/assets/icons/alien-icon.svg);
   background-size: contain;
+  right: .25rem;
+}
+
+.toggle__handle::before,
+.toggle__handle::after {
+  position: absolute;
+  content: "";
   height: 1.625rem;
   width: 1.625rem;
-  right: .25rem;
-  bottom: .25rem;
   transition:
-    right 1s ease,
-    left 1s ease,
+    inset 1s ease,
     background-image .3s ease,
     transform .5s ease;
+  bottom: .25rem;
 }
 
 /* Toggle hovers */
@@ -543,8 +515,8 @@ input:checked+.toggle__handle:after {
 }
 
 .nav__li:hover {
-  color: black;
-  background-color: #A4FE2F;
+  color: #A7FE2F;
+  background-color: black;
   transform: scale(1.2);
 }
 
@@ -554,34 +526,24 @@ input:checked+.toggle__handle:after {
 }
 
 .social__svg:hover {
-  fill: blueviolet;
+  fill: black;
   transform: scale(1.2);
-}
-
-.social__button:hover {
-  background-color: blueviolet;
-  color: #0e0e0f;
-  font-weight: 700;
-  transform: scale(1.1);
 }
 
 /* Incognito */
 .header.incognito {
   width: 100%;
-  mask-image: none;
-
   position: fixed;
-  background: none;
-  box-shadow: none;
   background-color: rgba(27, 24, 24, 0.7);
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  inset: 0 100% 100% 0;
+}
 
-  top: 0;
-  left: 0;
+.header.incognito::after {
+  display: none;
 }
 
 /* --------------- Fin de Header ---------------*/
@@ -744,14 +706,20 @@ También tiene estilo glassmorfista */
 -hovers
 */
 
+.folder, .folder__ul, .folder__li{
+  
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+
+}
 .folder {
   height: 15vh;
   width: 100%;
 
-  display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-items: center;
 
   position: fixed;
   bottom: 3%;
@@ -765,22 +733,16 @@ También tiene estilo glassmorfista */
 
 .folder__ul {
   width: 100%;
-  display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 4%;
 
 }
 
 .folder__li {
   width: 8rem;
   height: 8rem;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  align-items: center;
 
   border-radius: 1rem;
   background-color: rgba(28, 6, 49, 0.692);
@@ -813,7 +775,6 @@ También tiene estilo glassmorfista */
 
 .folder__button.active {
   background-image: url(/assets/icons/folder-open.svg);
-  background-position: center;
 }
 
 .folder__h2 {
@@ -864,20 +825,21 @@ un grid de imágenes y vídeos, y el software utilizado */
   
 */
 
+.article, .article__window, .article__h3, .article__a, .article__ul{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
 .article {
   width: 100%;
   min-height: 100vh;
   margin: 35vh auto;
-
-  display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
   gap: 2rem;
-
   position: relative;
   z-index: 0;
-
   animation: slideInBottom 1s ease forwards;
 }
 
@@ -890,11 +852,7 @@ un grid de imágenes y vídeos, y el software utilizado */
   min-height: 30vh;
   background-color: black;
   color: #A4FE2F;
-
-  display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
   border: .1rem solid #A4FE2F;
 }
 
@@ -907,11 +865,6 @@ un grid de imágenes y vídeos, y el software utilizado */
   width: 100%;
   height: 2.5rem;
   padding: 2%;
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .article__p {
@@ -922,8 +875,6 @@ un grid de imágenes y vídeos, y el software utilizado */
 .article__ul {
   width: 90%;
   min-height: 3rem;
-  display: flex;
-  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -942,11 +893,7 @@ un grid de imágenes y vídeos, y el software utilizado */
 .article__a {
   width: 100%;
   margin: 2%;
-
-  display: flex;
-  flex-flow: row nowrap;
   justify-content: center;
-  align-items: center;
   gap: .5rem;
 }
 
@@ -1052,58 +999,73 @@ un grid de imágenes y vídeos, y el software utilizado */
 
 /* ------------- Media Queries ----------------*/
 
+@media (min-width: 1920px){
+  .nav__li{
+    font-size: 1.7rem;
+  }
+  .tabs__ul{
+    justify-content: space-between;
+  }
+  .tabs__li{
+    width: 30%;
+   font-size: 1.6rem;
+  }
+
+  .article__window{
+    font-size: 1.5rem;
+  }
+  .folder__li{
+    width: 10rem;
+    height: 10rem;
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 1000px) {
   /* Header */
-  .header {
+  .header{
     width: 100%;
-    height: 1rem;
-    margin: 0;
-
-    mask-image: none;
+    position: fixed;
+    height: 0rem;
     background: transparent;
-    box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-
-    position: fixed;
-    top: -100%;
-    left: 0%;
-
-    display: flex;
-
+    inset: -200% 0 0 0;
+    display: block;
     animation: none;
     transition:
-      top .5s ease;
-    opacity: 1;
+      inset .2s ease;
+  }
+
+  .header::after {
+    display: none;
   }
 
   .header.active {
-    top: 0%;
+    inset: 0 0 0 0;
   }
 
   .header__wrapper {
     width: 100%;
     height: 100vh;
     padding: 5%;
-    margin: 0;
 
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: flex-start;
-    gap: 4rem;
 
-    background: radial-gradient(circle, rgba(35, 19, 60, 0.9) 47%, rgba(18, 11, 30, 0.9) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
+    gap: 4rem;
+    background: rgba(24, 3, 44, 0.8);
     backdrop-filter: blur(.7rem);
     -webkit-backdrop-filter: blur(.7rem);
-
-    transition: opacity .5s ease;
+    transition: opacity .4s ease;
     position: fixed;
     opacity: 1;
   }
 
-  .header__wrapper.hidden {
+  .header__wrapper.hidden,
+  .mobile.hidden {
     display: none;
   }
 
@@ -1112,46 +1074,23 @@ un grid de imágenes y vídeos, y el software utilizado */
   }
 
   .mobile {
-    width: 6rem;
-    height: 6rem;
-
+    display: block;
+    width: 4.5rem;
+    height: 4.5rem;
     position: fixed;
-    top: 2%;
-    left: 2%;
+    inset: 2% 0 0 2%;
     z-index: 4;
-
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: transparent;
-
+    background: rgba(0, 0, 0, 0.607);
     opacity: 1;
     transition:
       left .5s ease,
       opacity .5s ease;
-
-    mask-image: url(/assets/masks/mobile-menu-mask.svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-
-    background: radial-gradient(circle, rgba(44, 24, 75, 0.43) 47%, rgba(30, 16, 52, 0.6) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(9, 2, 11);
-    backdrop-filter: blur(.2rem);
-    -webkit-backdrop-filter: blur(.2rem);
-
-    animation: rotate 30s infinite linear both;
-    transform: scale(1);
-    display: block;
+   animation: rotate 30s infinite linear both;
   }
 
   .mobile.invisible {
-    left: -100%;
+    inset: 0 0 0 -10%;
     opacity: 0;
-  }
-
-  .mobile.hidden {
-    display: none;
   }
 
   .mobile__svg {
@@ -1165,8 +1104,7 @@ un grid de imágenes y vídeos, y el software utilizado */
     z-index: 4;
 
     transition:
-      opacity 1s ease,
-      transform .6s ease;
+      opacity 1s ease, fill .6s ease;
     cursor: pointer;
 
     animation: rotate 30s linear infinite both;
@@ -1174,27 +1112,27 @@ un grid de imágenes y vídeos, y el software utilizado */
   }
 
   .mobile__svg:hover {
-    transform: scale(1.2);
+    fill: black;
+  }
+
+  .nav__ul,
+  .nav__li,
+  .lang {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .nav__ul {
     width: 100%;
-    display: flex;
-
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
   }
 
   .nav__li {
     width: 100%;
     font-size: 3rem;
     text-align: left;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-
     transform: translateX(-200%);
     transition: transform .3s ease;
     opacity: 0;
@@ -1215,10 +1153,6 @@ un grid de imágenes y vídeos, y el software utilizado */
   }
 
   .lang {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
     gap: 2rem;
   }
 
@@ -1229,6 +1163,7 @@ un grid de imágenes y vídeos, y el software utilizado */
   .social {
     width: 100%;
     gap: 0;
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -1242,26 +1177,21 @@ un grid de imágenes y vídeos, y el software utilizado */
   }
 
   .social__button {
-    width: 100%;
-    height: 3rem;
-    padding: 0 0 0 .6rem;
-
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-
-    text-transform: uppercase;
-    font-size: 1.3rem;
-
-    color: #A7FE2F;
-    border: #A7FE2F .125rem solid;
-
-    cursor: pointer;
-    transition: opacity 1s ease;
-
     transform: scale(1);
+    transition: opacity 1s ease;
+    cursor: pointer;
     transition: all .6s ease;
+  }
+
+  .social__button:hover {
+    background-color: #A7FE2F;
+    color: #0e0e0f;
+    font-weight: 700;
+    transform: scale(1.1);
   }
 
   .menu__svg {
@@ -1294,30 +1224,31 @@ un grid de imágenes y vídeos, y el software utilizado */
     grid-template-columns: repeat(1, 1fr);
   }
 
-   /* Incognito */
-   .header.incognito {
-    width: 100%;
-    height: 6rem;
-    display: block;
-    transition:
-      top .5s ease;
-    opacity: 1;
-    background: none;
-  }
-  .mobile.incognito {
-    animation: none;
-    mask: none;
-    border-radius: 50%;
-    top: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .mobile__svg.incognito {
-    position: static;
-    animation: none;
-    animation-direction: reverse;
-  }
+      /* Incognito */
+      .header.incognito {
+        background: transparent;
+        display: block;
+      }
+  
+      .mobile.incognito {
+        animation: none;
+        mask: none;
+        border-radius: 50%;
+        top: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .mobile__svg.incognito {
+        position: static;
+        animation: none;
+      }
+  
+      .header__wrapper.incognito{
+        background: #0e0e0f;
+        transition: all 1s ease;
+      }
 
 }
 

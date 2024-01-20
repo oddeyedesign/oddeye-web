@@ -6,6 +6,7 @@ index.css
 - Header
 - Main (About me)
 - Footer
+ */
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
@@ -153,13 +154,15 @@ body {
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
 
+  /* Background */
+  background-color: #0e0e0f;
 }
 
 /* Filtro de color modo incógnito */
 body .incognito {
   filter: sepia(100%);
   -webkit-filter: sepia(100%);
-  transition: filter 1s ease;
+  transition: all 1s ease;
 }
 
 /* Animación de carga de página / transición */
@@ -174,45 +177,36 @@ Estructura:
 
 -Before
 -After
-- Incognito */
- .waves__top {
-  width: 100%;
-  height: calc(50vh);
-  position: fixed;
-  background-color: #A7FE2F;
-  z-index: 6;
+-Incognito
+
+*/
+.waves__top {
   top: 0;
-  display: block;
-
   transform: translateY(-200%);
-  transition: transform 1s ease;
-}
-
-.waves__top.active {
-  transform: translateY(0);
-}
-
-.waves__top.hidden {
-  display: none;
 }
 
 .waves__bottom {
+  bottom: 0;
+  transform: translateY(200%);
+}
+
+.waves__top,
+.waves__bottom {
   width: 100%;
-  height: calc(50vh);
+  height: calc(50vh + 2rem);
   position: fixed;
   background-color: #A7FE2F;
   z-index: 6;
-  bottom: 0;
   display: block;
-
-  transform: translateY(200%);
   transition: transform 1s ease;
 }
 
+.waves__top.active,
 .waves__bottom.active {
-  transform: translateY(0%);
+  transform: translateY(0);
 }
 
+.waves__top.hidden,
 .waves__bottom.hidden {
   display: none;
 }
@@ -233,6 +227,7 @@ Estructura:
   top: -2rem;
   right: 0;
 }
+
 
 /* After */
 .waves__top::after {
@@ -295,73 +290,77 @@ Estructura:
 */
 
 .header {
-  width: 100%;
   min-height: 10vh;
-
-  mask-image: url(/assets/masks/menu-mask.svg);
-  mask-repeat: repeat-x;
-
   position: fixed;
-  top: 0;
-
-  z-index: 5;
   overflow: visible;
-  background: radial-gradient(circle, rgba(188, 255, 64, 0.43)7%, rgba(62, 124, 33, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(168, 255, 70);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
 
+.header::after {
+  content: '';
+  height: 2rem;
+  position: absolute;
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+  mask-position: bottom;
+  bottom: -2rem;
+}
+
+.header,
+.header::after {
+  width: 100%;
+  background-color: rgba(145, 228, 36, 0.868);
+  backdrop-filter: blur(.4rem);
+  -webkit-backdrop-filter: blur(.4rem);
   animation: fadeInTop 1s ease 1 forwards;
+  z-index: 5;
 }
 
 .header__wrapper {
   width: 90%;
-  margin: 1rem auto;
-
-  display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
-  grid-template-rows: 1fr;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-
-  overflow: visible;
-
-  transition: all 1s ease;
+  transition: al 1s ease;
+  align-items: center;
   animation: fadeInTop 1s ease forwards;
-
-  opacity: 1;
-}
-
-.header__mask {
-  display: block;
-  mask-repeat: repeat-x;
 }
 
 .header__h1 {
-  width: 4rem;
+  width: 4.5rem;
+}
+
+.header__h1,
+.social__svg {
   transform: scale(1);
   transition: transform .6s ease;
 }
 
 .nav__ul {
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.header__wrapper,
+.nav__ul {
+  display: grid;
   gap: 1rem;
 }
 
 .nav__li {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  color: black;
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-
   transition: background-color 1s ease,
     transform .6s ease;
+}
+
+.nav__li,
+.lang {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #000000;
+  text-align: center;
 }
 
 .header__social {
@@ -373,8 +372,7 @@ Estructura:
 .social__svg {
   width: 1.9rem;
   height: 1.9rem;
-  fill: black;
-  transform: scale(1);
+  fill: #000000;
   transition: fill .6s ease,
     opacity 1s ease,
     transform .6s ease;
@@ -385,26 +383,15 @@ Estructura:
   width: 100%;
   height: 3rem;
   padding: 0 0 0 .6rem;
-
-  display: none;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-
   text-transform: uppercase;
   font-size: 1.3rem;
-
-  color: black;
-  border: .125rem solid black;
-
-  cursor: pointer;
-  transition: opacity 1s ease;
-
-  transform: scale(1);
-  transition: all .6s ease;
+  color: #000000;
+  border:.125rem solid  #000000 ;
 }
 
-.social__button.hidden {
+.social__button,
+.social__button.hidden,
+.lang__a.hidden {
   display: none;
 }
 
@@ -413,22 +400,18 @@ Estructura:
 }
 
 .lang {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-align: center;
-  color: black;
   opacity: .6;
-
   transition: opacity .5s ease;
-}
-
-.lang__a.hidden {
-  display: none;
 }
 
 /* Header Mobile */
 .mobile {
   display: none;
+  mask-image: url(/assets/masks/mobile-menu-mask.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  animation: rotate 30s infinite linear both;
+  transform: scale(1);
 }
 
 .mobile.hidden {
@@ -458,10 +441,7 @@ Estructura:
   background-color: black;
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: all .5s ease;
 }
 
@@ -469,34 +449,27 @@ Estructura:
 
 .toggle__handle::before {
   border-radius: 50%;
-  position: absolute;
-  content: "";
-  height: 1.625rem;
-  width: 1.625rem;
   left: .25rem;
-  bottom: .25rem;
   background-color: #A7FE2F;
-  transition:
-    right 1s ease,
-    left 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
 }
 
 .toggle__handle::after {
-  position: absolute;
-  content: "";
   background-image: url(/assets/icons/alien-icon.svg);
   background-size: contain;
+  right: .25rem;
+}
+
+.toggle__handle::before,
+.toggle__handle::after {
+  position: absolute;
+  content: "";
   height: 1.625rem;
   width: 1.625rem;
-  right: .25rem;
-  bottom: .25rem;
   transition:
-    right 1s ease,
-    left 1s ease,
+    inset 1s ease,
     background-image .3s ease,
     transform .5s ease;
+  bottom: .25rem;
 }
 
 /* Toggle hovers */
@@ -538,8 +511,8 @@ input:checked+.toggle__handle:after {
 }
 
 .nav__li:hover {
-  color: black;
-  background-color: blueviolet;
+  color: #A7FE2F;
+  background-color: black;
   transform: scale(1.2);
 }
 
@@ -553,32 +526,21 @@ input:checked+.toggle__handle:after {
   transform: scale(1.2);
 }
 
-.social__button:hover {
-  background-color: blueviolet;
-  color: #0e0e0f;
-  font-weight: 700;
-  transform: scale(1.1);
-}
-
 /* Incognito */
 .header.incognito {
   width: 100%;
-  mask-image: none;
-
   position: fixed;
-  background: none;
-  box-shadow: none;
-  background-color: rgba(143, 136, 136, 0.7);
-
+  background-color: rgba(168, 148, 148, 0.7);
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-
-  top: 0;
-  left: 0;
+  inset: 0 100% 100% 0;
 }
 
+.header.incognito::after {
+  display: none;
+}
 
 /* --------------- Fin de Header ---------------*/
 
@@ -635,7 +597,7 @@ Estructura:
 
 .about__portrait {
   width: 40%;
-  height: 80vh;
+  min-height: 80vh;
   object-fit: cover;
 }
 
@@ -674,7 +636,7 @@ Estructura:
 /* Afters */
 .content::after {
   width: 60%;
-  height: 5rem;
+  min-height: 5rem;
   content: '';
 
   background-image: url(/assets/about/horizontal__moons.svg);
@@ -706,20 +668,20 @@ Estructura:
 - Befores
 - Hovers
 */
+.footer, .footer__ul{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  color: #A7FE2F;
+}
 
 .footer {
   width: 100%;
   padding: 5%;
-
-  display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
   gap: 2rem;
   transition: height .5s ease;
-
-
   background-image: url('/assets/background.svg');
   background-repeat: no-repeat;
   background-position: top;
@@ -738,19 +700,13 @@ Estructura:
 
 .footer__ul {
   width: 90%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-
-  color: #A7FE2F;
   font-size: 1.6rem;
   text-align: center;
   gap: 2rem;
 }
 
 .footer__span {
-  color: #a8fe2f51;
+  opacity: .8;
   text-align: center;
 }
 
@@ -767,60 +723,58 @@ Estructura:
   opacity: 1;
 }
 
+@media (min-width: 1920px) {
+  .nav__li, .about__content{
+    font-size: 1.7rem;
+  }
+}
 
 @media (max-width: 1000px) {
 
   /* Header */
   .header {
     width: 100%;
-    height: 1rem;
-    margin: 0;
-
-    mask-image: none;
+    position: fixed;
+    height: 0rem;
     background: transparent;
-    box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-
-    position: fixed;
-    top: -100%;
-    left: 0%;
-
-    display: flex;
-
+    inset: -200% 0 0 0;
+    display: block;
     animation: none;
     transition:
-      top .5s ease;
-    opacity: 1;
+      inset .2s ease;
+  }
+
+  .header::after {
+    display: none;
   }
 
   .header.active {
-    top: 0%;
+    inset: 0 0 0 0;
   }
 
   .header__wrapper {
     width: 100%;
     height: 100vh;
     padding: 5%;
-    margin: 0;
 
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: flex-start;
-    gap: 4rem;
 
-    background: radial-gradient(circle, rgba(156, 255, 64, 0.756)7%, rgba(25, 61, 8, 0.797) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(168, 255, 70);
+    gap: 4rem;
+    background: rgba(135, 246, 16, 0.8);
     backdrop-filter: blur(.7rem);
     -webkit-backdrop-filter: blur(.7rem);
-
-    transition: opacity .5s ease;
+    transition: opacity .4s ease;
     position: fixed;
     opacity: 1;
   }
 
-  .header__wrapper.hidden {
+  .header__wrapper.hidden,
+  .mobile.hidden {
     display: none;
   }
 
@@ -831,50 +785,26 @@ Estructura:
   .mobile {
     width: 6rem;
     height: 6rem;
-
     position: fixed;
-    top: 2%;
-    left: 2%;
+    inset: 2% 0 0 2%;
     z-index: 4;
-
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: transparent;
-
+    background: rgba(128, 255, 31, 0.607);
     opacity: 1;
     transition:
       left .5s ease,
       opacity .5s ease;
-
-    mask-image: url(/assets/masks/mobile-menu-mask.svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-
-    background: radial-gradient(circle, rgba(152, 205, 54, 0.43)7%, rgba(97, 193, 53, 0.6) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(148, 247, 35);
-    backdrop-filter: blur(.2rem);
-    -webkit-backdrop-filter: blur(.2rem);
-
-    animation: rotate 30s infinite linear both;
-    transform: scale(1);
-    display: block;
+      display: block  ;
   }
 
   .mobile.invisible {
-    left: -100%;
+    inset: 0 0 0 -10%;
     opacity: 0;
-  }
-
-  .mobile.hidden {
-    display: none;
   }
 
   .mobile__svg {
     width: 3rem;
     height: 3rem;
-    fill: black;
+    fill: #000000;
 
     position: absolute;
     top: calc(50% - (3rem/2));
@@ -882,8 +812,7 @@ Estructura:
     z-index: 4;
 
     transition:
-      opacity 1s ease,
-      transform .6s ease;
+      opacity 1s ease, fill .6s ease;
     cursor: pointer;
 
     animation: rotate 30s linear infinite both;
@@ -891,27 +820,27 @@ Estructura:
   }
 
   .mobile__svg:hover {
-    transform: scale(1.2);
+    fill: blueviolet;
+  }
+
+  .nav__ul,
+  .nav__li,
+  .lang {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .nav__ul {
     width: 100%;
-    display: flex;
-
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
   }
 
   .nav__li {
     width: 100%;
     font-size: 3rem;
     text-align: left;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-
     transform: translateX(-200%);
     transition: transform .3s ease;
     opacity: 0;
@@ -932,10 +861,6 @@ Estructura:
   }
 
   .lang {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
     gap: 2rem;
   }
 
@@ -959,26 +884,21 @@ Estructura:
   }
 
   .social__button {
-    width: 100%;
-    height: 3rem;
-    padding: 0 0 0 .6rem;
-
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-
-    text-transform: uppercase;
-    font-size: 1.3rem;
-
-    color: black;
-    border: .125rem solid black;
-
-    cursor: pointer;
-    transition: opacity 1s ease;
-
     transform: scale(1);
+    transition: opacity 1s ease;
+    cursor: pointer;
     transition: all .6s ease;
+  }
+
+  .social__button:hover {
+    background-color: blueviolet;
+    color: #0e0e0f;
+    font-weight: 700;
+    transform: scale(1.1);
   }
 
   .menu__svg {
@@ -992,56 +912,10 @@ Estructura:
     right: 5%;
   }
 
-  /* About */
-  .about__wrapper {
-    min-height: 100vh;
-    flex-flow: column nowrap;
-  }
-
-  .content {
-    justify-content: space-between;
-    width: 90%;
-  }
-
-  .content__p {
-    width: 100%;
-  }
-
-  .content__span {
-    width: 100%;
-  }
-
-  .about__portrait {
-    width: 100%;
-  }
-
-  /* Footer */
-  .footer {
-    height: 70vh;
-  }
-
-  .footer__ul {
-    width: 90%;
-  }
-
-  .footer__li {
-    font-size: 1.7rem;
-  }
-
-  .footer__span {
-    width: 90%;
-    font-size: 1.2rem;
-  }
-
   /* Incognito */
   .header.incognito {
-    width: 100%;
-    height: 6rem;
+    background: transparent;
     display: block;
-    transition:
-      top .5s ease;
-    opacity: 1;
-    background: none;
   }
 
   .mobile.incognito {
@@ -1057,9 +931,50 @@ Estructura:
   .mobile__svg.incognito {
     position: static;
     animation: none;
-    animation-direction: reverse;
   }
 
+  .header__wrapper.incognito {
+    background: #7d7d86;
+    transition: all 1s ease;
+  }
+
+  /* About */
+  .about{
+    min-height: 120vh;
+  }
+  .about__wrapper {
+    min-height: 100%;
+    flex-flow: column nowrap;
+  }
+  
+  .content {
+    font-size: .9rem;
+    width: 90%;
+    display: block;
+  }
+
+  .content__p, .content__span, .about__portrait {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 2rem;
+    min-height: 70vh;
+  }
+
+  .footer__ul {
+    width: 90%;
+  }
+
+  .footer__li {
+    font-size: 1.7rem;
+  }
+
+  .footer__span {
+    width: 90%;
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1073,11 +988,7 @@ Estructura:
     flex-flow: column nowrap;
   }
 
-  .footer__li {
-    width: 100%;
-  }
-
-  .footer__a {
+  .footer__li, .footer__a {
     width: 100%;
   }
 }

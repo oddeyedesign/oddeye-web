@@ -15,8 +15,11 @@ Estructura general:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oddeye Creations</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/css/porfolio.css">
+
+    <!-- Javascript -->
     <script src="/js/porfolio.js" defer></script>
 
     <!-- Tipografía -->
@@ -24,6 +27,26 @@ Estructura general:
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+            <!-- Primary Meta Tags -->
+    <title>Oddeye Creations - Porfolio</title>
+    <meta name="title" content="Oddeye Creations - Freelance Creative Services" />
+    <meta name="description" content="Graphic Design, UX/UI, Illustration, Creativity" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.oddeye.pro/" />
+    <meta property="og:title" content="Oddeye Creations - Freelance Creative Services" />
+    <meta property="og:description" content="Graphic Design, UX/UI, Illustration, Creativity" />
+    <meta property="og:image" content="https://oddeye.pro/assets/oddeye-metadata.webp" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.oddeye.pro/" />
+    <meta property="twitter:title" content="Oddeye Creations - Freelance Creative Services" />
+    <meta property="twitter:description" content="Graphic Design, UX/UI, Illustration, Creativity" />
+    <meta property="twitter:image" content="https://oddeye.pro/assets/oddeye-metadata.webp" />
+    <!-- Meta Tags Generated with https://metatags.io -->
 
 </head>
 
@@ -314,78 +337,84 @@ Estructura general:
         <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
 
-            <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-oni-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-01.webp" playsinline preload="auto">
-            </video> -->
-            <video class="article__video medium" src="/assets/porfolio/mp4-720/720-oni-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-01.webp" playsinline preload="auto">
-            </video>
-            <video class="article__video small" src="/assets/porfolio/mp4-480/480-oni-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-01.webp" playsinline preload="auto">
-            </video>
-
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-oni-02.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-oni-02.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-oni-02.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-oni-02.webp" alt="Oni Clothing Typographies: Gilroy Light, Extra Bold, and Nikohaku plus Kanji" class="article__img" fetchpriority="high">
+                <source srcset="/assets/porfolio/webp-480/480-oni-01.webp" media="(max-width: 480px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-oni-01.webp" media="(max-width: 720px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-oni-01.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-oni-01.webp" alt="Oni Clothing Kanji" class="article__img"
+                    fetchpriority="high">
             </picture>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-oni-03.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-oni-03.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-oni-03.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-oni-03.webp" alt="Oni Clothing Alternative logo repeated various times over a red background" class="article__img" fetchpriority="high">
+                <source srcset="/assets/porfolio/webp-480/480-oni-02.webp" media="(max-width: 480px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-oni-02.webp" media="(max-width: 720px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-oni-02.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-oni-02.webp"
+                    alt="Oni Clothing Typographies: Gilroy Light, Extra Bold, and Nikohaku plus Kanji"
+                    class="article__img" fetchpriority="high">
             </picture>
+
+            <picture class="article__picture">
+                <source srcset="/assets/porfolio/webp-480/480-oni-03.webp" media="(max-width: 480px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-oni-03.webp" media="(max-width: 720px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-oni-03.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-oni-03.webp"
+                    alt="Oni Clothing Alternative logo repeated various times over a red background"
+                    class="article__img" fetchpriority="high">
+            </picture>
+
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-oni-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-04.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-oni-04.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-oni-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-04.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-oni-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-04.webp" playsinline preload="none">
             </video>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-oni-05.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-05.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-oni-05.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-oni-05.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-05.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-05.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-oni-05.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-05.webp" playsinline preload="auto">
-            </video>
-            
-            <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-oni-06.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-06.webp" playsinline preload="auto">
-            </video> -->
-            <video class="article__video medium" src="/assets/porfolio/mp4-720/720-oni-06.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-06.webp" playsinline preload="auto">
-            </video>
-            <video class="article__video small" src="/assets/porfolio/mp4-480/480-oni-06.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-06.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-05.webp" playsinline preload="none">
             </video>
 
+            <picture class="article__picture">
+                <source srcset="/assets/porfolio/webp-480/480-oni-06.webp" media="(max-width: 480px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-oni-06.webp" media="(max-width: 720px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-oni-06.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-oni-06.webp"
+                    alt="Oni Clothing Alternative logo repeated various times over a red background"
+                    class="article__img" fetchpriority="high">
+            </picture>
+
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-oni-07.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-07.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-oni-07.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-oni-07.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-07.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-07.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-oni-07.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-07.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-07.webp" playsinline preload="none">
             </video>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-oni-08.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-08.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-oni-08.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-oni-08.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-08.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-08.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-oni-08.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-oni-08.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-oni-08.webp" playsinline preload="none">
             </video>
 
         </div>
@@ -428,37 +457,47 @@ Estructura general:
         <div class="article__gallery">
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-prh-chris-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-01.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-01.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-prh-chris-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-01.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-01.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-prh-chris-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-01.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-01.webp" playsinline preload="none">
             </video>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-prh-chris-02.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-prh-chris-02.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-prh-chris-02.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-prh-chris-02.webp" alt="Promotional image showing a pink background with glitter and Christmas stationary over it containing the campaign claim" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-prh-chris-02.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-prh-chris-02.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-prh-chris-02.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-prh-chris-02.webp"
+                    alt="Promotional image showing a pink background with glitter and Christmas stationary over it containing the campaign claim"
+                    class="article__img" loading="lazy">
             </picture>
-            
+
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-prh-chris-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-03.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-03.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-prh-chris-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-03.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-prh-chris-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-chris-03.webp" playsinline preload="none">
             </video>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-prh-chris-04.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-prh-chris-04.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-prh-chris-04.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-prh-chris-04.webp" alt="Promotional image showing a pink background with glitter with a ticket on top that contains the campaign call to action" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-prh-chris-04.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-prh-chris-04.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-prh-chris-04.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-prh-chris-04.webp"
+                    alt="Promotional image showing a pink background with glitter with a ticket on top that contains the campaign call to action"
+                    class="article__img" loading="lazy">
             </picture>
 
         </div>
@@ -495,46 +534,53 @@ Estructura general:
         <div class="article__gallery">
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-po-01.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-po-01.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-po-01.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-po-01.webp" alt="Primera Orden Games's logo in reds, vanillas and turquoises against a desaturated red background" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-po-01.webp" media="(max-width: 480px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-po-01.webp" media="(max-width: 720px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-po-01.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-po-01.webp"
+                    alt="Primera Orden Games's logo in reds, vanillas and turquoises against a desaturated red background"
+                    class="article__img" loading="lazy">
             </picture>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-po-02.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-po-02.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-po-02.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-po-02.webp" alt="Pixel art drawing of a person pointing up with one finger" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-po-02.webp" media="(max-width: 480px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-po-02.webp" media="(max-width: 720px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-po-02.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-po-02.webp"
+                    alt="Pixel art drawing of a person pointing up with one finger" class="article__img" loading="lazy">
             </picture>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-po-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-po-03.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-po-03.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-po-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-po-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-po-03.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-po-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-po-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-po-03.webp" playsinline preload="none">
             </video>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-po-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-po-04.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-po-04.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-po-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-po-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-po-04.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-po-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-po-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-po-04.webp" playsinline preload="none">
             </video>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-po-05.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-po-05.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-po-05.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-po-05.webp" alt="Pixel art drawing of a person pointing up with one finger" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-po-05.webp" media="(max-width: 480px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-po-05.webp" media="(max-width: 720px)" type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-po-05.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-po-05.webp"
+                    alt="Pixel art drawing of a person pointing up with one finger" class="article__img" loading="lazy">
             </picture>
-            
+
         </div>
 
         <!-- Software -->
@@ -589,65 +635,77 @@ Estructura general:
         <div class="article__gallery">
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-teacup-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-01.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-teacup-01.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-teacup-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-01.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-01.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-teacup-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-01.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-01.webp" playsinline preload="none">
             </video>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-teacup-02.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-02.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-teacup-02.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-teacup-02.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-02.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-02.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-teacup-02.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-02.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-02.webp" playsinline preload="none">
             </video>
 
-            
+
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-teacup-03.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-teacup-03.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-teacup-03.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-teacup-03.webp" alt="An example of TEAcup's bento box design style" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-teacup-03.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-teacup-03.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-teacup-03.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-teacup-03.webp"
+                    alt="An example of TEAcup's bento box design style" class="article__img" loading="lazy">
             </picture>
-            
+
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-teacup-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-04.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-teacup-04.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-teacup-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-04.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-teacup-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-04.webp" playsinline preload="none">
             </video>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-teacup-05.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-05.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-teacup-05.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-teacup-05.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-05.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-05.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-teacup-05.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-teacup-05.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-teacup-05.webp" playsinline preload="none">
             </video>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-teacup-06.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-teacup-06.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-teacup-06.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-teacup-06.webp" alt="TEAcup's fonts and main color palette" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-teacup-06.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-teacup-06.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-teacup-06.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-teacup-06.webp" alt="TEAcup's fonts and main color palette"
+                    class="article__img" loading="lazy">
             </picture>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-teacup-07.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-teacup-07.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-teacup-07.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-teacup-07.webp" alt="Promotional TEAcup image showing a mockup phone" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-teacup-07.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-teacup-07.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-teacup-07.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-teacup-07.webp"
+                    alt="Promotional TEAcup image showing a mockup phone" class="article__img" loading="lazy">
             </picture>
         </div>
 
@@ -701,56 +759,68 @@ Estructura general:
 
         <!-- Galería de imágenes y vídeos -->
         <div class="article__gallery">
-            
+
             <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-mindeat-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-01.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-mindeat-01.webp" playsinline preload="none">
             </video>
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-mindeat-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-01.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-mindeat-01.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-mindeat-01.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-01.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-mindeat-01.webp" playsinline preload="none">
             </video>
-            
+
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-mindeat-02.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-mindeat-02.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-mindeat-02.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-mindeat-02.webp" alt="MindEat's login loading screen" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-mindeat-02.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-mindeat-02.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-mindeat-02.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-mindeat-02.webp" alt="MindEat's login loading screen"
+                    class="article__img" loading="lazy">
             </picture>
-            
+
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-mindeat-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-03.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-03.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-mindeat-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-mindeat-03.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-mindeat-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-mindeat-03.webp" playsinline preload="none">
             </video>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-mindeat-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-04.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-04.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-mindeat-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-mindeat-04.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-mindeat-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-mindeat-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-mindeat-04.webp" playsinline preload="none">
             </video>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-mindeat-05.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-mindeat-05.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-mindeat-05.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-mindeat-05.webp" alt="MindEat's statistics preview" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-mindeat-05.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-mindeat-05.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-mindeat-05.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-mindeat-05.webp" alt="MindEat's statistics preview"
+                    class="article__img" loading="lazy">
             </picture>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-mindeat-06.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-mindeat-06.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-mindeat-06.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-mindeat-06.webp" alt="MindEat's menu configurator screen" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-mindeat-06.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-mindeat-06.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-mindeat-06.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-mindeat-06.webp" alt="MindEat's menu configurator screen"
+                    class="article__img" loading="lazy">
             </picture>
 
         </div>
@@ -788,54 +858,69 @@ Estructura general:
         <div class="article__gallery">
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-prh-hall-01.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-prh-hall-01.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-prh-hall-01.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-prh-hall-01.webp" alt="Illustrated campaign claim: This Halloween, you are gonna read our cards" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-prh-hall-01.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-prh-hall-01.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-prh-hall-01.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-prh-hall-01.webp"
+                    alt="Illustrated campaign claim: This Halloween, you are gonna read our cards" class="article__img"
+                    loading="lazy">
             </picture>
 
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-prh-hall-02.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-prh-hall-02.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-prh-hall-02.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-prh-hall-02.webp" alt="A picture featuring three illustrated tarot cards (Red Queen, The Gypsy Bride, and One of Us is Lying)" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-prh-hall-02.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-prh-hall-02.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-prh-hall-02.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-prh-hall-02.webp"
+                    alt="A picture featuring three illustrated tarot cards (Red Queen, The Gypsy Bride, and One of Us is Lying)"
+                    class="article__img" loading="lazy">
             </picture>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-prh-hall-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-03.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-03.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-prh-hall-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-03.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-prh-hall-03.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-03.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-03.webp" playsinline preload="none">
             </video>
 
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-prh-hall-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-04.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-04.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-prh-hall-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-04.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-prh-hall-04.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-04.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-04.webp" playsinline preload="none">
             </video>
-            
+
             <picture class="article__picture">
-                <source srcset="/assets/porfolio/webp-480/480-prh-hall-05.webp" media="(min-width: 480px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-720/720-prh-hall-05.webp" media="(min-width: 720px)" type="image/webp">
-                <source srcset="/assets/porfolio/webp-1080/1080-prh-hall-05.webp" media="(min-width: 1080px)" type="image/webp">
-                <img src="/assets/porfolio/webp-1080/1080-prh-hall-05.webp" alt="A picture featuring three illustrated tarot cards (Set the night on fire, Billy Summers, and Twilight)" class="article__img" loading="lazy">
+                <source srcset="/assets/porfolio/webp-480/480-prh-hall-05.webp" media="(max-width: 480px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-720/720-prh-hall-05.webp" media="(max-width: 720px)"
+                    type="image/webp">
+                <source srcset="/assets/porfolio/webp-1080/1080-prh-hall-05.webp" media="(max-width: 1080px)"
+                    type="image/webp">
+                <img src="/assets/porfolio/webp-1080/1080-prh-hall-05.webp"
+                    alt="A picture featuring three illustrated tarot cards (Set the night on fire, Billy Summers, and Twilight)"
+                    class="article__img" loading="lazy">
             </picture>
-            
+
             <!-- <video class="article__video big" src="/assets/porfolio/mp4-1080/1080-prh-hall-06.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-06.webp" playsinline preload="auto">
+            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-06.webp" playsinline preload="none">
             </video> -->
             <video class="article__video medium" src="/assets/porfolio/mp4-720/720-prh-hall-06.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-06.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-06.webp" playsinline preload="none">
             </video>
             <video class="article__video small" src="/assets/porfolio/mp4-480/480-prh-hall-06.mp4" autoplay muted loop
-            poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-06.webp" playsinline preload="auto">
+                poster="/assets/porfolio/thumbnails/thumbnail-prh-hall-06.webp" playsinline preload="none">
             </video>
 
         </div>

@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
 /* ---------------------------------------------------------- *\
-index.css
-- Reset / Normalizar
-- Header
-- Hero
-- First Section
-- Second Section
-- Third Section
-- Footer
-- Media Queries (Adaptaciones Responsive)
+  index.css
+  - Reset / Normalizar
+  - Header
+  - Hero
+  - First Section
+  - Second Section
+  - Third Section
+  - Footer
+  - Media Queries (Adaptaciones Responsive)
+  */
 
 /* Reset CSS proporcionado por Eduardo Fierro en classroom: https://github.com/eduardofierropro */
 * {
@@ -146,7 +147,6 @@ body {
   font-size: 100%;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--negro);
-
   /* opcional */
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -157,68 +157,60 @@ body {
   -webkit-font-smoothing: antialiased;
   /* opcional */
   -moz-osx-font-smoothing: grayscale;
+
+  /* Background */
+  background-color: #0e0e0f;
 }
 
 /* Filtro de color modo incógnito */
 body .incognito {
   filter: sepia(100%);
   -webkit-filter: sepia(100%);
-  transition: filter 1s ease;
+  transition: all 1s ease;
 }
 
 /* Animación de carga de página / transición */
 /* Descripción: Animación de carga de la página
-Estructura:
--waves__top
--waves__top.active
--waves__top.hidden
--waves__bottom
--waves__bottom.active
--waves__bottom.hidden
+  Estructura:
+  -waves__top
+  -waves__top.active
+  -waves__top.hidden
+  -waves__bottom
+  -waves__bottom.active
+  -waves__bottom.hidden
 
--Before
--After
--Incognito
+  -Before
+  -After
+  -Incognito
 
-*/
+  */
 .waves__top {
-  width: 100%;
-  height: calc(50vh);
-  position: fixed;
-  background-color: #A7FE2F;
-  z-index: 6;
   top: 0;
-  display: block;
-
   transform: translateY(-200%);
-  transition: transform 1s ease;
-}
-
-.waves__top.active {
-  transform: translateY(0);
-}
-
-.waves__top.hidden {
-  display: none;
 }
 
 .waves__bottom {
+  bottom: 0;
+  transform: translateY(200%);
+}
+
+.waves__top,
+.waves__bottom {
   width: 100%;
-  height: calc(50vh);
+  height: calc(50vh + 2rem);
   position: fixed;
   background-color: #A7FE2F;
   z-index: 6;
-  bottom: 0;
   display: block;
-
-  transform: translateY(200%);
   transition: transform 1s ease;
 }
 
+.waves__top.active,
 .waves__bottom.active {
-  transform: translateY(0%);
+  transform: translateY(0);
 }
 
+.waves__top.hidden,
 .waves__bottom.hidden {
   display: none;
 }
@@ -259,118 +251,117 @@ Estructura:
 }
 
 /* Incognito */
-.waves__bottom.incognito::before {
-  display: none;
-}
-
+.waves__bottom.incognito::before,
 .waves__top.incognito::after {
   display: none;
 }
 
 /* --------------- Inicio de Header --------------*/
 /* Descripción: estilo  del Header en versión desktop. El header tiene
-forma "wavy" y está fijado en la ventana. Tiene un estilo glassmorfista
+  forma "wavy" y está fijado en la ventana. Tiene un estilo glassmorfista
 
-Estructura:
-- header
-  - header__wrapper
-  - header__mask
-    - header__h1
-    - nav__ul
-      - nav__li
-    - header__social
-      - social__svg
-      - social__button
-        - social__button.hidden
-        - social__button.invisible
-    - lang
-      - lang__a.hidden
-    - mobile
-      - mobile.hidden
-      - mobile.invisible
-    - toggle
-      - toggle__checkbox
-      - toggle__handle
-    - toggle before and after
-    - toggle hover
-    - toggle inputs
+  Estructura:
+  - header
+    - header__wrapper
+    - header__mask
+      - header__h1
+      - nav__ul
+        - nav__li
+      - header__social
+        - social__svg
+        - social__button
+          - social__button.hidden
+          - social__button.invisible
+      - lang
+        - lang__a.hidden
+      - mobile
+        - mobile.hidden
+        - mobile.invisible
+      - toggle
+        - toggle__checkbox
+        - toggle__handle
+      - toggle before and after
+      - toggle hover
+      - toggle inputs
 
-  - Befores
-  - Afters
-  - Hovers
-  - Incognito
-*/
+    - Befores
+    - Afters
+    - Hovers
+    - Incognito
+  */
 
 .header {
-  width: 100%;
-  height: 10vh;
-
-  mask-image: url(/assets/masks/menu-mask.svg);
-  mask-repeat: repeat-x;
-  mask-position: bottom;
-
+  min-height: 10vh;
   position: fixed;
-
-  z-index: 5;
   overflow: visible;
-
-  background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
-
-  animation: fadeInTop 1s ease 1 forwards;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
+.header::after {
+  content: '';
+  height: 2rem;
+  position: absolute;
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+  mask-position: bottom;
+  bottom: -2rem;
+}
+
+.header,
+.header::after {
+  width: 100%;
+  background-color: rgba(108, 33, 177, 0.868);
+  backdrop-filter: blur(.4rem);
+  -webkit-backdrop-filter: blur(.4rem);
+  animation: fadeInTop 1s ease 1 forwards;
+  z-index: 5;
+}
 
 .header__wrapper {
   width: 90%;
-  margin: 1rem auto;
-
-  display: grid;
   grid-template-columns: .5fr 2fr .5fr 1fr .5fr;
-  grid-template-rows: 1fr;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-
-  overflow: visible;
-
-  transition: all 1s ease;
+  transition: al 1s ease;
+  align-items: center;
   animation: fadeInTop 1s ease forwards;
-
-  opacity: 1;
-}
-
-.header__mask {
-  display: block;
-  mask-repeat: repeat-x;
 }
 
 .header__h1 {
-  width: 4rem;
+  width: 4.5rem;
+}
+
+.header__h1,
+.social__svg {
   transform: scale(1);
   transition: transform .6s ease;
 }
 
 .nav__ul {
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.header__wrapper,
+.nav__ul {
+  display: grid;
   gap: 1rem;
 }
 
 .nav__li {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  color: #A7FE2F;
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-
   transition: background-color 1s ease,
     transform .6s ease;
+}
+
+.nav__li,
+.lang {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #A7FE2F;
+  text-align: center;
 }
 
 .header__social {
@@ -383,7 +374,6 @@ Estructura:
   width: 1.9rem;
   height: 1.9rem;
   fill: #A7FE2F;
-  transform: scale(1);
   transition: fill .6s ease,
     opacity 1s ease,
     transform .6s ease;
@@ -391,10 +381,18 @@ Estructura:
 }
 
 .social__button {
-  display: none;
+  width: 100%;
+  height: 3rem;
+  padding: 0 0 0 .6rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #A7FE2F;
+  border: #A7FE2F .125rem solid;
 }
 
-.social__button.hidden {
+.social__button,
+.social__button.hidden,
+.lang__a.hidden {
   display: none;
 }
 
@@ -403,30 +401,22 @@ Estructura:
 }
 
 .lang {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-align: center;
-  color: #A7FE2F;
   opacity: .6;
-
   transition: opacity .5s ease;
-}
-
-.lang__a.hidden {
-  display: none;
 }
 
 /* Header Mobile */
 .mobile {
   display: none;
+  mask-image: url(/assets/masks/mobile-menu-mask.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  animation: rotate 30s infinite linear both;
+  transform: scale(1);
 }
 
 .mobile.hidden {
   display: none;
-}
-
-.mobile.invisible {
-  opacity: 0;
 }
 
 /* Toggle */
@@ -448,10 +438,7 @@ Estructura:
   background-color: black;
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: all .5s ease;
 }
 
@@ -459,34 +446,27 @@ Estructura:
 
 .toggle__handle::before {
   border-radius: 50%;
-  position: absolute;
-  content: "";
-  height: 1.625rem;
-  width: 1.625rem;
   left: .25rem;
-  bottom: .25rem;
   background-color: #A7FE2F;
-  transition:
-    right 1s ease,
-    left 1s ease,
-    background-image .3s ease,
-    transform .5s ease;
 }
 
 .toggle__handle::after {
-  position: absolute;
-  content: "";
   background-image: url(/assets/icons/alien-icon.svg);
   background-size: contain;
+  right: .25rem;
+}
+
+.toggle__handle::before,
+.toggle__handle::after {
+  position: absolute;
+  content: "";
   height: 1.625rem;
   width: 1.625rem;
-  right: .25rem;
-  bottom: .25rem;
   transition:
-    right 1s ease,
-    left 1s ease,
+    inset 1s ease,
     background-image .3s ease,
     transform .5s ease;
+  bottom: .25rem;
 }
 
 /* Toggle hovers */
@@ -543,72 +523,62 @@ input:checked+.toggle__handle:after {
   transform: scale(1.2);
 }
 
-.social__button:hover {
-  background-color: #A7FE2F;
-  color: #0e0e0f;
-  font-weight: 700;
-  transform: scale(1.1);
-}
-
 /* Incognito */
 .header.incognito {
   width: 100%;
-  mask-image: none;
-
   position: fixed;
-  background: none;
-  box-shadow: none;
   background-color: rgba(27, 24, 24, 0.7);
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  inset: 0 100% 100% 0;
+}
 
-  top: 0;
-  left: 0;
+.header.incognito::after {
+  display: none;
 }
 
 /* --------------- Fin de Header ---------------*/
 
 /* --------------- Inicio de Hero Content ---------------*/
 /* Descripción: Estilo para el main/hero. Esta sección contiene varios
-elementos interactivos como el logo, que sigue al cursor con la mirada,
-y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
+  elementos interactivos como el logo, que sigue al cursor con la mirada,
+  y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 
-  Estructura:
-    -hero
-    -hero__wrapper logo
-      -hero__normal
-        -normal__h2
-        -normal__span
-      -logo__mask
-      -logo__body
-      -logo__svg
-    -info__window window
-      -window__wrapper
-      -window__wrapper button
-      -window__name
-      -button__svg
-      -button__min
-      -button__close
-      -button__res
-      -window__content
-      -window__title
-      -window__h2
-      -window__subtitle
-      -window__ul
-      -window-li
-      -window__log
-    -hero__moons
-    -hero__smiley
+    Estructura:
+      -hero
+      -hero__wrapper logo
+        -hero__normal
+          -normal__h2
+          -normal__span
+        -logo__mask
+        -logo__body
+        -logo__svg
+      -info__window window
+        -window__wrapper
+        -window__wrapper button
+        -window__name
+        -button__svg
+        -button__min
+        -button__close
+        -button__res
+        -window__content
+        -window__title
+        -window__h2
+        -window__subtitle
+        -window__ul
+        -window-li
+        -window__log
+      -hero__moons
+      -hero__smiley
 
-    - Befores
-    - Afters
-    - Hovers
-    - Selections
-    - Incognito
-*/
+      - Befores
+      - Afters
+      - Hovers
+      - Selections
+      - Incognito
+  */
 
 .hero {
   width: 100%;
@@ -689,29 +659,32 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   transform: scale(1.1);
 }
 
-.eye__first {
+.eye__first,
+.eye__second,
+.eye__third,
+.snout {
   animation: popIn 1s ease 1 backwards;
-  animation-delay: .4s;
   transform-origin: center;
+}
+
+.eye__first {
+  animation-delay: .4s;
+
 }
 
 .eye__second {
-  animation: popIn 1s ease 1 backwards;
   animation-delay: .6s;
-  transform-origin: center;
 }
 
 .eye__third {
-  animation: popIn 1s ease 1 backwards;
   animation-delay: .8s;
-  transform-origin: center;
 }
 
 .snout {
-  animation: popIn 1s ease 1 backwards;
   animation-delay: 1s;
-  transform-origin: bottom;
 }
+
+
 
 .info {
   width: 100%;
@@ -723,9 +696,8 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   transition: opacity 1s ease;
 }
 
-
-
-.info.hidden {
+.info.hidden,
+.info.incognito {
   display: none;
 }
 
@@ -734,7 +706,7 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 }
 
 .info__window {
-  width: 25rem;
+  width: 30%;
   position: absolute;
 
   transform:
@@ -775,11 +747,16 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   transform: scale(0.1);
 }
 
+.window__wrapper,
+.button__svg,
+.window__content {
+  border: .0625rem solid #A7FE2F;
+  color: #A7FE2F;
+}
+
 .window__wrapper {
   width: 100%;
-  border: #A7FE2F solid .10rem;
   background-color: black;
-  color: #A7FE2F;
 
   display: flex;
   flex-flow: row nowrap;
@@ -802,35 +779,23 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   letter-spacing: .2rem;
 }
 
-.button__svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: #A7FE2F solid .0625rem;
-}
-
-.button__min {
-  margin: .5rem;
-  cursor: pointer;
-
-  transition: background-color 1s ease;
-}
-
 .button__min.hidden {
   display: none;
 }
 
+.button__svg,
+.button__min,
+.button__res,
 .button__close {
-  margin: .5rem;
+  margin: 0.5rem;
   cursor: pointer;
-
   transition: background-color 1s ease;
 }
 
-.button__res {
-  margin: .5rem;
-  cursor: pointer;
-
-  transition: background-color 1s ease;
+.button__svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
 }
 
 .button__res.hidden {
@@ -839,25 +804,19 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 
 .window__content {
   width: 100%;
-  height: 15rem;
+  min-height: 15rem;
   background-color: black;
-  color: #A7FE2F;
   border-top: none;
-  border-bottom: #A7FE2F solid .10em;
-  border-left: #A7FE2F solid .10em;
-  border-right: #A7FE2F solid .10em;
+  padding: 2%;
 
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   text-align: left;
 
   gap: .5rem;
-  opacity: 1;
-
-  transform: scale(1);
 
   transition:
     opacity .3s ease;
@@ -949,28 +908,32 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 }
 
 /* Befores */
-.window__h1::before {
+
+.window__title::after,
+.window__subtitle::after,
+.window__h2::before,
+.window__subtitle::after,
+.window__li::before {
   display: inline-block;
-  content: '*·.{';
   font-size: .8rem;
-  font-weight: 400;
+}
+
+.window__h2::before {
+  content: '*·.{';
 }
 
 .window__subtitle::before {
-  display: inline-block;
   content: '*·.-';
-  font-size: .8rem;
 }
 
 .window__li::before {
-  display: inline-block;
   content: '>';
 }
 
 /* Afters */
 
+
 .window__title::after {
-  display: block;
   content: '';
   width: 80%;
   border: #A7FE2F dashed .0625rem;
@@ -978,18 +941,13 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 }
 
 .window__subtitle::after {
-  display: inline-block;
   content: '*·.-';
   transform: scaleX(-1);
-  font-size: .8rem;
 }
 
-.window__h1::after {
-  display: inline-block;
+.window__h2::after {
   content: '*·.{';
   transform: scaleX(-1);
-  font-size: .8rem;
-  font-weight: 400;
 }
 
 /* Hovers */
@@ -997,25 +955,12 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
   transform: rotate(360deg);
 }
 
-.button__close:hover {
-  color: black;
-  background-color: #A7FE2F;
-}
-
-.button__min:hover {
-  color: black;
-  background-color: #A7FE2F;
-}
-
-.button__res:hover {
-  color: black;
-  background-color: #A7FE2F;
-}
-
-/* Selección de texto */
+.button__res:hover,
+.button__min:hover,
+.button__close:hover,
 .window__log::selection {
   color: black;
-  background-color: #A7FE2F;
+  background-color: blueviolet;
 }
 
 /* Incognito */
@@ -1035,32 +980,24 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 }
 
 .normal__h2.incognito {
-  opacity: 1;
-  color: white;
   font-size: 9vw;
-  text-align: center;
   text-transform: uppercase;
 }
 
 .normal__span.incognito {
-  text-align: center;
-  opacity: 1;
-  color: white;
   font-size: 3vw;
 }
 
-.logo.incognito {
-  display: none;
+.normal__h2.incognito,
+.normal__span.incognito {
+  text-align: center;
+  opacity: 1;
+  color: white;
 }
 
-.info.incognito {
-  display: none;
-}
-
-.hero__moons.incognito {
-  display: none;
-}
-
+.logo.incognito,
+.info__incognito,
+.hero__moons.incognito,
 .hero__smiley.incognito {
   display: none;
 }
@@ -1069,35 +1006,26 @@ y ventanitas que imitan el estilo se sistemas antiguos como BDOS y MSDOS
 
 /* ---------------Inicio de Services (Mobile) ---------------*/
 /* Descripción: estilo de la sección services, que solo es visible en 
-modo mobile (sustituyendo a hero__window). Esta sección contiene un texto
-estilo marquee que hace scroll infinito en horizontal
+  modo mobile (sustituyendo a hero__window). Esta sección contiene un texto
+  estilo marquee que hace scroll infinito en horizontal
 
-Estructura:
-- services
-- services.hidden
-- services.invisible
-  -services__ul
-    -services__li
-*/
+  Estructura:
+  - services
+  - services.hidden
+  - services.invisible
+    -services__ul
+      -services__li
+  */
 
 .services {
   width: 100%;
   background-color: #A7FE2F;
-
   overflow: hidden;
   opacity: 1;
   transition: opacity 1s ease;
-
   position: relative;
   z-index: 4;
-}
-
-.services.hidden {
   display: none;
-}
-
-.services.invisble {
-  opacity: 0;
 }
 
 .services__ul {
@@ -1127,22 +1055,22 @@ Estructura:
 
 /* --------------- Inicio de First Section ---------------*/
 /* Descripción: Esta sección contiene un enlace a la página de porfolio.
-La sección entera tiene un efecto hover aplicado en js para simular que 
-el adorno se encoje para hacer sitio al "botón" que lleva al porfolio.
-Los bordes de la sección son ondulados, lo conseguimos con before and after.
+  La sección entera tiene un efecto hover aplicado en js para simular que 
+  el adorno se encoje para hacer sitio al "botón" que lleva al porfolio.
+  Los bordes de la sección son ondulados, lo conseguimos con before and after.
 
-Estructura:
-- first
-  - first__wrapper
-  - first__a
-  - first__a.play
-  - first__animation
-  - first__animation.play
-  
-  - Befores
-  - Afters
+  Estructura:
+  - first
+    - first__wrapper
+    - first__a
+    - first__a.play
+    - first__animation
+    - first__animation.play
+    
+    - Befores
+    - Afters
 
-*/
+  */
 .first {
   width: 100%;
   height: 50vh;
@@ -1168,6 +1096,11 @@ Estructura:
   overflow: hidden;
   position: absolute;
   right: 5%;
+
+  color: #0e0e0f;
+  font-size: 5vw;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .first__a {
@@ -1184,11 +1117,6 @@ Estructura:
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-
-  color: #0e0e0f;
-  font-size: 5vw;
-  font-weight: 400;
-  text-transform: uppercase;
 }
 
 .first__a.play {
@@ -1208,7 +1136,6 @@ Estructura:
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   position: absolute;
   left: 5%;
 
@@ -1221,65 +1148,58 @@ Estructura:
 }
 
 /*  Before */
-.first::before {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
 
-  background-color: #A7FE2F;
-  mask-image: url(/assets/masks/wavy-mask-top.svg);
-  mask-repeat: repeat-x;
-  mask-position: top;
-
-  position: absolute;
-  top: -2rem;
-  right: 0;
-}
-
-.first.incognito::before {
-  display: none;
-}
-
-/* After */
+.first::before,
+.first::after,
+.first::before,
 .first::after {
   width: 100%;
   height: 2rem;
   display: block;
   content: '';
-
-  background-color: #A7FE2F;
-  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
   mask-repeat: repeat-x;
-  mask-position: bottom;
-
+  background-color: #A7FE2F;
   position: absolute;
+}
+
+.first::before {
+  mask-image: url(/assets/masks/wavy-mask-top.svg);
+  mask-position: top;
+  top: -2rem;
+  right: 0;
+}
+
+/* After */
+.first::after {
+  mask-image: url(/assets/masks/wavy-mask-bottom.svg);
+  mask-position: bottom;
   bottom: -2rem;
   right: 0;
 }
 
-.first.incognito::after {
+.first.incognito::after,
+.first.incognito::before {
   display: none;
 }
 
 /* --------------- Inicio de Second Section ---------------*/
 /* Descripción: Estilo de First Section. Esta sección contiene un 
-enlace a la sección de contacto. Tiene de fondo un vídeo de un cielo
-estrellado y al hacer hover el cursor se convierte en un ovni.
+  enlace a la sección de contacto. Tiene de fondo un vídeo de un cielo
+  estrellado y al hacer hover el cursor se convierte en un ovni.
 
-Estructura:
-- second
-- second__h4
-- second__video
-- second__wrapper
-- second__a
+  Estructura:
+  - second
+  - second__h4
+  - second__video
+  - second__wrapper
+  - second__a
 
-- Before
-- Afters
-- Hovers
-- Incognito
+  - Before
+  - Afters
+  - Hovers
+  - Incognito
 
-*/
+  */
 .second {
   width: 100%;
   min-height: 70vh;
@@ -1319,7 +1239,7 @@ Estructura:
 }
 
 /* Vídeo de Borys Zaitsev de Pexels:
-https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-12275368/ */
+  https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-12275368/ */
 .second__video {
   width: 100%;
   height: 100%;
@@ -1327,16 +1247,14 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   position: absolute;
   top: 0;
   left: 0;
+
+  filter: grayscale(100%) brightness(.4) contrast(.9);
+  -webkit-filter: grayscale(100%) brightness(.4) contrast(.9);
 }
 
 .second__wrapper {
   width: 14rem;
   min-height: 10rem;
-
-  background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
 
   position: absolute;
   z-index: 1;
@@ -1349,6 +1267,8 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
   mask-size: 14rem;
   mask-position: center;
 
+  background-color: blueviolet;
+
   transform: scale(1);
   animation: beat 5s infinite ease both;
   transition: transform 1s ease,
@@ -1357,15 +1277,11 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
 
 .second__a {
   width: 90%;
-  height: 6rem;
+  height: 2rem;
+
   position: absolute;
   left: calc((100% - 90%) / 2);
-  top: calc(50% - (6rem/2));
-
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+  top: calc(50% - (2rem/2));
   text-align: center;
 
   color: #A7FE2F;
@@ -1426,28 +1342,41 @@ https://www.pexels.com/es-es/video/galaxy-estrellas-animacion-espacio-exterior-1
 
 /* --------------- Inicio de Third Section ---------------*/
 /* Descripción: estilo de Third Section. Esta sección contiene un carrousel
-sencillo de algunas marcas con las que he trabajado. La parte superior
-es ondulada y la inferior aserrada gracias a la aplicación de máscaras
-en before y after.
+  sencillo de algunas marcas con las que he trabajado. La parte superior
+  es ondulada y la inferior aserrada gracias a la aplicación de máscaras
+  en before y after.
 
-Contenido: 
-- third
-  - third__wrapper
-  - third__span
-  - third__span.crossed
-  - carrousel
-    - carrousel__big
-      - carrousel__wrapper
-      - carrousel__img
-      - cawrrousel__h4
-    - carrousel__ul
-      - carrousel__button
-      - carrousel__button.active
+  Contenido: 
+  - third
+    - third__wrapper
+    - third__span
+    - third__span.crossed
+    - carrousel
+      - carrousel__big
+        - carrousel__wrapper
+        - carrousel__img
+        - cawrrousel__h4
+      - carrousel__ul
+        - carrousel__button
+        - carrousel__button.active
 
-    - Befores
-    - Afters
-    - Hovers
-*/
+      - Befores
+      - Afters
+      - Hovers
+  */
+
+.third,
+.third__wrapper,
+.carrousel,
+.carrousel__big,
+.carrousel__wrapper,
+.carrousel__ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .third {
   width: 100%;
   height: 50vh;
@@ -1456,8 +1385,6 @@ Contenido:
 
   position: relative;
 
-  display: flex;
-  flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
 
@@ -1477,10 +1404,7 @@ Contenido:
   min-height: 40vh;
   background-color: #0e0e0f;
 
-  display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: 1rem;
 
   font-size: 5vh;
@@ -1502,21 +1426,16 @@ Contenido:
   min-height: 40vh;
   position: relative;
 
-  display: flex;
   flex-flow: column-reverse nowrap;
   justify-content: center;
-  align-items: flex-start;
 
   overflow: hidden;
 }
 
 .carrousel__big {
   width: 400%;
-  height: 25vh;
+  min-height: 25vh;
 
-  display: flex;
-  flex-flow: row nowrap;
-  justify-items: flex-start;
   align-items: center;
 
   transform: translateX(0);
@@ -1526,10 +1445,8 @@ Contenido:
 .carrousel__wrapper {
   width: 100%;
 
-  display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: flex-start;
   gap: 1rem;
 
 }
@@ -1552,8 +1469,6 @@ Contenido:
   min-height: 2.2rem;
   margin: .5rem auto;
 
-  display: flex;
-  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
@@ -1582,45 +1497,30 @@ Contenido:
 }
 
 /* Befores */
-.third::before {
+.third::before, .third::after{
   width: 100%;
   height: 2rem;
   display: block;
   content: '';
-
-  background-color: blueviolet;
-  mask-image: url(/assets/masks/wavy-mask-top.svg);
-  mask-repeat: repeat-x;
-  mask-position: top;
-
-  position: absolute;
-  top: -2rem;
   right: 0;
+  position: absolute;
+  background-color: blueviolet;
+}
+.third::before {
+  mask-image: url(/assets/masks/wavy-mask-top.svg);
+  mask-position: top;
+  top: -2rem;
 }
 
-.third.incognito::before {
+.third.incognito::before, .third.incognito::after {
   display: none;
 }
 
 /* Afters */
 .third::after {
-  width: 100%;
-  height: 2rem;
-  display: block;
-  content: '';
-
-  background-color: blueviolet;
   mask-image: url(/assets/masks/pointy-mask-bottom.svg);
-  mask-repeat: repeat-x;
   mask-position: bottom;
-
-  position: absolute;
   bottom: -2rem;
-  right: 0;
-}
-
-.third.incognito::after {
-  display: none;
 }
 
 /* Hovers */
@@ -1633,30 +1533,33 @@ Contenido:
 
 /* Inicio Footer */
 /* Descripción: estilo del footer. Esta sección es sencilla y 
-solo contiene el logo y enlaces de navegación. 
+  solo contiene el logo y enlaces de navegación. 
 
-Estructura:  
-- footer
-- footer__img
-- footer__ul
-- footer__span
+  Estructura:  
+  - footer
+  - footer__img
+  - footer__ul
+  - footer__span
 
-- Befores
-- Hovers
-*/
+  - Befores
+  - Hovers
+  */
+
+.footer,
+.footer__ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  color: #A7FE2F;
+}
 
 .footer {
   width: 100%;
   height: 50vh;
-
-  display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
   gap: 2rem;
   transition: height .5s ease;
-
   background-image: url(/assets/background.svg);
   background-color: #0e0e0f;
   background-attachment: fixed;
@@ -1672,23 +1575,17 @@ Estructura:
   width: 10rem;
 }
 
-.footer__ul {
+.footer__ul, .footer__span{
   width: 90%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-
-  color: #A7FE2F;
-  font-size: 1.6rem;
   text-align: center;
+}
+.footer__ul {
+  font-size: 1.6rem;
   gap: 2rem;
 }
 
 .footer__span {
-  width: 90%;
-  color: #a8fe2f51;
-  text-align: center;
+  opacity: .6;
 }
 
 /* Befores */
@@ -1707,6 +1604,51 @@ Estructura:
 /* Fin de footer */
 
 /* Media Queries (Adaptaciones responsive) */
+
+@media (min-width: 1920px) {
+
+  /* header */
+  .nav__li {
+    font-size: 1.7rem;
+  }
+
+  .info {
+    min-height: 30vh;
+  }
+
+  .window__content {
+    height: 30vh;
+    font-size: 1.4rem;
+  }
+
+  .second__wrapper {
+    width: 20rem;
+    height: 20rem;
+    mask-size: 20rem;
+    left: calc(50% - (20rem/2));
+  }
+
+  .second__a {
+    font-size: 3rem;
+  }
+
+  .carrousel__button {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .carrousel__h4 {
+    font-size: 2rem;
+  }
+
+  .carrousel__img {
+    min-height: 16vh;
+  }
+
+  .carrousel__wrapper {
+    min-height: 25vh;
+  }
+}
 
 @media (max-width: 1336px) {
 
@@ -1777,54 +1719,47 @@ Estructura:
   /* Header */
   .header {
     width: 100%;
+    position: fixed;
     height: 0rem;
-    margin: 0;
-
-    mask-image: none;
     background: transparent;
-    box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-
-    position: fixed;
-    top: -100%;
-    left: 0%;
-
-    display: flex;
-
+    inset: -200% 0 0 0;
+    display: block;
     animation: none;
     transition:
-      top .5s ease;
-    opacity: 1;
+      inset .2s ease;
+  }
+
+  .header::after {
+    display: none;
   }
 
   .header.active {
-    top: 0%;
+    inset: 0 0 0 0;
   }
 
   .header__wrapper {
     width: 100%;
     height: 100vh;
     padding: 5%;
-    margin: 0;
 
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: flex-start;
-    gap: 4rem;
 
-    background: radial-gradient(circle, rgba(35, 19, 60, 0.9) 47%, rgba(18, 11, 30, 0.9) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(44, 12, 56);
+    gap: 4rem;
+    background: rgba(24, 3, 44, 0.8);
     backdrop-filter: blur(.7rem);
     -webkit-backdrop-filter: blur(.7rem);
-
-    transition: opacity .5s ease;
+    transition: opacity .4s ease;
     position: fixed;
     opacity: 1;
   }
 
-  .header__wrapper.hidden {
+  .header__wrapper.hidden,
+  .mobile.hidden {
     display: none;
   }
 
@@ -1835,44 +1770,19 @@ Estructura:
   .mobile {
     width: 6rem;
     height: 6rem;
-
     position: fixed;
-    top: 2%;
-    left: 2%;
+    inset: 2% 0 0 2%;
     z-index: 4;
-
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: transparent;
-
+    background: rgba(137, 43, 226, 0.607);
     opacity: 1;
     transition:
       left .5s ease,
       opacity .5s ease;
-
-    mask-image: url(/assets/masks/mobile-menu-mask.svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-
-    background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-    box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-    backdrop-filter: blur(.2rem);
-    -webkit-backdrop-filter: blur(.2rem);
-
-    animation: rotate 30s infinite linear both;
-    transform: scale(1);
-    display: block;
   }
 
   .mobile.invisible {
-    left: -100%;
+    inset: 0 0 0 -10%;
     opacity: 0;
-  }
-
-  .mobile.hidden {
-    display: none;
   }
 
   .mobile__svg {
@@ -1886,8 +1796,7 @@ Estructura:
     z-index: 4;
 
     transition:
-      opacity 1s ease,
-      transform .6s ease;
+      opacity 1s ease, fill .6s ease;
     cursor: pointer;
 
     animation: rotate 30s linear infinite both;
@@ -1895,27 +1804,27 @@ Estructura:
   }
 
   .mobile__svg:hover {
-    transform: scale(1.2);
+    fill: black;
+  }
+
+  .nav__ul,
+  .nav__li,
+  .lang {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .nav__ul {
     width: 100%;
-    display: flex;
-
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
   }
 
   .nav__li {
     width: 100%;
     font-size: 3rem;
     text-align: left;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-
     transform: translateX(-200%);
     transition: transform .3s ease;
     opacity: 0;
@@ -1936,10 +1845,6 @@ Estructura:
   }
 
   .lang {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
     gap: 2rem;
   }
 
@@ -1950,6 +1855,7 @@ Estructura:
   .social {
     width: 100%;
     gap: 0;
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -1963,26 +1869,21 @@ Estructura:
   }
 
   .social__button {
-    width: 100%;
-    height: 3rem;
-    padding: 0 0 0 .6rem;
-
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-
-    text-transform: uppercase;
-    font-size: 1.3rem;
-
-    color: #A7FE2F;
-    border: #A7FE2F .125rem solid;
-
-    cursor: pointer;
-    transition: opacity 1s ease;
-
     transform: scale(1);
+    transition: opacity 1s ease;
+    cursor: pointer;
     transition: all .6s ease;
+  }
+
+  .social__button:hover {
+    background-color: #A7FE2F;
+    color: #0e0e0f;
+    font-weight: 700;
+    transform: scale(1.1);
   }
 
   .menu__svg {
@@ -2013,10 +1914,7 @@ Estructura:
   }
 
   .info {
-    width: 100%;
-    height: 17rem;
-    position: absolute;
-    top: 55%;
+    display: none;
   }
 
   .info__window {
@@ -2049,6 +1947,10 @@ Estructura:
     right: 4%;
   }
 
+  .services {
+    display: block;
+  }
+
   /* Second Section */
   .second__wrapper {
     top: 52%;
@@ -2069,7 +1971,8 @@ Estructura:
     font-size: 2.5rem;
   }
 
-  .carrousel {
+  .carrousel,
+  .carrousel__ul {
     width: 90%;
   }
 
@@ -2079,10 +1982,6 @@ Estructura:
 
   .carrousel__img {
     height: 7rem;
-  }
-
-  .carrousel__ul {
-    width: 90%;
   }
 
   .carrousel__button {
@@ -2095,7 +1994,9 @@ Estructura:
     height: 70vh;
   }
 
-  .footer__ul {
+  .footer__ul,
+  .footer__li,
+  .footer__span {
     width: 90%;
   }
 
@@ -2104,20 +2005,15 @@ Estructura:
   }
 
   .footer__span {
-    width: 90%;
     font-size: 1.2rem;
   }
 
   /* Incognito */
   .header.incognito {
-    width: 100%;
-    height: 6rem;
+    background: transparent;
     display: block;
-    transition:
-      top .5s ease;
-    opacity: 1;
-    background: none;
   }
+
   .mobile.incognito {
     animation: none;
     mask: none;
@@ -2127,11 +2023,17 @@ Estructura:
     justify-content: center;
     align-items: center;
   }
+
   .mobile__svg.incognito {
     position: static;
     animation: none;
-    animation-direction: reverse;
   }
+
+  .header__wrapper.incognito {
+    background: #0e0e0f;
+    transition: all 1s ease;
+  }
+
 }
 
 @media (max-width: 600px) {
@@ -2181,11 +2083,8 @@ Estructura:
     flex-flow: column nowrap;
   }
 
-  .footer__li {
-    width: 100%;
-  }
-
-  .footer__a {
+  .footer__li,
+  .footer__ul {
     width: 100%;
   }
 
