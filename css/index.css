@@ -2135,8 +2135,6 @@ Estructura:
 }
 
 @media (max-width: 600px) {
-  /* Header */
-
   /* Hero */
   .hero {
     min-height: 50vh;
@@ -2171,7 +2169,9 @@ Estructura:
   }
 
   /* Second section */
-
+  .second__h4{
+    font-size: 4vh;
+  }
   /* Footer */
   .footer {
     height: 100vh;
@@ -2198,6 +2198,7 @@ Estructura:
     font-size: 1.5rem;
   }
 }
+
 
 
 /* Animaciones */
