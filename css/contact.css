@@ -379,7 +379,7 @@ Estructura:
   cursor: pointer;
 }
 
-.social__button{
+.social__button {
   width: 100%;
   height: 3rem;
   padding: 0 0 0 .6rem;
@@ -414,7 +414,6 @@ Estructura:
 
   animation: rotate 30s infinite linear both;
   transform: scale(1);
-  display: block;
 }
 
 .mobile.hidden {
@@ -509,14 +508,9 @@ input:checked+.toggle__handle:after {
 
 /* Hovers */
 
-.header__h1:hover {
-  transform: scale(1.2);
-}
-
 .nav__li:hover {
   color: #A7FE2F;
   background-color: black;
-  transform: scale(1.2);
 }
 
 .nav__li:hover:before {
@@ -526,6 +520,11 @@ input:checked+.toggle__handle:after {
 
 .social__svg:hover {
   fill: black;
+}
+
+.header__h2:hover,
+.social__svg:hover,
+.header__h1:hover {
   transform: scale(1.2);
 }
 
@@ -567,69 +566,66 @@ Estructura:
 -Hovers
 */
 
-.contact {
-  width: 100%;
-  min-height: 110vh;
-  padding-top: 10vh;
-
+.contact,
+.contact__wapper,
+.contact__button {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+}
 
-  background-color:#000000;
-
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
+.contact {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
 }
 
 .contact__wrapper {
   width: 50vw;
   min-height: 10vh;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
   align-items: flex-start;
-
   animation: slideInLeft 2s ease 1 forwards;
 }
 
-.contact__label {
+.contact__label,
+.contact__input,
+.contact__message,
+.contact__submit {
   color: #A7FE2F;
+  padding: 1%;
+}
+
+
+.contact__label {
   text-transform: uppercase;
   margin: 1% 0;
   font-weight: 500;
   font-size: 1.3rem;
 }
 
-.contact__input {
+.contact__input,
+.contact__message,
+.contact__button {
   width: 100%;
+}
+
+.contact__input {
   height: 2rem;
   border-bottom: .1rem solid #A7FE2F;
-  color: #A7FE2F;
-  padding: 1%;
 }
 
 .contact__message {
-  width: 100%;
+  max-height: 20vh;
   border: .1rem solid #A7FE2F;
-  color: #A7FE2F;
   background-color: black;
   resize: none;
-  padding: 1%;
 }
 
 .contact__button {
-  width: 100%;
   height: 8rem;
   position: relative;
-
-  display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-
   z-index: 1;
 }
 
@@ -638,47 +634,32 @@ Estructura:
   width: 12rem;
   height: 10rem;
   margin-top: 5%;
-
   mask-repeat: no-repeat;
   mask-size: 10rem;
   mask-position: center;
-
-  background: radial-gradient(circle, rgba(154, 92, 255, 0.43) 47%, rgba(154, 92, 255, 0.6) 100%);
-  box-shadow: inset 0px 0px 82px -8px rgb(198, 55, 255);
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
-
+  background: blueviolet;
   cursor: pointer;
-
-  color: #A7FE2F;
   text-transform: lowercase;
   font-size: 1.5rem;
-
   animation: beat 4s ease infinite forwards;
   transition: mask-size .5s ease, color 1s ease, background 1s ease, box-shadow 1s ease;
 }
 
 /* Afters */
-.contact::after{
+.contact::after {
   width: 100%;
   height: 2rem;
   display: block;
   content: '';
-
-  background-color:#000000;
+  background-color: black;
   mask-image: url(/assets/masks/pointy-mask-bottom.svg);
-  mask-repeat: repeat-x;
   mask-position: bottom;
-
-  backdrop-filter: blur(.2rem);
-  -webkit-backdrop-filter: blur(.2rem);
-
   position: absolute;
   bottom: -2rem;
   right: 0;
-
   z-index: 0;
 }
+
 /* Hovers */
 .contact__submit:hover {
   color: black;
@@ -688,25 +669,20 @@ Estructura:
 }
 
 /* Selection */
-.contact__input::selection {
-  background-color: blueviolet;
-}
-.contact__message::selection {
+.contact__input::selection .contact__message::selection {
   background-color: blueviolet;
 }
 
 /* Incognito */
-.contact__submit.incognito{
+.contact__submit.incognito {
   height: 4rem;
-  background: none;
-  box-shadow: none;
   background-color: #1e1e22;
   mask: none;
   animation: none;
   transform: scale(1);
 }
 
-.contact__submit.incognito:hover{
+.contact__submit.incognito:hover {
   border: .1rem solid white;
   transform: scale(1.2);
 }
@@ -728,24 +704,26 @@ Estructura:
 - Hovers
 */
 
+.footer,
+.footer__ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  color: #A7FE2F;
+}
+
 .footer {
   width: 100%;
   min-height: 70vh;
-
-  display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
   gap: 2rem;
   transition: height .5s ease;
-
-    /* Fondo del body */
-    background-image: url(/assets/background.svg);
-    background-color: #0e0e0f;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(/assets/background.svg);
+  background-color: #0e0e0f;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .footer.disabled {
@@ -758,19 +736,13 @@ Estructura:
 
 .footer__ul {
   width: 90%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-
-  color: #A7FE2F;
   font-size: 1.6rem;
   text-align: center;
   gap: 2rem;
 }
 
 .footer__span {
-  color: #a8fe2f51;
+  opacity: .8;
   text-align: center;
 }
 
@@ -778,7 +750,7 @@ Estructura:
 .footer__a::before {
   content: '';
   opacity: 0;
-  transition: opacity .6s ease;
+  transition: opacity .6s ease, content .6s ease;
 }
 
 /* Hovers */
@@ -787,11 +759,10 @@ Estructura:
   opacity: 1;
 }
 
-@media (min-width: 1920px){
-  .nav__li{
-    font-size: 1.7rem;
-  }
-  .contact__label{
+@media (min-width: 1920px) {
+
+  .nav__li,
+  .contact__label {
     font-size: 1.7rem;
   }
 }
@@ -799,7 +770,7 @@ Estructura:
 @media (max-width: 1000px) {
 
   /* Header */
-  .header{
+  .header {
     width: 100%;
     position: fixed;
     height: 0rem;
@@ -860,6 +831,7 @@ Estructura:
     transition:
       left .5s ease,
       opacity .5s ease;
+    display: block;
   }
 
   .mobile.invisible {
@@ -979,38 +951,33 @@ Estructura:
     right: 5%;
   }
 
-    /* Incognito */
-    .header.incognito {
-      background: transparent;
-      display: block;
-    }
-
-    .mobile.incognito {
-      animation: none;
-      mask: none;
-      border-radius: 50%;
-      top: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .mobile__svg.incognito {
-      position: static;
-      animation: none;
-    }
-
-    .header__wrapper.incognito{
-      background: #0e0e0f;
-      transition: all 1s ease;
-    }
-
-  /* Contact */
-  .contact{
-    min-height: 115vh;
-    top: 10rem;
+  /* Incognito */
+  .header.incognito {
+    background: transparent;
+    display: block;
   }
-  .contact__wrapper{
+
+  .mobile.incognito {
+    animation: none;
+    mask: none;
+    border-radius: 50%;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile__svg.incognito {
+    position: static;
+    animation: none;
+  }
+
+  .header__wrapper.incognito {
+    background: #0e0e0f;
+    transition: all 1s ease;
+  }
+
+  .contact__wrapper {
     width: 80vw;
   }
 
@@ -1038,7 +1005,7 @@ Estructura:
 @media (max-width: 600px) {
   /* Footer */
 
-  .footer{
+  .footer {
     height: 100vh;
   }
 
@@ -1046,11 +1013,11 @@ Estructura:
     flex-flow: column nowrap;
   }
 
-  .footer__li{
+  .footer__li {
     width: 100%;
   }
 
-  .footer__a{
+  .footer__a {
     width: 100%;
   }
 

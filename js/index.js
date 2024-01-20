@@ -1,5 +1,18 @@
 'use strict'
 
+// Estructura general
+    //Toggle Incognito
+    //Animación de carga
+    // Header Scrips
+        // Mobile Menu
+         //Selección de idioma
+    // Hero Scrips
+      //  Interacción info__window
+      // Interacción Logo Oddeye
+    // Interacción First Section
+    // Interacción Third Section (Carrousel)
+
+function indexScripts() {
 // ----------------Toggle el modo incógnito--------------------
 
 const incognito = () => {
@@ -23,7 +36,6 @@ const incognito = () => {
 
 // -----------------Inicio de Animación de carga ----------------
 
-
 const loadingAnimation = () => {
     const wavesTop = document.querySelector('.waves__top')
     const wavesBottom = document.querySelector('.waves__bottom')
@@ -32,122 +44,17 @@ const loadingAnimation = () => {
     // REMOVE la clase active de .waves__top
     // REMOVE la clase active de .waves__bottom
     window.addEventListener('load', () => {
+        requestAnimationFrame(() => {
         wavesBottom.classList.remove('active')
         wavesTop.classList.remove('active')
+        })
     })
 }
 
 loadingAnimation()
 
+
 // -----------------Fin de Animación de carga ----------------
-
-
-// ---------------Inicio de Responsive Scripts ----------------------------
-const adaptScreen = () => {
-
-    // Definimos el valor inicial de ancho de la pantalla
-    // Definimos que la pantalla del modo móvil <= que 1000
-    // Definimos que la pantalla del modo desktop es > que 1000
-    let screenWidth = window.innerWidth
-    let mobileActive = screenWidth <= 1000
-
-    // Seleccionamos todos los elementos a editar
-    const mobileWrapper = document.querySelector('.mobile')
-    const closeMobMenu = document.querySelector('.social__button')
-    const services = document.querySelector('.services')
-    const infoWrapper = document.querySelector('.info')
-    const headerWrapper = document.querySelector('.header__wrapper')
-
-    const desktopMode = (() => {
-        //  Si desktop mode:
-        // ADD la clase invisible a .mobile
-        // ADD la clase invisible a .social__button
-        // ADD la clase invisible a .services
-        // REMOVE la clase hidden a .info
-        // REMOVE la clase hidden a .header__wrapper
-        mobileWrapper.classList.add('invisible')
-        closeMobMenu.classList.add('invisible')
-        services.classList.add('invisible')
-        infoWrapper.classList.remove('hidden')
-        headerWrapper.classList.remove('hidden')
-
-        // Espera .05
-        // ADD la clase hidden a .mobile
-        // ADD la clase hidden a .social__button
-        // ADD la clase hidden a .services
-        // REMOVE la clase invisible a .info
-        // REMOVE la clase invisible a .header__wrapper
-        setTimeout(() => {
-            mobileWrapper.classList.add('hidden')
-            closeMobMenu.classList.add('hidden')
-            services.classList.add('hidden')
-            infoWrapper.classList.remove('invisible')
-            headerWrapper.classList.remove('invisible')
-        }, 50)
-    })
-
-    const mobileMode = (() => {
-        // Si mobile mode:
-        // REMOVE la clase hidden a .mobile
-        // REMOVE la clase hidden a .social__button
-        // REMOVE la clase hidden a .services
-        // ADD la clase invisible a .info
-        // ADD la clase invisible a .header__wrapper
-        mobileWrapper.classList.remove('hidden')
-        closeMobMenu.classList.remove('hidden')
-        services.classList.remove('hidden')
-        infoWrapper.classList.add('invisible')
-        headerWrapper.classList.add('invisible')
-
-        // Espera .05
-        // REMOVE la clase invisible a .mobile
-        // REMOVE la clase invisible a .social__button
-        // REMOVE la clase invisible a .services
-        // ADD la clase hidden a .info
-        // ADD la clase hidden a .header__wrapper
-        setTimeout(() => {
-            mobileWrapper.classList.remove('invisible')
-            closeMobMenu.classList.remove('invisible')
-            services.classList.remove('invisible')
-            infoWrapper.classList.add('hidden')
-            headerWrapper.classList.add('hidden')
-        }, 50)
-    })
-
-    const modeSwitch = (function () {
-        let screenWidth = window.innerWidth
-        let mobileActive = screenWidth <= 1000
-        // Si mobileActive es igual a false
-        // llamamos a la función desktopmode
-        // ELSE llamamos a la función mobilemode
-        if (!mobileActive) {
-            desktopMode()
-        }
-        else {
-            mobileMode()
-        }
-    })
-
-    //Cuando la ventana carga
-    // Llamamos a la función modeSwitch
-    window.addEventListener('load', function () {
-        modeSwitch()
-        // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
-        firstInteraction()
-    })
-
-    //Cuando la ventana cambia de tamaño
-    // Llamamos a la función modeswitch
-    window.addEventListener('resize', function () {
-        modeSwitch()
-        // Activamos/Desactivamos la interacción de first__section si el modo desktop está activado
-        firstInteraction()
-    })
-}
-
-adaptScreen()
-
-// ---------------Fin de Responsive Scripts ----------------------------
 
 
 // ---------------Inicio Header Scripts ----------------------------
@@ -537,6 +444,8 @@ oddEyeLogoInteraction()
 // ---------------Fin de Main/Hero Scripts ----------------------------
 
 // -------------Inicio de First section Scripts -----------------------
+// ERROR Dejó de funcionar al optimizar el código, comprobar.
+//  Lo he apañado de momento con window.innerwith 
 
 const firstInteraction = () => {
     const first = document.querySelector('.first')
@@ -550,7 +459,7 @@ const firstInteraction = () => {
     // Cuando hago mouseout en .first
     // REMOVE la clase plau en .first__animation
     // REMOVE la clase play en .first__a
-    if (!adaptScreen.mobileActive) {
+    if (window.innerWidth > 1000) {
         first.addEventListener('pointerover', () => {
             firstAnimation.classList.add('play')
             firstA.classList.add('play')
@@ -570,6 +479,8 @@ const firstInteraction = () => {
     }
 }
 
+firstInteraction()
+
 // ------------- Fin de First Section Scripts -------------------------
 
 // ------------- Inicio de Third Section Scripts ---------------------
@@ -584,7 +495,8 @@ const thirdInteraction = () => {
     // Creo un LI
     // Les ADD la clase carrousel__li
     // Dentro de cada LI creo un botón
-    // los botónes ADD la clase carrousel__button
+    // los botones ADD la clase carrousel__button
+    // les agrego el atributo title
     // Metemos los botones dentro de los li
     // Metemos los li dentro del fragmento
     // Metemos el fragmento dentro de carrousel_ul
@@ -596,6 +508,7 @@ const thirdInteraction = () => {
 
         const dotBtn = document.createElement('button')
         dotBtn.classList.add('carrousel__button')
+        dotBtn.setAttribute('title', 'Carrousel Button')
 
         li.appendChild(dotBtn)
         dotList.appendChild(li)
@@ -641,6 +554,8 @@ const thirdInteraction = () => {
 thirdInteraction()
 
 // ---------------- Fin de Third Section Scripts ---------------------
+}
 
+indexScripts()
 
 

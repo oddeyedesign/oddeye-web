@@ -1,4 +1,16 @@
 'use strict'
+// Estructura general
+    //Toggle Incognito
+    //Animación de carga
+    // Header Scrips
+        // Mobile Menu
+         //Selección de idioma
+    // Profolio Navigation 
+        // Tabs
+        // Folders
+        // Proyectos Default
+
+function porfolioScripts(){
 
 // ----------------Toggle el modo incógnito--------------------
 
@@ -23,7 +35,6 @@ const incognito = () => {
 
 // -----------------Inicio de Animación de carga ----------------
 
-
 const loadingAnimation = () => {
     const wavesTop = document.querySelector('.waves__top')
     const wavesBottom = document.querySelector('.waves__bottom')
@@ -32,100 +43,16 @@ const loadingAnimation = () => {
     // REMOVE la clase active de .waves__top
     // REMOVE la clase active de .waves__bottom
     window.addEventListener('load', () => {
+        requestAnimationFrame(() => {
         wavesBottom.classList.remove('active')
         wavesTop.classList.remove('active')
+        })
     })
 }
 
 loadingAnimation()
 
 // -----------------Fin de Animación de carga ----------------
-
-// ---------------Inicio de Responsive Scripts ----------------------------
-
-const adaptScreen = () => {
-
-    // Definimos el valor inicial de ancho de la pantalla
-    // Definimos que la pantalla del modo móvil <= que 1000
-    // Definimos que la pantalla del modo desktop es > que 1000
-    let screenWidth = window.innerWidth
-    let mobileActive = screenWidth <= 1000
-
-    // Seleccionamos todos los elementos a editar
-    const mobileWrapper = document.querySelector('.mobile')
-    const closeMobMenu = document.querySelector('.social__button')
-    const headerWrapper = document.querySelector('.header__wrapper')
-
-    const desktopMode = (() => {
-        //  Si desktop mode:
-        // ADD la clase invisible a .mobile
-        // ADD la clase invisible a .social__button
-        // REMOVE la clase hidden a .header__wrapper
-        mobileWrapper.classList.add('invisible')
-        closeMobMenu.classList.add('invisible')
-        headerWrapper.classList.remove('hidden')
-
-        // Espera .05
-        // ADD la clase hidden a .mobile
-        // ADD la clase hidden a .social__button
-        // REMOVE la clase invisible a .header__wrapper
-        setTimeout(() => {
-            mobileWrapper.classList.add('hidden')
-            closeMobMenu.classList.add('hidden')
-            headerWrapper.classList.remove('invisible')
-        }, 50)
-    })
-
-    const mobileMode = (() => {
-        // Si mobile mode:
-        // REMOVE la clase hidden a .mobile
-        // REMOVE la clase hidden a .social__button
-        // ADD la clase invisible a .header__wrapper
-        mobileWrapper.classList.remove('hidden')
-        closeMobMenu.classList.remove('hidden')
-        headerWrapper.classList.add('invisible')
-
-        // Espera .05
-        // REMOVE la clase invisible a .mobile
-        // REMOVE la clase invisible a .social__button
-        // ADD la clase hidden a .header__wrapper
-        setTimeout(() => {
-            mobileWrapper.classList.remove('invisible')
-            closeMobMenu.classList.remove('invisible')
-            headerWrapper.classList.add('hidden')
-        }, 50)
-    })
-
-    const modeSwitch = (function () {
-        let screenWidth = window.innerWidth
-        let mobileActive = screenWidth <= 1000
-        // Si mobileActive es igual a false
-        // llamamos a la función desktopmode
-        // ELSE llamamos a la función mobilemode
-        if (!mobileActive) {
-            desktopMode()
-        }
-        else {
-            mobileMode()
-        }
-    })
-
-    //Cuando la ventana carga
-    // Llamamos a la función modeSwitch
-    window.addEventListener('load', function () {
-        modeSwitch()
-    })
-
-    //Cuando la ventana cambia de tamaño
-    // Llamamos a la función modeswitch
-    window.addEventListener('resize', function () {
-        modeSwitch()
-    })
-}
-
-adaptScreen()
-
-// ---------------Fin de Responsive Scripts ----------------------------
 
 // ---------------Inicio Header Scripts ----------------------------
 
@@ -379,3 +306,6 @@ const porfolioNavigation = () => {
 porfolioNavigation()
 
 // ---------------Fin de Tabs Scripts ---------------------------
+}
+
+porfolioScripts()
